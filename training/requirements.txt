@@ -1,0 +1,9 @@
+# SkoolBox LoRA fine-tuning (GPU required — Colab Pro / RunPod)
+# merge_dataset.py uses only the Python standard library and needs nothing here.
+unsloth
+transformers
+datasets
+trl
+peft
+accelerate
+bitsandbytes
