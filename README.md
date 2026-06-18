@@ -178,10 +178,17 @@ npm run tauri:dev   # rebuilds the native shell automatically
 
 ## Project Structure
 
+SkoolBox is a **monorepo**: the Tauri app lives at the repo root, and the AI
+fine-tuning pipeline lives alongside it in `dataset/`, `training/`, and `rag/`.
+See [MONOREPO.md](MONOREPO.md) for the full layout and
+[COLLABORATION.md](COLLABORATION.md) for what's shared via git vs regenerated.
+
 ```
 skoolbox/
 ├── PRD.md                  # Product requirements
 ├── README.md               # You are here
+├── MONOREPO.md             # Monorepo layout + who-works-where
+├── COLLABORATION.md        # Tracked vs ignored, team workflow
 ├── index.html              # Vite entry
 ├── package.json
 ├── vite.config.ts
@@ -217,12 +224,28 @@ skoolbox/
 │   │   └── tts/            # Azure + browser TTS
 │   ├── pages/              # Route-level components (teacher + student/)
 │   └── stores/             # Zustand state stores
-└── src-tauri/              # Rust shell + native APIs
-    ├── Cargo.toml
-    ├── tauri.conf.json     # App config (name, CSP, windows, bundle)
-    ├── capabilities/
-    ├── icons/
-    └── src/
+├── src-tauri/              # Rust shell + native APIs
+│   ├── Cargo.toml
+│   ├── tauri.conf.json     # App config (name, CSP, windows, bundle)
+│   ├── capabilities/
+│   ├── icons/
+│   ├── ai/                 # Ollama Modelfile + bundled model assets
+│   └── src/                # Rust backend (AI engine, RAG, DB, commands)
+│
+│   ── AI fine-tuning pipeline (the monorepo) ──
+├── dataset/                # 🟢 Subject experts write .jsonl training examples
+│   ├── README.md           #    System-prompt templates + writing rules
+│   └── <subject>/<level>/<topic>.jsonl
+├── training/               # 🔵 LoRA pipeline for Qwen3 4B
+│   ├── merge_dataset.py    #    Combine + validate all dataset/*.jsonl
+│   ├── train.py            #    LoRA fine-tune with Unsloth
+│   ├── merge_lora.py       #    Merge adapters into base model
+│   ├── convert_to_gguf.py  #    Quantize to Q4_K_M GGUF
+│   ├── requirements.txt
+│   └── README.md
+└── rag/                    # 🔵 Curriculum retrieval index builder
+    ├── ingest.py           #    Chunk docs into the SQLite FTS5 index
+    └── README.md
 ```
 
 ---

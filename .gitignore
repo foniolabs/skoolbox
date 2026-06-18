@@ -20,6 +20,22 @@ dist-ssr
 # Rust / Tauri build artefacts
 src-tauri/target/
 
+# Monorepo: AI training artifacts (training/)
+__pycache__/
+*.pyc
+.venv/
+venv/
+training/skoolbox_train.jsonl
+training/skoolbox-lora-adapters/
+training/skoolbox-merged/
+training/*-checkpoints/
+# Final GGUF ships via Git LFS (src-tauri/ai/models/) — keep it; ignore stray ones.
+training/*.gguf
+
+# Monorepo: RAG inputs & generated index (rag/)
+rag/docs/
+*.db
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
