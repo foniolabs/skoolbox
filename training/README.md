@@ -36,6 +36,9 @@ pip install -r training/requirements.txt
 python training/merge_dataset.py --input dataset/ --output training/skoolbox_train.jsonl
 wc -l training/skoolbox_train.jsonl     # aim for ≥ 5,000 lines
 
+# (optional) lint-only quality gate — no output file, fails on any warning
+python training/merge_dataset.py --input dataset/ --output - --strict
+
 # 2. LoRA fine-tune (curriculum blended with a general Qwen-style dataset)
 python training/train.py \
     --model qwen3-4b \

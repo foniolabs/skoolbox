@@ -45,6 +45,16 @@ question), and the **assistant** message (the ideal curriculum-aligned answer).
 > ⚠️ **Each example must be a single line** in the `.jsonl` file. One JSON object
 > per line, no blank lines. Validate with https://jsonlint.com before pushing.
 
+**Check your work before pushing.** From the repo root, run the linter — it flags
+JSON errors, a missing/wrong system prompt, missing class level, answers that are
+too short, and duplicate questions:
+
+```bash
+python training/merge_dataset.py --input dataset/ --output - --strict
+```
+
+Curriculum reviewers approving a PR follow [REVIEW_CHECKLIST.md](REVIEW_CHECKLIST.md).
+
 ## Rules for good examples
 
 | Rule | Why |
