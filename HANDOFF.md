@@ -7,7 +7,9 @@ RAG. This document is the single source of truth for where we are, what's left,
 and everything a teammate needs to move it forward.
 
 - **MVP target:** 2026-06-30
+- **Tutor persona:** **Martha** (the SkoolBox AI tutor) — used in all dataset system prompts
 - **Base model:** Qwen3 4B (per the LoRA Fine-Tuning Guide)
+- **Training data:** Nigerian curriculum (`dataset/`) **blended** with ~30% general Qwen-style instruction data
 - **Today's runtime fallback:** `qwen2.5:7b-instruct` (3B installed) via Ollama
 - **Audience:** ML dev, app devs, subject experts, curriculum reviewers, QA
 
@@ -86,7 +88,10 @@ and everything a teammate needs to move it forward.
 ### Phase B — Training (ML dev) 🔵
 4. `python training/merge_dataset.py --input dataset/ --output training/skoolbox_train.jsonl`
 5. On GPU (Colab Pro A100 / RunPod): `python training/train.py --model qwen3-4b
-   --dataset training/skoolbox_train.jsonl --epochs 3 --lora-r 16`
+   --dataset training/skoolbox_train.jsonl --mix-dataset trl-lib/Capybara
+   --mix-ratio 0.3 --epochs 3 --lora-r 16`. We **blend** ~30% general Qwen-style
+   instruction data with the curriculum so Martha keeps general ability and
+   doesn't "forget" (see training/README.md → Blending).
 6. `python training/merge_lora.py` → `python training/convert_to_gguf.py`
    (output `src-tauri/ai/models/skoolbox-qwen3-4b-v1.0-Q4_K_M.gguf`).
 7. Test via Ollama against the checklist in [training/README.md](training/README.md).
