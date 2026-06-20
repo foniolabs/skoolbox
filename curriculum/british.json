@@ -1,0 +1,45 @@
+{
+  "key": "british",
+  "name": "British National Curriculum",
+  "authority": "UK National Curriculum (DfE) / GCSE / A-Level",
+  "description": "England's National Curriculum, organised by Key Stages and Years, leading to GCSE (KS4) and A-Level (KS5). EYFS covers Reception.",
+  "levels": [
+    { "key": "reception", "name": "Reception", "stage": "EYFS", "order": 1 },
+    { "key": "year1", "name": "Year 1", "stage": "Key Stage 1", "order": 2 },
+    { "key": "year2", "name": "Year 2", "stage": "Key Stage 1", "order": 3 },
+    { "key": "year3", "name": "Year 3", "stage": "Key Stage 2", "order": 4 },
+    { "key": "year4", "name": "Year 4", "stage": "Key Stage 2", "order": 5 },
+    { "key": "year5", "name": "Year 5", "stage": "Key Stage 2", "order": 6 },
+    { "key": "year6", "name": "Year 6", "stage": "Key Stage 2", "order": 7 },
+    { "key": "year7", "name": "Year 7", "stage": "Key Stage 3", "order": 8 },
+    { "key": "year8", "name": "Year 8", "stage": "Key Stage 3", "order": 9 },
+    { "key": "year9", "name": "Year 9", "stage": "Key Stage 3", "order": 10 },
+    { "key": "year10", "name": "Year 10", "stage": "Key Stage 4 (GCSE)", "order": 11 },
+    { "key": "year11", "name": "Year 11", "stage": "Key Stage 4 (GCSE)", "order": 12 },
+    { "key": "year12", "name": "Year 12", "stage": "Key Stage 5 (A-Level)", "order": 13 },
+    { "key": "year13", "name": "Year 13", "stage": "Key Stage 5 (A-Level)", "order": 14 }
+  ],
+  "subjects": [
+    { "key": "english", "name": "English" },
+    { "key": "mathematics", "name": "Mathematics" },
+    { "key": "science", "name": "Science" },
+    { "key": "biology", "name": "Biology" },
+    { "key": "chemistry", "name": "Chemistry" },
+    { "key": "physics", "name": "Physics" },
+    { "key": "history", "name": "History" },
+    { "key": "geography", "name": "Geography" },
+    { "key": "computing", "name": "Computing" },
+    { "key": "design_technology", "name": "Design and Technology" },
+    { "key": "art_design", "name": "Art and Design" },
+    { "key": "physical_education", "name": "Physical Education" },
+    { "key": "languages", "name": "Modern Foreign Languages" },
+    { "key": "religious_education", "name": "Religious Education" },
+    { "key": "music", "name": "Music" },
+    { "key": "citizenship", "name": "Citizenship" }
+  ],
+  "standards": [
+    { "code": "NC-MA-KS3-ALG", "subject": "mathematics", "level": "year8", "title": "Algebra", "description": "Use and interpret algebraic notation; solve linear equations in one variable." },
+    { "code": "NC-MA-KS4-QUAD", "subject": "mathematics", "level": "year10", "title": "Quadratic equations", "description": "Solve quadratic equations algebraically by factorising and by the quadratic formula." },
+    { "code": "NC-SCI-KS4-BIO-PHOTO", "subject": "biology", "level": "year10", "title": "Photosynthesis", "description": "Describe photosynthesis as an endothermic reaction and the factors affecting its rate." }
+  ]
+}

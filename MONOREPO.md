@@ -9,12 +9,18 @@ schoolbox/
 ├── src/             🔵 Tauri app — React + TypeScript frontend
 ├── src-tauri/       🔵 Tauri app — Rust backend (AI engine, RAG, DB)
 │   └── ai/          Ollama Modelfile + runtime AI modules
+├── curriculum/      🟢🔵 Curriculum frameworks (Nigerian/British/American)
 ├── dataset/         🟢 Training examples — SUBJECT EXPERTS WORK HERE
 ├── training/        🔵 LoRA fine-tuning pipeline (Qwen3 4B → GGUF)
 ├── rag/             🔵 Curriculum retrieval index builder
 ├── package.json     Frontend deps & scripts
+├── MVP_PLAN.md      Multi-curriculum co-pilot MVP plan
 └── MONOREPO.md      ← you are here
 ```
+
+> Direction (2026-06): Martha is a **classroom co-pilot** (not a teacher
+> replacement) that works within a school's **chosen curriculum** — Nigerian,
+> British, or American. See [MVP_PLAN.md](MVP_PLAN.md).
 
 > The fine-tuning guide draws `app/` as a subfolder. Here the Tauri app stays at
 > the repo root (`src/` + `src-tauri/`) so existing build paths and tooling keep
@@ -24,6 +30,7 @@ schoolbox/
 
 | Role | Folder | Read |
 | --- | --- | --- |
+| Curriculum experts | `curriculum/` | [curriculum/README.md](curriculum/README.md) |
 | Subject experts / teachers | `dataset/` | [dataset/README.md](dataset/README.md) |
 | ML developers | `training/` | [training/README.md](training/README.md) |
 | App developers | `src/`, `src-tauri/` | [README.md](README.md) |
