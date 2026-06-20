@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   BookMarked, Plus, ChevronRight, Trash2, Loader2,
-  GraduationCap, Calendar, ArrowLeft,
+  GraduationCap, Calendar,
 } from 'lucide-react';
 import Button from '../components/shared/Button';
 import CustomDropdown from '../components/shared/CustomDropdown';

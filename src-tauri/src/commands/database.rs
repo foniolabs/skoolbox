@@ -9,7 +9,7 @@ use uuid::Uuid;
 pub fn get_all_students(db: State<DbState>) -> Result<Vec<Student>, String> {
     let conn = db.db.lock().map_err(|e| e.to_string())?;
     let mut stmt = conn
-        .prepare("SELECT id, full_name, class_level, avatar_url, streak_days, total_points, created_at FROM students ORDER BY full_name")
+        .prepare("SELECT id, full_name, class_level, avatar_url, streak_days, total_points, created_at, status FROM students ORDER BY full_name")
         .map_err(|e| e.to_string())?;
 
     let rows = stmt
@@ -22,6 +22,7 @@ pub fn get_all_students(db: State<DbState>) -> Result<Vec<Student>, String> {
                 streak_days: row.get(4)?,
                 total_points: row.get(5)?,
                 created_at: row.get(6)?,
+                status: row.get(7)?,
             })
         })
         .map_err(|e| e.to_string())?;
@@ -37,7 +38,7 @@ pub fn get_all_students(db: State<DbState>) -> Result<Vec<Student>, String> {
 pub fn get_student(db: State<DbState>, student_id: String) -> Result<Student, String> {
     let conn = db.db.lock().map_err(|e| e.to_string())?;
     conn.query_row(
-        "SELECT id, full_name, class_level, avatar_url, streak_days, total_points, created_at FROM students WHERE id = ?1",
+        "SELECT id, full_name, class_level, avatar_url, streak_days, total_points, created_at, status FROM students WHERE id = ?1",
         [&student_id],
         |row| {
             Ok(Student {
@@ -48,6 +49,7 @@ pub fn get_student(db: State<DbState>, student_id: String) -> Result<Student, St
                 streak_days: row.get(4)?,
                 total_points: row.get(5)?,
                 created_at: row.get(6)?,
+                status: row.get(7)?,
             })
         },
     )
@@ -76,7 +78,60 @@ pub fn create_student(
         streak_days: 0,
         total_points: 0,
         created_at: chrono::Utc::now().to_rfc3339(),
+        status: "active".to_string(),
     })
+}
+
+/// Update a student's details — used when a student is corrected or **upgraded
+/// to a new class**. Only the provided fields change.
+#[tauri::command]
+pub fn update_student(
+    db: State<DbState>,
+    student_id: String,
+    full_name: Option<String>,
+    class_level: Option<String>,
+) -> Result<(), String> {
+    let conn = db.db.lock().map_err(|e| e.to_string())?;
+    if let Some(name) = full_name {
+        conn.execute(
+            "UPDATE students SET full_name = ?1, updated_at = datetime('now') WHERE id = ?2",
+            rusqlite::params![name, student_id],
+        )
+        .map_err(|e| e.to_string())?;
+        // Keep the linked login account's display name in sync.
+        let _ = conn.execute(
+            "UPDATE users SET full_name = ?1 WHERE student_id = ?2",
+            rusqlite::params![name, student_id],
+        );
+    }
+    if let Some(class) = class_level {
+        conn.execute(
+            "UPDATE students SET class_level = ?1, updated_at = datetime('now') WHERE id = ?2",
+            rusqlite::params![class, student_id],
+        )
+        .map_err(|e| e.to_string())?;
+    }
+    Ok(())
+}
+
+/// Suspend or reactivate a student — used when a student **leaves** (suspend)
+/// or returns. Suspended students cannot log in. `status` is 'active' | 'suspended'.
+#[tauri::command]
+pub fn set_student_status(
+    db: State<DbState>,
+    student_id: String,
+    status: String,
+) -> Result<(), String> {
+    if status != "active" && status != "suspended" {
+        return Err("Status must be 'active' or 'suspended'.".to_string());
+    }
+    let conn = db.db.lock().map_err(|e| e.to_string())?;
+    conn.execute(
+        "UPDATE students SET status = ?1, updated_at = datetime('now') WHERE id = ?2",
+        rusqlite::params![status, student_id],
+    )
+    .map_err(|e| e.to_string())?;
+    Ok(())
 }
 
 // ── Subjects & Topics ─────────────────────────────────────

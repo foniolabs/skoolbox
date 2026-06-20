@@ -15,6 +15,7 @@ export interface RecentLesson {
   mode: PresentationMode
   subject: string
   date: string
+  lessonData: string
 }
 
 export interface Lesson {
@@ -35,8 +36,11 @@ interface TeachState {
   currentLesson: Lesson | null
   recentLessons: RecentLesson[]
   isLoadingHistory: boolean
+  /** Saved lesson JSON to replay directly (skips regeneration). */
+  replayData: string | null
 
   setCommand: (command: string) => void
+  setReplayData: (data: string | null) => void
   setSubject: (subject: string) => void
   setClass: (classLevel: string) => void
   setMode: (mode: PresentationMode) => void
@@ -56,8 +60,10 @@ const useTeachStore = create<TeachState>((set) => ({
   currentLesson: null,
   recentLessons: [],
   isLoadingHistory: false,
+  replayData: null,
 
   setCommand: (command) => set({ teacherCommand: command }),
+  setReplayData: (data) => set({ replayData: data }),
   setSubject: (subject) => set({ selectedSubject: subject }),
   setClass: (classLevel) => set({ selectedClass: classLevel }),
   setMode: (mode) => set({ selectedMode: mode }),
@@ -79,6 +85,7 @@ const useTeachStore = create<TeachState>((set) => ({
         mode: (h.mode as PresentationMode) || 'whiteboard',
         subject: h.subject || 'General',
         date: h.created_at.split('T')[0],
+        lessonData: h.lesson_data,
       }))
       set({ recentLessons: lessons })
     } catch (err) {

@@ -9,6 +9,8 @@ pub struct Student {
     pub streak_days: i32,
     pub total_points: i32,
     pub created_at: String,
+    /// 'active' | 'suspended'
+    pub status: String,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

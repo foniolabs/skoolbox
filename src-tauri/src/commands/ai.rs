@@ -1,41 +1,9 @@
-use crate::ai::claude_api;
+use crate::ai::ollama;
 use crate::ai::prompts;
+use crate::ai::provider;
 use crate::ai::rag;
 use crate::db::DbState;
 use tauri::State;
-
-/// Resolve the API key: check DB settings first, then .env file, then env var.
-fn resolve_api_key(db: &DbState) -> Result<String, String> {
-    // 1. Try from DB settings
-    if let Ok(conn) = db.db.lock() {
-        let mut stmt = conn
-            .prepare("SELECT value FROM settings WHERE key = 'claude_api_key'")
-            .ok();
-        if let Some(ref mut s) = stmt {
-            if let Ok(val) = s.query_row([], |row| row.get::<_, String>(0)) {
-                if !val.is_empty() {
-                    return Ok(val);
-                }
-            }
-        }
-    }
-
-    // 2. Try from .env file (loaded at startup) or environment variable
-    if let Ok(key) = std::env::var("API_KEY") {
-        if !key.is_empty() {
-            return Ok(key);
-        }
-    }
-
-    // 3. Also try ANTHROPIC_API_KEY
-    if let Ok(key) = std::env::var("ANTHROPIC_API_KEY") {
-        if !key.is_empty() {
-            return Ok(key);
-        }
-    }
-
-    Err("No API key found. Please set your Claude API key in Settings or in the .env file.".to_string())
-}
 
 /// Main AI teaching command. Teacher types a command, AI generates structured lesson JSON.
 #[tauri::command]
@@ -46,7 +14,7 @@ pub async fn ask_ai_tutor(
     class_level: String,
     mode: String,
 ) -> Result<String, String> {
-    let api_key = resolve_api_key(&db)?;
+    let prov = provider::resolve(&db).await?;
 
     // 1. Search knowledge base for relevant context (RAG)
     let context = {
@@ -99,12 +67,9 @@ Generate the lesson as structured JSON."#,
         prompt, subject, class_level, preferred_mode, context, notes_section
     );
 
-    // 3. Call Claude API
+    // 3. Generate the lesson as validated JSON (constrained + retried for small models)
     let system = prompts::teaching_assistant_prompt();
-    let response = claude_api::call_claude(&api_key, system, &user_message, 4000).await?;
-
-    // 4. Extract JSON from response (Claude might wrap it in markdown code blocks)
-    let json_str = extract_json(&response);
+    let json_str = provider::generate_json(&prov, system, &user_message, 4000).await?;
 
     Ok(json_str)
 }
@@ -119,7 +84,7 @@ pub async fn generate_quiz_ai(
     difficulty: String,
     num_questions: i32,
 ) -> Result<String, String> {
-    let api_key = resolve_api_key(&db)?;
+    let prov = provider::resolve(&db).await?;
 
     let user_message = format!(
         r#"Generate {} quiz questions for {} students.
@@ -131,9 +96,7 @@ Return ONLY valid JSON."#,
     );
 
     let system = prompts::quiz_generator_prompt();
-    let response = claude_api::call_claude(&api_key, system, &user_message, 3000).await?;
-
-    Ok(extract_json(&response))
+    provider::generate_json(&prov, system, &user_message, 3000).await
 }
 
 /// Student-facing AI tutor with multi-turn conversation.
@@ -145,51 +108,18 @@ pub async fn ask_student_tutor(
     topic: String,
     class_level: String,
 ) -> Result<String, String> {
-    let api_key = resolve_api_key(&db)?;
+    let prov = provider::resolve(&db).await?;
 
     let system = prompts::student_tutor_prompt(&subject, &topic, &class_level);
-    let response = claude_api::call_claude_chat(&api_key, &system, messages, 2000).await?;
+    let response = provider::chat(&prov, &system, messages, 2000).await?;
     Ok(response)
 }
 
-/// Check if we can reach the internet (for online/offline detection).
+/// Check whether the active AI backend is reachable (for online/offline UI state).
+///
+/// In the default offline configuration this pings the local Ollama server; it
+/// no longer requires internet access.
 #[tauri::command]
 pub async fn check_connectivity() -> Result<bool, String> {
-    let client = reqwest::Client::builder()
-        .timeout(std::time::Duration::from_secs(5))
-        .build()
-        .map_err(|e| e.to_string())?;
-
-    match client.get("https://api.anthropic.com").send().await {
-        Ok(_) => Ok(true),
-        Err(_) => Ok(false),
-    }
-}
-
-/// Extract JSON from a response that might be wrapped in markdown code blocks.
-fn extract_json(text: &str) -> String {
-    let trimmed = text.trim();
-
-    // Try to extract from ```json ... ``` blocks
-    if let Some(start) = trimmed.find("```json") {
-        let after_marker = &trimmed[start + 7..];
-        if let Some(end) = after_marker.find("```") {
-            return after_marker[..end].trim().to_string();
-        }
-    }
-
-    // Try to extract from ``` ... ``` blocks
-    if let Some(start) = trimmed.find("```") {
-        let after_marker = &trimmed[start + 3..];
-        if let Some(end) = after_marker.find("```") {
-            return after_marker[..end].trim().to_string();
-        }
-    }
-
-    // If it starts with { or [, it's already JSON
-    if trimmed.starts_with('{') || trimmed.starts_with('[') {
-        return trimmed.to_string();
-    }
-
-    trimmed.to_string()
+    Ok(ollama::is_available().await)
 }

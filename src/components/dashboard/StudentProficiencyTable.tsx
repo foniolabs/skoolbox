@@ -1,4 +1,4 @@
-import { ArrowUpDown } from 'lucide-react'
+import { ArrowUpDown, Trash2, Pencil, Ban, RotateCcw } from 'lucide-react'
 import type { StudentWithProgress } from '../../pages/DashboardPage'
 
 const avatarColors = ['bg-pink-400', 'bg-blue-400', 'bg-purple-400', 'bg-teal-400', 'bg-amber-400', 'bg-green-400', 'bg-indigo-400', 'bg-rose-400']
@@ -30,12 +30,19 @@ function SortableHeader({ children }: { children: React.ReactNode }) {
   )
 }
 
+interface StudentActions {
+  onEdit: (student: { id: string; name: string; classLevel: string }) => void
+  onToggleSuspend: (studentId: string, name: string, currentStatus: string) => void
+  onDelete: (studentId: string, name: string) => void
+}
+
 interface StudentProficiencyTableProps {
   students: StudentWithProgress[]
   loading: boolean
+  actions?: StudentActions
 }
 
-export default function StudentProficiencyTable({ students, loading }: StudentProficiencyTableProps) {
+export default function StudentProficiencyTable({ students, loading, actions }: StudentProficiencyTableProps) {
   const rows = students.map((s) => {
     const progress = s.progress
     const totalWork = progress.length
@@ -50,6 +57,8 @@ export default function StudentProficiencyTable({ students, loading }: StudentPr
     return {
       id: s.student.id,
       name: s.student.full_name,
+      classLevel: s.student.class_level,
+      status: s.student.status ?? 'active',
       initials: getInitials(s.student.full_name),
       workCompleted: `${completed}/${totalWork}`,
       averageScore: avgScore,
@@ -85,13 +94,14 @@ export default function StudentProficiencyTable({ students, loading }: StudentPr
               <SortableHeader>Needing Attention</SortableHeader>
               <SortableHeader>Working Towards</SortableHeader>
               <SortableHeader>Mastered</SortableHeader>
+              {actions && <th className="px-4 py-3 text-right text-xs font-semibold text-text-secondary uppercase tracking-wider">Actions</th>}
             </tr>
           </thead>
           <tbody>
             {rows.map((student, index) => (
               <tr
                 key={student.id}
-                className={`${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'} hover:bg-gray-50 transition-colors`}
+                className={`${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'} hover:bg-gray-50 transition-colors ${student.status === 'suspended' ? 'opacity-55' : ''}`}
               >
                 {/* Full Name with avatar */}
                 <td className="px-4 py-3.5">
@@ -104,6 +114,11 @@ export default function StudentProficiencyTable({ students, loading }: StudentPr
                     <span className="text-sm font-medium text-text-primary whitespace-nowrap">
                       {student.name}
                     </span>
+                    {student.status === 'suspended' && (
+                      <span className="rounded-full bg-red-100 text-red-600 text-[10px] font-semibold px-2 py-0.5 uppercase tracking-wide">
+                        Suspended
+                      </span>
+                    )}
                   </div>
                 </td>
 
@@ -147,11 +162,44 @@ export default function StudentProficiencyTable({ students, loading }: StudentPr
                     {student.mastered}
                   </span>
                 </td>
+
+                {/* Actions: edit · suspend/reactivate · delete */}
+                {actions && (
+                  <td className="px-4 py-3.5">
+                    <div className="flex items-center justify-end gap-1">
+                      <button
+                        onClick={() => actions.onEdit({ id: student.id, name: student.name, classLevel: student.classLevel })}
+                        title="Edit name / class"
+                        className="flex items-center justify-center h-8 w-8 rounded-lg text-text-secondary hover:bg-bg-secondary hover:text-text-primary transition-colors"
+                      >
+                        <Pencil size={15} />
+                      </button>
+                      <button
+                        onClick={() => actions.onToggleSuspend(student.id, student.name, student.status)}
+                        title={student.status === 'suspended' ? 'Reactivate' : 'Suspend'}
+                        className={`flex items-center justify-center h-8 w-8 rounded-lg transition-colors ${
+                          student.status === 'suspended'
+                            ? 'text-green-500 hover:bg-green-50'
+                            : 'text-amber-500 hover:bg-amber-50'
+                        }`}
+                      >
+                        {student.status === 'suspended' ? <RotateCcw size={15} /> : <Ban size={15} />}
+                      </button>
+                      <button
+                        onClick={() => actions.onDelete(student.id, student.name)}
+                        title={`Delete ${student.name}`}
+                        className="flex items-center justify-center h-8 w-8 rounded-lg text-red-400 hover:bg-red-50 transition-colors"
+                      >
+                        <Trash2 size={15} />
+                      </button>
+                    </div>
+                  </td>
+                )}
               </tr>
             ))}
             {rows.length === 0 && !loading && (
               <tr>
-                <td colSpan={6} className="px-4 py-8 text-center text-text-secondary">
+                <td colSpan={actions ? 7 : 6} className="px-4 py-8 text-center text-text-secondary">
                   No students found.
                 </td>
               </tr>

@@ -30,6 +30,34 @@ pub fn login(
     match result {
         Ok((id, uname, hash, full_name, role, student_id, created_at)) => {
             let valid = bcrypt::verify(&password, &hash).unwrap_or(false);
+
+            // Block suspended students from signing in.
+            if valid {
+                if let Some(ref sid) = student_id {
+                    let status: String = conn
+                        .query_row(
+                            "SELECT status FROM students WHERE id = ?1",
+                            [sid],
+                            |row| row.get(0),
+                        )
+                        .unwrap_or_else(|_| "active".to_string());
+                    if status == "suspended" {
+                        return Ok(LoginResponse {
+                            user: User {
+                                id: String::new(),
+                                username: String::new(),
+                                full_name: String::new(),
+                                role: String::new(),
+                                student_id: None,
+                                created_at: String::new(),
+                            },
+                            success: false,
+                            message: "This account has been suspended. Please contact your teacher.".to_string(),
+                        });
+                    }
+                }
+            }
+
             if valid {
                 Ok(LoginResponse {
                     user: User {
@@ -174,12 +202,56 @@ pub fn get_all_users(db: State<DbState>) -> Result<Vec<User>, String> {
     Ok(users)
 }
 
+/// Remove a student and every record that references them, on a single
+/// connection. Keeps the DB consistent so deleted students don't linger on the
+/// dashboard/monitor views (which read the `students` table).
+fn cascade_delete_student(conn: &rusqlite::Connection, student_id: &str) -> Result<(), String> {
+    for sql in [
+        "DELETE FROM student_progress WHERE student_id = ?1",
+        "DELETE FROM quiz_attempts WHERE student_id = ?1",
+        "DELETE FROM chat_history WHERE student_id = ?1",
+        "DELETE FROM student_learning_profile WHERE student_id = ?1",
+        "DELETE FROM student_mistakes WHERE student_id = ?1",
+        "DELETE FROM conversation_summaries WHERE student_id = ?1",
+        "DELETE FROM ai_feedback WHERE student_id = ?1",
+        "DELETE FROM users WHERE student_id = ?1",
+        "DELETE FROM students WHERE id = ?1",
+    ] {
+        conn.execute(sql, [student_id]).map_err(|e| e.to_string())?;
+    }
+    Ok(())
+}
+
 #[tauri::command]
 pub fn delete_user(db: State<DbState>, user_id: String) -> Result<(), String> {
     let conn = db.db.lock().map_err(|e| e.to_string())?;
-    conn.execute("DELETE FROM users WHERE id = ?1", [&user_id])
-        .map_err(|e| e.to_string())?;
+
+    // If this user is a student, remove their student record + data too —
+    // otherwise the student lingers on the dashboard with no way to delete it.
+    let student_id: Option<String> = conn
+        .query_row(
+            "SELECT student_id FROM users WHERE id = ?1",
+            [&user_id],
+            |row| row.get(0),
+        )
+        .ok()
+        .flatten();
+
+    if let Some(sid) = student_id {
+        cascade_delete_student(&conn, &sid)?;
+    } else {
+        conn.execute("DELETE FROM users WHERE id = ?1", [&user_id])
+            .map_err(|e| e.to_string())?;
+    }
     Ok(())
+}
+
+/// Delete a student directly (e.g. an orphaned record with no login account)
+/// along with all of their associated data.
+#[tauri::command]
+pub fn delete_student(db: State<DbState>, student_id: String) -> Result<(), String> {
+    let conn = db.db.lock().map_err(|e| e.to_string())?;
+    cascade_delete_student(&conn, &student_id)
 }
 
 #[tauri::command]

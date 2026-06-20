@@ -78,6 +78,9 @@ export default function TermPlanViewPage() {
       });
       setTopics((prev) => prev.map((t) => t.id === topic.id ? updated : t));
       setExpandedId(topic.id);
+      // If the notes modal is open for this topic, push the new content into it
+      // so the textarea shows the AI result (and Save writes it, not stale data).
+      setNotesModalTopic((prev) => (prev && prev.id === topic.id ? updated : prev));
     } catch (err) { console.error(err); }
     finally { setGeneratingTopicId(null); }
   };

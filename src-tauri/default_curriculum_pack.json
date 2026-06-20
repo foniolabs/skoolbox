@@ -1,0 +1,46 @@
+{
+  "skoolbox_pack_version": 1,
+  "name": "SkoolBox Starter Curriculum",
+  "version": "2026-06-14",
+  "created_at": "2026-06-14T00:00:00Z",
+  "documents": [
+    {
+      "title": "JSS1 Mathematics — Fractions (NERDC)",
+      "subject": "Mathematics",
+      "class_level": "JSS1",
+      "source_type": "curriculum",
+      "chunks": [
+        "A fraction represents a part of a whole. It is written as a numerator over a denominator, for example 3/4. The denominator (bottom number) tells how many equal parts the whole is divided into, and the numerator (top number) tells how many of those parts are taken. Example: if a loaf of bread is cut into 4 equal parts and you take 3, you have taken 3/4 of the bread.",
+        "Types of fractions: A proper fraction has a numerator smaller than its denominator (e.g. 2/5). An improper fraction has a numerator equal to or larger than its denominator (e.g. 7/5). A mixed number is a whole number together with a proper fraction (e.g. 1 2/5). Improper fractions can be written as mixed numbers and vice versa.",
+        "Equivalent fractions are different fractions that represent the same value. You get them by multiplying or dividing the numerator and denominator by the same number. For example, 1/2 = 2/4 = 3/6. To reduce a fraction to its lowest terms, divide the numerator and denominator by their highest common factor.",
+        "Adding and subtracting fractions with the SAME denominator: add or subtract the numerators and keep the denominator. Example: 2/5 + 3/5 = (2+3)/5 = 5/5 = 1. Example: 4/7 - 1/7 = 3/7.",
+        "Adding and subtracting fractions with DIFFERENT denominators: first find the lowest common multiple (LCM) of the denominators to use as a common denominator, convert each fraction to an equivalent fraction with that denominator, then add or subtract the numerators. Example: 1/2 + 1/3. The LCM of 2 and 3 is 6, so 1/2 = 3/6 and 1/3 = 2/6, giving 3/6 + 2/6 = 5/6.",
+        "Real-life uses of fractions in Nigeria: sharing money in Naira (half of N100 is N50, which is 1/2), measuring ingredients when cooking jollof rice, sharing oranges equally among friends, and reading time (quarter past, half past)."
+      ]
+    },
+    {
+      "title": "JSS1 Basic Science — Living and Non-Living Things (NERDC)",
+      "subject": "Basic Science",
+      "class_level": "JSS1",
+      "source_type": "curriculum",
+      "chunks": [
+        "Things around us are grouped into living things and non-living things. Living things are organisms that carry out life processes. Non-living things do not carry out life processes; examples are stones, water, chairs, and air.",
+        "The characteristics of living things (remembered as MR NIGER D): Movement, Respiration, Nutrition, Irritability (response to stimuli), Growth, Excretion, Reproduction, and Death. Every living thing — plants, animals and humans — shows these features in some way.",
+        "Examples of living things include human beings, goats, cows, fish, birds, insects, trees, grass and yam plants. Examples of non-living things include rocks, sand, plastic, metal, motorcycles and books. Plants are living even though they do not move from place to place, because they grow, respire, reproduce and respond to sunlight.",
+        "Differences between plants and animals: most plants make their own food using sunlight (photosynthesis) while animals feed on plants or other animals; plants are usually fixed in one place while most animals move about; plants have green leaves containing chlorophyll. Both are living things and share the characteristics of life."
+      ]
+    },
+    {
+      "title": "JSS1 English — Parts of Speech (NERDC)",
+      "subject": "English",
+      "class_level": "JSS1",
+      "source_type": "curriculum",
+      "chunks": [
+        "Parts of speech are the categories of words based on the job each word does in a sentence. The main parts of speech are: noun, pronoun, verb, adjective, adverb, preposition, conjunction and interjection.",
+        "A noun is the name of a person, place, animal or thing, for example: Amina, Lagos, goat, table. A pronoun is used in place of a noun, for example: he, she, it, they, we. A verb is an action or doing word, for example: run, eat, write, play. Example sentence: 'Chidi kicked the ball' — Chidi is a noun, kicked is a verb, ball is a noun.",
+        "An adjective describes a noun, for example: tall boy, red car, sweet mango. An adverb describes a verb (often telling how, when or where), for example: she ran quickly, he came yesterday. A preposition shows the position or relationship of a noun, for example: on the table, under the chair, in the market.",
+        "A conjunction joins words or sentences, for example: and, but, or, because. An interjection expresses sudden feeling, for example: Wow!, Oh!, Hurray!. Knowing the parts of speech helps you build correct sentences and understand grammar."
+      ]
+    }
+  ]
+}

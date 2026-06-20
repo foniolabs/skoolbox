@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
-import { Bell, User, Heart, Settings, LogOut, UserPlus } from 'lucide-react'
+import { Bell, User, Heart, Settings, LogOut, UserPlus, Library } from 'lucide-react'
 import logo from '../../assets/logo.svg'
 import SettingsModal from '../settings/SettingsModal'
 import { useAuthStore } from '../../stores/useAuthStore'
@@ -104,6 +104,13 @@ export default function TopNavBar() {
                   >
                     <UserPlus className="w-4 h-4" />
                     Enroll Students
+                  </button>
+                  <button
+                    onClick={() => { navigate('/curriculum-library'); setDropdownOpen(false) }}
+                    className="flex w-full items-center gap-2 px-4 py-2.5 text-sm text-text-secondary hover:bg-bg-secondary transition-colors"
+                  >
+                    <Library className="w-4 h-4" />
+                    Curriculum Library
                   </button>
                   <button
                     onClick={() => { setSettingsOpen(true); setDropdownOpen(false) }}

@@ -1,5 +1,109 @@
 use rusqlite::Connection;
 
+/// Turn a free-text query into a safe FTS5 MATCH expression.
+///
+/// FTS5 treats many characters as operators, so a raw user question can be a
+/// syntax error. We keep alphanumeric tokens, quote each one, and OR them
+/// together — robust and good enough for curriculum recall.
+fn to_fts_match(query: &str) -> Option<String> {
+    let terms: Vec<String> = query
+        .split(|c: char| !c.is_alphanumeric())
+        .filter(|t| t.len() > 2) // drop noise like "a", "of", "is"
+        .map(|t| format!("\"{}\"", t.to_lowercase()))
+        .collect();
+    if terms.is_empty() {
+        None
+    } else {
+        Some(terms.join(" OR "))
+    }
+}
+
+/// Retrieve the most relevant passages from ingested textbooks / curriculum /
+/// past questions (the `curriculum_fts` FTS5 index), filtered by subject and
+/// class level when possible. Ranked by BM25 (`ORDER BY rank`).
+pub fn search_curriculum(
+    conn: &Connection,
+    query: &str,
+    subject: &str,
+    class_level: &str,
+) -> Result<String, String> {
+    let match_expr = match to_fts_match(query) {
+        Some(m) => m,
+        None => return Ok(String::new()),
+    };
+
+    let mut stmt = conn
+        .prepare(
+            "SELECT content, title, source_type
+             FROM curriculum_fts
+             WHERE curriculum_fts MATCH ?1
+               AND (?2 = '' OR subject = ?2 OR subject IS NULL)
+               AND (?3 = '' OR class_level = ?3 OR class_level IS NULL)
+             ORDER BY rank
+             LIMIT 4",
+        )
+        .map_err(|e| e.to_string())?;
+
+    let rows = stmt
+        .query_map(
+            rusqlite::params![match_expr, subject, class_level],
+            |row| {
+                let content: String = row.get(0)?;
+                let title: String = row.get(1)?;
+                let source_type: String = row.get(2)?;
+                Ok(format!("[{} — {}]\n{}", source_type, title, content))
+            },
+        )
+        .map_err(|e| e.to_string())?;
+
+    let passages: Vec<String> = rows.flatten().collect();
+    if passages.is_empty() {
+        Ok(String::new())
+    } else {
+        Ok(format!(
+            "## Curriculum & Textbook Excerpts (ground your teaching in these)\n{}",
+            passages.join("\n\n")
+        ))
+    }
+}
+
+#[cfg(test)]
+mod fts_tests {
+    use super::*;
+
+    #[test]
+    fn fts5_ingest_and_retrieve_round_trips() {
+        let conn = Connection::open_in_memory().unwrap();
+        // Mirror the production FTS5 schema.
+        conn.execute_batch(
+            "CREATE VIRTUAL TABLE curriculum_fts USING fts5(
+                content, title UNINDEXED, subject UNINDEXED,
+                class_level UNINDEXED, source_type UNINDEXED, document_id UNINDEXED,
+                tokenize='porter unicode61');",
+        )
+        .expect("FTS5 must be enabled in the bundled SQLite build");
+
+        conn.execute(
+            "INSERT INTO curriculum_fts
+                (content, title, subject, class_level, source_type, document_id)
+             VALUES (?1, 'JSS1 Maths', 'Mathematics', 'JSS1', 'textbook', 'doc1')",
+            rusqlite::params![
+                "To add fractions with different denominators, first find the lowest common multiple (LCM)."
+            ],
+        )
+        .unwrap();
+
+        let result = search_curriculum(&conn, "How do I add fractions?", "Mathematics", "JSS1")
+            .unwrap();
+        assert!(result.contains("lowest common multiple"), "got: {result}");
+        assert!(result.contains("textbook — JSS1 Maths"));
+
+        // Subject filter excludes non-matching subjects.
+        let miss = search_curriculum(&conn, "fractions", "English", "JSS1").unwrap();
+        assert!(miss.is_empty());
+    }
+}
+
 /// Search the local knowledge base for curriculum content relevant to a query.
 /// Returns formatted context string to inject into the AI prompt.
 pub fn search_knowledge_base(
@@ -76,6 +180,13 @@ pub fn search_knowledge_base(
     for row in lesson_rows {
         if let Ok(text) = row {
             context_parts.push(text);
+        }
+    }
+
+    // Textbook / curriculum passages from the ingested FTS5 knowledge base.
+    if let Ok(excerpts) = search_curriculum(conn, query, subject, class_level) {
+        if !excerpts.is_empty() {
+            context_parts.push(excerpts);
         }
     }
 

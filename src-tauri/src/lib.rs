@@ -20,6 +20,24 @@ pub fn run() {
             connection::init_db(&conn).expect("Failed to init database schema");
             db::seed::seed_if_empty(&conn).expect("Failed to seed database");
 
+            // First run: load a pre-installed curriculum pack if one is bundled.
+            // (Producers ship `default_curriculum_pack.json` as a Tauri resource;
+            // schools get the curriculum out of the box. Best-effort — skipped if
+            // absent or already populated.)
+            if let Ok(pack_path) =
+                app.path().resolve("default_curriculum_pack.json", tauri::path::BaseDirectory::Resource)
+            {
+                if let Ok(json) = std::fs::read_to_string(&pack_path) {
+                    match commands::knowledge::seed_pack_if_empty(&conn, &json) {
+                        Ok(s) if s.documents > 0 => {
+                            log::info!("Seeded {} curriculum documents from bundled pack", s.documents)
+                        }
+                        Err(e) => log::warn!("Bundled curriculum pack not loaded: {e}"),
+                        _ => {}
+                    }
+                }
+            }
+
             // Store database connection as managed state
             app.manage(DbState {
                 db: Mutex::new(conn),
@@ -39,6 +57,8 @@ pub fn run() {
             commands::database::get_all_students,
             commands::database::get_student,
             commands::database::create_student,
+            commands::database::update_student,
+            commands::database::set_student_status,
             // ── Database: Subjects & Topics ─────────────────────────────────
             commands::database::get_subjects,
             commands::database::get_topics,
@@ -90,14 +110,33 @@ pub fn run() {
             commands::curriculum::mark_plan_topic_taught,
             commands::curriculum::generate_plan_topic_ai,
             commands::curriculum::suggest_term_topics,
+            // ── Classroom Engine (Martha leads a class) ─────────────────────
+            commands::classroom::classroom_start_lesson,
+            commands::classroom::classroom_plan_lesson,
+            commands::classroom::classroom_teach_segment,
+            commands::classroom::classroom_evaluate_answer,
+            commands::classroom::bake_lesson,
+            commands::classroom::get_generated_lesson,
+            commands::classroom::list_generated_lessons,
+            // ── Curriculum Knowledge Base (RAG ingestion) ───────────────────
+            commands::knowledge::ingest_curriculum_text,
+            commands::knowledge::list_curriculum_documents,
+            commands::knowledge::delete_curriculum_document,
+            commands::knowledge::curriculum_stats,
+            commands::knowledge::export_curriculum_pack,
+            commands::knowledge::import_curriculum_pack,
             // ── TTS ─────────────────────────────────────────────────────────
             commands::tts::get_tts_settings,
             commands::tts::save_tts_settings,
+            commands::tts::speak_text,
+            commands::tts::stop_speaking,
+            commands::tts::tts_available,
             // ── Auth ────────────────────────────────────────────────────────
             commands::auth::login,
             commands::auth::register,
             commands::auth::get_all_users,
             commands::auth::delete_user,
+            commands::auth::delete_student,
             commands::auth::enroll_students,
         ])
         .run(tauri::generate_context!())

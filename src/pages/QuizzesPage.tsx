@@ -19,13 +19,15 @@ export default function QuizzesPage() {
 
   const handleGenerateQuiz = (config: {
     subject: string;
-    topic: string;
+    topics: string[];
+    topicMode: 'single' | 'custom' | 'mixed' | 'all';
     difficulty: 'easy' | 'medium' | 'hard';
     questionCount: number;
   }) => {
     // For now, navigate to a generated quiz with query params
     const generatedId = `quiz-gen-${Date.now()}`;
-    navigate(`/quizzes/${generatedId}?subject=${encodeURIComponent(config.subject)}&topic=${encodeURIComponent(config.topic)}&difficulty=${config.difficulty}&count=${config.questionCount}`);
+    const topicParam = config.topics.join(',');
+    navigate(`/quizzes/${generatedId}?subject=${encodeURIComponent(config.subject)}&topic=${encodeURIComponent(topicParam)}&difficulty=${config.difficulty}&count=${config.questionCount}`);
   };
 
   const tabs: { key: Tab; label: string }[] = [
