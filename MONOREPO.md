@@ -18,9 +18,10 @@ schoolbox/
 └── MONOREPO.md      ← you are here
 ```
 
-> Direction (2026-06): Martha is a **classroom co-pilot** (not a teacher
-> replacement) that works within a school's **chosen curriculum** — Nigerian,
-> British, or American. See [MVP_PLAN.md](MVP_PLAN.md).
+> Direction (2026-06): Martha is a **hybrid AI tutor + teaching co-pilot** —
+> students ask her directly, and teachers use her to draft lesson notes/plans/
+> textbook (which they approve). She works within a school's **chosen curriculum**
+> — Nigerian, British, or American. See [MVP_PLAN.md](MVP_PLAN.md).
 
 > The fine-tuning guide draws `app/` as a subfolder. Here the Tauri app stays at
 > the repo root (`src/` + `src-tauri/`) so existing build paths and tooling keep

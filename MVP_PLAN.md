@@ -1,16 +1,40 @@
-# SkoolBox MVP Plan — Multi-Curriculum Classroom Co-Pilot
+# SkoolBox MVP Plan — Multi-Curriculum AI Tutor & Teaching Co-Pilot
 
 > **Status:** draft for refinement (2026-06-20). Supersedes the MVP sequencing in
-> [HANDOFF.md](HANDOFF.md) for the co-pilot direction. The offline engine,
-> dataset, training, and RAG work already done all carry forward.
+> [HANDOFF.md](HANDOFF.md). The offline engine, dataset, training, and RAG work
+> already done all carry forward.
 
-## 0. Positioning — co-pilot, not replacement
+## 0. Positioning — a hybrid: AI tutor + teaching co-pilot
 
-Martha is a **classroom co-pilot for the teacher**, not an autonomous tutor that
-replaces them. Every AI output is a **draft the teacher reviews, edits, and
-approves**. The teacher stays in the loop; nothing reaches students without the
-teacher's action. This reframes the product from "AI tutor" to "AI teaching
-assistant," and it drives the UX of every feature below.
+SkoolBox/Martha is a **hybrid** that serves two audiences:
+
+- **Student-facing AI tutor** — a student can ask Martha a question **directly**
+  and get a curriculum-grounded answer, explanation, or practice help, with no
+  teacher in between.
+- **Teacher-facing co-pilot (teaching assistant)** — Martha drafts lesson notes,
+  lesson plans, textbook content and quizzes that the teacher **reviews, edits and
+  approves** before use.
+
+So Martha **works directly for the student** *and* **works with the teacher**
+(without replacing them). The key distinction: **some tasks the AI does directly**
+(live student Q&A, explanations, answer feedback) and **some are teacher-driven
+artifacts the teacher approves** (the teaching materials in Phases 2–4).
+Teacher-in-the-loop applies to *published teaching materials* — not to live
+student tutoring, which is direct. Everything is grounded in the school's active
+curriculum (§3).
+
+### 0.1 Who does what
+
+| Capability | Audience | Driven by | Teacher approval |
+| --- | --- | --- | --- |
+| Ask Martha / direct Q&A | Student | Student → AI (live) | No |
+| Concept explanations, worked examples | Student | Student → AI (live) | No |
+| Practice attempts + instant feedback / grading | Student | Student → AI (live) | No |
+| Lesson note generation | Teacher | Teacher → AI draft | **Yes** — review/edit |
+| Lesson plan / scheme of work | Teacher | Teacher → AI draft | **Yes** |
+| Textbook content | Teacher | Teacher → AI draft | **Yes** |
+| Quiz / assessment authoring | Teacher | Teacher → AI draft | **Yes** |
+| Curriculum selection & document ingestion | Teacher / Admin | Teacher (setup) | n/a |
 
 ## 1. Decisions locked this session
 
@@ -76,12 +100,20 @@ curriculum.
 
 ## 5. MVP build order (phased)
 
+Two tracks run on the same curriculum foundation: the **student-facing tutor**
+(direct Q&A — already built; Phase 1 makes it curriculum-aware) and the
+**teacher-facing co-pilot outputs** (Phases 2–4). Both ground every answer in the
+active curriculum.
+
 ### Phase 1 — CURRICULUM (the foundation) 🎯 first
 1. Data model + migrations (§3) and `active_curriculum` setting.
 2. **Curriculum selector** in school setup/settings (choose & switch active curriculum).
 3. Seed all 3 **curriculum frameworks** (levels / subjects / strands) as structured packs.
 4. **Curriculum document ingestion + auto-detect** (tag by `curriculum_id`; RAG scoped).
 5. Make existing flows **curriculum-aware** (subjects/levels come from active curriculum).
+6. Make the **student tutor curriculum-aware** — Martha's direct Q&A answers are
+   grounded in the active curriculum (scoped RAG + persona), so the same question
+   gets a Nigerian / British / American-appropriate answer.
 
 ### Phase 2 — LESSON NOTE (co-pilot output #1)
 - Generate a curriculum-aligned **lesson note** for a chosen subject/level/topic,
