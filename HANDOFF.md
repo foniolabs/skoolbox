@@ -68,6 +68,10 @@ and everything a teammate needs to move it forward.
   structure but unreliable math reasoning. Needs the 7B / GPU, or — the point of
   this pivot — a fine-tuned model.
 - **Voice is US-accented.** Piper en_US-amy; no en-NG voice yet.
+- **RAG ranking is naive.** `rag.rs` OR-s query words, so a passage matching only
+  a common word can outrank a topical one (verifiable with `rag/query.py`). The
+  app mitigates this by always scoping retrieval by subject + class level.
+  Phrase/weighted queries or vector search are post-MVP.
 - **Orphaned routes:** the old `TeachPage` (Recent Lessons replay) and
   `PresentationPage` were left unrouted when the classroom was unified —
   Recent Lessons replay is currently unreachable. Verify before relying on them.
@@ -102,7 +106,10 @@ and everything a teammate needs to move it forward.
 10. Re-bake lessons with the new model; refresh curriculum packs.
 
 ### Phase D — Content + RAG 🔵
-11. Ingest real NERDC textbooks / past questions via `rag/ingest.py`.
+11. Ingest real NERDC textbooks / past questions via `rag/ingest.py` (writes the
+    app's production FTS5 schema), then verify with `rag/query.py` (mirrors
+    `rag.rs`; always pass `-s`/`-l`). Workflow + layout: `rag/README.md`,
+    example docs in `rag/docs.sample/`.
 12. Seed the default curriculum pack with real content (not the 3-doc sample).
 
 ### Phase E — Polish / post-MVP

@@ -1,0 +1,29 @@
+Photosynthesis
+
+Photosynthesis is the process by which green plants and some other organisms
+manufacture their own food (glucose) from carbon dioxide and water, using light
+energy trapped by the green pigment chlorophyll, and releasing oxygen as a
+by-product. It takes place mainly in the leaves, specifically in cell organelles
+called chloroplasts.
+
+The word equation for photosynthesis is:
+carbon dioxide + water --(light energy, chlorophyll)--> glucose + oxygen.
+
+The balanced chemical equation is:
+6CO2 + 6H2O --> C6H12O6 + 6O2.
+
+Conditions necessary for photosynthesis:
+1. Light - provides the energy that drives the reaction (sunlight is the natural
+   source).
+2. Chlorophyll - the green pigment in the chloroplasts that absorbs light energy.
+3. Carbon dioxide - a raw material taken in from the air through the stomata.
+4. Water - a raw material absorbed from the soil by the roots.
+A suitable temperature is also needed for the enzymes that control the reaction.
+
+Importance of photosynthesis:
+Plants are producers; they form the base of nearly every food chain, so almost
+all living things depend on photosynthesis for food. The process also releases
+oxygen for respiration and removes carbon dioxide from the atmosphere.
+
+This is sample curriculum text for the RAG ingestion pipeline. Replace the files
+under rag/docs/ with real NERDC / WAEC-aligned material before shipping.
