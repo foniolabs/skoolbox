@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { UserPlus, Trash2, Users, Download, Plus, Check, AlertCircle } from 'lucide-react';
+import { UserPlus, Trash2, Users, Plus, Check, AlertCircle } from 'lucide-react';
 import { getAllUsers, enrollStudents, deleteUser } from '../lib/tauri/commands';
 import type { User } from '../lib/tauri/commands';
 import CustomDropdown from '../components/shared/CustomDropdown';
@@ -109,7 +109,6 @@ export default function EnrollStudentsPage() {
   };
 
   const studentUsers = users.filter((u) => u.role === 'student');
-  const teacherUsers = users.filter((u) => u.role === 'teacher');
 
   return (
     <div className="p-6 flex flex-col gap-6">

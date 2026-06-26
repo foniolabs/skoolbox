@@ -1,0 +1,15 @@
+{
+  "curriculum": "nigerian",
+  "subject": "chemistry",
+  "class_level": "ss1",
+  "class_display": "SS 1",
+  "age_range": "15-16",
+  "exam_body": "WAEC SSCE, NECO",
+  "is_exam_class": false,
+  "prerequisite_levels": [],
+  "retrieval_mode": "standard",
+  "textbooks": [],
+  "topics": [
+    "states of matter"
+  ]
+}

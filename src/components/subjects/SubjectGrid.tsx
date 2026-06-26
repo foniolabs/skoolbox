@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Loader2 } from 'lucide-react';
 import SubjectCard from './SubjectCard';
 import CustomDropdown from '../shared/CustomDropdown';
-import { getSubjects, getTopics, type Subject, type Topic } from '../../lib/tauri/commands';
+import { getSubjects, getTopics, type Subject } from '../../lib/tauri/commands';
 
 const classLevelOptions = [
   { label: 'All Classes', value: 'All' },

@@ -1,20 +1,17 @@
 import { useState, useEffect } from 'react';
 import { TrendingUp, Award, Target, BookOpen, BarChart3 } from 'lucide-react';
 import { useAuthStore } from '../../stores/useAuthStore';
-import { getStudentProgress, getSubjects } from '../../lib/tauri/commands';
-import type { StudentProgress, Subject } from '../../lib/tauri/commands';
+import { getStudentProgress } from '../../lib/tauri/commands';
+import type { StudentProgress } from '../../lib/tauri/commands';
 
 export default function StudentProgressPage() {
   const user = useAuthStore((s) => s.user);
   const [progress, setProgress] = useState<StudentProgress[]>([]);
-  const [subjects, setSubjects] = useState<Subject[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function load() {
       try {
-        const subs = await getSubjects();
-        setSubjects(subs);
         if (user?.student_id) {
           const prog = await getStudentProgress(user.student_id);
           setProgress(prog);
@@ -36,8 +33,6 @@ export default function StudentProgressPage() {
     ? Math.round(progress.reduce((sum, p) => sum + p.score, 0) / progress.length)
     : 0;
 
-  // Group progress by subject
-  const subjectNames = new Map(subjects.map((s) => [s.id, s.name]));
 
   if (loading) {
     return (

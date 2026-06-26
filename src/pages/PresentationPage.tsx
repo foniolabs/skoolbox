@@ -5,9 +5,8 @@ import SlideshowMode from '../components/teach/presentation/SlideshowMode'
 import NarratedVisualMode from '../components/teach/presentation/NarratedVisualMode'
 import TeacherControls from '../components/teach/presentation/TeacherControls'
 import useTeachStore from '../stores/useTeachStore'
-import useTTSStore from '../stores/useTTSStore'
 import { generateLesson, parseLessonFromAi, type Lesson } from '../lib/ai/teachingAssistant'
-import { speakWithAzure, stopAzureSpeech } from '../lib/tts/azureTTS'
+import { speak, stopSpeaking } from '../lib/tts/marthaVoice'
 import { askAiTutor, saveAiLesson } from '../lib/tauri/commands'
 
 // Video and Animation modes are not yet implemented — map them to a working mode
@@ -20,18 +19,36 @@ function resolveMode(mode: string): string {
 export default function PresentationPage() {
   const navigate = useNavigate()
   const { teacherCommand, selectedSubject, selectedClass, selectedMode, stopPresentation } = useTeachStore()
-  const { azureKey, azureRegion, voice, rate, pitch } = useTTSStore()
 
   const [lesson, setLesson] = useState<Lesson | null>(null)
   const [currentStep, setCurrentStep] = useState(0)
   const [isPlaying, setIsPlaying] = useState(true)
   const [isMuted, setIsMuted] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
-  const [aiSource, setAiSource] = useState<'claude' | 'offline'>('offline')
+  const [aiSource, setAiSource] = useState<'ai' | 'offline'>('offline')
   const [modeNote, setModeNote] = useState<string | null>(null)
 
   // Generate lesson on mount
   useEffect(() => {
+    // If the teacher reopened a saved lesson, replay its stored JSON directly —
+    // no regeneration, no re-save. (Read via getState so it isn't an effect dep.)
+    const replay = useTeachStore.getState().replayData
+    if (replay) {
+      try {
+        const saved = JSON.parse(replay) as Lesson
+        setLesson(saved)
+        setAiSource('ai')
+        setCurrentStep(0)
+        setIsLoading(false)
+      } catch (e) {
+        console.error('Failed to replay saved lesson:', e)
+        navigate('/teach')
+      } finally {
+        useTeachStore.getState().setReplayData(null)
+      }
+      return
+    }
+
     if (!teacherCommand.trim()) {
       navigate('/teach')
       return
@@ -55,7 +72,7 @@ export default function PresentationPage() {
 
       let generatedLesson: Lesson | null = null
 
-      // Always try Claude AI first (API key is resolved server-side)
+      // Try the on-device AI first (Martha / Qwen via Ollama, resolved server-side)
       try {
         const aiResponse = await askAiTutor({
           prompt: teacherCommand,
@@ -64,9 +81,9 @@ export default function PresentationPage() {
           mode,
         })
         generatedLesson = parseLessonFromAi(aiResponse, mode, teacherCommand, subject)
-        if (!cancelled) setAiSource('claude')
+        if (!cancelled) setAiSource('ai')
       } catch (err) {
-        console.warn('Claude API failed, falling back to offline:', err)
+        console.warn('On-device AI failed, falling back to a prebuilt lesson:', err)
       }
 
       // Fallback to local prebuilt lessons
@@ -102,50 +119,44 @@ export default function PresentationPage() {
     : 0
     : 0
 
-  // Auto-advance steps
+  // Teach: Martha speaks the current step's narration, then advances when she
+  // finishes — real classroom pacing, not fixed timers that cut her off.
   useEffect(() => {
-    if (!lesson || !isPlaying || currentStep >= totalSteps - 1) return
+    if (!lesson || !isPlaying) return
 
-    const duration =
-      lesson.mode === 'whiteboard' ? (lesson.steps?.[currentStep]?.duration || 4000)
-      : lesson.mode === 'slideshow' ? (lesson.slides?.[currentStep]?.duration || 5000)
-      : lesson.mode === 'narrated' ? (lesson.segments?.[currentStep]?.duration || 6000)
-      : 4000
+    let cancelled = false
 
-    const timer = setTimeout(() => {
-      setCurrentStep(prev => Math.min(prev + 1, totalSteps - 1))
-    }, duration)
+    const narration =
+      lesson.mode === 'whiteboard' ? lesson.steps?.[currentStep]?.narration
+      : lesson.mode === 'slideshow' ? lesson.slides?.[currentStep]?.narration
+      : lesson.mode === 'narrated' ? lesson.segments?.[currentStep]?.narration
+      : ''
 
-    return () => clearTimeout(timer)
-  }, [lesson, isPlaying, currentStep, totalSteps])
-
-  // TTS narration
-  useEffect(() => {
-    if (!lesson || isMuted || !isPlaying) return
-
-    let narrationText = ''
-    if (lesson.mode === 'whiteboard' && lesson.steps?.[currentStep]) {
-      narrationText = lesson.steps[currentStep].narration
-    } else if (lesson.mode === 'slideshow' && lesson.slides?.[currentStep]) {
-      narrationText = lesson.slides[currentStep].narration
-    } else if (lesson.mode === 'narrated' && lesson.segments?.[currentStep]) {
-      narrationText = lesson.segments[currentStep].narration
+    const advance = () => {
+      if (!cancelled) setCurrentStep(prev => Math.min(prev + 1, totalSteps - 1))
     }
 
-    if (narrationText) {
-      speakWithAzure(narrationText, {
-        subscriptionKey: azureKey,
-        region: azureRegion,
-        voice,
-        rate,
-        pitch,
-      })
+    if (isMuted || !narration?.trim()) {
+      // No voice available/needed — fall back to a paced timer.
+      const duration =
+        lesson.mode === 'whiteboard' ? (lesson.steps?.[currentStep]?.duration || 4000)
+        : lesson.mode === 'slideshow' ? (lesson.slides?.[currentStep]?.duration || 5000)
+        : (lesson.segments?.[currentStep]?.duration || 6000)
+      if (currentStep >= totalSteps - 1) return
+      const timer = setTimeout(advance, duration)
+      return () => { cancelled = true; clearTimeout(timer) }
     }
+
+    // Speak the line; when Martha finishes, move to the next step.
+    speak(narration).then(() => {
+      if (!cancelled && currentStep < totalSteps - 1) advance()
+    })
 
     return () => {
-      stopAzureSpeech()
+      cancelled = true
+      stopSpeaking()
     }
-  }, [lesson, currentStep, isMuted, isPlaying, azureKey, azureRegion, voice, rate, pitch])
+  }, [lesson, currentStep, isPlaying, isMuted, totalSteps])
 
   // Keyboard shortcuts
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
@@ -172,7 +183,7 @@ export default function PresentationPage() {
   }, [handleKeyDown])
 
   const handleExit = () => {
-    stopAzureSpeech()
+    stopSpeaking()
     stopPresentation()
     navigate('/teach')
   }
@@ -188,10 +199,10 @@ export default function PresentationPage() {
             <div className="w-3 h-3 rounded-full bg-primary animate-dot-3" />
           </div>
           <p className="text-lg font-medium text-text-primary">
-            AI is generating your lesson...
+            Martha is preparing your lesson…
           </p>
           <p className="text-sm text-text-secondary mt-1">
-            Using Claude to create a custom lesson
+            Generating on-device with Qwen — this can take a little while offline.
           </p>
         </div>
       </div>
@@ -204,9 +215,9 @@ export default function PresentationPage() {
     <div className="min-h-screen">
       {/* AI source indicator */}
       <div className={`fixed top-3 left-3 z-50 px-3 py-1 rounded-full text-xs font-medium ${
-        aiSource === 'claude' ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'
+        aiSource === 'ai' ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'
       }`}>
-        {aiSource === 'claude' ? 'AI Generated' : 'Offline Template'}
+        {aiSource === 'ai' ? 'AI Generated (Qwen)' : 'Offline Template'}
       </div>
 
       {/* Mode remapped notice */}
@@ -255,7 +266,7 @@ export default function PresentationPage() {
         }}
         onToggleMute={() => {
           setIsMuted(prev => !prev)
-          stopAzureSpeech()
+          stopSpeaking()
         }}
         onExit={handleExit}
       />

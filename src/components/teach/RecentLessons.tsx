@@ -1,5 +1,6 @@
+import { useNavigate } from 'react-router-dom'
 import { Clock, PenLine, Video, Sparkles, Presentation, Mic } from 'lucide-react'
-import useTeachStore, { type PresentationMode } from '../../stores/useTeachStore'
+import useTeachStore, { type PresentationMode, type RecentLesson } from '../../stores/useTeachStore'
 
 const modeIcons: Record<PresentationMode, typeof PenLine> = {
   whiteboard: PenLine,
@@ -31,7 +32,16 @@ function getRelativeDate(dateStr: string): string {
 }
 
 export default function RecentLessons() {
-  const { recentLessons } = useTeachStore()
+  const { recentLessons, setReplayData, setMode } = useTeachStore()
+  const navigate = useNavigate()
+
+  // Reopen a saved lesson instantly — replays the stored JSON, no regeneration.
+  const handleReplay = (lesson: RecentLesson) => {
+    if (!lesson.lessonData) return
+    setReplayData(lesson.lessonData)
+    setMode(lesson.mode)
+    navigate('/presentation')
+  }
 
   return (
     <div className="bg-white rounded-[20px] shadow-card p-6">
@@ -46,6 +56,8 @@ export default function RecentLessons() {
           return (
             <button
               key={lesson.id}
+              onClick={() => handleReplay(lesson)}
+              title="Reopen this saved lesson"
               className="w-full flex items-center gap-3 rounded-xl p-3 hover:bg-bg-secondary transition-colors text-left"
             >
               <div className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${colorClass}`}>

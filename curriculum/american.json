@@ -1,0 +1,41 @@
+{
+  "key": "american",
+  "name": "American Curriculum",
+  "authority": "Common Core State Standards (CCSS) / NGSS",
+  "description": "United States K-12 curriculum based on the Common Core State Standards (English Language Arts, Mathematics) and the Next Generation Science Standards (NGSS), organised by grade.",
+  "levels": [
+    { "key": "kindergarten", "name": "Kindergarten", "stage": "Elementary", "order": 1 },
+    { "key": "grade1", "name": "Grade 1", "stage": "Elementary", "order": 2 },
+    { "key": "grade2", "name": "Grade 2", "stage": "Elementary", "order": 3 },
+    { "key": "grade3", "name": "Grade 3", "stage": "Elementary", "order": 4 },
+    { "key": "grade4", "name": "Grade 4", "stage": "Elementary", "order": 5 },
+    { "key": "grade5", "name": "Grade 5", "stage": "Elementary", "order": 6 },
+    { "key": "grade6", "name": "Grade 6", "stage": "Middle School", "order": 7 },
+    { "key": "grade7", "name": "Grade 7", "stage": "Middle School", "order": 8 },
+    { "key": "grade8", "name": "Grade 8", "stage": "Middle School", "order": 9 },
+    { "key": "grade9", "name": "Grade 9", "stage": "High School", "order": 10 },
+    { "key": "grade10", "name": "Grade 10", "stage": "High School", "order": 11 },
+    { "key": "grade11", "name": "Grade 11", "stage": "High School", "order": 12 },
+    { "key": "grade12", "name": "Grade 12", "stage": "High School", "order": 13 }
+  ],
+  "subjects": [
+    { "key": "english_language_arts", "name": "English Language Arts" },
+    { "key": "mathematics", "name": "Mathematics" },
+    { "key": "science", "name": "Science" },
+    { "key": "social_studies", "name": "Social Studies" },
+    { "key": "history", "name": "History" },
+    { "key": "biology", "name": "Biology" },
+    { "key": "chemistry", "name": "Chemistry" },
+    { "key": "physics", "name": "Physics" },
+    { "key": "computer_science", "name": "Computer Science" },
+    { "key": "physical_education", "name": "Physical Education" },
+    { "key": "art", "name": "Art" },
+    { "key": "music", "name": "Music" },
+    { "key": "foreign_language", "name": "Foreign Language" }
+  ],
+  "standards": [
+    { "code": "CCSS.MATH.CONTENT.8.EE.C.7", "subject": "mathematics", "level": "grade8", "title": "Solve linear equations in one variable", "description": "Solve linear equations with rational number coefficients, including equations whose solutions require expanding and collecting like terms." },
+    { "code": "CCSS.MATH.CONTENT.HSA.REI.B.4", "subject": "mathematics", "level": "grade9", "title": "Solve quadratic equations", "description": "Solve quadratic equations in one variable by factoring, completing the square, and the quadratic formula." },
+    { "code": "NGSS.MS-LS1-6", "subject": "science", "level": "grade7", "title": "Photosynthesis", "description": "Construct a scientific explanation for the role of photosynthesis in cycling matter and the flow of energy." }
+  ]
+}

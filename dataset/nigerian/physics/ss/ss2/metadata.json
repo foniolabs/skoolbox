@@ -1,0 +1,15 @@
+{
+  "curriculum": "nigerian",
+  "subject": "physics",
+  "class_level": "ss2",
+  "class_display": "SS 2",
+  "age_range": "16-17",
+  "exam_body": "WAEC SSCE, NECO",
+  "is_exam_class": false,
+  "prerequisite_levels": [],
+  "retrieval_mode": "standard",
+  "textbooks": [],
+  "topics": [
+    "work energy power"
+  ]
+}

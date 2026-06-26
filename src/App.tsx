@@ -10,7 +10,7 @@ import SignupPage from './pages/SignupPage'
 // Teacher pages
 import DashboardPage from './pages/DashboardPage'
 import PreparePage from './pages/PreparePage'
-import TeachPage from './pages/TeachPage'
+import ClassSessionPage from './pages/ClassSessionPage'
 import PresentationPage from './pages/PresentationPage'
 import AssessPage from './pages/AssessPage'
 import QuizPlayerPage from './pages/QuizPlayerPage'
@@ -19,6 +19,7 @@ import LessonPlannerPage from './pages/LessonPlannerPage'
 import EnrollStudentsPage from './pages/EnrollStudentsPage'
 import CurriculumPlannerPage from './pages/CurriculumPlannerPage'
 import TermPlanViewPage from './pages/TermPlanViewPage'
+import CurriculumLibraryPage from './pages/CurriculumLibraryPage'
 
 // Student pages
 import StudentHomePage from './pages/student/StudentHomePage'
@@ -55,11 +56,13 @@ function App() {
           <Route path="/prepare" element={<PreparePage />} />
           <Route path="/prepare/lesson-planner" element={<LessonPlannerPage />} />
           <Route path="/prepare/:subjectId" element={<PreparePage />} />
-          <Route path="/teach" element={<TeachPage />} />
+          <Route path="/teach" element={<ClassSessionPage />} />
+          <Route path="/classroom" element={<ClassSessionPage />} />
           <Route path="/assess" element={<AssessPage />} />
           <Route path="/assess/:quizId" element={<QuizPlayerPage />} />
           <Route path="/monitor" element={<MonitorPage />} />
           <Route path="/enroll" element={<EnrollStudentsPage />} />
+          <Route path="/curriculum-library" element={<CurriculumLibraryPage />} />
           <Route path="/curriculum" element={<CurriculumPlannerPage />} />
           <Route path="/curriculum/:planId" element={<TermPlanViewPage />} />
         </Route>

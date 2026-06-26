@@ -36,10 +36,15 @@ pip install -r training/requirements.txt
 python training/merge_dataset.py --input dataset/ --output training/skoolbox_train.jsonl
 wc -l training/skoolbox_train.jsonl     # aim for ≥ 5,000 lines
 
-# 2. LoRA fine-tune
+# (optional) lint-only quality gate — no output file, fails on any warning
+python training/merge_dataset.py --input dataset/ --output - --strict
+
+# 2. LoRA fine-tune (curriculum blended with a general Qwen-style dataset)
 python training/train.py \
     --model qwen3-4b \
     --dataset training/skoolbox_train.jsonl \
+    --mix-dataset trl-lib/Capybara \
+    --mix-ratio 0.3 \
     --output training/skoolbox-lora-adapters \
     --epochs 3 --lora-r 16
 
@@ -56,6 +61,29 @@ python training/convert_to_gguf.py \
     --quantize Q4_K_M
 ```
 
+## Blending in a general Qwen-style dataset
+
+We **blend** a slice of a public instruction dataset with our curriculum data.
+This keeps Martha's general conversational ability and reduces "catastrophic
+forgetting" (where fine-tuning on a narrow dataset makes the model worse at
+everything else), while still teaching the NERDC/WAEC curriculum.
+
+- `--mix-dataset` — a Hugging Face dataset id or a local `.jsonl` path. Default
+  recommendation: [`trl-lib/Capybara`](https://huggingface.co/datasets/trl-lib/Capybara)
+  (already in the standard `messages` chat format). Other common options:
+  `HuggingFaceH4/ultrachat_200k`, `Open-Orca/SlimOrca`, `teknium/OpenHermes-2.5`.
+- `--mix-ratio` — fraction of the blend that is general data. `0.3` means 30%
+  general / 70% curriculum. Set `0` (or omit `--mix-dataset`) to train on
+  curriculum only.
+
+`train.py` auto-converts common dataset schemas to the chat format it needs
+(`messages`, ShareGPT `conversations`, Alpaca `instruction/input/output`, and
+`prompt/completion`). Qwen3 ships its own chat template, so no template override
+is needed.
+
+> ⚠️ Verify any Hugging Face dataset id exists and is licensed for your use
+> before a run — dataset names on the Hub change over time.
+
 ## Training parameters
 
 | Flag | Meaning | Default |
@@ -65,6 +93,8 @@ python training/convert_to_gguf.py \
 | `--lora-alpha` | Scaling factor | 2× lora-r |
 | `--batch-size` | Examples at once (lower if OOM) | 4 |
 | `--learning-rate` | Adjustment speed | 2e-4 |
+| `--mix-dataset` | General dataset to blend in | (none) |
+| `--mix-ratio` | Share of general data in the blend | 0.3 |
 
 ⚠️ **Overfitting:** loss below ~0.1 with strange answers means the model
 memorised the data. Drop `--epochs` to 2 or add more diverse examples.

@@ -18,7 +18,7 @@ export default function StudentHomePage() {
   }, [user?.student_id]);
 
   const avgScore = progress.length > 0
-    ? Math.round(progress.reduce((sum, p) => sum + p.best_score, 0) / progress.length)
+    ? Math.round(progress.reduce((sum, p) => sum + p.score, 0) / progress.length)
     : 0;
 
   const quickActions = [
@@ -151,10 +151,10 @@ export default function StudentHomePage() {
                 <ClipboardCheck size={18} className="text-primary" />
                 <div className="flex-1">
                   <p className="text-sm font-medium text-text-primary">
-                    Best score: {p.best_score}% on a topic
+                    Score: {Math.round(p.score)}% on a topic
                   </p>
                   <p className="text-xs text-text-muted">
-                    {p.total_attempts} attempt{p.total_attempts !== 1 ? 's' : ''} · Mastery: {p.mastery_level}
+                    Status: {p.status} · Mastery: {p.mastery_level}
                   </p>
                 </div>
               </div>

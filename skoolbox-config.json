@@ -1,0 +1,26 @@
+{
+  "$comment": "Runtime config for SkoolBox. The app reads this on launch to pick the active curriculum, load its system prompt, and wire the RAG layer. See docs/CURRICULUM_ARCHITECTURE.md.",
+  "active_curriculum": "nigerian",
+  "available_curricula": ["nigerian", "british", "american"],
+  "paths": {
+    "curriculum_dir": "curriculum",
+    "dataset_dir": "dataset",
+    "rag_db": "src-tauri/curriculum.db"
+  },
+  "rag": {
+    "engine": "sqlite-fts5",
+    "_engine_note": "Offline single-file index (no ChromaDB/embedding-model dependency); the architecture doc's retrieval *semantics* are implemented on FTS5.",
+    "top_n": 4,
+    "retrieval_modes": {
+      "standard":    { "own_class": 1.00, "prerequisites": 0.00, "exam_bank": 0.00 },
+      "tiered":      { "own_class": 0.70, "prerequisites": 0.25, "exam_bank": 0.05 },
+      "remediation": { "own_class": 0.20, "prerequisites": 0.75, "exam_bank": 0.05 },
+      "revision":    { "own_class": 0.40, "prerequisites": 0.40, "exam_bank": 0.20 }
+    },
+    "remediation_trigger": { "wrong_answers_same_topic": 3 }
+  },
+  "model": {
+    "name": "martha",
+    "base": "qwen3:4b"
+  }
+}

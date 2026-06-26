@@ -303,8 +303,75 @@ pub fn init_db(conn: &Connection) -> Result<(), String> {
     )
     .map_err(|e| format!("Failed to create agent tables: {}", e))?;
 
+    // ── Curriculum / Textbook knowledge base (RAG ingestion) ─────────────────
+    //
+    // This is where uploaded NERDC curriculum, textbooks, lesson notes and past
+    // questions live. Documents are split into chunks; the chunks are full-text
+    // indexed with FTS5 so Martha can retrieve relevant passages at question
+    // time and answer grounded in real curriculum content.
+    conn.execute_batch(
+        "
+        CREATE TABLE IF NOT EXISTS curriculum_documents (
+            id TEXT PRIMARY KEY,
+            title TEXT NOT NULL,
+            curriculum TEXT,
+            subject TEXT,
+            class_level TEXT,
+            topic TEXT,
+            -- textbook | curriculum | past_questions | lesson_notes | tutor_qa
+            source_type TEXT NOT NULL DEFAULT 'textbook',
+            source_file TEXT,
+            is_exam_bank INTEGER NOT NULL DEFAULT 0,
+            chunk_count INTEGER DEFAULT 0,
+            created_at TEXT DEFAULT (datetime('now'))
+        );
+
+        -- FTS5 stores the chunk text itself + metadata for filtering/provenance.
+        -- Mirrors rag/ingest.py exactly so the Python-built index is a drop-in.
+        -- (rusqlite's bundled SQLite is compiled with FTS5 enabled.)
+        CREATE VIRTUAL TABLE IF NOT EXISTS curriculum_fts USING fts5(
+            content,
+            title UNINDEXED,
+            curriculum UNINDEXED,
+            subject UNINDEXED,
+            class_level UNINDEXED,
+            topic UNINDEXED,
+            source_type UNINDEXED,
+            is_exam_bank UNINDEXED,
+            document_id UNINDEXED,
+            tokenize = 'porter unicode61'
+        );
+        ",
+    )
+    .map_err(|e| format!("Failed to create curriculum knowledge-base tables: {}", e))?;
+
+    // Pre-generated ("baked") lessons: full segmented lessons produced once on
+    // capable hardware, distributed in packs, and PLAYED instantly on school
+    // machines (no live LLM generation needed). The local model is then only
+    // used for short interactions (student questions, answer checking).
+    conn.execute_batch(
+        "
+        CREATE TABLE IF NOT EXISTS generated_lessons (
+            id TEXT PRIMARY KEY,
+            subject TEXT NOT NULL,
+            class_level TEXT NOT NULL,
+            topic TEXT NOT NULL,
+            title TEXT,
+            content TEXT NOT NULL,
+            created_at TEXT DEFAULT (datetime('now')),
+            UNIQUE(subject, class_level, topic)
+        );
+        ",
+    )
+    .map_err(|e| format!("Failed to create generated_lessons table: {}", e))?;
+
     // Migrations for existing databases
     let _ = conn.execute("ALTER TABLE topics ADD COLUMN is_taught INTEGER DEFAULT 0", []);
+    // Student lifecycle status: 'active' | 'suspended'. Suspended students can't log in.
+    let _ = conn.execute(
+        "ALTER TABLE students ADD COLUMN status TEXT NOT NULL DEFAULT 'active'",
+        [],
+    );
 
     Ok(())
 }

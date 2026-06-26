@@ -34,7 +34,6 @@ export default function PracticeTab({ topicId, topicName }: PracticeTabProps) {
   const current = questions[currentIndex];
   const options: string[] = current?.options ? JSON.parse(current.options) : [];
   const isCorrect = selectedAnswer === current?.correct_answer;
-  const totalAnswered = currentIndex + (showResult ? 1 : 0);
 
   const handleSelect = (option: string) => {
     if (showResult) return;

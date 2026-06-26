@@ -1,0 +1,39 @@
+{
+  "key": "nigerian",
+  "name": "Nigerian Curriculum",
+  "authority": "NERDC / WAEC / NECO",
+  "description": "Nigerian national curriculum (NERDC), assessed by WAEC and NECO. Basic Education (Primary 1-6 = Basic 1-6, JSS 1-3 = Basic 7-9) and Senior Secondary (SS 1-3).",
+  "levels": [
+    { "key": "primary1", "name": "Primary 1", "stage": "Lower Primary", "order": 1 },
+    { "key": "primary2", "name": "Primary 2", "stage": "Lower Primary", "order": 2 },
+    { "key": "primary3", "name": "Primary 3", "stage": "Lower Primary", "order": 3 },
+    { "key": "primary4", "name": "Primary 4", "stage": "Upper Primary", "order": 4 },
+    { "key": "primary5", "name": "Primary 5", "stage": "Upper Primary", "order": 5 },
+    { "key": "primary6", "name": "Primary 6", "stage": "Upper Primary", "order": 6 },
+    { "key": "jss1", "name": "JSS 1", "stage": "Junior Secondary", "order": 7 },
+    { "key": "jss2", "name": "JSS 2", "stage": "Junior Secondary", "order": 8 },
+    { "key": "jss3", "name": "JSS 3", "stage": "Junior Secondary", "order": 9 },
+    { "key": "ss1", "name": "SS 1", "stage": "Senior Secondary", "order": 10 },
+    { "key": "ss2", "name": "SS 2", "stage": "Senior Secondary", "order": 11 },
+    { "key": "ss3", "name": "SS 3", "stage": "Senior Secondary", "order": 12 }
+  ],
+  "subjects": [
+    { "key": "mathematics", "name": "Mathematics" },
+    { "key": "english", "name": "English Studies" },
+    { "key": "basic_science", "name": "Basic Science and Technology" },
+    { "key": "biology", "name": "Biology" },
+    { "key": "chemistry", "name": "Chemistry" },
+    { "key": "physics", "name": "Physics" },
+    { "key": "economics", "name": "Economics" },
+    { "key": "social_studies", "name": "Social Studies" },
+    { "key": "civic_education", "name": "Civic Education" },
+    { "key": "agricultural_science", "name": "Agricultural Science" },
+    { "key": "computer_studies", "name": "Computer Studies" },
+    { "key": "further_mathematics", "name": "Further Mathematics" }
+  ],
+  "standards": [
+    { "code": "NERDC-MTH-JSS2-01", "subject": "mathematics", "level": "jss2", "title": "Linear equations in one variable", "description": "Solve simple linear equations and related word problems." },
+    { "code": "NERDC-MTH-SS2-01", "subject": "mathematics", "level": "ss2", "title": "Quadratic equations", "description": "Solve quadratic equations by factorisation, completing the square and formula." },
+    { "code": "NERDC-BIO-SS2-01", "subject": "biology", "level": "ss2", "title": "Photosynthesis", "description": "Explain the process, conditions and importance of photosynthesis." }
+  ]
+}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ClipboardCheck, Play, CheckCircle, Clock, Star, BookOpen } from 'lucide-react';
+import { ClipboardCheck, CheckCircle, Star, BookOpen } from 'lucide-react';
 import QuizGenerator from '../../components/quizzes/QuizGenerator';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../stores/useAuthStore';

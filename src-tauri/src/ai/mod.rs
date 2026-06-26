@@ -1,4 +1,10 @@
+pub mod chunking;
+pub mod classroom;
 pub mod claude_api;
+pub mod json;
+pub mod martha;
+pub mod ollama;
+pub mod provider;
 pub mod prompts;
 pub mod rag;
 pub mod agent_prompt;

@@ -20,13 +20,18 @@ export default function EquationWriter({
 
   useEffect(() => {
     if (containerRef.current) {
+      // Models wrap maths in \( … \) / \[ … \] / $ … $ — katex wants the bare
+      // expression, so strip those delimiters before rendering.
+      const cleaned = equation
+        .replace(/\\\(|\\\)|\\\[|\\\]|\$\$|\$/g, '')
+        .trim();
       try {
-        containerRef.current.innerHTML = katex.renderToString(equation, {
+        containerRef.current.innerHTML = katex.renderToString(cleaned, {
           throwOnError: false,
           displayMode: true,
         });
       } catch {
-        containerRef.current.textContent = equation;
+        containerRef.current.textContent = cleaned;
       }
     }
   }, [equation]);

@@ -1,0 +1,15 @@
+{
+  "curriculum": "nigerian",
+  "subject": "english",
+  "class_level": "primary4",
+  "class_display": "Primary 4",
+  "age_range": "9-10",
+  "exam_body": "FSLC, Common Entrance",
+  "is_exam_class": false,
+  "prerequisite_levels": [],
+  "retrieval_mode": "standard",
+  "textbooks": [],
+  "topics": [
+    "opposites"
+  ]
+}

@@ -3,4 +3,6 @@ pub mod ai;
 pub mod tts;
 pub mod auth;
 pub mod agent;
+pub mod classroom;
 pub mod curriculum;
+pub mod knowledge;

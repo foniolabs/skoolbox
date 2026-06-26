@@ -1,0 +1,15 @@
+{
+  "curriculum": "nigerian",
+  "subject": "english",
+  "class_level": "primary1",
+  "class_display": "Primary 1",
+  "age_range": "6-7",
+  "exam_body": "FSLC, Common Entrance",
+  "is_exam_class": false,
+  "prerequisite_levels": [],
+  "retrieval_mode": "standard",
+  "textbooks": [],
+  "topics": [
+    "alphabet and sounds"
+  ]
+}

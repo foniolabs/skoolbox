@@ -31,6 +31,7 @@ export interface Student {
   streak_days: number
   total_points: number
   created_at: string
+  status?: string // 'active' | 'suspended'
 }
 
 export interface Subject {
@@ -481,6 +482,31 @@ export async function deleteUser(userId: string): Promise<void> {
   return invoke('delete_user', { userId })
 }
 
+/** Delete a student and all of their data (works even for orphaned records with no login). */
+export async function deleteStudent(studentId: string): Promise<void> {
+  if (!isTauri) return
+  return invoke('delete_student', { studentId })
+}
+
+/** Update a student's name and/or class (e.g. upgrading them to a new class). */
+export async function updateStudent(studentId: string, data: {
+  fullName?: string
+  classLevel?: string
+}): Promise<void> {
+  if (!isTauri) return
+  return invoke('update_student', {
+    studentId,
+    fullName: data.fullName ?? null,
+    classLevel: data.classLevel ?? null,
+  })
+}
+
+/** Suspend (when a student leaves) or reactivate a student. status: 'active' | 'suspended'. */
+export async function setStudentStatus(studentId: string, status: 'active' | 'suspended'): Promise<void> {
+  if (!isTauri) return
+  return invoke('set_student_status', { studentId, status })
+}
+
 export async function enrollStudents(
   students: [string, string, string][],
   defaultPassword: string,
@@ -827,6 +853,171 @@ export async function suggestTermTopics(data: {
     term: data.term,
     numWeeks: data.numWeeks,
   })
+}
+
+// ── Curriculum Knowledge Base (RAG ingestion) ─────────
+
+export interface CurriculumDocument {
+  id: string
+  title: string
+  subject: string | null
+  class_level: string | null
+  source_type: string
+  chunk_count: number
+  created_at: string
+}
+
+export interface IngestResult {
+  document_id: string
+  chunks: number
+}
+
+export interface CurriculumStats {
+  documents: number
+  chunks: number
+}
+
+/** Ingest a curriculum document: chunk it and index every chunk for retrieval. */
+export async function ingestCurriculumText(data: {
+  title: string
+  subject: string
+  classLevel: string
+  sourceType: string
+  content: string
+}): Promise<IngestResult> {
+  return invoke<IngestResult>('ingest_curriculum_text', {
+    title: data.title,
+    subject: data.subject,
+    classLevel: data.classLevel,
+    sourceType: data.sourceType,
+    content: data.content,
+  })
+}
+
+export async function listCurriculumDocuments(): Promise<CurriculumDocument[]> {
+  if (!isTauri) return []
+  return invoke<CurriculumDocument[]>('list_curriculum_documents')
+}
+
+export async function deleteCurriculumDocument(documentId: string): Promise<void> {
+  await invoke<void>('delete_curriculum_document', { documentId })
+}
+
+export async function curriculumStats(): Promise<CurriculumStats> {
+  if (!isTauri) return { documents: 0, chunks: 0 }
+  return invoke<CurriculumStats>('curriculum_stats')
+}
+
+export interface ImportSummary {
+  documents: number
+  chunks: number
+  replaced: boolean
+}
+
+/** Export the whole knowledge base as a pack file; returns the saved path. */
+export async function exportCurriculumPack(name: string, version: string): Promise<string> {
+  return invoke<string>('export_curriculum_pack', { name, version })
+}
+
+/** Import a curriculum pack (school side — the "patch update"). */
+export async function importCurriculumPack(packJson: string, replace: boolean): Promise<ImportSummary> {
+  return invoke<ImportSummary>('import_curriculum_pack', { packJson, replace })
+}
+
+// ── Classroom Engine (Martha leads a class) ───────────
+
+export interface LessonSegment {
+  introduction: string
+  teaching_points: string[]
+  check_question: string
+}
+
+export interface AnswerEvaluation {
+  is_correct: boolean
+  feedback: string
+  remediation: string | null
+}
+
+/** Martha begins a class: introduction + teaching points + a checking question. */
+export async function classroomStartLesson(subject: string, topic: string, classLevel: string): Promise<LessonSegment> {
+  return invoke<LessonSegment>('classroom_start_lesson', { subject, topic, classLevel })
+}
+
+export interface LessonPlan {
+  title: string
+  segment_titles: string[]
+}
+
+export interface BoardStep {
+  action: string
+  content: string
+  narration: string
+}
+
+export interface TeachingSegment {
+  board_steps: BoardStep[]
+  check_question: string
+}
+
+/** Plan a full ~30-minute lesson as 8–10 short segments. */
+export async function classroomPlanLesson(subject: string, topic: string, classLevel: string): Promise<LessonPlan> {
+  return invoke<LessonPlan>('classroom_plan_lesson', { subject, topic, classLevel })
+}
+
+/** Teach one segment: whiteboard steps (written + narrated) + a check question. */
+export async function classroomTeachSegment(args: {
+  subject: string; topic: string; classLevel: string
+  segmentTitle: string; segmentIndex: number; totalSegments: number
+}): Promise<TeachingSegment> {
+  return invoke<TeachingSegment>('classroom_teach_segment', {
+    subject: args.subject, topic: args.topic, classLevel: args.classLevel,
+    segmentTitle: args.segmentTitle, segmentIndex: args.segmentIndex, totalSegments: args.totalSegments,
+  })
+}
+
+/** Martha evaluates a student's answer to the checking question. */
+export async function classroomEvaluateAnswer(
+  subject: string, topic: string, question: string, studentAnswer: string,
+): Promise<AnswerEvaluation> {
+  return invoke<AnswerEvaluation>('classroom_evaluate_answer', { subject, topic, question, studentAnswer })
+}
+
+export interface GeneratedSegment {
+  title: string
+  board_steps: BoardStep[]
+  check_question: string
+}
+
+export interface GeneratedLesson {
+  subject: string
+  class_level: string
+  topic: string
+  title: string
+  segments: GeneratedSegment[]
+}
+
+export interface GeneratedLessonMeta {
+  subject: string
+  class_level: string
+  topic: string
+  title: string | null
+  segment_count: number
+  created_at: string
+}
+
+/** PRODUCER: bake a full lesson (slow) and store it for instant playback later. */
+export async function bakeLesson(subject: string, topic: string, classLevel: string): Promise<GeneratedLesson> {
+  return invoke<GeneratedLesson>('bake_lesson', { subject, topic, classLevel })
+}
+
+/** SCHOOL: fetch a pre-generated lesson for instant playback (null if none). */
+export async function getGeneratedLesson(subject: string, topic: string, classLevel: string): Promise<GeneratedLesson | null> {
+  return invoke<GeneratedLesson | null>('get_generated_lesson', { subject, topic, classLevel })
+}
+
+export async function listGeneratedLessons(): Promise<GeneratedLessonMeta[]> {
+  if (!isTauri) return []
+  return invoke<GeneratedLessonMeta[]>('list_generated_lessons')
 }
 
 // ── Utility ───────────────────────────────────────────

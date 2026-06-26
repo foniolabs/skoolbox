@@ -1,0 +1,23 @@
+{
+  "curriculum": "nigerian",
+  "subject": "mathematics",
+  "class_level": "jss3",
+  "class_display": "JSS 3",
+  "age_range": "14-15",
+  "exam_body": "WAEC BECE",
+  "is_exam_class": true,
+  "prerequisite_levels": [
+    "jss1",
+    "jss2"
+  ],
+  "retrieval_mode": "tiered",
+  "retrieval_weights": {
+    "own_class": 0.7,
+    "prerequisites": 0.25,
+    "exam_bank": 0.05
+  },
+  "textbooks": [],
+  "topics": [
+    "simultaneous equations"
+  ]
+}

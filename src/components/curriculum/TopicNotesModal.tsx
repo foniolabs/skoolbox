@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { X, Sparkles, Save, Loader2, FileText, Target, Activity, Upload } from 'lucide-react';
 import mammoth from 'mammoth';
 import Button from '../shared/Button';
@@ -26,6 +26,8 @@ export default function TopicNotesModal({
   const [tab, setTab] = useState<TabKey>('notes');
   const [notes, setNotes] = useState(topic.lesson_notes || '');
   const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState('');
+  const [savedOk, setSavedOk] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -38,8 +40,19 @@ export default function TopicNotesModal({
   const [objectives, setObjectives] = useState<string[]>(parseArr(topic.objectives));
   const [activities, setActivities] = useState<string[]>(parseArr(topic.activities));
 
+  // Re-sync local edits when the topic prop changes — e.g. after "Generate with
+  // AI" replaces the notes/objectives/activities while the modal stays open.
+  useEffect(() => {
+    setNotes(topic.lesson_notes || '');
+    setObjectives(parseArr(topic.objectives));
+    setActivities(parseArr(topic.activities));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [topic.id, topic.lesson_notes, topic.objectives, topic.activities]);
+
   const handleSave = async () => {
     setSaving(true);
+    setSaveError('');
+    setSavedOk(false);
     try {
       await updatePlanTopic({
         topicId: topic.id,
@@ -53,8 +66,11 @@ export default function TopicNotesModal({
         objectives: JSON.stringify(objectives),
         activities: JSON.stringify(activities),
       });
+      setSavedOk(true);
+      setTimeout(() => setSavedOk(false), 2500);
     } catch (err) {
       console.error(err);
+      setSaveError(typeof err === 'string' ? err : 'Could not save notes. Please try again.');
     } finally {
       setSaving(false);
     }
@@ -272,7 +288,13 @@ export default function TopicNotesModal({
 
         {/* Footer */}
         <div className="flex items-center justify-between p-5 border-t border-gray-100">
-          <p className="text-xs text-text-muted">Supports .docx, .doc, .txt, .md</p>
+          {saveError ? (
+            <p className="text-xs text-red-600">{saveError}</p>
+          ) : savedOk ? (
+            <p className="text-xs text-green-600">Saved ✓</p>
+          ) : (
+            <p className="text-xs text-text-muted">Supports .docx, .doc, .txt, .md</p>
+          )}
           <div className="flex gap-3">
             <Button variant="outline" onClick={onClose}>Cancel</Button>
             <Button onClick={handleSave} disabled={saving} className="flex items-center gap-2">

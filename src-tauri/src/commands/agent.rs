@@ -1,36 +1,10 @@
-use crate::ai::{agent_prompt, claude_api, rag};
+use crate::ai::{martha, provider, rag};
 use crate::db::DbState;
 use crate::models::agent::*;
 use tauri::State;
 use uuid::Uuid;
 
 // ── Internal helpers ──────────────────────────────────────────────────────────
-
-fn resolve_api_key(db: &DbState) -> Result<String, String> {
-    if let Ok(conn) = db.db.lock() {
-        let mut stmt = conn
-            .prepare("SELECT value FROM settings WHERE key = 'claude_api_key'")
-            .ok();
-        if let Some(ref mut s) = stmt {
-            if let Ok(val) = s.query_row([], |row| row.get::<_, String>(0)) {
-                if !val.is_empty() {
-                    return Ok(val);
-                }
-            }
-        }
-    }
-    if let Ok(key) = std::env::var("API_KEY") {
-        if !key.is_empty() {
-            return Ok(key);
-        }
-    }
-    if let Ok(key) = std::env::var("ANTHROPIC_API_KEY") {
-        if !key.is_empty() {
-            return Ok(key);
-        }
-    }
-    Err("No API key found. Please set your Claude API key in Settings or the .env file.".to_string())
-}
 
 /// Ensure a learning profile row exists for this student.
 fn ensure_learning_profile(db: &DbState, student_id: &str) -> Result<(), String> {
@@ -155,7 +129,7 @@ pub async fn ai_agent_chat(
     class_level: String,
     conversation_id: String,
 ) -> Result<AgentResponse, String> {
-    let api_key = resolve_api_key(&db)?;
+    let prov = provider::resolve(&db).await?;
 
     // 1. Get student name
     let student_name = {
@@ -217,16 +191,8 @@ pub async fn ai_agent_chat(
         .collect();
     messages.push(("user".to_string(), message.clone()));
 
-    // 8. Call Claude with prompt caching
-    let master_prompt = agent_prompt::master_system_prompt();
-    let response = claude_api::call_claude_agent(
-        &api_key,
-        master_prompt,
-        &context_block,
-        messages,
-        2000,
-    )
-    .await?;
+    // 8. One Martha tutoring turn on the active backend (Ollama offline by default).
+    let response = martha::tutor_reply(&prov, &context_block, messages, 2000).await?;
 
     // 9. Save messages to chat_history
     let user_msg_id = Uuid::new_v4().to_string();
@@ -399,7 +365,7 @@ pub async fn generate_conversation_summary(
     subject: String,
     topic: Option<String>,
 ) -> Result<String, String> {
-    let api_key = resolve_api_key(&db)?;
+    let prov = provider::resolve(&db).await?;
 
     // Get all messages from this conversation
     let history = get_conversation_messages(&db, &student_id, &conversation_id, 50)?;
@@ -417,8 +383,8 @@ pub async fn generate_conversation_summary(
         .collect::<Vec<_>>()
         .join("\n\n");
 
-    // Call Claude to generate summary
-    let summary = claude_api::generate_summary(&api_key, &conversation_text).await?;
+    // Summarize via the active LLM backend (Ollama offline by default).
+    let summary = provider::summarize(&prov, &conversation_text).await?;
 
     // Save to conversation_summaries
     {

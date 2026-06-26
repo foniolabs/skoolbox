@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Clock, CheckCircle, XCircle, Trophy, RotateCcw, Play, AlertTriangle, Bot, Loader2, Volume2 } from 'lucide-react';
+import { Clock, CheckCircle, XCircle, Trophy, RotateCcw, Play, Bot, Loader2, Volume2 } from 'lucide-react';
 import { getQuestions, saveQuizAttempt, updateStudentProgress, askStudentTutor } from '../../lib/tauri/commands';
 import { useAuthStore } from '../../stores/useAuthStore';
 import { marthaTTS } from '../../lib/tts/browserTTS';

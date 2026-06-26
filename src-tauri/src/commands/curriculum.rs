@@ -1,30 +1,8 @@
-use crate::ai::{agent_prompt, claude_api, rag};
+use crate::ai::{provider, rag};
 use crate::db::DbState;
 use crate::models::curriculum::*;
 use tauri::State;
 use uuid::Uuid;
-
-fn resolve_api_key(db: &DbState) -> Result<String, String> {
-    if let Ok(conn) = db.db.lock() {
-        let mut stmt = conn
-            .prepare("SELECT value FROM settings WHERE key = 'claude_api_key'")
-            .ok();
-        if let Some(ref mut s) = stmt {
-            if let Ok(val) = s.query_row([], |row| row.get::<_, String>(0)) {
-                if !val.is_empty() {
-                    return Ok(val);
-                }
-            }
-        }
-    }
-    if let Ok(key) = std::env::var("API_KEY") {
-        if !key.is_empty() { return Ok(key); }
-    }
-    if let Ok(key) = std::env::var("ANTHROPIC_API_KEY") {
-        if !key.is_empty() { return Ok(key); }
-    }
-    Err("No API key found.".to_string())
-}
 
 // ── Term Plan CRUD ────────────────────────────────────────────────────────────
 
@@ -358,7 +336,7 @@ pub async fn generate_plan_topic_ai(
     class_level: String,
     duration_minutes: i64,
 ) -> Result<TermPlanTopic, String> {
-    let api_key = resolve_api_key(&db)?;
+    let prov = provider::resolve(&db).await?;
 
     // Get any existing curriculum context for this topic
     let context = {
@@ -388,7 +366,7 @@ Return ONLY valid JSON in this exact format:
     );
 
     let system = "You are a Nigerian curriculum expert. Generate lesson plans in JSON format only. No markdown outside the JSON.";
-    let raw = claude_api::call_claude(&api_key, system, &prompt, 2000).await?;
+    let raw = provider::complete(&prov, system, &prompt, 2000).await?;
 
     // Extract JSON
     let json_str = extract_json(&raw);
@@ -449,7 +427,7 @@ pub async fn suggest_term_topics(
     term: i64,
     num_weeks: i64,
 ) -> Result<Vec<String>, String> {
-    let api_key = resolve_api_key(&db)?;
+    let prov = provider::resolve(&db).await?;
 
     // Get existing curriculum topics from DB for context
     let db_topics = {
@@ -492,7 +470,7 @@ No explanation, no markdown, just the JSON array."#,
     );
 
     let system = "You are a Nigerian curriculum expert. Return only a JSON array of topic names.";
-    let raw = claude_api::call_claude(&api_key, system, &prompt, 500).await?;
+    let raw = provider::complete(&prov, system, &prompt, 500).await?;
     let json_str = extract_json(&raw);
 
     let topics: Vec<String> = serde_json::from_str(&json_str)
