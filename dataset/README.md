@@ -9,32 +9,61 @@ entirely on the quality of the examples written here.
 
 ## Folder structure
 
+Content is organised **curriculum → subject → phase → class** (see
+[`../docs/CURRICULUM_ARCHITECTURE.md`](../docs/CURRICULUM_ARCHITECTURE.md)):
+
 ```
 dataset/
-├── mathematics/
-│   ├── primary1/ … primary6/      (Basic 1–6)
-│   ├── jss1/ jss2/ jss3/
-│   └── ss1/ ss2/ ss3/
-├── english/
-├── physics/
-├── biology/
-├── chemistry/
-├── economics/
-└── README.md   ← you are here
+└── nigerian/                       ← curriculum
+    └── mathematics/                ← subject
+        ├── primary/                ← phase: primary | jss | ss
+        │   └── primary1/ … primary6/
+        ├── jss/
+        │   └── jss1/ jss2/ jss3/
+        └── ss/
+            └── ss1/ ss2/ ss3/
+    └── english/ physics/ biology/ chemistry/ economics/
 ```
 
-Create class-level subfolders inside each subject as you need them.
+Each **class folder** holds a required `metadata.json` plus your `.jsonl` files:
+
+```
+dataset/nigerian/mathematics/jss/jss2/
+├── metadata.json            ← the "contract" (see below); required
+├── linear_equations.jsonl   ← your new file goes here
+└── ...
+```
 
 ## File naming convention
 
 ```
-dataset/<subject>/<level>/<topic>.jsonl
+dataset/nigerian/<subject>/<phase>/<class>/<topic>.jsonl
 ```
 
-Example: `dataset/mathematics/jss2/linear_equations.jsonl`
+Example: `dataset/nigerian/mathematics/jss/jss2/linear_equations.jsonl`
 
-See [`mathematics/jss2/linear_equations.jsonl`](mathematics/jss2/linear_equations.jsonl)
+Exam classes (Primary 5/6, JSS3, SS3) also hold past-question banks named
+`<exam_body>_past_questions.jsonl` (e.g. `waec_bece_past_questions.jsonl`).
+
+See [`nigerian/mathematics/jss/jss2/linear_equations.jsonl`](nigerian/mathematics/jss/jss2/linear_equations.jsonl)
 for a complete, ready-to-copy example file.
+
+## The `metadata.json` contract
+
+Every class folder needs exactly one `metadata.json` — it tells the retrieval
+layer the curriculum, class level, age range, exam status, prerequisites, and
+topics for that folder. **Without it, ingest skips the folder.**
+
+You don't hand-write these. After adding a new class folder or topic, run from
+the repo root:
+
+```bash
+python rag/scaffold_metadata.py            # create/refresh every metadata.json
+python rag/scaffold_metadata.py --check    # CI guard: fail if any is missing/stale
+```
+
+It preserves the `topics` and `textbooks` lists (edit those by hand to record the
+real textbook names and topics) and keeps the structural fields consistent.
 
 ## What a training example looks like
 

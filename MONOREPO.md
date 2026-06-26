@@ -6,22 +6,28 @@ pipeline, and the retrieval index versioned together.
 
 ```
 schoolbox/
-├── src/             🔵 Tauri app — React + TypeScript frontend
-├── src-tauri/       🔵 Tauri app — Rust backend (AI engine, RAG, DB)
-│   └── ai/          Ollama Modelfile + runtime AI modules
-├── curriculum/      🟢🔵 Curriculum frameworks (Nigerian/British/American)
-├── dataset/         🟢 Training examples — SUBJECT EXPERTS WORK HERE
-├── training/        🔵 LoRA fine-tuning pipeline (Qwen3 4B → GGUF)
-├── rag/             🔵 Curriculum retrieval index builder
-├── package.json     Frontend deps & scripts
-├── MVP_PLAN.md      Multi-curriculum co-pilot MVP plan
-└── MONOREPO.md      ← you are here
+├── src/                  🔵 Tauri app — React + TypeScript frontend
+├── src-tauri/            🔵 Tauri app — Rust backend (AI engine, RAG, DB)
+│   └── ai/               Ollama Modelfile + runtime AI modules
+├── curriculum/           🟢🔵 Curriculum frameworks + system prompts (NG/UK/US)
+├── dataset/              🟢 Training data — SUBJECT EXPERTS WORK HERE
+│   └── nigerian/<subject>/<phase>/<class>/{metadata.json, *.jsonl}
+├── training/             🔵 LoRA fine-tuning pipeline (Qwen3 4B → GGUF)
+├── rag/                  🔵 Retrieval index builder + metadata scaffolder
+├── docs/                 📄 CURRICULUM_ARCHITECTURE.md (knowledge-system spec)
+├── skoolbox-config.json  Active curriculum + RAG retrieval config (app reads this)
+├── package.json          Frontend deps & scripts
+├── MVP_PLAN.md           Multi-curriculum co-pilot MVP plan
+└── MONOREPO.md           ← you are here
 ```
 
-> Direction (2026-06): Martha is a **hybrid AI tutor + teaching co-pilot** —
-> students ask her directly, and teachers use her to draft lesson notes/plans/
-> textbook (which they approve). She works within a school's **chosen curriculum**
-> — Nigerian, British, or American. See [MVP_PLAN.md](MVP_PLAN.md).
+> Knowledge-system architecture (folder hierarchy, `metadata.json` contract,
+> tiered retrieval, FTS5-vs-ChromaDB decision) is specified in
+> [docs/CURRICULUM_ARCHITECTURE.md](docs/CURRICULUM_ARCHITECTURE.md).
+
+> Direction (2026-06): Martha is a **classroom co-pilot** (not a teacher
+> replacement) that works within a school's **chosen curriculum** — Nigerian,
+> British, or American. See [MVP_PLAN.md](MVP_PLAN.md).
 
 > The fine-tuning guide draws `app/` as a subfolder. Here the Tauri app stays at
 > the repo root (`src/` + `src-tauri/`) so existing build paths and tooling keep

@@ -1,0 +1,23 @@
+{
+  "curriculum": "nigerian",
+  "subject": "chemistry",
+  "class_level": "ss3",
+  "class_display": "SS 3",
+  "age_range": "17-18",
+  "exam_body": "WAEC SSCE, NECO",
+  "is_exam_class": true,
+  "prerequisite_levels": [
+    "ss1",
+    "ss2"
+  ],
+  "retrieval_mode": "tiered",
+  "retrieval_weights": {
+    "own_class": 0.7,
+    "prerequisites": 0.25,
+    "exam_bank": 0.05
+  },
+  "textbooks": [],
+  "topics": [
+    "organic chemistry"
+  ]
+}

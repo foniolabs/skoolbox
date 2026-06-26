@@ -1,0 +1,15 @@
+{
+  "curriculum": "nigerian",
+  "subject": "mathematics",
+  "class_level": "jss1",
+  "class_display": "JSS 1",
+  "age_range": "12-13",
+  "exam_body": "WAEC BECE",
+  "is_exam_class": false,
+  "prerequisite_levels": [],
+  "retrieval_mode": "standard",
+  "textbooks": [],
+  "topics": [
+    "whole numbers"
+  ]
+}

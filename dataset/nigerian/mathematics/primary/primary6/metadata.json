@@ -1,0 +1,26 @@
+{
+  "curriculum": "nigerian",
+  "subject": "mathematics",
+  "class_level": "primary6",
+  "class_display": "Primary 6",
+  "age_range": "11-12",
+  "exam_body": "FSLC, Common Entrance",
+  "is_exam_class": true,
+  "prerequisite_levels": [
+    "primary1",
+    "primary2",
+    "primary3",
+    "primary4",
+    "primary5"
+  ],
+  "retrieval_mode": "tiered",
+  "retrieval_weights": {
+    "own_class": 0.7,
+    "prerequisites": 0.25,
+    "exam_bank": 0.05
+  },
+  "textbooks": [],
+  "topics": [
+    "percentages"
+  ]
+}

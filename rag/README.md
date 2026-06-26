@@ -17,54 +17,59 @@ The shipping app uses **SQLite FTS5** (full-text search) — see
 [`../src-tauri/src/db/connection.rs`](../src-tauri/src/db/connection.rs)), so the
 db it produces is a drop-in for the app.
 
-> The fine-tuning guide mentions ChromaDB; we use SQLite FTS5 instead so the
-> index ships as a single file with no extra runtime services — a better fit for
-> a fully offline desktop app.
+> The architecture doc specifies ChromaDB + BGE-M3; we use SQLite FTS5 instead so
+> the index ships as a single file with no extra runtime services — a better fit
+> for a fully offline desktop app. We implement the doc's retrieval *semantics*
+> (metadata contract + tiered weighting) on FTS5. See
+> [`../docs/CURRICULUM_ARCHITECTURE.md`](../docs/CURRICULUM_ARCHITECTURE.md) §5.
 
-## Document layout
+## What gets indexed
 
-Drop plain-text files under `docs/`, mirroring the dataset structure so subject
-and class level are picked up automatically from the path:
+`ingest.py` reads the **`dataset/` tree directly** — there is no separate `docs/`
+folder. Each class folder's `metadata.json` is the contract: the assistant
+answers in its `.jsonl` files become retrievable knowledge, tagged with
+curriculum, subject, class level, topic, and an `is_exam_bank` flag (for
+`*_past_questions.jsonl` files). Folders without `metadata.json` are skipped.
 
-```
-rag/docs/<subject>/<class_level>/<title>.txt
-e.g. rag/docs/biology/ss2/photosynthesis.txt
-```
+## Tiered retrieval
 
-A worked example of the layout lives in **[`docs.sample/`](docs.sample/)** (tracked
-in git). `docs/` itself is git-ignored — real curriculum source can be large or
-copyrighted, so it is not committed; distribute the built index via the app's
-curriculum-pack feature instead.
+`query.py` and the app (`rag.rs`) pick a retrieval mode from the class's
+`metadata.json` and merge weighted tiers (own class / prerequisites / exam bank):
+
+| Mode | own | prereq | exam | When |
+| --- | --- | --- | --- | --- |
+| standard | 1.00 | 0.00 | 0.00 | non-exam classes |
+| tiered | 0.70 | 0.25 | 0.05 | exam classes (default) |
+| remediation | 0.20 | 0.75 | 0.05 | student struggling |
+| revision | 0.40 | 0.40 | 0.20 | exam practice |
+
+Weights live in `skoolbox-config.json → rag.retrieval_modes`.
 
 ## Producer workflow
 
 ```bash
-# 1. Put real curriculum .txt files under rag/docs/ (copy docs.sample/ to start)
-cp -r rag/docs.sample/* rag/docs/        # then replace with real material
+# 1. Make sure every class folder has metadata.json
+python rag/scaffold_metadata.py
 
-# 2. Ingest (writes the app's production schema)
-python rag/ingest.py --input rag/docs --db src-tauri/curriculum.db
-#    Past questions? label them so retrieval can prefer exam-style sources:
-python rag/ingest.py --input rag/docs --db src-tauri/curriculum.db --source-type past_questions
-#    Rebuild from scratch:
-python rag/ingest.py --input rag/docs --db src-tauri/curriculum.db --reset
+# 2. Ingest the dataset into the app's production schema
+python rag/ingest.py --curriculum nigerian --db src-tauri/curriculum.db --reset
 
 # 3. Verify retrieval BEFORE shipping (mirrors the app's rag.rs)
 python rag/query.py --db src-tauri/curriculum.db --stats
-python rag/query.py --db src-tauri/curriculum.db -s Biology -l SS2 "how do plants make food"
+python rag/query.py -c nigerian -s mathematics -l jss3 "solve simultaneous equations"
+#    Force a mode to test remediation/revision behaviour:
+python rag/query.py -c nigerian -s mathematics -l jss3 --mode remediation "linear equation"
 ```
 
-`source_type` is one of: `textbook` | `curriculum` | `past_questions` |
-`lesson_notes`. Both scripts use only the Python standard library (`sqlite3`).
+All three scripts use only the Python standard library (`sqlite3`). Pass
+**curriculum + subject + class** (`-c -s -l`) to reproduce real app behaviour.
 
-## ⚠️ Retrieval quality note (real app behaviour)
+## ⚠️ Retrieval quality note
 
-`rag.rs` builds the FTS query by **OR-ing** the question's words together, so a
-passage that matches only a common word (e.g. a maths note containing "makes")
-can outrank a topically-correct passage. This is mitigated because the app
-**always scopes retrieval by subject + class level** — so always pass `-s` and
-`-l` to `query.py` to reproduce real behaviour. Improving the ranking (phrase
-queries, term weighting, or embedding-based vector search) is a post-MVP item in
+The FTS query is built by **OR-ing** the question's words, so a passage matching
+only a common word can rank higher than expected. This is mitigated because
+retrieval is always scoped by curriculum + subject + class (+ tier weighting).
+Embedding-based reranking is a tracked post-MVP item in
 [`../HANDOFF.md`](../HANDOFF.md).
 
-`docs/` and generated `*.db` files are git-ignored; see [`../.gitignore`](../.gitignore).
+Generated `*.db` files are git-ignored; see [`../.gitignore`](../.gitignore).

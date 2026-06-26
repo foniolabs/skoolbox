@@ -314,22 +314,30 @@ pub fn init_db(conn: &Connection) -> Result<(), String> {
         CREATE TABLE IF NOT EXISTS curriculum_documents (
             id TEXT PRIMARY KEY,
             title TEXT NOT NULL,
+            curriculum TEXT,
             subject TEXT,
             class_level TEXT,
-            -- textbook | curriculum | past_questions | lesson_notes
+            topic TEXT,
+            -- textbook | curriculum | past_questions | lesson_notes | tutor_qa
             source_type TEXT NOT NULL DEFAULT 'textbook',
+            source_file TEXT,
+            is_exam_bank INTEGER NOT NULL DEFAULT 0,
             chunk_count INTEGER DEFAULT 0,
             created_at TEXT DEFAULT (datetime('now'))
         );
 
         -- FTS5 stores the chunk text itself + metadata for filtering/provenance.
+        -- Mirrors rag/ingest.py exactly so the Python-built index is a drop-in.
         -- (rusqlite's bundled SQLite is compiled with FTS5 enabled.)
         CREATE VIRTUAL TABLE IF NOT EXISTS curriculum_fts USING fts5(
             content,
             title UNINDEXED,
+            curriculum UNINDEXED,
             subject UNINDEXED,
             class_level UNINDEXED,
+            topic UNINDEXED,
             source_type UNINDEXED,
+            is_exam_bank UNINDEXED,
             document_id UNINDEXED,
             tokenize = 'porter unicode61'
         );
