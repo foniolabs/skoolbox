@@ -17,31 +17,48 @@ production decisions.
 
 ---
 
-## 📍 Handoff — pick up here (last updated 2026-06-26)
+## 📍 Handoff — pick up here (last updated 2026-06-27)
 
 > **Read this before starting.** Each phase below is tagged ✅ done / 🟡 partial /
 > 🔨 to build. **Do not redo ✅ items** — verify them with the commands below
 > instead. When you finish work, update the relevant tags and this date.
 
 **Already done (verify, don't repeat):**
-- Dataset migrated to the 4-level tree + a `metadata.json` in all 36 class
-  folders + exam-bank stubs. Verify: `python rag/scaffold_metadata.py --check`
-  (should print "All metadata.json files present and current").
+- Dataset migrated to the 4-level tree + a `metadata.json` in all class folders
+  + exam-bank stubs (now incl. the `basic_science` JSS tree). Verify:
+  `python rag/scaffold_metadata.py --check` ("All metadata.json files present and current").
 - SQLite FTS5 RAG with standard/tiered/remediation/revision retrieval, in both
   Python and Rust. Verify: `python rag/ingest.py --curriculum nigerian --reset`
   then `python rag/query.py -c nigerian -s mathematics -l jss3 "solve for x"`;
   and `cd src-tauri && cargo test --lib rag` (2 tests pass).
 - Config: `skoolbox-config.json` + `curriculum/<name>.system_prompt.txt`.
+- **Persona consolidated to ONE source** (`curriculum/nigerian.system_prompt.txt`):
+  Rust compiles it in via `include_str!` (`agent_prompt.rs`), and
+  `Martha.Modelfile` is generated from it by `curriculum/generate_modelfile.py`.
+  Verify: `python curriculum/generate_modelfile.py --check` + `cargo test --lib`.
+- **Cloud TTS removed** for the offline build (`src/lib/tts/azureTTS.ts` deleted;
+  Azure config stripped from stores/Settings/mockData). Verify: `grep -rni azure src/`
+  returns only comments; `npx tsc --noEmit` is clean.
+- **CI guards + Git LFS:** `.github/workflows/ci.yml` (metadata + Modelfile sync +
+  `cargo test` + `tsc` as hard gates; clippy/eslint non-blocking until cleaned up)
+  and `.gitattributes` (LFS for `*.gguf`/`*.onnx`/model `*.bin`).
+- **Textbook ingestion pipeline** (`rag/ingest_textbook.py` + `.txt` support in
+  `rag/ingest.py`): OCR a scanned book/past-questions → reviewable text artifact
+  in the class folder → indexed as `source_type='textbook'`. Verify with the
+  `.txt` path: drop a `.txt` in a class folder, `rag/ingest.py`, then `rag/query.py`.
 - Docs: this file, [docs/CURRICULUM_ARCHITECTURE.md](docs/CURRICULUM_ARCHITECTURE.md),
   [docs/MARTHA_PERSONA.md](docs/MARTHA_PERSONA.md).
 
 **Immediate next task (start here):**
-1. **Phase 1 — dataset content.** Add the `basic_science` subject tree, then have
-   subject experts write examples (Maths/English/Basic Science) toward the 800+
-   target. This is the critical path and unblocks Phases 2–3.
-2. **In parallel, Phase 0 — consolidate the persona** to a single source
-   (`curriculum/nigerian.system_prompt.txt`) and remove cloud TTS
-   (`src/lib/tts/azureTTS.ts`).
+1. **Phase 1 — content (critical path).** Two complementary routes now exist:
+   (a) subject experts write Q&A examples toward the 800+ target (fine-tunes the
+   teaching *style*); (b) ingest real **textbooks/past-questions** via
+   `rag/ingest_textbook.py` (grounds Martha's *knowledge* via RAG — no retraining).
+   The `basic_science` JSS tree exists with scaffolded (empty) metadata. Unblocks
+   Phases 2–3.
+2. **Finish Phase 0 polish:** make clippy/eslint hard gates by clearing the
+   pre-existing warnings (see CI `continue-on-error` steps); compile out / dev-gate
+   the `claude` provider for release builds; run `git lfs install` on dev machines.
 
 **Biggest unbuilt chunk:** Phase 4 (voice — Whisper STT + neural TTS). No STT
 exists yet; pick the TTS engine (Kokoro vs Piper) before starting.
@@ -88,17 +105,21 @@ otherwise compound through later phases.
 - ✅ `metadata.json` contract + generator (`rag/scaffold_metadata.py`, `--check`).
 - ✅ `skoolbox-config.json` (active curriculum + RAG retrieval modes).
 - ✅ SQLite FTS5 schema mirrored in `rag/ingest.py` and `src-tauri/src/db/connection.rs`.
-- 🔨 **Consolidate Martha's persona to ONE source.** Today it is triplicated:
-  `curriculum/nigerian.system_prompt.txt`, `src-tauri/src/ai/agent_prompt.rs::master_system_prompt()`,
-  and `src-tauri/ai/Martha.Modelfile`. Make the `.txt` the only source: load it
-  at runtime in Rust (cache once), and have the Modelfile/agent_prompt read or be
-  generated from it. (See MARTHA_PERSONA.md §2.)
-- 🔨 **Remove cloud paths for offline build.** Delete/guard `src/lib/tts/azureTTS.ts`
-  and ensure `model_provider` defaults to `ollama` with `claude` compiled out (or
-  behind a dev-only flag) in release builds.
-- 🔨 **CI guards:** wire `python rag/scaffold_metadata.py --check`,
-  `cargo test`, and `cargo clippy -- -D warnings` into pre-commit / CI.
-- 🔨 **Git LFS** for `*.gguf` and voice model files (`git lfs track`).
+- ✅ **Persona consolidated to ONE source.** `curriculum/nigerian.system_prompt.txt`
+  is now the only source: Rust compiles it in via `include_str!`
+  (`agent_prompt.rs::master_system_prompt()`), and `src-tauri/ai/Martha.Modelfile`
+  is generated from it by `curriculum/generate_modelfile.py` (`--check` in CI).
+  (Runtime per-curriculum variants are deferred to v2.0 — MARTHA_PERSONA.md §6.)
+- 🟡 **Remove cloud paths for offline build.** ✅ `src/lib/tts/azureTTS.ts` deleted
+  and Azure config stripped from stores/Settings/mockData; `model_provider` already
+  defaults to `ollama`. 🔨 remaining: compile out / dev-gate the `claude` provider
+  in release builds.
+- 🟡 **CI guards:** ✅ `.github/workflows/ci.yml` runs `scaffold_metadata.py --check`,
+  `generate_modelfile.py --check`, `cargo test`, and `tsc` as hard gates. 🔨 remaining:
+  `cargo clippy -- -D warnings` and `npm run lint` run non-blocking (`continue-on-error`)
+  until the pre-existing warnings/errors are cleared, then flip them to hard gates.
+- 🟡 **Git LFS:** ✅ `.gitattributes` tracks `*.gguf`, `*.onnx`, and model `*.bin`.
+  🔨 remaining: `git lfs install` on each dev machine (git-lfs not yet installed locally).
 
 **Done when:** persona has one source; release build has zero network calls;
 CI fails on missing metadata, failing tests, or clippy warnings.
@@ -119,8 +140,9 @@ Quality over quantity. Three subjects only.
 | `metadata.json` in every covered class folder | all folders | lead dev (`scaffold_metadata.py`) |
 | Merged + validated | 800+ clean examples | ML dev |
 
-- 🔨 Add the **Basic Science** subject tree (`dataset/nigerian/basic_science/jss/jss1..3/`)
-  + run `scaffold_metadata.py`.
+- ✅ Add the **Basic Science** subject tree (`dataset/nigerian/basic_science/jss/jss1..3/`)
+  + run `scaffold_metadata.py` (metadata + JSS3 exam-bank stub scaffolded; `topics`/
+  `textbooks` arrays still to be filled by subject experts).
 - 🔨 Fill `topics` and `textbooks` arrays in each `metadata.json` by hand
   (scaffolder seeds the rest).
 - 🔨 Write examples per the JSONL chat format + quality checklist
@@ -150,8 +172,14 @@ Most of this is already built — finish content + verification.
   subject return correct-level content; cross-subject isolation holds.
   - `python rag/query.py -c nigerian -s mathematics -l jss2 "what is a linear equation"` → only JSS2 Maths.
   - English query returns no Mathematics; SS3 Physics returns only SS3 Physics.
-- 🔨 (When real textbooks/past-questions arrive in Phase D) ingest them into the
-  exam-class folders' `*_past_questions.jsonl`.
+- ✅ **Textbook / past-question ingestion pipeline.** `rag/ingest_textbook.py`
+  turns a scanned PDF, page images, or `.txt`/`.md` into a cleaned text artifact
+  in the class folder (OCR via Tesseract for scans; digital-PDF text layer used
+  directly). `rag/ingest.py` then indexes any `*.txt` in a class folder as
+  `source_type='textbook'` (or `past_questions`), so the shipped `curriculum.db`
+  stays reproducible from `dataset/`. OCR deps: `rag/requirements-ocr.txt`.
+  🔨 remaining: actually scan/ingest real NERDC textbooks + past-question banks
+  (Phase 1/D content — needs the books + a rights check).
 
 > SQLite note: there are **no ChromaDB "collections."** The spec's
 > `{curriculum}_{subject}_{class}` collections map to **metadata-filtered FTS

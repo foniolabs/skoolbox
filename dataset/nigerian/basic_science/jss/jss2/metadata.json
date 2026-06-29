@@ -1,0 +1,13 @@
+{
+  "curriculum": "nigerian",
+  "subject": "basic_science",
+  "class_level": "jss2",
+  "class_display": "JSS 2",
+  "age_range": "13-14",
+  "exam_body": "WAEC BECE",
+  "is_exam_class": false,
+  "prerequisite_levels": [],
+  "retrieval_mode": "standard",
+  "textbooks": [],
+  "topics": []
+}

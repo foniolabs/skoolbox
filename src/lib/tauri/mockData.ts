@@ -118,20 +118,16 @@ export const mockAiLessons: AILesson[] = [
 ]
 
 export const mockTtsSettings: TtsSettings = {
-  voice: 'Ezinne',
+  voice: 'amy',
   speed: '1.0',
-  azure_key: '',
-  azure_region: 'westeurope',
 }
 
 const mockSettings: Record<string, string> = {
   school_name: 'SkoolBox Demo School',
-  tts_voice: 'Ezinne',
+  tts_voice: 'amy',
   tts_speed: '1.0',
-  offline_mode: 'false',
-  azure_tts_region: 'westeurope',
+  offline_mode: 'true',
   claude_api_key: '',
-  azure_tts_key: '',
 }
 
 export function getMockSetting(key: string): string | null {

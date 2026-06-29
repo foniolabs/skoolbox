@@ -1,16 +1,12 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import type { NigerianVoice } from '../lib/tts/azureTTS'
 
+// Offline build: narration runs through the Rust-side Piper neural TTS (single
+// bundled voice today — en_US-amy; a Nigerian voice is planned for v1.1). The
+// old cloud Azure voices (Ezinne/Abeo) were removed for the fully-offline MVP.
 interface TTSState {
-  azureKey: string
-  azureRegion: string
-  voice: NigerianVoice
   rate: string
   pitch: string
-  setAzureKey: (key: string) => void
-  setAzureRegion: (region: string) => void
-  setVoice: (voice: NigerianVoice) => void
   setRate: (rate: string) => void
   setPitch: (pitch: string) => void
 }
@@ -18,14 +14,8 @@ interface TTSState {
 const useTTSStore = create<TTSState>()(
   persist(
     (set) => ({
-      azureKey: '',
-      azureRegion: 'westeurope',
-      voice: 'Ezinne', // Default to female Nigerian voice
       rate: '-5%',
       pitch: '0%',
-      setAzureKey: (key) => set({ azureKey: key }),
-      setAzureRegion: (region) => set({ azureRegion: region }),
-      setVoice: (voice) => set({ voice }),
       setRate: (rate) => set({ rate }),
       setPitch: (pitch) => set({ pitch }),
     }),

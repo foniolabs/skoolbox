@@ -66,8 +66,10 @@ and everything a teammate needs to move it forward.
 - `training/train.py` — Unsloth LoRA on Qwen3 4B (scaffold, runs on GPU).
 - `training/merge_lora.py`, `training/convert_to_gguf.py` — merge + Q4_K_M GGUF.
 - `rag/ingest.py` — ingest the `dataset/` tree into the app's FTS5 schema, with
-  tiered retrieval; `rag/scaffold_metadata.py` generates the `metadata.json`
-  contracts; `rag/query.py` verifies retrieval (working).
+  tiered retrieval (now indexes both Q&A `.jsonl` and textbook `.txt`);
+  `rag/ingest_textbook.py` — OCR a scanned book/past-questions into a `.txt`
+  artifact; `rag/scaffold_metadata.py` generates the `metadata.json` contracts;
+  `rag/query.py` verifies retrieval (working).
 - Dataset restructured to `dataset/<curriculum>/<subject>/<phase>/<class>/` with a
   `metadata.json` per class folder. Sample:
   `dataset/nigerian/mathematics/jss/jss2/linear_equations.jsonl`.
@@ -119,10 +121,20 @@ and everything a teammate needs to move it forward.
 10. Re-bake lessons with the new model; refresh curriculum packs.
 
 ### Phase D — Content + RAG 🔵
-11. Ingest the dataset (and real NERDC textbooks / past-question banks added to
-    the exam-class folders) via `rag/ingest.py` (writes the app's production FTS5
-    schema), then verify with `rag/query.py` (mirrors `rag.rs`; pass `-c`/`-s`/`-l`,
-    and `--mode` to test remediation/revision). Workflow: `rag/README.md`.
+11. Ingest the dataset (and real NERDC textbooks / past-question banks) via
+    `rag/ingest.py` (writes the app's production FTS5 schema), then verify with
+    `rag/query.py` (mirrors `rag.rs`; pass `-c`/`-s`/`-l`, and `--mode` to test
+    remediation/revision). Workflow: `rag/README.md`.
+    - **Textbook pipeline (built):** `rag/ingest_textbook.py` OCRs a scanned PDF /
+      page images (Tesseract; digital-PDF text layer used directly when present)
+      into a cleaned, reviewable `.txt` artifact in the class folder;
+      `rag/ingest.py` indexes any `*.txt` as `source_type='textbook'` (or
+      `past_questions`). The artifact lives in `dataset/`, so `curriculum.db` stays
+      reproducible — OCR runs once, re-ingest any time. OCR deps:
+      `rag/requirements-ocr.txt` (`pip install` + `tesseract-ocr` system package).
+      Any external OCR tool works too — produce text, save as `<topic>.txt` in the
+      class folder, ingest. **Remaining:** scan/ingest the real books (needs the
+      source material + a copyright/rights check before bundling publisher text).
 12. Seed the default curriculum pack with real content (not the 3-doc sample).
 
 ### Phase E — Polish / post-MVP
@@ -211,5 +223,9 @@ QA verifies → repeat.
 
 ---
 
-*Status as of 2026-06-19. App-side details reflect the last working session —
-verify against current code before relying on a specific file or function.*
+*Status as of 2026-06-27. Recent: persona consolidated to one source
+(`curriculum/nigerian.system_prompt.txt`, compiled into Rust via `include_str!`,
+Modelfile generated from it); cloud Azure TTS removed for the offline build;
+CI + Git LFS wired; textbook OCR ingestion pipeline added. App-side details
+reflect the last working session — verify against current code before relying on
+a specific file or function.*

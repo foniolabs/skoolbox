@@ -112,8 +112,6 @@ export interface AILesson {
 export interface TtsSettings {
   voice: string
   speed: string
-  azure_key: string
-  azure_region: string
 }
 
 // ── Student commands ──────────────────────────────────
