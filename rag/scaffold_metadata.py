@@ -64,16 +64,18 @@ def load_framework(curriculum: str) -> dict:
 
 
 def topics_from_folder(folder: Path) -> list[str]:
-    """Derive a topic list from the .jsonl filenames in a class folder.
+    """Derive a topic list from the content filenames in a class folder.
 
-    Exam-bank files (named *_past_questions.jsonl) are not topics.
+    Covers both Q&A files (.jsonl) and extracted textbook text (.txt from
+    rag/ingest_textbook.py). Exam-bank files (named *_past_questions.*) are not
+    topics. Deduped, preserving first-seen order.
     """
     topics = []
-    for f in sorted(folder.glob("*.jsonl")):
+    for f in sorted(list(folder.glob("*.jsonl")) + list(folder.glob("*.txt"))):
         if f.stem.endswith("past_questions"):
             continue
         topics.append(f.stem.replace("_", " "))
-    return topics
+    return list(dict.fromkeys(topics))
 
 
 def build_metadata(curriculum: str, framework: dict, subject: str,

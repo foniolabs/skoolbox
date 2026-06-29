@@ -1,0 +1,16 @@
+# Git LFS — large binary model artifacts (SKILL.md Phase 0 / Cross-cutting: packaging).
+# These are too big for normal git history: the fine-tuned LLM GGUF is ~2.6 GB and
+# the offline voice models are ~250–300 MB each.
+#
+# One-time setup per machine before cloning/pulling these files:
+#   git lfs install
+#
+# LLM weights (quantized GGUF — e.g. skoolbox-qwen3-4b-v1.0-Q4_K_M.gguf)
+*.gguf filter=lfs diff=lfs merge=lfs -text
+
+# Neural TTS voices (Piper / Kokoro ONNX)
+*.onnx filter=lfs diff=lfs merge=lfs -text
+
+# STT weights (whisper.cpp ggml binaries) — scoped to the models dir so unrelated
+# *.bin files elsewhere are not pulled into LFS.
+src-tauri/ai/models/*.bin filter=lfs diff=lfs merge=lfs -text

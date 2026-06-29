@@ -1,0 +1,16 @@
+# Dependencies for rag/ingest_textbook.py (scanned-textbook OCR → RAG).
+#
+# These are ONLY needed on the machine that prepares content (content-prep step),
+# NOT in the shipped offline app. Install once:
+#
+#   sudo apt-get install tesseract-ocr        # Debian/Ubuntu  (the OCR engine)
+#   choco install tesseract                   # Windows
+#   brew install tesseract                    # macOS
+#   pip install -r rag/requirements-ocr.txt   # the Python bindings below
+#
+# For non-English pages, also install the matching Tesseract language pack, e.g.
+#   sudo apt-get install tesseract-ocr-fra    # then pass --lang fra
+
+PyMuPDF>=1.24      # read PDFs: use the text layer when present, else rasterize pages
+pytesseract>=0.3.10  # Python wrapper around the Tesseract OCR engine
+Pillow>=10.0       # image loading for OCR

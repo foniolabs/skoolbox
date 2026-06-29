@@ -125,8 +125,38 @@ def extract_records(path: Path) -> list[tuple[str, str]]:
     return out
 
 
+def index_document(conn: sqlite3.Connection, *, title: str, curriculum: str,
+                   subject: str, class_level: str, topic: str, source_type: str,
+                   source_file: str, is_exam_bank: int, parts: list[str]) -> None:
+    """Insert one document + its FTS chunks. Caller has already chunked the text."""
+    doc_id = str(uuid.uuid4())
+    conn.execute(
+        "INSERT INTO curriculum_documents "
+        "(id, title, curriculum, subject, class_level, topic, "
+        " source_type, source_file, is_exam_bank, chunk_count) "
+        "VALUES (?,?,?,?,?,?,?,?,?,?)",
+        (doc_id, title, curriculum, subject, class_level, topic,
+         source_type, source_file, is_exam_bank, len(parts)),
+    )
+    for chunk in parts:
+        conn.execute(
+            "INSERT INTO curriculum_fts "
+            "(content, title, curriculum, subject, class_level, topic, "
+            " source_type, is_exam_bank, document_id) "
+            "VALUES (?,?,?,?,?,?,?,?,?)",
+            (chunk, title, curriculum, subject, class_level, topic,
+             source_type, str(is_exam_bank), doc_id),
+        )
+
+
 def ingest_class_folder(conn: sqlite3.Connection, folder: Path) -> tuple[int, int]:
-    """Ingest one <class> folder. Returns (docs, chunks). Skips if no metadata."""
+    """Ingest one <class> folder. Returns (docs, chunks). Skips if no metadata.
+
+    Two kinds of file are indexed (both tagged with the folder's metadata):
+      * .jsonl — tutoring Q&A (source_type tutor_qa / past_questions)
+      * .txt   — extracted textbook / past-question text from
+                 rag/ingest_textbook.py (source_type textbook / past_questions)
+    """
     meta_path = folder / "metadata.json"
     if not meta_path.exists():
         print(f"  ! no metadata.json in {folder} — folder skipped", file=sys.stderr)
@@ -137,6 +167,7 @@ def ingest_class_folder(conn: sqlite3.Connection, folder: Path) -> tuple[int, in
     class_level = meta["class_level"]
 
     docs = chunks_written = 0
+
     for jf in sorted(folder.glob("*.jsonl")):
         is_exam_bank = 1 if jf.stem.endswith("past_questions") else 0
         source_type = "past_questions" if is_exam_bank else "tutor_qa"
@@ -145,26 +176,28 @@ def ingest_class_folder(conn: sqlite3.Connection, folder: Path) -> tuple[int, in
             parts = chunk_text(text)
             if not parts:
                 continue
-            doc_id = str(uuid.uuid4())
-            conn.execute(
-                "INSERT INTO curriculum_documents "
-                "(id, title, curriculum, subject, class_level, topic, "
-                " source_type, source_file, is_exam_bank, chunk_count) "
-                "VALUES (?,?,?,?,?,?,?,?,?,?)",
-                (doc_id, title, curriculum, subject, class_level, topic,
-                 source_type, jf.name, is_exam_bank, len(parts)),
-            )
-            for idx, chunk in enumerate(parts):
-                conn.execute(
-                    "INSERT INTO curriculum_fts "
-                    "(content, title, curriculum, subject, class_level, topic, "
-                    " source_type, is_exam_bank, document_id) "
-                    "VALUES (?,?,?,?,?,?,?,?,?)",
-                    (chunk, title, curriculum, subject, class_level, topic,
-                     source_type, str(is_exam_bank), doc_id),
-                )
-                chunks_written += 1
+            index_document(conn, title=title, curriculum=curriculum,
+                           subject=subject, class_level=class_level, topic=topic,
+                           source_type=source_type, source_file=jf.name,
+                           is_exam_bank=is_exam_bank, parts=parts)
+            chunks_written += len(parts)
             docs += 1
+
+    # Textbook / past-question text artifacts (whole file = one document).
+    for tf in sorted(folder.glob("*.txt")):
+        is_exam_bank = 1 if tf.stem.endswith("past_questions") else 0
+        source_type = "past_questions" if is_exam_bank else "textbook"
+        topic = "" if is_exam_bank else tf.stem.replace("_", " ")
+        parts = chunk_text(tf.read_text(encoding="utf-8"))
+        if not parts:
+            continue
+        index_document(conn, title=tf.stem.replace("_", " "), curriculum=curriculum,
+                       subject=subject, class_level=class_level, topic=topic,
+                       source_type=source_type, source_file=tf.name,
+                       is_exam_bank=is_exam_bank, parts=parts)
+        chunks_written += len(parts)
+        docs += 1
+
     return (docs, chunks_written)
 
 
