@@ -7,6 +7,10 @@ This folder holds every training example used to fine-tune the SkoolBox AI tutor
 (Martha) on the Nigerian curriculum. The quality of SkoolBox's teaching depends
 entirely on the quality of the examples written here.
 
+> 📚 **Adding a whole textbook or past-questions paper?** That's a different (and
+> often faster) path — see [HOW_TO_ADD_A_TEXTBOOK.md](HOW_TO_ADD_A_TEXTBOOK.md).
+> This README is for writing Q&A examples by hand.
+
 ## Folder structure
 
 Content is organised **curriculum → subject → phase → class** (see
