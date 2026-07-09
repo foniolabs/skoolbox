@@ -7,25 +7,40 @@ interface WhiteboardCanvasProps {
   steps: LessonStep[];
   currentStepIndex: number;
   isPlaying: boolean;
+  /** Large fonts + spacing for classroom projector readability (~6 m). */
+  projectorMode?: boolean;
 }
 
 export default function WhiteboardCanvas({
   steps,
   currentStepIndex,
   isPlaying,
+  projectorMode = false,
 }: WhiteboardCanvasProps) {
   const visibleSteps = steps.slice(0, currentStepIndex + 1);
 
+  const shell = projectorMode
+    ? 'w-full flex-1 flex items-start justify-center pt-10 pb-20 px-10 md:px-16 min-h-[55vh]'
+    : 'w-full min-h-[280px] flex items-start justify-center pt-10 pb-16 px-8';
+
+  const inner = projectorMode ? 'w-full max-w-[1200px] space-y-10' : 'w-full max-w-[900px] space-y-6';
+
+  const type = projectorMode
+    ? { heading: 'text-5xl md:text-6xl', write: 'text-3xl md:text-4xl', highlight: 'text-3xl md:text-4xl', diagram: 'text-2xl md:text-3xl' }
+    : { heading: 'text-4xl', write: 'text-xl', highlight: 'text-xl', diagram: 'text-lg' };
+
+  const eqClass = projectorMode ? 'text-5xl md:text-6xl' : '';
+
   return (
     <div
-      className="w-full min-h-screen flex items-start justify-center pt-16 pb-32 px-8"
+      className={shell}
       style={{
         backgroundImage:
           'radial-gradient(circle, #e2e8f0 1px, transparent 1px)',
-        backgroundSize: '24px 24px',
+        backgroundSize: projectorMode ? '32px 32px' : '24px 24px',
       }}
     >
-      <div className="w-full max-w-[900px] space-y-6">
+      <div className={inner}>
         <AnimatePresence mode="sync">
           {visibleSteps.map((step, index) => {
             const isCurrent = index === currentStepIndex;
@@ -39,7 +54,7 @@ export default function WhiteboardCanvas({
                 className="w-full"
               >
                 {step.action === 'heading' && (
-                  <h1 className="text-4xl font-bold text-text-primary mb-2">
+                  <h1 className={`${type.heading} font-bold text-text-primary mb-2`}>
                     <TypingAnimation
                       text={step.content}
                       speed={30}
@@ -49,7 +64,7 @@ export default function WhiteboardCanvas({
                 )}
 
                 {step.action === 'write' && (
-                  <p className="text-xl text-text-primary leading-relaxed">
+                  <p className={`${type.write} text-text-primary leading-relaxed`}>
                     <TypingAnimation
                       text={step.content}
                       speed={35}
@@ -62,6 +77,7 @@ export default function WhiteboardCanvas({
                   <EquationWriter
                     equation={step.content}
                     animate={isCurrent}
+                    className={eqClass}
                   />
                 )}
 
@@ -74,7 +90,7 @@ export default function WhiteboardCanvas({
                     }
                     animate={{ backgroundSize: '100% 100%' }}
                     transition={{ duration: 0.8, delay: 0.3 }}
-                    className="text-xl font-semibold text-text-primary px-3 py-2 rounded-lg"
+                    className={`${type.highlight} font-semibold text-text-primary px-3 py-2 rounded-lg`}
                     style={{
                       backgroundImage:
                         'linear-gradient(to right, #FEF08A, #FDE047)',
@@ -92,7 +108,7 @@ export default function WhiteboardCanvas({
 
                 {step.action === 'diagram' && (
                   <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center text-text-secondary">
-                    <p className="text-lg italic">{step.content}</p>
+                    <p className={`${type.diagram} italic`}>{step.content}</p>
                   </div>
                 )}
               </motion.div>

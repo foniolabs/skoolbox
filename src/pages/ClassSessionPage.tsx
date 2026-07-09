@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { GraduationCap, Loader2, Sparkles, Send, CheckCircle, XCircle, RotateCcw, Volume2, Pause, Play, SkipForward, X, Package, Zap } from 'lucide-react'
+import { GraduationCap, Loader2, Sparkles, Send, CheckCircle, XCircle, RotateCcw, Volume2, Pause, Play, SkipForward, X, Package, Zap, Monitor, MonitorOff } from 'lucide-react'
 import WhiteboardCanvas from '../components/teach/whiteboard/WhiteboardCanvas'
 import CustomDropdown from '../components/shared/CustomDropdown'
 import Button from '../components/shared/Button'
 import { speak, stopSpeaking } from '../lib/tts/marthaVoice'
+import { buildOpeningGreeting } from '../lib/classroom/openingGreeting'
 import {
   classroomPlanLesson, classroomTeachSegment, classroomEvaluateAnswer,
   getGeneratedLesson, bakeLesson,
@@ -17,7 +18,7 @@ const classLevelOptions = [
   { label: 'SS1', value: 'SS1' }, { label: 'SS2', value: 'SS2' }, { label: 'SS3', value: 'SS3' },
 ]
 
-type Phase = 'setup' | 'loading' | 'teaching' | 'question' | 'done'
+type Phase = 'setup' | 'loading' | 'greeting' | 'teaching' | 'question' | 'done'
 
 const VALID_ACTIONS = ['write', 'equation', 'highlight', 'heading', 'diagram']
 
@@ -44,6 +45,8 @@ export default function ClassSessionPage() {
   const [topic, setTopic] = useState('')
 
   const [phase, setPhase] = useState<Phase>('setup')
+  const [projectorMode, setProjectorMode] = useState(true)
+  const [greetingText, setGreetingText] = useState('')
   const [error, setError] = useState('')
   const [plan, setPlan] = useState<LessonPlan | null>(null)
   const [segIndex, setSegIndex] = useState(0)
@@ -126,9 +129,29 @@ export default function ClassSessionPage() {
     }
   }, [fetchSegment, prefetchSegment])
 
+  // Opening greeting: Martha welcomes the class, then segment 1 begins.
+  useEffect(() => {
+    if (phase !== 'greeting' || !plan || !greetingText) return
+    let cancelled = false
+    if (!bakedRef.current) prefetchSegment(0, plan)
+    speak(greetingText).then(() => {
+      if (cancelled || !aliveRef.current) return
+      void loadSegment(0, plan)
+    })
+    return () => { cancelled = true; void stopSpeaking() }
+  }, [phase, plan, greetingText, loadSegment, prefetchSegment])
+
+  const beginLesson = (p: LessonPlan) => {
+    setPlan(p)
+    setSegIndex(0)
+    startRef.current = Date.now()
+    setGreetingText(buildOpeningGreeting(subject, classLevel, topic.trim()))
+    setPhase('greeting')
+  }
+
   const startClass = async () => {
     if (!topic.trim()) { setError('Enter a topic for Martha to teach.'); return }
-    setPhase('loading'); setError('')
+    setPhase('loading'); setError(''); setGreetingText('')
     try {
       // 1. Prefer a pre-generated lesson — instant, no CPU generation.
       const baked = await getGeneratedLesson(subject, topic.trim(), classLevel)
@@ -136,8 +159,7 @@ export default function ClassSessionPage() {
       if (baked && baked.segments.length > 0) {
         bakedRef.current = baked; setIsBaked(true)
         const p: LessonPlan = { title: baked.title, segment_titles: baked.segments.map((s) => s.title) }
-        setPlan(p); setSegIndex(0); startRef.current = Date.now()
-        await loadSegment(0, p)
+        beginLesson(p)
         return
       }
 
@@ -145,9 +167,7 @@ export default function ClassSessionPage() {
       bakedRef.current = null; setIsBaked(false)
       const p = await classroomPlanLesson(subject, topic.trim(), classLevel)
       if (!aliveRef.current) return
-      setPlan(p); setSegIndex(0)
-      startRef.current = Date.now()
-      await loadSegment(0, p)
+      beginLesson(p)
     } catch (err) {
       if (aliveRef.current) setError(typeof err === 'string' ? err : 'Martha could not plan the lesson.')
       setPhase('setup')
@@ -199,6 +219,7 @@ export default function ClassSessionPage() {
 
   const exitClass = () => {
     void stopSpeaking(); setPhase('setup'); setPlan(null); setSegment(null)
+    setGreetingText('')
     startRef.current = null; setElapsed(0)
     bakedRef.current = null; setIsBaked(false); prefetchRef.current = null
   }
@@ -252,6 +273,18 @@ export default function ClassSessionPage() {
               <Button onClick={startClass} className="flex items-center gap-2"><Sparkles size={15} /> Start Class</Button>
             </div>
           </div>
+          <label className="flex items-center gap-2.5 cursor-pointer select-none pt-1">
+            <input
+              type="checkbox"
+              checked={projectorMode}
+              onChange={(e) => setProjectorMode(e.target.checked)}
+              className="h-4 w-4 rounded border-border text-primary focus:ring-primary"
+            />
+            <span className="text-sm text-text-secondary">
+              <Monitor size={14} className="inline mr-1.5 -mt-0.5" />
+              Projector mode — large text for the classroom screen (readable from the back row)
+            </span>
+          </label>
           {bakeMsg && <p className="text-xs text-text-secondary bg-bg-secondary/60 rounded-[10px] px-3 py-2">{bakeMsg}</p>}
         </div>
       </div>
@@ -260,77 +293,145 @@ export default function ClassSessionPage() {
 
   // ── Loading (planning or preparing a segment) ───────────────────────────────
   if (phase === 'loading' && !segment) {
+    const loadingShell = projectorMode
+      ? 'fixed inset-0 z-[200] bg-slate-950 flex items-center justify-center'
+      : 'min-h-[70vh] flex items-center justify-center'
     return (
-      <div className="min-h-[70vh] flex items-center justify-center">
-        <div className="text-center">
-          <Loader2 className="w-7 h-7 animate-spin text-primary mx-auto mb-3" />
-          <p className="text-lg font-medium text-text-primary">{plan ? 'Preparing the next part…' : 'Martha is planning the lesson…'}</p>
-          <p className="text-sm text-text-secondary mt-1">Generating on-device with Qwen.</p>
+      <div className={loadingShell}>
+        <div className="text-center px-8">
+          <Loader2 className={`animate-spin mx-auto mb-4 ${projectorMode ? 'w-12 h-12 text-white' : 'w-7 h-7 text-primary'}`} />
+          <p className={`font-medium ${projectorMode ? 'text-3xl text-white' : 'text-lg text-text-primary'}`}>
+            {plan ? 'Preparing the next part…' : 'Martha is planning the lesson…'}
+          </p>
+          <p className={`mt-2 ${projectorMode ? 'text-lg text-slate-300' : 'text-sm text-text-secondary'}`}>
+            Generating on-device with Qwen.
+          </p>
         </div>
       </div>
     )
   }
 
-  // ── Teaching / Question / Done ──────────────────────────────────────────────
+  const isProjector = projectorMode && phase !== 'setup'
+  const shellClass = isProjector
+    ? 'fixed inset-0 z-[200] bg-white flex flex-col overflow-hidden'
+    : 'p-4 flex flex-col gap-4 max-w-[1100px] mx-auto'
+  const headerClass = isProjector
+    ? 'shrink-0 flex items-center justify-between gap-4 px-6 py-4 bg-slate-900 text-white'
+    : 'flex items-center justify-between gap-3'
+  const titleClass = isProjector ? 'text-2xl md:text-3xl font-bold truncate' : 'text-lg font-bold text-text-primary truncate'
+  const metaClass = isProjector ? 'text-sm text-slate-300' : 'text-xs text-text-muted'
+
+  // ── Teaching / Greeting / Question / Done ───────────────────────────────────
   return (
-    <div className="p-4 flex flex-col gap-4 max-w-[1100px] mx-auto">
+    <div className={shellClass}>
       {/* Header: progress + timer + controls */}
-      <div className="flex items-center justify-between gap-3">
+      <div className={headerClass}>
         <div className="min-w-0">
           <div className="flex items-center gap-2">
-            <h2 className="text-lg font-bold text-text-primary truncate">{plan?.title || topic}</h2>
+            <h2 className={titleClass}>{plan?.title || topic}</h2>
             {isBaked && (
-              <span className="flex items-center gap-1 rounded-full bg-green-100 text-green-700 text-[10px] font-semibold px-2 py-0.5 shrink-0">
+              <span className={`flex items-center gap-1 rounded-full font-semibold px-2 py-0.5 shrink-0 ${isProjector ? 'bg-green-500/20 text-green-300 text-xs' : 'bg-green-100 text-green-700 text-[10px]'}`}>
                 <Zap size={10} /> Pre-loaded
               </span>
             )}
+            {isProjector && (
+              <span className="rounded-full bg-primary/20 text-primary-200 text-xs font-semibold px-2.5 py-0.5 shrink-0">
+                PROJECTOR
+              </span>
+            )}
           </div>
-          <p className="text-xs text-text-muted">
-            Segment {Math.min(segIndex + 1, totalSegments)} of {totalSegments}
-            {plan && ` · ${plan.segment_titles[segIndex]}`}
+          <p className={metaClass}>
+            {phase === 'greeting' ? 'Opening greeting' : `Segment ${Math.min(segIndex + 1, totalSegments)} of ${totalSegments}`}
+            {phase !== 'greeting' && plan && ` · ${plan.segment_titles[segIndex]}`}
           </p>
         </div>
-        <div className="flex items-center gap-3 shrink-0">
-          <span className={`text-sm font-mono ${elapsed >= 1800 ? 'text-green-600' : 'text-text-secondary'}`}>{mmss(elapsed)} / 30:00</span>
+        <div className="flex items-center gap-2 md:gap-3 shrink-0">
+          <span className={`font-mono ${isProjector ? 'text-base text-slate-200' : `text-sm ${elapsed >= 1800 ? 'text-green-600' : 'text-text-secondary'}`}`}>
+            {mmss(elapsed)} / 30:00
+          </span>
+          <button
+            onClick={() => setProjectorMode((p) => !p)}
+            title={projectorMode ? 'Exit projector mode' : 'Projector mode'}
+            className={`h-9 w-9 flex items-center justify-center rounded-lg transition-colors ${isProjector ? 'text-slate-200 hover:bg-slate-800' : 'text-text-secondary hover:bg-bg-secondary'}`}
+          >
+            {projectorMode ? <MonitorOff size={17} /> : <Monitor size={17} />}
+          </button>
           {phase === 'teaching' && (
             <>
               <button onClick={() => { setIsPlaying((p) => !p); void stopSpeaking() }} title={isPlaying ? 'Pause' : 'Play'}
-                className="h-9 w-9 flex items-center justify-center rounded-lg text-text-secondary hover:bg-bg-secondary">
+                className={`h-9 w-9 flex items-center justify-center rounded-lg ${isProjector ? 'text-slate-200 hover:bg-slate-800' : 'text-text-secondary hover:bg-bg-secondary'}`}>
                 {isPlaying ? <Pause size={17} /> : <Play size={17} />}
               </button>
               <button onClick={() => { void stopSpeaking(); setPhase('question') }} title="Skip to question"
-                className="h-9 w-9 flex items-center justify-center rounded-lg text-text-secondary hover:bg-bg-secondary">
+                className={`h-9 w-9 flex items-center justify-center rounded-lg ${isProjector ? 'text-slate-200 hover:bg-slate-800' : 'text-text-secondary hover:bg-bg-secondary'}`}>
                 <SkipForward size={17} />
               </button>
             </>
           )}
-          <button onClick={exitClass} title="End class" className="h-9 w-9 flex items-center justify-center rounded-lg text-red-400 hover:bg-red-50">
+          <button onClick={exitClass} title="End class"
+            className={`h-9 w-9 flex items-center justify-center rounded-lg ${isProjector ? 'text-red-300 hover:bg-red-950' : 'text-red-400 hover:bg-red-50'}`}>
             <X size={17} />
           </button>
         </div>
       </div>
 
       {/* Progress bar over segments */}
-      <div className="h-1.5 w-full rounded-full bg-bg-secondary overflow-hidden">
-        <div className="h-full bg-primary transition-all" style={{ width: `${totalSegments ? ((segIndex + (phase === 'question' || phase === 'done' ? 1 : 0)) / totalSegments) * 100 : 0}%` }} />
+      <div className={`shrink-0 overflow-hidden ${isProjector ? 'h-2 bg-slate-200' : 'h-1.5 w-full rounded-full bg-bg-secondary'}`}>
+        <div
+          className="h-full bg-primary transition-all"
+          style={{
+            width: `${totalSegments
+              ? ((segIndex + (phase === 'question' || phase === 'done' ? 1 : 0)) / totalSegments) * 100
+              : 0}%`,
+          }}
+        />
       </div>
 
-      {/* Whiteboard */}
-      <div className="rounded-[16px] overflow-hidden border border-border bg-white min-h-[300px]">
-        <WhiteboardCanvas steps={steps} currentStepIndex={phase === 'teaching' ? stepIdx : steps.length - 1} isPlaying={phase === 'teaching' && isPlaying} />
-      </div>
-
-      {phase === 'teaching' && (
-        <div className="flex items-center gap-2 text-sm text-text-secondary">
-          <Volume2 size={16} className="text-primary animate-pulse" /> Martha is teaching…
+      {/* Opening greeting — spoken + displayed before segment 1 */}
+      {phase === 'greeting' && (
+        <div
+          className={`flex-1 flex flex-col items-center justify-center text-center px-8 md:px-16 ${isProjector ? 'bg-white' : 'bg-bg-secondary/30 min-h-[50vh] rounded-[16px] border border-border mx-4'}`}
+          style={isProjector ? {
+            backgroundImage: 'radial-gradient(circle, #e2e8f0 1px, transparent 1px)',
+            backgroundSize: '32px 32px',
+          } : undefined}
+        >
+          <p className={`uppercase tracking-widest font-semibold mb-4 ${isProjector ? 'text-primary text-sm' : 'text-primary text-xs'}`}>
+            Martha · {classLevel} {subject}
+          </p>
+          <p className={`font-medium text-text-primary leading-relaxed max-w-4xl ${isProjector ? 'text-3xl md:text-5xl' : 'text-xl md:text-2xl'}`}>
+            {greetingText}
+          </p>
+          <div className={`flex items-center gap-2 mt-8 ${isProjector ? 'text-lg text-text-secondary' : 'text-sm text-text-secondary'}`}>
+            <Volume2 size={isProjector ? 22 : 16} className="text-primary animate-pulse" />
+            Martha is greeting the class…
+          </div>
         </div>
       )}
 
-      {/* Question + evaluation */}
+      {/* Whiteboard */}
+      {(phase === 'teaching' || phase === 'question' || phase === 'done') && (
+        <div className={`flex-1 flex flex-col min-h-0 ${isProjector ? '' : 'rounded-[16px] overflow-hidden border border-border bg-white min-h-[300px]'}`}>
+          <WhiteboardCanvas
+            steps={steps}
+            currentStepIndex={phase === 'teaching' ? stepIdx : steps.length - 1}
+            isPlaying={phase === 'teaching' && isPlaying}
+            projectorMode={isProjector}
+          />
+        </div>
+      )}
+
+      {phase === 'teaching' && (
+        <div className={`shrink-0 flex items-center gap-2 px-6 py-3 ${isProjector ? 'text-lg text-text-secondary bg-slate-50 border-t border-slate-200' : 'text-sm text-text-secondary'}`}>
+          <Volume2 size={isProjector ? 20 : 16} className="text-primary animate-pulse" /> Martha is teaching…
+        </div>
+      )}
+
+      {/* Question + evaluation — teacher panel; stays readable at desk */}
       {(phase === 'question' || phase === 'done') && segment && (
-        <div className="bg-white rounded-[16px] shadow-card p-5">
-          <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">Martha asks the class</p>
-          <p className="text-text-primary font-medium mb-3">{segment.check_question}</p>
+        <div className={`shrink-0 ${isProjector ? 'border-t-2 border-slate-200 bg-slate-50 px-6 py-5' : 'bg-white rounded-[16px] shadow-card p-5'}`}>
+          <p className={`font-semibold text-primary uppercase tracking-wider mb-1 ${isProjector ? 'text-sm' : 'text-xs'}`}>Martha asks the class</p>
+          <p className={`text-text-primary font-medium mb-3 ${isProjector ? 'text-2xl md:text-3xl leading-snug' : ''}`}>{segment.check_question}</p>
           <div className="flex gap-2">
             <input value={answer} onChange={(e) => setAnswer(e.target.value)}
               onKeyDown={(e) => { if (e.key === 'Enter') handleEvaluate() }}
@@ -368,9 +469,11 @@ export default function ClassSessionPage() {
       )}
 
       {phase === 'done' && (
-        <div className="bg-green-50 rounded-[16px] p-5 text-center">
-          <p className="text-green-700 font-semibold">Lesson complete 🎉</p>
-          <p className="text-sm text-text-secondary mt-1">Taught {totalSegments} segments in {mmss(elapsed)}.</p>
+        <div className={`shrink-0 text-center ${isProjector ? 'border-t-2 border-green-200 bg-green-50 px-6 py-6' : 'bg-green-50 rounded-[16px] p-5'}`}>
+          <p className={`text-green-700 font-semibold ${isProjector ? 'text-2xl' : ''}`}>Lesson complete</p>
+          <p className={`text-text-secondary mt-1 ${isProjector ? 'text-lg' : 'text-sm'}`}>
+            Taught {totalSegments} segments in {mmss(elapsed)}.
+          </p>
           <Button onClick={exitClass} className="mt-3">Teach another topic</Button>
         </div>
       )}
