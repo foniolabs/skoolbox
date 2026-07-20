@@ -30,7 +30,8 @@
     "active": true,
     "targets": "all",
     "resources": [
-      "default_curriculum_pack.json"
+      "default_curriculum_pack.json",
+      "resources/voice/"
     ],
     "icon": [
       "icons/32x32.png",

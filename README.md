@@ -4,7 +4,7 @@
 
 **Offline-first AI tutor for Nigerian secondary schools.**
 
-Built with Tauri · React · TypeScript · SQLite · Claude · Azure TTS
+Built with Tauri · React · TypeScript · SQLite · Ollama · offline voice (Piper + Whisper)
 
 [Features](#features) · [Quick Start](#quick-start) · [Development](#development) · [Project Structure](#project-structure) · [Contributing](#contributing)
 
@@ -30,7 +30,8 @@ Full product context lives in [PRD.md](PRD.md).
 ### For Teachers
 - Dashboard with class progress, recent assessments, and today's lessons
 - AI-assisted **Lesson Planner**
-- Full-screen **Presentation** mode (whiteboard, slideshow, narrated) with KaTeX equations and TTS
+- **Teach a Class** with projector mode, opening greeting, whiteboard + TTS narration
+- Push-to-talk STT (hold Space) with live transcription preview
 - **Quiz Builder** + auto-grading
 - **Curriculum Planner** with term-by-term coverage tracking
 - Per-class and per-student **monitoring** dashboards
@@ -46,8 +47,9 @@ Full product context lives in [PRD.md](PRD.md).
 ### Platform
 - Runs **offline** for all core flows
 - Local-only data store (SQLite via Tauri)
-- Anthropic Claude integration (when online)
-- Azure Speech Services TTS with browser-native fallback
+- On-device AI via Ollama (Martha); optional cloud provider for online-only flows
+- **Offline voice:** Piper neural TTS + Whisper Small STT (push-to-talk Spacebar)
+- Voice assets bundled in the installer; seeded into app data on first launch
 - `.docx` import for existing lesson materials
 
 ---
@@ -65,8 +67,9 @@ Full product context lives in [PRD.md](PRD.md).
 | Math | [KaTeX](https://katex.org/) |
 | Animation | [Framer Motion](https://www.framer.com/motion/) |
 | Local DB | SQLite via `tauri-plugin-sql` |
-| AI | [Anthropic Claude](https://www.anthropic.com/) |
-| TTS | Azure Speech Services + Web Speech API |
+| AI | Ollama (Martha / Qwen) — offline default |
+| TTS | Piper (bundled) → Windows SAPI / `spd-say` fallback → Web Speech in browser |
+| STT | whisper.cpp Small (bundled), push-to-activate |
 
 ---
 
@@ -98,24 +101,34 @@ cd skoolbox
 npm install
 ```
 
-### 3. Configure environment
+### 3. Configure environment (optional)
 
-Create a `.env` file in the project root (see [`.env.example`](.env.example)):
+Create a `.env` file in the project root only if you need optional online AI:
 
 ```env
-# Anthropic API key — required only for the online AI tutor features.
-# Get one at https://console.anthropic.com/
-API_KEY=sk-ant-...
-
-# Optional: Azure Speech Services for high-quality TTS.
-# Without these, the app falls back to the browser's built-in voices.
-AZURE_TTS_KEY=
-AZURE_TTS_REGION=
+# Optional — online provider for non-offline flows. Core classroom AI runs via Ollama.
+API_KEY=
 ```
 
-> **Never commit `.env`.** It is gitignored. Share keys with teammates over a secure channel (1Password, Bitwarden, etc.).
+Offline voice (Piper + Whisper) does **not** need API keys. Assets ship in
+`src-tauri/resources/voice/` and are copied into app data on first launch.
 
-### 4. Run in dev mode
+> **Never commit `.env`.** It is gitignored.
+
+### 4. Voice assets (producers / fresh clone)
+
+If `src-tauri/resources/voice/` is empty (e.g. before a release build, or LFS
+files not pulled), populate the bundled pack:
+
+```powershell
+# Requires git lfs install on the machine before committing large *.onnx / *.bin
+.\scripts\setup-voice.ps1
+```
+
+This fills both the installer bundle dir and `%APPDATA%\com.foniolabs.skoolbox`.
+Schools do not run this — the installer already contains the pack.
+
+### 5. Run in dev mode
 
 For the **desktop app** (recommended — this is the primary target):
 
@@ -131,7 +144,7 @@ npm run dev
 
 The web preview runs at http://localhost:5173.
 
-### 5. Build for production
+### 6. Build for production
 
 ```bash
 # Production desktop bundles (.dmg / .msi / .deb / .AppImage)
@@ -217,20 +230,26 @@ skoolbox/
 │   │   └── topic-learning/
 │   ├── data/               # Static seed content (subjects, questions, …)
 │   ├── lib/                # Cross-cutting helpers
-│   │   ├── ai/             # Claude teaching assistant
+│   │   ├── ai/             # Teaching assistant helpers
+│   │   ├── classroom/      # Opening greeting, session helpers
 │   │   ├── db/             # SQLite helpers
 │   │   ├── quiz/
 │   │   ├── tauri/
-│   │   └── tts/            # Azure + browser TTS
+│   │   ├── tts/            # Browser Web Speech fallback
+│   │   └── voice/          # Tauri TTS/STT bindings (classroom voice)
+│   ├── hooks/              # e.g. useClassroomVoice (Space push-to-talk)
 │   ├── pages/              # Route-level components (teacher + student/)
 │   └── stores/             # Zustand state stores
+├── scripts/
+│   └── setup-voice.ps1     # Producer script: download Piper + Whisper into bundle
 ├── src-tauri/              # Rust shell + native APIs
 │   ├── Cargo.toml
-│   ├── tauri.conf.json     # App config (name, CSP, windows, bundle)
+│   ├── tauri.conf.json     # App config (name, CSP, windows, bundle resources)
 │   ├── capabilities/
 │   ├── icons/
 │   ├── ai/                 # Ollama Modelfile + bundled model assets
-│   └── src/                # Rust backend (AI engine, RAG, DB, commands)
+│   ├── resources/voice/    # Bundled Piper + Whisper (~530 MB; Git LFS)
+│   └── src/                # Rust backend (AI, RAG, DB, voice, commands)
 │
 │   ── AI fine-tuning pipeline (the monorepo) ──
 ├── dataset/                # 🟢 Subject experts write .jsonl training examples
@@ -281,7 +300,7 @@ We follow **Conventional Commits**:
 
 ```
 feat(quiz): add per-topic auto-grading
-fix(tts): fall back to browser voices when Azure key missing
+fix(voice): fall back to Windows SAPI when Piper is missing
 chore(deps): bump tauri to 2.10.3
 docs(readme): clarify Tauri prereqs on Linux
 ```

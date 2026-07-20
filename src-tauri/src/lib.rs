@@ -2,6 +2,7 @@ mod ai;
 mod commands;
 mod db;
 mod models;
+mod voice;
 
 use db::{connection, DbState};
 use std::sync::Mutex;
@@ -41,6 +42,12 @@ pub fn run() {
             // Store database connection as managed state
             app.manage(DbState {
                 db: Mutex::new(conn),
+            });
+
+            let voice_paths = voice::VoicePaths::from_app(&app.handle())?;
+            voice::seed::seed_bundled_voice_if_needed(&app.handle(), &voice_paths);
+            app.manage(voice::VoiceState {
+                paths: voice_paths,
             });
 
             if cfg!(debug_assertions) {
@@ -131,6 +138,12 @@ pub fn run() {
             commands::tts::speak_text,
             commands::tts::stop_speaking,
             commands::tts::tts_available,
+            commands::tts::get_voice_status,
+            // ── STT (push-to-activate, offline) ─────────────────────────────
+            commands::stt::stt_start_listening,
+            commands::stt::stt_stop_and_transcribe,
+            commands::stt::stt_cancel_listening,
+            commands::stt::stt_is_listening,
             // ── Auth ────────────────────────────────────────────────────────
             commands::auth::login,
             commands::auth::register,

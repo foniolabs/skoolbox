@@ -1,8 +1,10 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { GraduationCap, Loader2, Sparkles, Send, CheckCircle, XCircle, RotateCcw, Volume2, Pause, Play, SkipForward, X, Package, Zap, Monitor, MonitorOff } from 'lucide-react'
 import WhiteboardCanvas from '../components/teach/whiteboard/WhiteboardCanvas'
+import VoiceBar from '../components/teach/VoiceBar'
 import CustomDropdown from '../components/shared/CustomDropdown'
 import Button from '../components/shared/Button'
+import { useClassroomVoice } from '../hooks/useClassroomVoice'
 import { speak, stopSpeaking } from '../lib/tts/marthaVoice'
 import { buildOpeningGreeting } from '../lib/classroom/openingGreeting'
 import {
@@ -64,6 +66,14 @@ export default function ClassSessionPage() {
 
   const steps = toLessonSteps(segment)
   const totalSegments = plan?.segment_titles.length ?? 0
+  const voiceActive = phase !== 'setup' && phase !== 'loading'
+  const {
+    voiceStatus,
+    listenState,
+    transcription,
+    transcriptionError,
+    dismissTranscription,
+  } = useClassroomVoice(voiceActive)
 
   useEffect(() => () => { aliveRef.current = false; void stopSpeaking() }, [])
 
@@ -425,6 +435,17 @@ export default function ClassSessionPage() {
         <div className={`shrink-0 flex items-center gap-2 px-6 py-3 ${isProjector ? 'text-lg text-text-secondary bg-slate-50 border-t border-slate-200' : 'text-sm text-text-secondary'}`}>
           <Volume2 size={isProjector ? 20 : 16} className="text-primary animate-pulse" /> Martha is teaching…
         </div>
+      )}
+
+      {voiceActive && (
+        <VoiceBar
+          voiceStatus={voiceStatus}
+          listenState={listenState}
+          transcription={transcription}
+          transcriptionError={transcriptionError}
+          projectorMode={isProjector}
+          onDismissTranscription={dismissTranscription}
+        />
       )}
 
       {/* Question + evaluation — teacher panel; stays readable at desk */}

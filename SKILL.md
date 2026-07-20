@@ -17,7 +17,7 @@ production decisions.
 
 ---
 
-## 📍 Handoff — pick up here (last updated 2026-06-27)
+## 📍 Handoff — pick up here (last updated 2026-07-14)
 
 > **Read this before starting.** Each phase below is tagged ✅ done / 🟡 partial /
 > 🔨 to build. **Do not redo ✅ items** — verify them with the commands below
@@ -39,9 +39,14 @@ production decisions.
 - **Cloud TTS removed** for the offline build (`src/lib/tts/azureTTS.ts` deleted;
   Azure config stripped from stores/Settings/mockData). Verify: `grep -rni azure src/`
   returns only comments; `npx tsc --noEmit` is clean.
+- **Offline voice stack (Phase 4 core):** Piper TTS + Whisper Small STT, push-to-
+  activate (Space), Escape stops speech, bundled in `src-tauri/resources/voice/`,
+  first-launch seed into app data. Transcription is **preview-only** (not wired to
+  Martha yet). Verify: `.\scripts\setup-voice.ps1` (producers); `cargo check` in
+  `src-tauri/`; VoiceBar shows `TTS: piper` / `STT: whisper-small` in a class session.
 - **CI guards + Git LFS:** `.github/workflows/ci.yml` (metadata + Modelfile sync +
   `cargo test` + `tsc` as hard gates; clippy/eslint non-blocking until cleaned up)
-  and `.gitattributes` (LFS for `*.gguf`/`*.onnx`/model `*.bin`).
+  and `.gitattributes` (LFS for `*.gguf`/`*.onnx`/bundled voice `*.bin`).
 - **Textbook ingestion pipeline** (`rag/ingest_textbook.py` + `.txt` support in
   `rag/ingest.py`): OCR a scanned book/past-questions → reviewable text artifact
   in the class folder → indexed as `source_type='textbook'`. Verify with the
@@ -56,15 +61,17 @@ production decisions.
    `rag/ingest_textbook.py` (grounds Martha's *knowledge* via RAG — no retraining).
    The `basic_science` JSS tree exists with scaffolded (empty) metadata. Unblocks
    Phases 2–3.
-2. **Finish Phase 0 polish:** make clippy/eslint hard gates by clearing the
+2. **Wire STT preview → Martha** (Phase 5): send confirmed transcription into
+   classroom evaluate / ask flows; keep teacher confirm-before-send.
+3. **Finish Phase 0 polish:** make clippy/eslint hard gates by clearing the
    pre-existing warnings (see CI `continue-on-error` steps); compile out / dev-gate
    the `claude` provider for release builds; run `git lfs install` on dev machines.
 
-**Biggest unbuilt chunk:** Phase 4 (voice — Whisper STT + neural TTS). No STT
-exists yet; pick the TTS engine (Kokoro vs Piper) before starting.
+**Biggest remaining voice gap:** Phase 4 RAM/unload/noise QA + Martha wiring
+(Phase 5). Core TTS/STT + bundling is in place; default engine is **Piper**.
 
-**Open decisions not yet made:** TTS engine (Phase 4); whether to keep the
-adapted persona doc or the verbatim spec.
+**Open decisions not yet made:** whether to keep the adapted persona doc or the
+verbatim spec; voice RAM auto-disable threshold still unverified on 8 GB hardware.
 
 ---
 
@@ -118,7 +125,8 @@ otherwise compound through later phases.
   `generate_modelfile.py --check`, `cargo test`, and `tsc` as hard gates. 🔨 remaining:
   `cargo clippy -- -D warnings` and `npm run lint` run non-blocking (`continue-on-error`)
   until the pre-existing warnings/errors are cleared, then flip them to hard gates.
-- 🟡 **Git LFS:** ✅ `.gitattributes` tracks `*.gguf`, `*.onnx`, and model `*.bin`.
+- 🟡 **Git LFS:** ✅ `.gitattributes` tracks `*.gguf`, `*.onnx`, model `*.bin`, and
+  bundled voice pack binaries under `src-tauri/resources/voice/`.
   🔨 remaining: `git lfs install` on each dev machine (git-lfs not yet installed locally).
 
 **Done when:** persona has one source; release build has zero network calls;
@@ -212,26 +220,30 @@ warmly, never breaks character, and the persona has teacher sign-off.
 
 ---
 
-## Phase 4 — Voice integration  🔨  (Weeks 3–4)
+## Phase 4 — Voice integration  🟡  (Weeks 3–4)
 *Owner: ML dev + app dev; QA for the noise test.* Ref: MARTHA_PERSONA.md §3.
 
-Largest net-new build. Today: no STT; TTS is `spd-say`/espeak (replace) + cloud
-azureTTS (remove). **Decision to lock first:** TTS engine = Kokoro (per spec) vs.
-Piper — both offline ~300 MB; default Kokoro unless Piper wins on target hardware.
+Core offline stack is built. **TTS engine locked: Piper** (Windows SAPI / Linux
+`spd-say` fallback). Whisper Small via whisper.cpp CLI. Assets live in
+`src-tauri/resources/voice/` and are copied to app data on first launch
+(`voice/seed.rs`). Producer setup: `scripts/setup-voice.ps1`.
 
-**STT — Whisper Small (~250 MB):**
-- 🔨 Bundle model in `src-tauri/ai/models/`.
-- 🔨 Spacebar activates Whisper; pulsing mic icon visible on projector; 30 s cap.
-- 🔨 Transcription shown on projector **before** Martha responds (teacher confirms).
-- 🔨 Whisper unloads within ~2 s of transcription (RAM returns to baseline).
-- 🔨 Failed transcriptions logged to a local file (future NG-English fine-tune).
+**STT — Whisper Small (~465 MB ggml-small):**
+- ✅ Bundled as `resources/voice/whisper/` (whisper-cli + `ggml-small.bin`); seeded
+  into `%APPDATA%\com.foniolabs.skoolbox\whisper\` on first run.
+- ✅ Spacebar push-to-activate; VoiceBar mic UI on `ClassSessionPage`; 30 s cap.
+- 🟡 Transcription shown as **preview** on the classroom UI — **not sent to Martha yet**.
+- 🔨 Whisper process unload / RAM return-to-baseline (subprocess exit today; verify
+  peak RAM on target hardware).
+- ✅ Failed transcriptions appended to `stt_failures.logl` under app data.
 
-**TTS — neural (~300 MB):**
-- 🔨 Replace `tts.rs` espeak path with the neural engine; reuse the existing
-  `clean_for_speech` math/markdown normalisation.
-- 🔨 Default voice `warm_female_en` @ `0.92×`, routed to system default output.
-- 🔨 **Escape** interrupts playback instantly, every time.
-- 🔨 Engine unloads within ~2 s of playback ending.
+**TTS — Piper neural (~60 MB voice + binary):**
+- ✅ Piper preferred when present; fallback Windows SAPI / Linux `spd-say`; reuses
+  `clean_for_speech` normalisation (`voice/speech.rs`, `voice/tts.rs`).
+- 🟡 Default classroom voice: `en_GB-alan-medium` (Piper). Spec's `warm_female_en` @
+  `0.92×` can be swapped later without API changes.
+- ✅ **Escape** interrupts playback (`stop_speaking`).
+- 🔨 Engine unload-within-2s verification on 8 GB devices.
 
 **RAM safety & fallback:**
 - 🔨 Whisper and TTS **never loaded simultaneously** (enforce in code; verify in review).
@@ -241,6 +253,7 @@ Piper — both offline ~300 MB; default Kokoro unless Piper wins on target hardw
 
 **Done when:** push-to-activate → preview → spoken+displayed reply → Escape works
 reliably in classroom noise, within the RAM budget, with a clean text-only fallback.
+*(Preview + Escape + bundling are done; Martha reply path + RAM/noise QA remain.)*
 
 ---
 
@@ -254,10 +267,13 @@ Session flow exists in part; finish the teacher-led, projector-first experience.
   (Nigerian active). Foundation for v2.0 multi-curriculum.
 - 🔨 **Session setup < 60 s:** subject + class level + topic; if topic missing,
   Martha asks "What are we learning about today?" before proceeding.
-- 🔨 **Opening greeting** displayed + spoken (names subject + today's topic).
-- 🔨 **Projector display:** large font, high contrast, readable from 6 m.
-- 🔨 Push-to-activate mic icon + transcription preview (wires Phase 4).
-- 🔨 **Response displayed AND spoken simultaneously.**
+- ✅ **Opening greeting** displayed + spoken (template greeting; names subject + topic).
+- ✅ **Projector display:** large font / high-contrast mode on `ClassSessionPage`
+  (toggle; default on).
+- ✅ Push-to-activate mic icon + transcription **preview** (Phase 4; not wired to
+  Martha LLM yet).
+- 🔨 Wire preview → Martha command / evaluate flow (teacher confirms before send).
+- 🔨 **Response displayed AND spoken simultaneously** for spoken Q&A turns.
 - 🔨 On-demand teacher commands (route through `classroom.rs`, grounded via RAG):
   explain to class · quiz (3–5 Qs, shown + read aloud, pause for response) ·
   re-explain for a named student · prerequisites for a topic · generate class notes.
@@ -309,11 +325,14 @@ Gating checks:
 
 ---
 
-## Cross-cutting: packaging & release  🔨
-- Bundle GGUF + voice models via Git LFS; on-demand load to respect RAM budget.
-- `manifest.json` over HTTPS for auto-update *check*; handle no-internet gracefully.
-- Windows `.exe` installer < 5 GB; first run seeds the curriculum pack + DB.
-- Version releases (`v1.0`, `v1.1`…); keep `src-tauri/curriculum.db` reproducible
+## Cross-cutting: packaging & release  🟡
+- ✅ Bundle voice models via Git LFS under `src-tauri/resources/voice/`; first launch
+  seeds into app data (`voice/seed.rs`). GGUF LLM weights still separate under
+  `src-tauri/ai/models/`.
+- 🔨 On-demand load / unload TTS+STT to respect RAM budget (Phase 4 remaining).
+- 🔨 `manifest.json` over HTTPS for auto-update *check*; handle no-internet gracefully.
+- 🔨 Windows `.exe` installer < 5 GB; first run seeds curriculum pack + DB + voice.
+- 🔨 Version releases (`v1.0`, `v1.1`…); keep `src-tauri/curriculum.db` reproducible
   from `dataset/` via the rag scripts (never hand-edit the shipped DB).
 
 ## Definition of MVP done

@@ -14,3 +14,7 @@
 # STT weights (whisper.cpp ggml binaries) — scoped to the models dir so unrelated
 # *.bin files elsewhere are not pulled into LFS.
 src-tauri/ai/models/*.bin filter=lfs diff=lfs merge=lfs -text
+
+# Bundled offline voice pack (Piper ONNX + Whisper ggml) — shipped in the installer.
+src-tauri/resources/voice/**/*.bin filter=lfs diff=lfs merge=lfs -text
+src-tauri/resources/voice/**/*.onnx filter=lfs diff=lfs merge=lfs -text
