@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Review Dashboard · SkoolBox</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:#ffffff; --ink:#1A1A2E; --ink-soft:#64748B; --ink-faint:#94A3B8;
+    --rule:#E2E8F0; --rule-soft:#F1F5F9; --green:#2E7D32; --green-dark:#1B5E20;
+    --green-wash:#F0F7F4; --amber:#B26A00; --amber-wash:#FFF8EC; --red:#C62828; --red-wash:#FEF2F2;
+    --sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --serif:'Source Serif 4',Georgia,serif;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans);
+    font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  .page { max-width:52rem; margin:0 auto; padding:0 1.5rem 6rem; }
+  @media (max-width:600px) { .page { padding:0 1.1rem 4rem; } }
+  .masthead { padding:2.5rem 0 0; }
+  .wordmark { display:inline-flex; align-items:baseline; gap:.5rem; font-weight:700;
+    letter-spacing:-.01em; font-size:1rem; }
+  .wordmark .dot { width:.5rem; height:.5rem; border-radius:50%; background:var(--green); }
+  .wordmark small { font-weight:500; color:var(--ink-faint); letter-spacing:.02em; }
+  h1 { font-family:var(--serif); font-weight:600; letter-spacing:-.015em; font-size:2rem;
+    line-height:1.22; margin:1.4rem 0 .5rem; }
+  .standfirst { font-size:1.05rem; color:var(--ink-soft); margin:0 0 2rem; }
+  a { color:var(--green-dark); }
+  label { display:block; font-size:.85rem; font-weight:600; margin:1rem 0 .4rem; }
+  input { width:100%; font:inherit; font-size:.97rem; color:var(--ink); background:var(--paper);
+    border:1px solid var(--rule); border-radius:8px; padding:.65rem .8rem; }
+  input:focus { outline:none; border-color:var(--green); box-shadow:0 0 0 3px rgba(46,125,50,.12); }
+  button { font:inherit; font-weight:600; font-size:.95rem; cursor:pointer; border:1px solid var(--green);
+    background:var(--green); color:#fff; border-radius:8px; padding:.62rem 1.15rem; transition:all .14s; }
+  button:hover:not(:disabled) { background:var(--green-dark); }
+  button.ghost { background:none; color:var(--ink); border-color:var(--rule); }
+  button.ghost:hover { border-color:var(--ink-faint); }
+  button:disabled { opacity:.4; cursor:not-allowed; }
+
+  /* stat strip */
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--rule);
+    border:1px solid var(--rule); border-radius:12px; overflow:hidden; margin:1.5rem 0 2.5rem; }
+  @media (max-width:600px) { .stats { grid-template-columns:repeat(2,1fr); } }
+  .stat { background:var(--paper); padding:1.1rem 1.2rem; }
+  .stat .n { font-size:1.7rem; font-weight:700; font-variant-numeric:tabular-nums; letter-spacing:-.02em; }
+  .stat .l { font-size:.78rem; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.06em; margin-top:.15rem; }
+  .stat.flag .n { color:var(--amber); }
+
+  .toolbar { display:flex; gap:.6rem; align-items:center; flex-wrap:wrap; margin-bottom:1.5rem; }
+  .toolbar .seg { display:inline-flex; border:1px solid var(--rule); border-radius:8px; overflow:hidden; }
+  .toolbar .seg button { background:var(--paper); color:var(--ink-soft); border:0; border-right:1px solid var(--rule);
+    border-radius:0; font-size:.86rem; padding:.45rem .85rem; }
+  .toolbar .seg button:last-child { border-right:0; }
+  .toolbar .seg button[aria-pressed="true"] { background:var(--green-wash); color:var(--green-dark); }
+  .toolbar .spacer { margin-left:auto; }
+  .toolbar .updated { font-size:.82rem; color:var(--ink-faint); }
+
+  h2 { font-size:.78rem; font-weight:600; text-transform:uppercase; letter-spacing:.09em;
+    color:var(--ink-faint); margin:2.5rem 0 .5rem; }
+
+  .file { border:1px solid var(--rule); border-radius:12px; margin:1rem 0; overflow:hidden; }
+  .file-head { display:flex; align-items:center; gap:.8rem; padding:1rem 1.2rem; cursor:pointer;
+    background:var(--paper); }
+  .file-head:hover { background:var(--rule-soft); }
+  .file-name { font-weight:600; font-size:1rem; }
+  .file-name .path { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.76rem;
+    color:var(--ink-faint); font-weight:400; margin-top:.15rem; }
+  .pill { font-size:.74rem; font-weight:600; padding:.2rem .6rem; border-radius:99px; white-space:nowrap; }
+  .pill.ok { background:var(--green-wash); color:var(--green-dark); }
+  .pill.flag { background:var(--amber-wash); color:var(--amber); }
+  .file-meta { margin-left:auto; font-size:.84rem; color:var(--ink-soft); white-space:nowrap;
+    display:flex; gap:.9rem; align-items:center; }
+  .chev { color:var(--ink-faint); transition:transform .18s; }
+  .file.open .chev { transform:rotate(90deg); }
+  .file-body { display:none; border-top:1px solid var(--rule); padding:.5rem 1.2rem 1.2rem; }
+  .file.open .file-body { display:block; }
+
+  .subm { font-size:.86rem; color:var(--ink-soft); padding:.8rem 0; border-bottom:1px dashed var(--rule); }
+  .subm b { color:var(--ink); }
+  .subm .overall { margin-top:.35rem; font-style:italic; }
+
+  .verdict { padding:1rem 0; border-bottom:1px solid var(--rule-soft); }
+  .verdict:last-child { border-bottom:0; }
+  .verdict-head { display:flex; align-items:baseline; gap:.6rem; margin-bottom:.5rem; }
+  .vp { font-size:.72rem; font-weight:600; padding:.12rem .5rem; border-radius:99px; }
+  .vp.no { background:var(--amber-wash); color:var(--amber); }
+  .vp.yes { background:var(--green-wash); color:var(--green-dark); }
+  .vref { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.74rem; color:var(--ink-faint); }
+  .vby { margin-left:auto; font-size:.78rem; color:var(--ink-faint); }
+  .vq { font-weight:600; margin:.2rem 0 .4rem; }
+  .va { font-family:var(--serif); font-size:.98rem; line-height:1.7; color:#2b2f3a; white-space:pre-wrap;
+    max-width:38rem; margin:0 0 .6rem; }
+  .vnote { background:var(--red-wash); border-left:2px solid var(--red); padding:.6rem .8rem;
+    border-radius:0 6px 6px 0; font-size:.92rem; color:var(--ink); }
+  .vnote b { color:var(--red); }
+
+  .flash { padding:.85rem 1rem; border-radius:8px; margin:1rem 0; font-size:.94rem; }
+  .flash.bad { background:var(--red-wash); color:var(--red); border:1px solid #FECACA; }
+  .empty { color:var(--ink-faint); padding:2.5rem 0; text-align:center; }
+  .hidden { display:none !important; }
+  footer { margin-top:4rem; padding-top:1.5rem; border-top:1px solid var(--rule);
+    font-size:.82rem; color:var(--ink-faint); }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- gate -->
+<section id="gate">
+  <div class="masthead"><span class="wordmark"><span class="dot"></span>SkoolBox <small>Review Dashboard</small></span></div>
+  <h1>Review dashboard</h1>
+  <p class="standfirst">Enter the admin token to see who has reviewed what, and read
+  every example that was flagged for correction.</p>
+  <label for="tok">Admin token</label>
+  <input id="tok" type="password" placeholder="the ADMIN_TOKEN you set on the Worker" autocomplete="off">
+  <div id="gateFlash" class="flash bad hidden"></div>
+  <div style="margin-top:1.2rem"><button id="btnUnlock">View reviews</button></div>
+  <p style="margin-top:1.5rem;font-size:.85rem;color:var(--ink-faint)">
+    This page is not linked from the reviewer portal. Keep the URL and token to yourself.</p>
+</section>
+
+<!-- dashboard -->
+<section id="board" class="hidden">
+  <div class="masthead"><span class="wordmark"><span class="dot"></span>SkoolBox <small>Review Dashboard</small></span></div>
+  <h1>Reviews so far</h1>
+
+  <div class="stats">
+    <div class="stat"><div class="n" id="sFiles">0</div><div class="l">Files reviewed</div></div>
+    <div class="stat"><div class="n" id="sSubs">0</div><div class="l">Submissions</div></div>
+    <div class="stat"><div class="n" id="sReviewers">0</div><div class="l">Reviewers</div></div>
+    <div class="stat flag"><div class="n" id="sFlags">0</div><div class="l">Flagged items</div></div>
+  </div>
+
+  <div class="toolbar">
+    <div class="seg">
+      <button data-filter="all" aria-pressed="true">All files</button>
+      <button data-filter="flag" aria-pressed="false">With flags</button>
+    </div>
+    <div class="spacer"></div>
+    <span class="updated" id="updated"></span>
+    <button class="ghost" id="btnRefresh">Refresh</button>
+  </div>
+
+  <div id="files"></div>
+  <p id="noneYet" class="empty hidden">No reviews submitted yet.</p>
+</section>
+
+<footer>SkoolBox · Review dashboard · read-only view of reviewer submissions</footer>
+</div>
+
+<script>
+(() => {
+  'use strict';
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) =>
+    ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+  const title = (s) => (s || '').replace(/_/g,' ').replace(/\b\w/g, (c) => c.toUpperCase());
+  const when = (iso) => { try { return new Date(iso).toLocaleString(); } catch { return iso; } };
+
+  const KEY = 'skoolbox_admin_token';
+  let TOKEN = sessionStorage.getItem(KEY) || '';
+  let DATA = null;                 // dataset.json (question/answer lookup)
+  let filter = 'all';
+
+  // question/answer text keyed by "path:line"
+  const exIndex = new Map();
+
+  async function loadDataset() {
+    if (DATA) return;
+    DATA = await fetch('dataset.json').then((r) => r.json());
+    for (const f of DATA.files)
+      for (const ex of f.examples)
+        exIndex.set(`${f.path}:${ex.line}`, ex);
+  }
+
+  async function api(path) {
+    const res = await fetch(`${path}?token=${encodeURIComponent(TOKEN)}`, {
+      headers: { Authorization: `Bearer ${TOKEN}` },
+    });
+    if (res.status === 401) throw new Error('unauthorized');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.json();
+  }
+
+  $('btnUnlock').addEventListener('click', unlock);
+  $('tok').addEventListener('keydown', (e) => { if (e.key === 'Enter') unlock(); });
+
+  async function unlock() {
+    TOKEN = $('tok').value.trim();
+    if (!TOKEN) return;
+    try {
+      await load();
+      sessionStorage.setItem(KEY, TOKEN);
+      $('gate').classList.add('hidden');
+      $('board').classList.remove('hidden');
+    } catch (e) {
+      $('gateFlash').textContent = e.message === 'unauthorized'
+        ? 'That token was not accepted.'
+        : 'Could not load reviews: ' + e.message;
+      $('gateFlash').classList.remove('hidden');
+    }
+  }
+
+  $('btnRefresh').addEventListener('click', () => load().catch((e) => alert(e.message)));
+  document.querySelectorAll('.seg button').forEach((b) =>
+    b.addEventListener('click', () => {
+      filter = b.dataset.filter;
+      document.querySelectorAll('.seg button').forEach((x) =>
+        x.setAttribute('aria-pressed', String(x === b)));
+      render();
+    }));
+
+  let SUBS = [], VERDICTS = [];
+
+  async function load() {
+    await loadDataset();
+    const [s, v] = await Promise.all([api('/api/submissions'), api('/api/verdicts')]);
+    SUBS = s.submissions || [];
+    VERDICTS = v.verdicts || [];
+    $('updated').textContent = 'Updated ' + new Date().toLocaleTimeString();
+    render();
+  }
+
+  function render() {
+    // group by file
+    const byFile = new Map();
+    for (const sub of SUBS) {
+      if (!byFile.has(sub.file_path)) byFile.set(sub.file_path, { subs: [], verdicts: [] });
+      byFile.get(sub.file_path).subs.push(sub);
+    }
+    for (const v of VERDICTS) {
+      if (!byFile.has(v.file_path)) byFile.set(v.file_path, { subs: [], verdicts: [] });
+      byFile.get(v.file_path).verdicts.push(v);
+    }
+
+    const reviewers = new Set(SUBS.map((s) => s.reviewer_email));
+    const flags = VERDICTS.filter((v) => v.verdict === 'inaccurate').length;
+    $('sFiles').textContent = byFile.size;
+    $('sSubs').textContent = SUBS.length;
+    $('sReviewers').textContent = reviewers.size;
+    $('sFlags').textContent = flags;
+
+    let files = [...byFile.entries()];
+    if (filter === 'flag')
+      files = files.filter(([, d]) => d.verdicts.some((v) => v.verdict === 'inaccurate'));
+    files.sort((a, b) => {
+      const fa = a[1].verdicts.some((v) => v.verdict === 'inaccurate') ? 0 : 1;
+      const fb = b[1].verdicts.some((v) => v.verdict === 'inaccurate') ? 0 : 1;
+      return fa - fb || a[0].localeCompare(b[0]);
+    });
+
+    $('noneYet').classList.toggle('hidden', files.length > 0);
+    $('files').innerHTML = files.map(([path, d]) => fileCard(path, d)).join('');
+    document.querySelectorAll('.file-head').forEach((h) =>
+      h.addEventListener('click', () => h.parentElement.classList.toggle('open')));
+  }
+
+  function fileCard(path, d) {
+    const flagged = d.verdicts.filter((v) => v.verdict === 'inaccurate');
+    const accurate = d.verdicts.filter((v) => v.verdict === 'accurate').length;
+    const parts = path.split('/');
+    const name = `${title(parts[2] || '')} · ${title(parts[4] || '')} · ${title((parts.slice(-1)[0] || '').replace('.jsonl',''))}`;
+    const pill = flagged.length
+      ? `<span class="pill flag">${flagged.length} to fix</span>`
+      : `<span class="pill ok">all accurate</span>`;
+
+    const subs = d.subs.map((s) => `
+      <div class="subm">
+        Reviewed by <b>${esc(s.reviewer_name)}</b>${s.affiliation ? ' · ' + esc(s.affiliation) : ''}
+        · ${esc(s.reviewer_email)} · ${when(s.submitted_at)}
+        · <b>${s.accurate}</b> accurate, <b>${s.inaccurate}</b> flagged
+        ${s.overall_note ? `<div class="overall">“${esc(s.overall_note)}”</div>` : ''}
+      </div>`).join('');
+
+    // Show flagged verdicts in full (with content); list accurate ones compactly.
+    const flaggedHtml = flagged.map((v) => {
+      const ex = exIndex.get(`${v.file_path}:${v.line}`) || {};
+      return `
+        <div class="verdict">
+          <div class="verdict-head">
+            <span class="vp no">needs correction</span>
+            <span class="vref">line ${v.line}</span>
+            <span class="vby">${esc(v.reviewer_name)}</span>
+          </div>
+          ${ex.question ? `<div class="vq">${esc(ex.question)}</div>` : ''}
+          ${ex.answer ? `<div class="va">${esc(ex.answer)}</div>` : ''}
+          <div class="vnote"><b>Reviewer:</b> ${esc(v.note || '(no note left)')}</div>
+        </div>`;
+    }).join('');
+
+    return `
+      <div class="file">
+        <div class="file-head">
+          <div class="file-name">${esc(name)}<div class="path">${esc(path)}</div></div>
+          <div class="file-meta">${pill}
+            <span>${accurate}✓ · ${flagged.length}⚑</span>
+            <span class="chev">›</span>
+          </div>
+        </div>
+        <div class="file-body">
+          ${subs}
+          ${flagged.length ? `<h2 style="margin-top:1.2rem">Flagged for correction</h2>${flaggedHtml}`
+            : `<p style="color:var(--ink-soft);padding:.8rem 0">Every example marked accurate.</p>`}
+        </div>
+      </div>`;
+  }
+
+  // auto-unlock if a token is already in this session
+  if (TOKEN) { $('tok').value = TOKEN; unlock(); }
+})();
+</script>
+</body>
+</html>
