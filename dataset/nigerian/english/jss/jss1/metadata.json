@@ -8,8 +8,13 @@
   "is_exam_class": false,
   "prerequisite_levels": [],
   "retrieval_mode": "standard",
-  "textbooks": [],
+  "textbooks": [
+    "NERDC Basic Education Curriculum — English Studies, JSS 1"
+  ],
   "topics": [
-    "parts of speech"
+    "parts of speech",
+    "sentences",
+    "tenses",
+    "comprehension and composition"
   ]
 }

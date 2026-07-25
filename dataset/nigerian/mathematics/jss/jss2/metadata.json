@@ -8,8 +8,14 @@
   "is_exam_class": false,
   "prerequisite_levels": [],
   "retrieval_mode": "standard",
-  "textbooks": [],
+  "textbooks": [
+    "NERDC Basic Education Curriculum — Mathematics, JSS 2"
+  ],
   "topics": [
-    "linear equations"
+    "linear equations",
+    "algebraic expressions",
+    "directed numbers",
+    "angles and polygons",
+    "statistics"
   ]
 }

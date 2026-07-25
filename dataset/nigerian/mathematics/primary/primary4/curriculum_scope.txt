@@ -1,0 +1,3053 @@
+MATHEMATICS FOR PRIMARY 4
+
+NIGERIAN EDUCATIONAL RESEARCH AND DEVELOPMENT COUNCIL (NERDC) September, 2025
+
+MATHEMATICS FOR PRIMARY 4
+
+NEW REVISED BASIC EDUCATION CURRICULUM MATHEMATICS PRIMARY 4
+
+Professor Suwaiba Said Ahmad Honourable Minister of State for education
+
+The review of the Basic Education Curriculum was necessitated by factors and contexts related to curriculum cycle, expansion of knowledge, technological advancement, new policy initiatives, and emerging development issues and best practices. These have broad and specific effects on the nature, features and elements of each subject curriculum. This is especially pertaining to the approach, and philosophy adopted during the curriculum development process. Moreover, the factors and contents are significant for the identification and selection of curricula objectives, outcomes, themes, contents, delivery strategies, resources, and evaluation guides.
+
+The new revised Mathematics Curriculum is a competency and outcomebased one which aims at developing in learners’ essential skills for mastery and application. The competency framework provides clear expectations, dictates fundamental skills and promotes all- inclusive growth for learners. The curriculum is profoundly skill based, practical and result oriented.
+
+Furthermore, the design and delivery process of this curriculum remains thematic, spiral, cyclical and concentric whereby learning contents are graduated, sequenced, and replicated across the class levels to align with learners’ maturation and cognition. The curriculum approach focused on knowledge, skills and competencies. The overriding learning experiences, and achievement of the curriculum are geared towards what learners can do skillfully, thereby making it learner-centered, performative, and result oriented.
+
+The new revised Mathematics curriculum is based on a multi-disciplinary approach and is diverse to cover critical basic foundational knowledge, concepts, and skills.
+
+Learners will engage with national and global issues through context-based lessons that promote critical thinking and social responsibility. Concepts and
+
+contents that are fundamental to the learners’ overall development, growth and effective contribution in human development are integrated into the curriculum, ensuring they gain a broader understanding of their role as global citizens.
+
+The curriculum incorporates major structural components like themes, learning outcomes, and focal competencies, including topics, performance objectives, content, learning activities, resources, and evaluation guides. its distinct features of interdisciplinarity, compliance with ICT, and activitydriven learning significantly add to its international applicability and competitiveness. It also adopts a student-centred teaching style as suggested by the curriculum overall goals and progressively shits responsibility to the learners. Through this, learners not only acquire conceptual knowledge but also and importantly acquire the necessary skills for functional living in society. Thus, expectations on the learners go beyond classroom experiences to their everyday lives.
+
+General Objectives of the new revised Mathematic C urriculum
+
+1. Equip learners with fundamental numeracy skills essential for everyday life.
+
+2. Fosters critical thinking and problem-solving abilities for real- life application.
+
+3. Build learners’ self-confidence and scientific literacy to support cognitive and intellectual development.
+
+4. Develop in Learners positive attitude toward mathematics and its connections with other subjects.
+
+5. Mathematics provides necessary techniques and methodology for data analysis and interpretation.
+
+Overview of the content coverage
+
+The table below provides an overview of the content coverage for the BST curriculum
+
+Revised Mathematics Primary 4 Content Coverage Primary 4
+Primary 4 Theme Learning outcome Topic
+Theme Learning outcome
+Topic
+height and width of an
+object in the
+environment.
+NUMBER
+NUMERATION Add, subtract, count and
+write whole numbers up
+to millions and find the
+LCM and HCF of 2-digit
+numbers.
+Whole Numbers
+Appreciate the use of
+number system in word
+expressions and vice
+versa to detect the
+missing numbers or
+values in open sentences Open sentence
+Determine the place
+value of digits, order
+whole numbers, and
+write in Roman numerals
+of numbers up to 1000. Whole Numbers
+(Contd.)
+MENSURATION Solve logical problems
+involving money,
+mensuration problems
+relating to length,
+weight, capacity, time,
+area etc. as well as
+addition and subtraction
+in open sentences Money 1
+Money 2
+Compute and describe
+LCM, HCF of 2-digit
+numbers and prime
+numbers. Whole Numbers
+(Contd.)
+Length
+Weight
+Time
+Area
+Differentiate types of
+fractions and solve
+fraction related
+problems. Fractions
+Capacity
+GEOMETRY
+Locate lines of
+symmetry, cardinal
+points and identify the
+differences between 2-D
+and 3-D objects
+Plane shapes
+BASIC OPERATIONS Add, subtract, multiply,
+divide numbers,
+decimals and
+differentiate types of
+fractions. Addition and
+Subtraction
+Addition and
+Subtraction
+continued
+Locate lines of
+symmetry, cardinal
+points and identify the
+differences between 2-D
+and 3-D objects. Three dimensional
+shapes
+Addition and
+Subtraction
+continued
+EVERYDAY
+STATISTICS
+Present, read and
+interpret information
+from bar graphs
+Bar graph
+Multiplication (1)
+Multiplication
+(2)
+Delivery/learning activities and resources
+The effective implementation of this curriculum will require that:
+Division
+Approximate numbers
+and estimate the length, Estimation
+
+1. Teachers adopt instructional strategies that promotes effective learner engagement and active participation.
+
+2. Teachers use varieties of instructional resources to promote deep and meaningful learning.
+
+3. Teachers adopt a new lesson plan that incorporates all the critical elements of the curriculum. A sample has been developed and included in the teachers’ guide.
+
+4. Copies of the curriculum be made available to every school teacher and much emphasis placed on its use in order to achieved stated objectives.
+
+5. Regular workshops are organised for teachers, supervisors and quality assurance officers on how to interpret and use the curriculum.
+
+6. Teachers adopt assessment practices that are aligned to the competency and outcome-based approach. NERDC has developed a simple to use assessment framework to support the implementation of curriculum. Schools and teachers should leverage on the framework to ensure effective assessment.
+
+Proper implementation of this curriculum will have far-reaching benefits for Nigeria's educational system and society as a whole. By equipping learners with essential knowledge, skills and competencies prescribed in this curriculum, the country will produce more articulate, confident, and globally competitive citizens. The learners will also be better prepared to excel in higher education and contribute meaningfully to Nigeria's economic and social development.
+
+In sum, this curriculum offers an exciting, enriching, and transformative journey that transcends classroom learning; it is a key to unlocking the limitless potential of every learner in Nigeria's classrooms.
+
+Dr Garba Dahiru Gandu Director Curriculum Development Centre
+
+Page
+Number
+Foreword ii
+Preface iv
+Introduction vi
+Class level Theme Topic
+Primary 4 Number and Numeration Whole numbe rs 1
+Whole numbe r(C ontd.) 2
+Whole Numbe rs
+( Contd.) 3
+Fractions 4
+Basic Operations Addition and Subt raction 5
+Addition and Subt raction (Contd.) 6
+Addition and Subt raction(Contd.) 7
+Multiplication (1) 8
+Multiplication (2) 9
+Division 10
+Estimation 11
+Opensentenc e 12
+Mensuration
+Money
+(1) 13
+Money (2) 14
+Length 15
+Weight 16
+Time 17
+Area 18
+Capacity 19
+Geometry Plane shapes 20
+Three dimens iona l shapes 21
+Everyday Statistics Bar graph 22
+
+MATHEMATI CS C URRICULUM
+Theme: NUMBER NUMERATION Primary 4
+Learning outcome: Add, subtract, count and write whole numbers up to m illio ns and find the LCM and HCF of 2-digit numbers.
+Focal competency:Counting up to one million and in groups of 5’s, 7’s 12 ’s an d 60’s.
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT –
+KNOWLEDGE AND
+SKILLS COMP
+AND KEY
+ETE
+VA
+NCIES
+LUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Whole
+Numbers Pupils should be able
+to:
+1. count in thousands
+up to one million;
+2. count in 5’s, 7’s, 12’s
+and 60’s;
+3. Convert seconds into
+minutes and hours. Knowledge
+1. Counting
+to million
+2. Counting in 5’s, 7’s,
+12’s and 60’s
+Skills
+1. Counting in groups
+2. Converting seconds
+into minutes to hours. Inform
+as pupi
+informa
+accurat
+creativ
+using c
+countin
+count o
+and in
+and 60
+Hones
+are sin
+honest
+numbe
+for eac ation
+ls us
+tion
+ely a
+ely w
+ount
+g bl
+ne
+5’s,
+’s.
+ty
+a
+cere
+with
+r
+cou
+h gr literacy
+e
+nd
+hile
+ers or
+ocks to
+million
+7’s, 12’s
+s pupils
+and
+each
+nted
+oup. Pupils are guided
+to:
+1.
+Use counters or
+counting blocks
+to Count in tens,
+hundreds and
+thousands up to
+one million
+2.
+In groups, count
+in bundle of 5’s,
+count
+weeks of
+the month,
+month
+and year,
+dozens
+in 120
+etc.
+3. Count numbers
+of seconds into
+minutes and
+hours. •
+Sticks
+•Bottle covers
+•Calendars
+•Cartons of
+drinks
+•Multimedia
+applications
+•Counting blocks
+etc. Pupils to:
+1.
+count numbers up
+to one million;
+2.
+display counting
+skills in bundles of
+5, 7, 12 etc;
+3.
+determine number
+of days in a week,
+weeks in the
+month using the
+calendar;
+4.
+convert seconds
+into minutes, vice
+versa
+
+MATHEMATI CS C URRICULUM
+Theme: NUMBER NUMERATION Primary 4
+Learning outcome: Add, subtract, count and write whole numbers up to milli ons and find the LCM and HCF of 2-digit numbers.
+Focal competency:Determining the correct place values of numbers, writing in R oman Numerals numbers up to 1000=M and Solving Quantitative aptitude.
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT –
+KNOWLEDGE
+AND SKILLS KEY
+COMPETENCI
+AND VALUE ES
+S LEARNING ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Whole
+Numbers
+(Contd.) Pupils should be
+able to:
+1. determine the
+place value of
+digits;
+2. order whole
+numbers;
+3. write in Roman
+numerals up to
+1000;
+4. solve problems
+on quantitative
+aptitude. Knowledge
+1. Place value of
+digits.
+2. Ordering of whole
+numbers.
+3. Roman numerals.
+4. Quantitative
+reasoning
+Skills
+1. Expanding
+numbers
+2. Generating and
+solving
+quantitative
+aptitude problems
+on place values
+and roman
+numerals. ICT and Digital
+competencies
+pupils use digital
+technologies tool
+enhance learning
+while watching
+videos on techni
+of obtaining rom
+numerals.
+Critical Thinkin
+as pupils Interpr
+information and
+draw conclusions
+based on availab
+numbers while
+expanding numb
+and place them
+appropriately usi
+Th, H, T, U.
+as
+s to
+ques
+an
+g
+et
+le
+ers
+ng Pupils are guided to:
+1. Use number blocks, cards or
+place values bingo to build
+numbers
+2. Write the built numbers in
+standard for e.g. 45, 127,
+945 etc.
+3. In group, use place value
+chats to explain expanded
+number forms e.g 456=
+400+50+6 by using H, T, U.
+or 5236 =5000+200+30+6
+using Th, H, T, U.
+4. Order numbers based on
+their values in ascending or
+descending order
+5. Watch short videos on the
+techniques of obtaining
+roman numerals and write
+roman numerals up to 1000
+6. Generate quantitative
+aptitude on place values and
+roman numerals and solve
+them. • Place value
+charts
+•Number charts
+•Flash cards
+•Multimedia
+•Applications
+•Roman numeral
+charts
+•Number cards
+/blocks
+•Place values
+Bingos Pupils to:
+1. write the place
+value of a given
+four-digit numbers;
+2. order given whole
+numbers up to
+four-digit numbers;
+3. express numbers
+in roman numerals
+and vise-versa;
+4. solve quantitative
+aptitude problems
+on place values
+and roman
+numerals.
+
+MATHEMATI CS C URRICULUM
+Theme: NUMBER NUMERATION Primary 4
+Learning outcome:
+Compute and describe LCM, HCF of 2-digit numbers a nd pr ime numbers.
+Focal competency:Calculating the LCM and HCF of 2-digit numbers and e xplai ning the meaning of a prime number.
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT –
+KNOWLEDGE
+AND SKILLS KEY
+COMPETENCI
+S AND VALUES E
+LEARNING ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Whole
+Numbers
+(Contd.) Pupils should be able
+to:
+1.
+find LCM of two to
+three 2-digit
+numbers;
+2.
+find HCF of two to
+three 2-digit
+numbers;
+3.
+describe prime
+number;
+4.
+solve problems on
+quantitative
+reasoning. Knowledge
+1. LCM of two to
+three 2-digit
+numbers.
+2. HCF of two to
+three 2-digit
+numbers.
+3. Quantitative
+Reasoning
+Skills
+1. Generating
+multiples of
+numbers.
+2. Generating
+factors of
+numbers.
+3. Listing prime
+number. Collaboration
+as pupils
+incorporates
+group input and
+feedback into
+the work while
+generating
+multiples of
+numbers. P
+6 upils are guided to:
+. In group, generate the
+multiples of small numbers
+e.g. what are the multiples
+of 4? Answer: Multiples of 4
+are numbers that can be
+divided by 4 without a
+remainder: these are
+4,8,12,16, etc.
+. Write down multiples of two
+to three 2-digit numbers
+and find the LCM.
+. Generate factors of
+numbers e.g. factors of 8 =
+1,2,4 and 8.
+. Write down factors of two
+to three 2-digit numbers
+and find the HCF.
+. Express numbers in their
+prime factors.
+. Solve quantitative aptitude
+involving LCM and HCF •
+Charts
+•Number card
+•Flash cards
+•Cardboard
+•Multimedia
+applications Pupils to:
+1.
+generate the
+multiples and
+factors of different
+numbers;
+2.
+compute the LCM
+of two to three 2-
+digit numbers;
+3.
+compute the HCF of
+two to three 2-digit
+numbers;
+4. explain what a
+constitute prime
+number.
+5.
+solve exercises on
+quantitative
+aptitude.
+
+MATHEMATI CS C URRICULUM
+Theme: NUMBER NUMERATION Primary 4
+Learning outcome: Differentiate types of fractions and solve fraction rel ated problems.
+Focal competency: Solving fraction-related problems in everyday life.
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT –
+KNOWLEDGE AND
+SKILLS K
+COMPET
+AND V EY
+EN
+ALU CIES
+ES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Fractions Pupils should be able
+to:
+1. differentiate
+between proper and
+improper fractions;
+2. change improper
+fractions into mixed
+numbers and vice
+and versa;
+3. convert fractions
+into decimal and vice
+versa;
+4. form equivalent
+fractions;
+5. solve Quantitative
+Reasoning involving
+fractions Knowledge
+1. Proper and
+improper fraction
+2. Mixed Numbers
+3. Decimal fractions
+4. Equivalent
+fractions
+5. Quantitative
+Reasoning
+Skill
+Describing proper
+and improper
+fractions using a real-
+life situation ICT and
+Compet
+as pupil
+retrieve a
+exchange
+informati
+internet o
+differenc
+between
+and impr
+fractions.
+Perseve
+pupils are
+tenacious
+eager to
+ways of s
+fraction-r
+problems Dig
+enci
+sass
+nd
+on vi
+n th
+e
+prop
+oper
+ranc
+and
+learn
+olvin
+elate
+. ital
+es
+ess,
+a
+e
+er
+eas
+g
+d Pupils are guided to:
+1.
+Search the internet for
+the difference
+between
+proper and
+improper fractions
+and
+use
+objects, charts
+and plane shapes
+explain them.
+2.
+Change improper
+fractions into mixed
+numbers.
+E.g
+.2
+= 1
+3.
+Use place value chart
+to convert fractions
+into decimals.
+4.
+Use fractional charts
+to illustrate equivalent
+fractions. •
+Objects
+•Plane shapes
+•Chart
+•Fractional charts
+•Place value chart Pupils to:
+1.
+differentiate
+between proper
+and improper
+fractions;
+2.
+convert
+improper
+fractions to
+mixed numbers;
+3.
+convert
+fractions into
+decimals;
+4.
+write equivalent
+fractions for a
+given fraction;
+5.
+solve exercises
+on quantitative
+aptitude.
+
+MATHEMATI CS C URRICULUM
+Theme: BASIC OPERATIONS Primary 4
+Learning outcome: Add, subtract, multiply, divide numbers, decimals an d dif ferentiate types of fractions.
+Focal competency: Adding and subtracting three 4-digit numbers.
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT –
+KNOWLEDGE AND
+SKILLS COMP
+AND KEY
+ETE
+VA
+NCIES
+LUES LEARNING
+ACTIVITIES TEACHING
+AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Addition and
+Subtraction Pupils should be able
+to:
+1. add and subtract
+whole numbers;
+2.
+perform addition
+and subtraction of
+three 4-digit
+numbers taking two
+at a time;
+3.
+carry out addition
+and subtraction in
+everyday life
+activities;
+4.
+solve quantitative
+aptitude problems
+involving addition
+and subtraction of
+whole numbers in
+4-digits. Knowledge
+1. Addition and
+subtraction of
+whole numbers.
+2.
+Addition and
+subtraction of
+three 4-digit
+numbers.
+3.
+Addition and
+subtraction in
+everyday life
+activities.
+4.
+Quantitative
+reasoning on
+addition and
+subtraction of 4-
+digit whole
+numbers.
+Skill
+Solving addition and
+subtraction related
+problems in everyday
+life. Collabo
+pupils e
+flexibilit
+willingn
+helpful i
+necessa
+compro
+accompl
+common
+working
+solve ad
+subtract
+problem
+Accoun
+pupils ta
+respons
+their act
+their du
+group ta
+addition
+subtract
+problem rati
+xerci
+y an
+ess t
+n m
+ry
+mise
+ish
+go
+in g
+ditio
+ion r
+s.
+tab
+ke
+ibilit
+ions
+ties
+sk t
+and
+ion r
+s. onas
+se
+o be
+aking
+s to
+a
+al while
+roups to
+n and
+elated
+ilityas
+y for
+, accept
+while on
+o solve
+elated Pupils are guided to:
+1.
+In groups, use
+number cards,
+number tiles, number
+blocks, counting
+cubes digit cards etc.
+to:
+•a dd 4-digit
+numbers with or
+without remainder
+•Subtract 4- digit
+numbers with or
+without remainder
+•add and subtract
+three 4-digit
+numbers involving
+everyday life
+activities
+2.
+Solve quantitative
+aptitude problems
+involving addition and
+subtraction of whole
+numbers in 4-digits •
+Charts
+•Flash cards
+•Cardboard
+•Multimedia
+application
+s
+•number
+cards,
+•number
+tiles,
+•number
+blocks,
+•counting
+cubes
+•digit cards
+etc. Pupils to:
+1.
+add 4-digit
+numbers with or
+without
+remainder;
+2.
+subtract 4-digit
+numbers with or
+without
+remainder;
+3.
+solve accurately
+addition and
+subtract
+numbers
+related
+problem in
+everyday life
+activities;
+4. solve
+quantitative
+aptitude
+problems
+involving
+addition and
+subtraction of
+whole numbers.
+
+MATHEMATI CS C URRICULUM
+Theme: BASIC OPERATIONS Primary 4
+Learning outcome: Add, subtract, multiply, divide numbers, decimals an d diff erentiate types of fractions.
+Focal competency: Adding and subtracting proper, improper and mixed fract ions.
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT –
+KNOWLEDGE AND
+SKILLS KEY
+COMPE
+AND VA TEN
+LUE CIES
+S LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Addition and
+Subtraction
+Contd. Pupils should be
+able to:
+1. perform addition
+and subtraction
+of proper
+fractions;
+2.
+perform addition
+and subtraction
+of improper
+fractions;
+3.
+carry out addition
+and subtraction
+of mixed
+numbers;
+4.
+carry out addition
+and subtraction
+of fractions in
+everyday life
+activities;
+5.
+solve quantitative
+aptitude problems
+involving addition
+and subtraction
+fractions. Knowledge
+1. Addition and subtraction
+of proper fractions.
+2. Addition and subtraction
+of improper fractions.
+3. Addition and subtraction
+of mixed numbers.
+4.
+Addition and subtraction
+of fractions in everyday
+life activities
+5.
+Quantitative reasoning
+problems
+involving
+addition and subtraction
+of fractions.
+Skills
+1.
+Identifying fraction
+types
+2.
+Using fraction chats or
+counting blocks to easily
+add and subtract
+fractions ICT an
+Compe
+as pupil
+knowled
+enhance
+using inf
+and
+commun
+technolo
+watch s
+videos o
+establish
+types an
+ways to
+subtract
+types of d Di
+tenc
+s’
+ge is
+whi
+orm
+icati
+gies
+hort
+n ho
+fra
+d ea
+add
+any
+frac gital
+ies
+le
+ation
+on
+to
+w to
+ction
+sy
+and
+tions. Pupils
+are guided to:
+1.
+Use fraction charts
+and counting blocks
+to add and
+subtract:
+•proper fractions.
+•improper
+fractions.
+•mixed numbers.
+2.
+Watch short videos
+on how to establish
+fraction types and
+easy ways to add
+and subtract any
+types of fractions.
+3.
+Display ability to
+add
+and subtract
+fractions in
+everyday life
+activities.
+4.
+Solve quantitative
+aptitude problems
+involving addition
+and subtraction of
+fractions. •
+Charts
+•Flash cards
+•Cardboard
+•Multimedia
+applications
+•number cards,
+•number tiles,
+•number
+blocks,
+•counting
+cubes
+•digit cards etc. Pupils to:
+1.
+use fraction chats
+and counters to
+add and subtract
+proper and
+improper
+fractions;
+2.
+use fraction chats
+and counters to
+add and subtract
+mixed numbers;
+3.
+generate
+examples of
+everyday life
+activities involving
+addition and
+subtraction of
+fractions
+and solve
+them;
+4.
+solve quantitative
+aptitude problems
+involving addition
+and subtraction of
+fractions.
+
+MATHEMATI CS C URRICULUM
+Theme: BASIC OPERATIONS Primary 4
+Learning outcome: Add, subtract, multiply, divide numbers, decimals and differ entiate types of fractions.
+Focal competency: Adding and subtracting decimals
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT –
+KNOWLEDGE AND
+SKILLS KEY
+COMPETENC
+AND VALUES IES
+LEARNING ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Addition and
+Subtraction
+(Contd.) Pupils should be
+able to:
+1.
+perform
+addition of
+decimal up to 3
+places.
+2.
+perform
+subtraction of
+decimals up to
+3 places
+3. solve
+quantitative
+aptitude
+problems
+involving
+addition and
+subtraction of
+decimals Knowledge
+1. Addition of
+decimals
+2. Subtraction of
+decimals
+3. quantitative
+reasoning problem
+involving addition
+and subtraction of
+decimals
+Skill
+Playing decimal
+addition and
+subtraction games Collaboratio
+as pupils
+exercise flexib
+and willingnes
+be helpful in
+making neces
+compromises
+accomplish a
+common goal
+while working
+groups using
+decimal blocks
+number lines,
+base 10 block
+decimal charts
+Add decimals
+to 3 places. n
+ility
+s to
+sary
+to
+in
+,
+s or
+to
+up Pupils in groups to:
+1. In groups, use decimal
+blocks, number lines, to
+add decimals up to 3
+places.
+2. Familirise with decimal
+war games, decimal
+bingos or decimal
+dashboard games to
+subtract decimal
+numbers
+3. Watch short videos on
+addition and subtraction
+mixed numbers
+and
+practice what was seen.
+4. Add and subtract
+fractions
+in everyday life
+activities
+5.
+Solve quantitative
+aptitude problems
+involving addition and
+subtraction of decimals • Charts
+•Number card
+•Flash cards
+•Cardboard
+•Multimedia
+applications
+•Online learning
+resources
+•Decimal blocks,
+•number lines,
+•Base 10 blocks
+•Decimal charts
+•Decimal war
+games
+•decimal bingos
+•decimal
+dashboard games
+etc. Pupils to:
+1.
+use base
+10 blocks
+or decimal charts to
+add decimals up to
+3 decimal places;
+2.
+subtract decimals
+up to decimal 3
+places
+using
+different decimal
+subtraction learning
+tools;
+3.
+solve quantitative
+aptitude problems
+involving addition
+and subtraction of
+decimal numbers.
+
+MATHEMATI CS C URRICULUM
+Theme: BASIC OPERATIONS Primary 4
+Learning outcome: Apply basic numeracy skills to add, subtract, multiply , div ide,
+estimate, approximate
+and differentiate types of fractions.
+Focal competency: Multiplying whole numbers with sum less than 50.
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT –
+KNOWLEDGE AND
+SKILLS KEY
+COMPE
+AND VA TEN
+LUE CIES
+S LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Multiplication
+(1) Pupils should be able
+to:
+1. multiply whole
+numbers less than or
+equal to 50;
+2.
+perform
+multiplication of
+fractions.
+3.
+multiply decimals by
+2-digit numbers;
+4.
+solve quantitative
+aptitude problems
+involving
+multiplication of
+numbers; Knowledge
+1. Multiplication of
+whole numbers less
+than or equal to 50.
+2.
+Multiplication of
+fractions.
+3.
+Multiplication of
+decimals by 2-digit
+numbers
+4.
+Quantitative
+reasoning problem
+involving
+Multiplication of
+whole numbers
+Skill
+Using multiplication
+bingos
+of master to
+solve multiplication of
+whole number less
+than 50. ICT and
+Compe
+pupils as
+retrieve
+via the i
+while se
+the use
+multiplic
+bingos o
+multiplic
+master (
+to multi
+and deci
+digit nu dig
+tenc
+sess
+infor
+nter
+arch
+of
+atio
+r
+atio
+Mat
+ply fr
+mal
+mber ital
+iesas
+and
+mation
+net
+ing for
+n
+n
+h app)
+actions
+by 2-
+s. Pupils
+are guided
+to:
+1.
+In groups, use
+multiplication
+cards to multiply
+whole numbers
+less than 50.
+2.
+Search the
+internet for use
+of multiplication
+bingos or use
+multiplication
+master (Math
+app) to multiply
+fractions and
+decimal by 2-
+digit numbers.
+3.
+Solve
+quantitative
+aptitude
+problems
+involving
+multiplication of
+numbers. •
+Charts
+•Number card
+•Flash cards
+•Cardboard
+•Multimedia
+applications
+•Online learning
+resources
+•Counters
+•Multiplication
+Mater (Math app)
+•Multiplication
+Bingo (Math
+Game) etc. Pupils to:
+1.
+multiply whole
+numbers less than
+or equal to 50;
+2.
+multiply fractions
+and decimals by
+2-digit numbers.
+3.
+solve quantitative
+aptitude problems
+involving
+multiplication of
+numbers.
+
+MATHEMATI CS C URRICULUM
+Theme: BASIC OPERATIONS Primary 4
+Learning outcome: Add, subtract, multiply, divide numbers, decimals an d dif ferentiate types of fractions.
+Focal competency: Calculating square of 1- and 2- digit numbers and sq uare root of perfect squares up to 900.
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT –
+KNOWLEDGE
+AND SKILLS KEY
+COMPET
+AND VA EN
+LUE CIES
+S LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Multiplication
+(2) Pupils should be able to:
+1. calculate squares of 1-
+and 2-digit numbers.
+2. find square roots of
+perfect squares up to
+900;
+3.
+solve quantitative
+aptitude problems
+involving square roots
+of perfect squares not
+greater than 900. Knowledge
+1. Squares of 1-
+and 2-digit
+numbers.
+2.
+Square roots of
+perfect squares
+up to 900.
+3.
+Quantitative
+aptitude
+problems
+involving square
+roots of perfect
+squares not
+greater than
+900.
+Skill
+Using different
+math square root
+app and tool to
+solve square root
+related problems. Collabor
+as pupils
+shared
+responsib
+collabora
+work, an
+individua
+contribut
+when
+usi
+geoboard
+root bloc
+patten bl
+to
+find th
+squares
+2-digit nu
+and perfe
+square o
+numbers
+900. atio
+assu
+ility
+tive
+d val
+ions
+ng
+, sq
+ks,
+ocks
+e
+of 1-
+mb
+ct
+f
+up t n
+me
+for
+ue
+uare
+etc.
+and
+ers
+o Pupils
+are guided
+to:
+1.
+In group,
+use
+geoboard, square
+root blocks,
+patten blocks etc.
+to:
+•find the squares
+of 1- and 2-digit
+numbers.
+•find square
+roots of perfect
+squares up to
+900.
+2.
+Solve
+quantitative
+aptitude problems
+involving square
+roots of perfect
+squares not greater
+than 900.
+•
+Square root
+charts
+•Number card
+•Flash cards
+•Cardboard
+•Multimedia
+applications
+•Online learning
+resources
+•Counters
+•Multiplication
+Mater (Math app)
+•Multiplication
+Bingo (Math
+Game) etc. Pupils to:
+1.
+find the squares
+of 1- and 2-digit
+numbers using
+square and
+square roots
+chart;
+2.
+give examples of
+perfect square
+numbers;
+3.
+find square roots
+of perfect squares
+up to 900 using
+square and
+square roots
+chart;
+4.
+solve quantitative
+aptitude problems
+involving square
+roots of perfect
+squares not
+greater than 900.
+
+MATHEMATI CS C URRICULUM
+Theme: BASIC OPERATIONS Primary 4
+Learning outcome: Add, subtract, multiply, divide numbers, decimals an d dif ferentiate types of fractions
+Focal competency: Dividing 2-digit and 3-digit numbers by 1-digit with o r wi thout remainder and calculating
+the multiple of 10 up to 50.
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT –
+KNOWLEDGE AND
+SKILLS KEY
+COMPET
+AND VA EN
+LUE CIES
+S LEARNING
+ACTIVITIES TEACHING
+AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Division Pupils should be able
+to:
+1. divide 2- or 3-digit
+numbers by:
+•1- digit number
+with or without
+remainder;
+•multiples of 10
+up to 50;
+2.
+solve quantitative
+aptitude problems
+involving division
+of 1- and 2-digit
+numbers Knowledge
+1. Division of 2- or 3-
+digit numbers by
+2. 1-digit number with
+or without remainder
+3.
+Division of 2- or 3-
+digit numbers by
+multiples of 10 up to
+4.
+Quantitative aptitude
+problems involving
+division of 1- and 2-
+digit numbers
+Skill
+Using division charts to
+divide 2–3-digit
+numbers by 1 digit
+number or multiples of
+10 up to 50. Collabor
+as pupils
+Demonst
+ability to
+effectivel
+respectfu
+diverse t
+work, wh
+use divisi
+charts to
+2- or 3-d
+numbers
+digit num
+multiples
+to 50 wit
+without. atio
+rate
+wor
+y an
+lly w
+eam
+ile u
+on
+igit
+by 1
+ber
+of 1
+h or n
+k
+ith
+s
+sing
+de
+or
+0 up
+Pupils
+are guided to:
+1.
+In groups, use division
+charts to Divide 2- or
+3-digit numbers by 1-
+digit number
+or
+multiples of 10 up to
+with or without
+remainder
+2.
+Wach short videos on
+how to divide 2–3-digit
+numbers with 1 digit
+or multiples of 10 up
+to 50 and practice the
+system used in the
+video to solve related
+division problems.
+3.
+Solve
+quantitative
+aptitude problems
+involving division of 1-
+and 2-digit numbers •
+Division
+charts
+•Squares and
+square roots
+table
+•Flash cards
+•Cardboard
+•Multimedia
+applications
+•Online
+learning
+resources
+•Digital
+Calculators Pupils to:
+1.
+divide a given 2-
+or 3-digit number
+by numbers
+between 2 and 9;
+2.
+divide a given 2-
+or 3-digit number
+by
+10 up to 50;
+3. solve quantitative
+aptitude problems
+involving division.
+
+MATHEMATI CS C URRICULUM
+Theme: BASIC OPERATIONS Primary 4
+Learning outcome: Approximate numbers and estimate the length, height a nd w idth of an object in the environment.
+Focal competency:
+Estimating
+the length, height and width of objects in the env ironment.
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT –
+KNOWLEDGE AND
+SKILLS KEY
+COMPETE
+AND VAL NCI
+UES ES
+LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Estimation Pupils should be able
+to:
+1.
+round off numbers
+to H, T, U;
+2.
+estimate sums and
+products of
+numbers. 1.
+Round off numbers to
+H, T, U.
+2.
+Estimation of sums and
+products of numbers.
+Skill
+Estimating the
+length
+height
+, width etc. of an
+objects ICT and D
+Compete
+as pupils’
+knowledge
+enhanced
+using infor
+and
+communic
+technologi
+watch shor
+videos on
+estimation
+numbers. igit
+ncie
+is
+while
+mati
+ation
+es to
+t
+of al
+s
+on
+Pupils are guided to:
+1. In groups, watch
+short videos on
+estimation of
+numbers, then
+estimate what the
+total length of a 30
+yards pitch will be
+if each yard is 5cm
+2. Round off numbers
+to the nearest H,
+T, U.
+3. Practice the
+estimation of sums
+and products of
+different numbers. • Charts
+•Flash cards
+•Multimedia
+applications
+•Online learning
+resources Pupils to:
+1. round off numbers
+to the nearest H, T,
+U;
+2. estimate the
+3. Lengths, heights
+and widths of
+objects within the
+school
+environment;
+4. carry out
+estimations
+involving sums and
+products of
+numbers.
+
+MATHEMATI CS C URRICULUM
+Theme: BASIC OPERATIONS Primary 4
+Learning outcome: Appreciate the use of number system in word expressi ons and vice versa to detect the missing numbers or values in open sentences.
+Focal competency:
+Solving open sentences related problems
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT –
+KNOWLEDGE AND
+SKILLS KEY
+COMP
+AND V ETE
+AL NCIES
+UES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Open
+sentence Pupils should be able to:
+1. explain open sentence;
+2.
+find missing number in
+an open sentence
+involving addition and
+subtraction operations;
+3.
+solve quantitative
+reasoning involving
+open sentence Knowledge
+1. Meaning of open
+sentence
+2. Missing number
+3. Quantitative
+Reasoning open
+sentence
+Skill
+Generating open
+sentence problems and
+solve them Collab
+pupils
+shared
+respon
+collabo
+and va
+individ
+contrib
+by eac
+memb
+using f
+cardbo
+genera
+senten
+based
+can se
+enviro ora
+assu
+sibili
+rativ
+lue t
+ual
+utio
+h te
+er w
+lash
+ard
+te o
+ces
+on w
+e wi
+nme tionas
+me
+ty for
+e work,
+he
+ns made
+am
+hile
+cards or
+to
+pen
+problem
+hat they
+thin the
+nt. Pupils are guided
+to:
+1. In groups, use
+flash cards or
+cardboard to
+generate open
+sentences
+problem based
+on what they can
+see within the
+environment and
+solve such
+problems
+2.
+Find missing
+number in open
+sentence.
+3.
+Solve series of
+problems
+involving open
+sentences.
+4.
+Solve
+Quantitative
+Reasoning
+involving open
+sentence. •
+Objects
+•
+Boxes
+•
+Charts . Pupils to:
+1.
+generate solvable
+open
+sentences
+problems;
+2.
+find missing
+numbers in open
+sentences;
+3.
+solve exercises on
+quantitative
+aptitude involving
+open sentences.
+
+MATHEMATI CS C URRICULUM
+Theme: MENSURATION
+Primary 4
+Learning outcome: Solve logical problems involving money, mensuration p
+and subtraction in open sentences robl ems relating to length, weight, capacity, time, area etc. as well as addition
+Focal competency: Adding and subtracting money for daily transactions
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT –
+KNOWLEDGE AND
+SKILLS KEY
+COMPET
+AND VAL ENC
+UES IES
+LEARNING ACTIVITIES TEACHING
+AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Money (1) Pupils should be able to:
+1. solve problems in
+addition of money;
+2. solve problems on
+subtraction of money;
+3. solve quantitative
+aptitude problems
+involving addition and
+subtraction of money.
+
+Knowledge
+1. Addition of money.
+2. Subtraction of
+money.
+3. Quantitative
+aptitude problems
+involving addition
+and subtraction of
+money.
+Skill
+Wisely itemizing
+proper ways to
+spend money Leadersh
+pupils tak
+responsibi
+actions in
+accomplis
+task
+Accounta
+as pupils
+truthfully
+goals and
+progress
+whole gro
+while shar
+stories rel
+money an
+was spent ipa
+e
+lity f
+hing
+bili
+shar
+with
+up
+ing
+ated
+d ho
+. s
+or
+a
+ty
+ed
+the
+to
+w it Pupils are guided to:
+1.
+Discuss in groups what
+they do with money and
+share experiences about
+how they spend
+their
+money, and the proper
+ways or things to spent
+money on, while a
+leader
+unanimously
+selected
+among the
+group member collate
+different shared
+experiences.
+2.
+Practice the addition and
+subtraction of money
+3.
+Solve Quantitative
+aptitude problems
+involving addition and
+subtraction of money. •
+Real money
+•Model of
+money
+•Charts
+•Basic addition
+table for
+money
+Pupils to:
+1.
+solve problems on
+addition and
+subtraction of
+money;
+2.
+solve quantitative
+aptitude problems
+involving addition
+and subtraction of
+money.
+
+MATHEMATI CS C URRICULUM
+Theme: MENSURATION
+Primary 4
+Learning outcome: Solve logical problems involving money, mensuration p
+subtraction in open sentences robl ems relating to length, weight, capacity etc. as well as addition and
+Focal competency: Multiplying and dividing money for daily transactions.
+Topic Performance objective Content –
+knowledge and
+Skills Key
+Comp
+and V ete
+alu ncies
+es Learning Activities Teaching and
+Learning
+Resources Evaluation Guide
+Money (2) Pupils should be able to:
+1. multiply money by a
+whole number;
+2. divide money by a whole
+number
+3. appreciate the need of
+correct multiplication and
+division of money in real
+life transactions;
+4. calculate profit and loss
+5. relate the four basic
+operations on money to
+buying and selling in real
+life;
+6.
+solve quantitative
+reasoning problems
+involving addition and
+subtraction of money. Knowledge
+1.
+Multiplication of
+money by whole
+numbers.
+2.
+Division of
+money by whole
+numbers.
+3.
+Calculation of
+profit and loss
+4.
+Quantitative
+reasoning
+involving
+multiplication
+and division of
+money.
+Skill
+Solving profit and
+loss elated
+transactional
+problems. Colla
+as pu
+exerci
+flexibi
+willing
+be hel
+makin
+neces
+compr
+accom
+comm
+while
+in gro
+use co
+blocks
+count
+solve
+on
+multip
+mone bora
+pils
+se
+lity a
+ness
+pful
+g
+sary
+omi
+plis
+on g
+work
+ups
+unti
+or
+ers t
+prob
+licat
+y. tion
+nd
+to
+in
+ses to
+h a
+oal
+ing
+to
+ng
+o
+lems
+ion of Pupils are guided to:
+1.
+In groups, use
+counting blocks or
+counters to solve
+problems on
+multiplication of
+money.
+2.
+Practice several ways
+of solving problems
+involving division of
+money
+using
+counters.
+3.
+Use charts to Prepare
+transactions
+schedule
+on buying and selling
+of different products.
+4.
+Use simplified
+method to calculate
+profit or loss in
+buying and selling.
+5.
+Solve Quantitative
+reasoning problems
+involving
+multiplication and
+division of money. •
+Real money
+•Model of
+money
+•Charts
+•Counters
+•Conting blocks
+etc. Pupils to:
+1.
+solve problems on
+multiplication and
+division of
+money;
+2.
+solve problems on
+profit or loss in
+business
+transactions;
+3.
+solve exercises on
+quantitative aptitude
+involving
+multiplication and
+division of money.
+
+MATHEMATI CS C URRICULUM
+Theme: MENSURATION
+Primary 4
+Learning outcome: Solve logical problems involving money, mensuration p
+subtraction in open sentences robl ems relating to length, weight, capacity etc. as well as addition and
+Focal competency:Calculating length and distance in kilometers, meters a nd c entimeters.
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT –
+KNOWLEDGE
+AND SKILLS KE
+COMPET
+AND V Y
+ENC
+ALU IES
+ES LEARNING ACTIVITIES TEACHING
+AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Length Pupils should be able to:
+1. estimate distances in
+kilometers and lengths
+in meters or centimeter
+and compare with
+measurements;
+2. add lengths;
+3. subtract lengths. Knowledge
+1. Estimation of
+distances in
+kilometers and
+compare with
+measurements.
+2. Estimation of
+length in meters
+or centimeter and
+compare with
+measurements.
+3.
+Addition of
+length.
+4.
+Subtraction of
+length.
+Skill
+Estimating and
+calculating the
+length of a distance ICT and
+Compete
+as pupils’
+knowledg
+enhance
+using
+info
+and
+communic
+technolog
+watch sho
+videos on
+calculate
+lengths in
+kilometer
+centimete
+meters Digi
+nci
+e is
+while
+rmat
+atio
+ies t
+rt
+how
+dista
+s,
+rs a tal
+es
+ion
+n
+o
+to
+nce
+nd Pupils
+are guided to:
+1.
+Brainstorm in group
+what distance is, ask
+each pupil to estimate
+what the distance of
+their house to the school
+could be.
+2.
+Watch short video clips
+on how to calculate
+distance lengths in
+kilometers, centimeters
+and meters.
+3.
+In groups Estimate
+distances in kilometers
+and compare with
+measurements.
+4.
+Estimate lengths in
+meters or centimeter
+and compare with
+measurements.
+5.
+Practice the addition and
+subtraction of length
+of
+objects •
+Tape
+•Meter rule
+•Ruler Pupils to:
+1.
+estimate given
+lengths and
+distances;
+2.
+compare estimates
+with actual
+measurement;
+3.
+solving problems on
+addition and
+subtraction of
+lengths.
+
+MATHEMATI CS C URRICULUM
+Theme: MENSURATION
+Primary 4
+Learning outcome: Solve logical problems involving money, mensuration p
+subtraction in open sentences robl ems relating to length, weight, capacity etc. as well as addition and
+Focal competency:Calculating weight of an object using basic arithmetic oper ations.
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT –
+KNOWLEDGE AND
+SKILLS KEY
+COMP
+AND ETE
+VAL NCIES
+UES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Weight Pupils should be able to:
+1. compute addition and
+subtraction of weights
+using kg and g;
+2. multiply and divide
+weights by whole
+numbers. Knowledge
+1. Addition of weights
+in kg and g.
+2. Subtraction of
+weights in kg and g.
+3. Multiplication of
+weights in kg and g
+by whole numbers.
+4. Division of weights
+in kg and g by whole
+numbers.
+Skill
+Measuring and
+calculating weight
+values using different
+basic arithmetic
+operations. Colla
+pupils
+group
+feedb
+work
+in gro
+and s
+weigh
+object bora
+inco
+inpu
+ack i
+while
+ups t
+ubtra
+t val
+s in tionas
+rporate
+t and
+nto the
+working
+o add
+ct the
+ues of an
+kg and g. Pupils
+are guided
+to:
+1.
+In groups, add
+and subtract
+the weight
+values of an
+object
+in kg and
+g.
+2.
+Practice the
+multiplication of
+weight
+values
+in
+kg and g by
+whole numbers.
+3.
+In groups,
+divide the
+weight
+values
+of an object
+by
+whole numbers
+into
+kg and g. •
+Weighting scale.
+•Scale balance. Pupils to:
+1.
+add and subtract
+weights in kg and g;
+2.
+multiply and divide
+weight
+values
+in kg
+and g by whole
+numbers.
+
+MATHEMATI CS C URRICULUM
+Theme: MENSURATION
+Primary 4
+Learning outcome: Solve logical problems involving money, mensuration p
+subtraction in open sentences robl ems relating to length, weight, capacity etc. as well as addition and
+Focal competency:Calculating and telling time at any time of the day.
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT –
+KNOWLEDGE
+AND SKILLS KEY
+COMPETENC
+AND VALUES IES
+LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Time Pupils should be able
+to:
+1. give time on the
+clock;
+3. read calendar;
+4. write dates;
+5. use the notationam
+andpm for time of
+the day;
+6. solve problems of
+quantitative aptitude
+relating to time. Knowledge
+1. Telling of time
+on the clock;
+2. Reading of
+calendar;
+3. Writing dates in
+various formats;
+4. Using the
+notation ofam
+andpm for time
+of the day;
+5.
+Solving of
+problems of
+quantitative
+aptitude relating
+to time. Collaboratio
+pupils are
+ope
+responsive to
+and diverse
+perspectives
+working in gro
+use clock char
+tell time of th
+Punctuality
+pupils take tim
+seriously to
+assemble of r
+to class durin
+break period. nas
+n an
+new
+while
+up t
+ts to
+e da
+as
+e
+eturn
+g
+o
+y.
+Pupils are guided to:
+1.
+In groups, use clock
+charts to tell time.
+2.
+Read calendar
+to say
+the days in week,
+month and year, then
+calculate the number
+of days from a certain
+date to another using
+the calendar.
+3.
+Write dates in various
+formats.
+4.
+Discuss time of the
+day in relation to the
+use of the notation
+am
+andpm.
+5.
+Solve quantitative
+reasoning problems
+related to time. •
+Clocks.
+•Calendar.
+•Clock charts Pupils to:
+1.
+read given time on
+clock or charts;
+2.
+write dates of given
+events;
+3.
+record times of the
+day and activities
+associate with the
+use of am and pm;
+4.
+solve quantitative
+aptitude problems
+involving time.
+
+MATHEMATI CS C URRICULUM
+Theme: MENSURATION Primary 4
+Learning outcome: Solve logical problems involving money, mensuration p
+subtraction in open sentences robl ems relating to length, weight, capacity etc. as well as addition and
+Focal competency:Calculating the surface area of a rectangle and a given rect angular farmland.
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT –
+KNOWLEDGE AND
+SKILLS KEY
+COMP
+AND V ETE
+ALU NCIES
+ES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Area Pupils should be able
+to:
+1. find area of
+rectangles using the
+formula;
+2. calculate the area of
+rectangular farmland
+in the environment;
+3. solve problems on
+quantitative aptitude
+related to areas of
+rectangle. Knowledge
+1. Area of rectangle using
+formula;
+2. Application of formula
+in calculating
+rectangular farmland;
+3. Problems on
+quantitative aptitude
+related to areas of
+rectangle. Collab
+pupils
+ability
+effectiv
+respec
+diverse
+while w
+groups
+the
+are
+rectan
+using u ora
+dem
+to w
+ely
+tfully
+tea
+orki
+to c
+as o
+gular
+nit s tionas
+onstrate
+ork
+and
+with
+ms
+ng in
+alculate
+f
+shapes
+quares. Pupils
+are guided
+to:
+1.
+In groups,
+calculate
+2.
+Use area of
+rectangle
+formula to
+calculate
+areas
+of rectangular
+shapes.
+3.
+Calculate areas
+of rectangular
+farmlands.
+4.
+Solve
+quantitative
+reasoning
+problems related
+to area of
+rectangle. •
+Cardboard.
+sheet.
+•Square chart.
+•Desktops.
+•Farmland.
+•Classrooms Pupils to:
+1.
+find areas of
+rectangular shapes
+using formula;
+2.
+calculate areas of
+rectangular
+farmlands;
+3.
+solve quantitative
+reasoning problems
+related to area of
+rectangle.
+
+MATHEMATI CS C URRICULUM
+Theme: MENSURATION
+Primary 4
+Learning outcome: Solve logical problems involving money, mensuration
+subtraction in open sentences probl ems relating to length, weight, capacity etc. as well as addition and
+Focal competency:Calculating liters using the basic arithmetic operations.
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT –
+KNOWLEDGE AND
+SKILLS KEY
+COMPET
+AND VAL ENC
+UES IES
+LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Capacity Pupils should be able to:
+1. add and subtract in
+liters;
+2. multiply and divide in
+liters with whole
+numbers;
+3. solve problems on
+quantitative aptitude
+related to addition,
+subtraction,
+multiplication and
+division involving liters. Knowledge
+1. Addition and
+subtraction
+involving liters.
+2. Multiplication and
+3. Division involving
+liters. Collabor
+as pupils
+shared
+responsib
+collaborat
+work, and
+the indivi
+contributi
+made by
+team me
+while usin
+cardboard
+addition a
+subtractio
+(Counters
+solve pro
+addition a
+subtractio
+involving atio
+assu
+ility
+ive e
+val
+dual
+ons
+each
+mber
+g
+and
+nd
+n to
+) to
+blem
+nd
+n
+liters n
+me
+for
+ue
+ols
+s in
+.
+Pupils
+are guided to:
+1.
+In groups, use
+cardboard and
+addition and
+subtraction tools
+(Counters) to
+solve problems in
+addition and
+subtraction
+involving liters.
+2.
+Solve problems on
+multiplication and
+division involving
+liters.
+3.
+Practice solving
+problems on
+quantitative
+aptitude related to
+addition,
+subtraction,
+multiplication and
+division involving
+liters. •
+Cardboard.
+•Counters
+•Multiplication tables
+etc. Pupils to:
+1.
+add and subtract
+given problems
+relating to capacity
+in liters;
+2.
+multiply and divide
+with whole
+numbers with the
+recorded values of
+capacity in liters.
+3.
+solve problems on
+quantitative
+aptitude related to
+addition,
+subtraction,
+multiplication and
+division involving
+liters.
+
+MATHEMATI CS C URRICULUM
+Theme: GEOMETRY Primary 4
+Learning outcome:
+Locate lines of symmetry, cardinal points
+and identify t he d ifferences between 2-D and 3-D objects
+Focal competency:
+Identifying
+differences between 2-D and 3-D shapes a nd di stinguishing
+between open and closed shapes.
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT –
+KNOWLEDGE AND
+SKILLS KEY
+COM
+AND
+PET
+VA ENCIES
+LUES LEARNING
+ACTIVITIES TEACHING
+AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Plane shapes Pupils should be able to:
+1.
+identify symmetrical plane
+shapes;
+2. locate line(s) of symmetry
+of objects in the
+environment;
+3. distinguish between
+horizontal and vertical
+lines;
+4. locate the four cardinal
+points. Knowledge
+1.
+Symmetry or non-
+symmetry of plane
+shapes:
+•Square
+•Rectangle
+•Equilateral and
+Isosceles triangles
+•Rhombus
+•Trapezium
+•Parallelogram
+•Kite
+•circle
+2. Horizontal and
+vertical lines.
+3. Cardinal points:
+•North
+•South
+•East
+•West ICT
+com
+pupil
+extra
+from
+on
+lin and
+pete
+s Lo
+ct in
+the
+e of Digital
+ncesas
+cate and
+formation
+internet
+symmetry Pupils are guided
+to:
+1.
+Search the
+internet for
+information on
+line of symmetry
+2.
+Locate line(s) of
+symmetry of
+plane shapes by
+folding and cut
+out.
+3.
+Locate
+horizontal and
+vertical lines in
+objects around.
+4.
+Locate the four
+cardinal points.
+5.
+Relate the rising
+and setting of
+the sun to
+cardinalpoints. •
+Plane
+shapes
+•Charts
+•Model of the
+four cardinal
+points.
+•Digital lacers Pupils to:
+1.
+identify line(s) of
+symmetry of given
+plane shapes;
+2.
+locate line(s) of
+symmetry of given
+objects around;
+3.
+locate horizontal and
+vertical lines of given
+objects in the
+environment;
+4.
+locate the four
+cardinal points on
+chart and model.
+
+MATHEMATI CS C URRICULUM
+Theme: GEOMETRY Primary 4
+Learning outcome: Locate lines of symmetry, cardinal points and identify t he d ifferences between 2-D and 3-D objects
+Focal competency:
+Identifying differences between 2-D and 3-D shapes a nd di stinguishing between open and closed shapes.
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT –
+KNOWLEDGE AND
+SKILLS KEY
+COM
+AND
+PET
+VAL ENCIES
+UES LEARNING
+ACTIVITIES TEACHING
+AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Three
+dimensional
+shapes Pupils should be able to:
+1.
+distinguish between open
+and closed shapes;
+2.
+identify the uses of three-
+dimensional shapes. Knowledge
+1. Three dimensional
+shapes:
+•Cuboids
+•Cubes
+•cylinders
+2. Uses of three-
+dimensional shapes. Colla
+pupil
+grou
+feedb
+work
+brain
+grou
+objec
+them
+featu
+dime
+shap bor
+s inc
+p inp
+ack
+whil
+stor
+ps to
+ts ar
+that
+res o
+nsio
+es. ationas
+orporate
+ut and
+into the
+e
+ming in
+list
+ound
+has the
+f three-
+nal Pupils are guided
+to:
+1. Brainstorm in
+groups to list
+objects around
+them that has
+the features of
+three-
+dimensional
+shapes
+2. Note and write
+down features of
+open and closed
+shapes;
+3.
+Use charts to list
+the uses of 3D
+shapes in homes
+and environment. • Cartons
+•Charts
+•Models of the
+Cuboid, Cube
+and Cylinder
+•Milk tins
+•Water tanks
+•Buckets
+•Etc. Pupils to:
+1.
+distinguish between
+open and closed
+shapes from a given
+collection of shapes;
+2.
+mention the uses of
+three dimensional
+shapes..
+
+MATHEMATI CS C URRICULUM
+Theme: EVERYDAY STATISTICS Primary 4
+Learning outcome: Present, read and interpret information from bar grap hs
+Focal competency:
+Prepare graph based on obtained data, reading/interpr etin g information from a graph.
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT –
+KNOWLEDGE
+AND SKILLS KEY
+COMPETEN
+AND VALUE CIES
+S LEARNING
+ACTIVITIES TEACHING
+AND
+LEARNING
+RESOURCES EVALUATION GUIDE
+Bar graph Pupils should be able
+to:
+1.
+draw bar graph;
+2.
+read bar graph;
+3.
+identify bar graph
+mode. Knowledge
+1. Bar graph.
+2. Bar graph mode.
+Skill
+Generating data
+Plotting graph with
+available data. Informatio
+Literacy as
+use informati
+accurately an
+creatively for
+issue or prob
+hand while
+generating
+(Information)
+based on wh
+available with
+class or envir
+e.g. differen
+boys against
+girls within th n
+pup
+on
+the
+lem
+data
+at is
+in t
+onm
+t age
+that
+e cl ils
+at
+he
+ent
+of
+of
+ass. Pupils are guided to:
+1. In groups, construct
+horizontal and vertical
+bar graphs.
+2. Generate data based
+on what is available
+within the class or
+environment e.g.
+different age of boys
+against that of girls
+within the class.
+3. Use the data provided
+to plot a bar graph.
+4.
+Read and interpret
+information from bar
+graphs.
+5.
+Identify bar graph
+mode. • Bar graph
+charts
+•Simple data
+•Cardboards and
+markers etc. Pupils to:
+1.
+construct horizontal
+and vertical bar
+graphs of given data;
+2.
+read and interpret
+information from
+given bar graphs;
+3.
+determine given bar
+graph mode.

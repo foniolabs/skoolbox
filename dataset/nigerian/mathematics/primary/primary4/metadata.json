@@ -8,8 +8,25 @@
   "is_exam_class": false,
   "prerequisite_levels": [],
   "retrieval_mode": "standard",
-  "textbooks": [],
+  "textbooks": [
+    "NERDC New Revised Basic Education Curriculum — Mathematics, Primary 4 (Sept 2025)"
+  ],
   "topics": [
-    "fractions"
+    "whole numbers",
+    "fractions",
+    "addition and subtraction",
+    "multiplication",
+    "division",
+    "estimation",
+    "open sentences",
+    "money",
+    "length",
+    "weight",
+    "time",
+    "area",
+    "capacity",
+    "plane shapes",
+    "three dimensional shapes",
+    "bar graph"
   ]
 }
