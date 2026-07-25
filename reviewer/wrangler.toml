@@ -1,0 +1,14 @@
+# Cloudflare Pages project for the SkoolBox reviewer portal.
+#
+# The D1 database id below is filled in once, after you create the database:
+#   npx wrangler d1 create skoolbox-reviews
+# Copy the printed database_id into `database_id` and commit it (it is not a secret).
+
+name = "skoolbox-review"
+pages_build_output_dir = "public"
+compatibility_date = "2026-01-01"
+
+[[d1_databases]]
+binding = "DB"                      # available in functions as env.DB
+database_name = "skoolbox-reviews"
+database_id = "b2628c7f-3d88-4e62-b81d-701d58e6621e"

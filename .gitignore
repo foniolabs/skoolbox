@@ -46,3 +46,15 @@ rag/docs/
 *.njsproj
 *.sln
 *.sw?
+
+# foglamp scan output (contains edit token — never commit)
+.foglamp/
+
+# Generated review packet (rebuild anytime with training/review.py packet).
+# The LEDGER dataset/reviews.json IS tracked — it is the sign-off record.
+training/review_packet*.html
+
+# Reviewer portal: local wrangler state + deps.
+# NOTE: reviewer/public/dataset.json IS tracked (regenerate: review.py export).
+reviewer/.wrangler/
+reviewer/node_modules/
