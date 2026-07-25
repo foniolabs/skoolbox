@@ -102,7 +102,22 @@ and everything a teammate needs to move it forward.
    Target ≥ 200 high-quality examples per subject per class level
    (≥ 5,000 lines total before a serious run; below 1,000 results are weak).
 2. Use the system-prompt templates and rules in [dataset/README.md](dataset/README.md).
-3. Curriculum reviewer approves via PR (check NERDC/WAEC accuracy, JSON validity).
+3. Curriculum reviewer approves. **Two routes, one ledger** (`dataset/reviews.json`):
+   - **Online portal** (`reviewer/`, live on Cloudflare Pages + D1) — send academics
+     a URL, they mark each example accurate / needs-correction in the browser,
+     `python training/review.py pull` folds the results into the ledger; read them
+     at `/admin`. Setup: [reviewer/README.md](reviewer/README.md).
+   - **Offline packet** — `python training/review.py packet` (printable HTML) +
+     `review.py sign` for reviewers who prefer paper.
+   `review.py status --strict` is the pre-training gate. See
+   [dataset/REVIEW_CHECKLIST.md](dataset/REVIEW_CHECKLIST.md).
+
+**Data status (2026-07-20):** **427 clean examples** across 92 files (merge
+`--strict` passes). Coverage: Primary 4 (Maths, English, Basic Science &
+Technology, Social Studies), JSS1 (Maths, English, Basic Science), JSS2 (Maths),
+plus SS-level seeds. All **AI-drafted** — reviewer sign-off is the gate: **0 of
+427 signed off** so far (1 file under review). Well short of the ≥5,000 target
+for a serious training run — more data + sign-off is the critical path.
 
 ### Phase B — Training (ML dev) 🔵
 4. `python training/merge_dataset.py --input dataset/ --output training/skoolbox_train.jsonl`
@@ -223,9 +238,18 @@ QA verifies → repeat.
 
 ---
 
-*Status as of 2026-06-27. Recent: persona consolidated to one source
-(`curriculum/nigerian.system_prompt.txt`, compiled into Rust via `include_str!`,
-Modelfile generated from it); cloud Azure TTS removed for the offline build;
-CI + Git LFS wired; textbook OCR ingestion pipeline added. App-side details
-reflect the last working session — verify against current code before relying on
-a specific file or function.*
+*Status as of 2026-07-20. Recent (newest first): online reviewer portal live
+(Cloudflare Pages + D1, `reviewer/`) with an `/admin` dashboard, feeding the
+sign-off ledger via `training/review.py`; dataset grown to 427 examples (Primary
+4 + JSS1 across the three MVP subjects, JSS2 Maths) and reformatted to
+step-per-line; Phase 0 closed (`claude` provider compiled out of release builds,
+clippy + eslint are hard CI gates); Phase 4 voice built (Kokoro TTS + Whisper STT
+push-to-talk, `scripts/setup_voice.sh`, verified end-to-end); Phase 5 classroom
+wave (greeting, teacher commands, projector mode, session summary). Earlier:
+persona consolidated to one source; cloud Azure TTS removed; CI + Git LFS wired;
+textbook OCR ingestion. **The MVP target date (2026-06-30) has passed — reset it.**
+The remaining critical path is unchanged: more reviewed data → a trained GGUF →
+bundling + a Windows installer (never yet built) → real-classroom QA. App-side
+details reflect the last working session — verify against current code before
+relying on a specific file or function. **The `main` branch of the build plan is
+[SKILL.md](SKILL.md) — check its handoff box for live phase status.***

@@ -17,13 +17,77 @@ production decisions.
 
 ---
 
-## 📍 Handoff — pick up here (last updated 2026-06-27)
+## 📍 Handoff — pick up here (last updated 2026-07-18)
 
 > **Read this before starting.** Each phase below is tagged ✅ done / 🟡 partial /
 > 🔨 to build. **Do not redo ✅ items** — verify them with the commands below
 > instead. When you finish work, update the relevant tags and this date.
 
 **Already done (verify, don't repeat):**
+- **Online reviewer portal — LIVE (2026-07-20):** academics review the dataset in
+  a browser and their verdicts sync back to the sign-off ledger. Stack: Cloudflare
+  Pages + D1 (SQLite), in `reviewer/`. Reviewer app `reviewer/public/index.html`
+  (branded to the SkoolBox palette: white, Inter UI + Source-Serif answers, no
+  emoji; keyboard A/X marking, draft autosave); admin dashboard
+  `reviewer/public/admin.html` at **`/admin`** (token-gated; flagged examples shown
+  with their answer + reviewer note). API in `reviewer/functions/api/` (submit /
+  progress / verdicts / submissions). `training/review.py` gained `export` (writes
+  `reviewer/public/dataset.json`) and `pull --url <portal> --token <ADMIN_TOKEN>`
+  (folds submissions into `dataset/reviews.json`; ignores stale-hash verdicts).
+  Live at `https://skoolbox-review.pages.dev` (custom domain `review.skoolbox.xyz`
+  to be attached). Setup + troubleshooting: `reviewer/README.md`. **First real
+  submission already in** (SS1 English concord, 1 flagged). ⚠️ Two ops steps still
+  on the user: set the `ADMIN_TOKEN` secret (else `/api/verdicts`+dashboard are
+  open), and clear the one test row from prod D1. Verify: `curl <url>/api/health`.
+- **Answer formatting pass (2026-07-20):** `training/reformat_answers.py` broke the
+  dense single-paragraph answers into step-per-line / list-per-line structure (the
+  app renders answers `white-space: pre-wrap`, so this reaches the whiteboard and
+  lesson notes, not just the reviewer). 79/427 answers reformatted; wording
+  unchanged (whitespace only); `merge_dataset --strict` still clean. Re-run
+  `review.py export` + redeploy the portal after any dataset change.
+- **Phase 0 closed + Phase 5 classroom wave (2026-07-10):** `claude` provider
+  compiled out of release builds; clippy + eslint now **hard CI gates** (both
+  clean); orphaned Teach/Presentation pages retired. Classroom got: opening
+  greeting (spoken + skippable), on-demand teacher commands (explain /
+  re-explain-for-student / prerequisites / quiz read aloud / lesson note),
+  projector-mode toggle, Escape-stops-voice, and a saveable session-end summary.
+  Verify: `cargo clippy --lib --all-targets -- -D warnings`, `npm run lint -- --max-warnings 0`,
+  `cargo test --lib` (9 pass), `npx tsc --noEmit`, `cargo check --release`.
+  Phase 0 leftover: `git lfs install` still not run on this machine (git-lfs not installed).
+- **JSS1 full-level wave + reviewer sign-off tooling (2026-07-18):** JSS1
+  Mathematics (whole numbers topped up to 12, plus fractions, algebraic
+  processes, geometry — 36) and JSS1 English (parts of speech topped up to 12,
+  plus sentences, tenses, comprehension and composition — 36) joined the
+  existing JSS1 Basic Science 32, so **JSS1 is now covered across all three MVP
+  subjects**. Dataset: **427 clean examples**, 598+ chunks re-ingested.
+  **New: `training/review.py`** — the curriculum reviewer's workflow.
+  `packet` builds a printable HTML review document (grouped by file, every
+  example tagged `file:line`); `sign` records approve / changes_requested with
+  reviewer + date + notes + a SHA-256 of the approved content; `status` reports
+  approved / pending / stale / changes-requested, and `--strict` is the
+  pre-training gate. Editing an approved file auto-marks it STALE. Ledger:
+  `dataset/reviews.json`. Process documented in dataset/REVIEW_CHECKLIST.md.
+  ⚠️ **0 of 427 examples are signed off** — that backlog is the real gate
+  before any training run.
+- **JSS2 Maths + JSS1 Basic Science wave (2026-07-18):** the two investor-demo
+  levels. JSS2 Mathematics now has 5 topics (linear equations topped up to 12
+  examples, plus algebraic expressions, directed numbers, angles and polygons,
+  statistics — 44 total); JSS1 Basic Science has 4 topics (water cycle, living
+  and non-living things, matter, energy — 32 total). Both `metadata.json` files
+  now list real topics + textbooks. Dataset: **363 clean examples** (merge
+  --strict passes, 0 warnings); re-ingested → 598 chunks; retrieval verified for
+  "x on both sides" (JSS2) and "stages of the water cycle" (JSS1).
+  ⚠️ AI-drafted — still needs curriculum-reviewer sign-off before training.
+- **Primary 4 content wave (2026-07-09):** NERDC Sept-2025 revised curriculum
+  scope docs added under `curriculum_sources/` and as `curriculum_scope.txt`
+  RAG artifacts in the four Primary 4 class folders; two new subject trees
+  (`basic_science_technology`, `social_studies`) with topics/textbooks filled;
+  20 new topic `.jsonl` files (~160 examples) across Maths / English / BST /
+  Social Studies Primary 4. Dataset now **291 clean examples** (merge --strict
+  passes, 0 warnings); re-ingested → 526 chunks; retrieval verified per subject.
+  ⚠️ AI-drafted examples — **needs curriculum-reviewer sign-off** before a
+  training run (REVIEW_CHECKLIST.md). Note: these two subjects extend the
+  3-subject MVP rule below — confirm scope or keep them as RAG-only content.
 - Dataset migrated to the 4-level tree + a `metadata.json` in all class folders
   + exam-bank stubs (now incl. the `basic_science` JSS tree). Verify:
   `python rag/scaffold_metadata.py --check` ("All metadata.json files present and current").
@@ -56,15 +120,25 @@ production decisions.
    `rag/ingest_textbook.py` (grounds Martha's *knowledge* via RAG — no retraining).
    The `basic_science` JSS tree exists with scaffolded (empty) metadata. Unblocks
    Phases 2–3.
-2. **Finish Phase 0 polish:** make clippy/eslint hard gates by clearing the
-   pre-existing warnings (see CI `continue-on-error` steps); compile out / dev-gate
-   the `claude` provider for release builds; run `git lfs install` on dev machines.
+2. **Phase 0 is closed** (clippy/eslint hard gates, `claude` provider dev-gated)
+   except one local step: install git-lfs and run `git lfs install` on dev machines.
 
-**Biggest unbuilt chunk:** Phase 4 (voice — Whisper STT + neural TTS). No STT
-exists yet; pick the TTS engine (Kokoro vs Piper) before starting.
+**Biggest unbuilt chunk:** Phase 4 voice. **TTS engine decision locked
+(2026-07-10): Kokoro.** The engine is already wired: `tts.rs` prefers Kokoro →
+Piper → `spd-say`, discovering `koko` + models under
+`~/.local/share/com.foniolabs.skoolbox/tts/kokoro/`; run
+`scripts/setup_voice.sh` once per machine (needs `sudo apt-get install
+pkg-config libopus-dev` for the one-time `koko` build; `--with-whisper` also
+fetches the STT model + builds whisper-cli). **STT push-to-talk is now built**
+(2026-07-10): `commands/stt.rs` (record via arecord/pw-record/parecord →
+whisper-cli → transcript; 30 s cap; <6 GB RAM auto-disable; failed-transcription
+log) + `PushToTalk.tsx` wired into the class question phase. Remaining: install
+voice deps per machine (`sudo apt-get install pkg-config libopus-dev cmake`,
+then `bash scripts/setup_voice.sh --with-whisper`), voice style/speed tuning
+(warm female @ 0.92×), noisy-room test, RAM measurements on target hardware.
 
-**Open decisions not yet made:** TTS engine (Phase 4); whether to keep the
-adapted persona doc or the verbatim spec.
+**Open decisions not yet made:** whether to keep the adapted persona doc or the
+verbatim spec.
 
 ---
 
@@ -95,7 +169,7 @@ Science at JSS) — only these three. **Curriculum:** Nigerian only.
 
 ---
 
-## Phase 0 — Foundation & production hygiene  🟡
+## Phase 0 — Foundation & production hygiene  ✅ (bar `git lfs install` locally)
 *Owner: lead dev · do this before/at the start of everything else.*
 
 The scaffolding exists; this phase removes the production debt that would
@@ -110,14 +184,16 @@ otherwise compound through later phases.
   (`agent_prompt.rs::master_system_prompt()`), and `src-tauri/ai/Martha.Modelfile`
   is generated from it by `curriculum/generate_modelfile.py` (`--check` in CI).
   (Runtime per-curriculum variants are deferred to v2.0 — MARTHA_PERSONA.md §6.)
-- 🟡 **Remove cloud paths for offline build.** ✅ `src/lib/tts/azureTTS.ts` deleted
-  and Azure config stripped from stores/Settings/mockData; `model_provider` already
-  defaults to `ollama`. 🔨 remaining: compile out / dev-gate the `claude` provider
-  in release builds.
-- 🟡 **CI guards:** ✅ `.github/workflows/ci.yml` runs `scaffold_metadata.py --check`,
-  `generate_modelfile.py --check`, `cargo test`, and `tsc` as hard gates. 🔨 remaining:
-  `cargo clippy -- -D warnings` and `npm run lint` run non-blocking (`continue-on-error`)
-  until the pre-existing warnings/errors are cleared, then flip them to hard gates.
+- ✅ **Remove cloud paths for offline build.** `src/lib/tts/azureTTS.ts` deleted
+  and Azure config stripped from stores/Settings/mockData; `model_provider`
+  defaults to `ollama`; the `claude` provider is now **compiled out of release
+  builds** (`#[cfg(debug_assertions)]` in `ai/provider.rs` + `ai/mod.rs` —
+  release ignores a leftover `claude` setting and stays offline). Verified with
+  `cargo check --release`.
+- ✅ **CI guards:** `.github/workflows/ci.yml` runs `scaffold_metadata.py --check`,
+  `generate_modelfile.py --check`, `cargo test`, `tsc`, **`cargo clippy -- -D
+  warnings` and `eslint --max-warnings 0` — all hard gates** (warnings/errors
+  cleared 2026-07-10; dead structs removed, hooks deps fixed).
 - 🟡 **Git LFS:** ✅ `.gitattributes` tracks `*.gguf`, `*.onnx`, and model `*.bin`.
   🔨 remaining: `git lfs install` on each dev machine (git-lfs not yet installed locally).
 
@@ -212,31 +288,53 @@ warmly, never breaks character, and the persona has teacher sign-off.
 
 ---
 
-## Phase 4 — Voice integration  🔨  (Weeks 3–4)
+## Phase 4 — Voice integration  🟡  (Weeks 3–4)
 *Owner: ML dev + app dev; QA for the noise test.* Ref: MARTHA_PERSONA.md §3.
 
-Largest net-new build. Today: no STT; TTS is `spd-say`/espeak (replace) + cloud
-azureTTS (remove). **Decision to lock first:** TTS engine = Kokoro (per spec) vs.
-Piper — both offline ~300 MB; default Kokoro unless Piper wins on target hardware.
+Largest net-new build. Today: no STT. **TTS engine locked (2026-07-10): Kokoro**
+(~340 MB: kokoro-v1.0.onnx + voices-v1.0.bin). 🟡 already wired: `tts.rs` engine
+order Kokoro → Piper → `spd-say`; install via `scripts/setup_voice.sh`.
 
-**STT — Whisper Small (~250 MB):**
-- 🔨 Bundle model in `src-tauri/ai/models/`.
-- 🔨 Spacebar activates Whisper; pulsing mic icon visible on projector; 30 s cap.
-- 🔨 Transcription shown on projector **before** Martha responds (teacher confirms).
-- 🔨 Whisper unloads within ~2 s of transcription (RAM returns to baseline).
-- 🔨 Failed transcriptions logged to a local file (future NG-English fine-tune).
+**STT — Whisper Small:**
+- 🟡 Model + engine install: `scripts/setup_voice.sh --with-whisper` downloads
+  `ggml-small.bin` and builds `whisper-cli` (static) into
+  `~/.local/share/com.foniolabs.skoolbox/stt/` (runtime-discovered like TTS,
+  not bundled in `src-tauri/ai/models/`). 🔨 remaining: run it on each machine
+  (needs `sudo apt-get install pkg-config libopus-dev cmake` first).
+- ✅ Spacebar toggles recording (`PushToTalk.tsx`, ignores keys while typing);
+  pulsing red mic + countdown visible on projector; **30 s cap** (frontend
+  countdown + `arecord -d 31` backstop).
+- ✅ Transcription lands in the answer box **before** Martha responds — the
+  teacher previews/edits, then presses Check to confirm (`commands/stt.rs`).
+- ✅ Whisper runs as a transient process per transcription — exits (frees all
+  RAM) immediately; nothing stays resident.
+- ✅ Failed/empty transcriptions logged to `stt/failed_transcriptions.log`
+  with the WAV kept under `stt/failed/` (future NG-English fine-tune).
 
-**TTS — neural (~300 MB):**
-- 🔨 Replace `tts.rs` espeak path with the neural engine; reuse the existing
-  `clean_for_speech` math/markdown normalisation.
-- 🔨 Default voice `warm_female_en` @ `0.92×`, routed to system default output.
-- 🔨 **Escape** interrupts playback instantly, every time.
-- 🔨 Engine unloads within ~2 s of playback ending.
+**TTS — neural (Kokoro, ~340 MB):**
+- ✅ Replace `tts.rs` espeak path with the neural engine: Kokoro is the
+  preferred engine (`speak_with_kokoro`, reuses `clean_for_speech`); installed
+  by `scripts/setup_voice.sh`. **Verified working end-to-end 2026-07-10**
+  (koko → WAV → paplay; ~3 s synthesis for a 5 s line on the dev CPU; Whisper
+  transcribes the output word-for-word). ⚠️ gotcha: koko needs
+  `espeak-ng-data/` shipped beside it + `ESPEAK_DATA_PATH` set (both handled by
+  the script and tts.rs) — without it, it silently emits ~0.4 s stub audio; the
+  script's smoke test now fails on stub-sized output. 🔨 consider koko
+  server/stream mode if per-call latency bothers in class.
+- 🟡 Default voice: **af_heart @ 0.92×** set in `speak_with_kokoro` (matches the
+  spec's warm female). 🔨 remaining: Nigerian teacher listens and signs off.
+- ✅ **Escape** interrupts playback instantly (global handler in the class screen
+  → `stop_speaking`, which kills the audio process).
+- 🟡 Engine unloads: the CLI approach holds no resident model between calls
+  (nothing to unload); revisit if we move to server mode.
 
 **RAM safety & fallback:**
-- 🔨 Whisper and TTS **never loaded simultaneously** (enforce in code; verify in review).
-- 🔨 Peak (LLM + Whisper) < 4 GB; full session < 6.5 GB on 8 GB device.
-- 🔨 **Voice auto-disables when available RAM < 6 GB** → clear text-only message.
+- ✅ Whisper and TTS **never loaded simultaneously**: both are transient
+  processes, and `stt_start` stops any Martha speech before recording.
+- 🔨 Peak (LLM + Whisper) < 4 GB; full session < 6.5 GB on 8 GB device (measure
+  on target hardware once whisper-cli is installed).
+- ✅ **Voice auto-disables when available RAM < 6 GB** (`/proc/meminfo`
+  MemAvailable check in `stt_available`) → clear "type instead" message.
 - 🔨 Tested by a Nigerian speaker in a **noisy** room: 10/10 teacher phrases correct.
 
 **Done when:** push-to-activate → preview → spoken+displayed reply → Escape works
@@ -254,18 +352,29 @@ Session flow exists in part; finish the teacher-led, projector-first experience.
   (Nigerian active). Foundation for v2.0 multi-curriculum.
 - 🔨 **Session setup < 60 s:** subject + class level + topic; if topic missing,
   Martha asks "What are we learning about today?" before proceeding.
-- 🔨 **Opening greeting** displayed + spoken (names subject + today's topic).
-- 🔨 **Projector display:** large font, high contrast, readable from 6 m.
-- 🔨 Push-to-activate mic icon + transcription preview (wires Phase 4).
+- ✅ **Opening greeting** displayed + spoken (names subject + today's topic),
+  skippable; topic missing → Martha asks "What are we learning about today?".
+- 🟡 **Projector display:** projector-mode toggle in the class header scales the
+  greeting/question/quiz/summary text up. 🔨 remaining: verify at 6 m on real hardware.
+- ✅ Push-to-activate mic icon + transcription preview in the question phase
+  (`PushToTalk.tsx` — spacebar or click, transcript fills the answer box for
+  teacher confirmation).
 - 🔨 **Response displayed AND spoken simultaneously.**
-- 🔨 On-demand teacher commands (route through `classroom.rs`, grounded via RAG):
-  explain to class · quiz (3–5 Qs, shown + read aloud, pause for response) ·
-  re-explain for a named student · prerequisites for a topic · generate class notes.
-- 🔨 **Lesson note generator:** objectives, key points, examples, homework.
-- 🔨 **Quiz generator:** questions on projector, Martha reads each aloud.
-- 🔨 **Session end summary:** topics covered, questions asked, key concepts,
-  homework, topics to revisit — saveable/printable.
-- 🔨 Re-route or retire orphaned `TeachPage` / `PresentationPage` (HANDOFF gap).
+- ✅ On-demand teacher commands (`classroom_explain` / `classroom_class_quiz` /
+  `classroom_lesson_note` in `commands/classroom.rs`, grounded via RAG;
+  `ClassToolsPanel.tsx` in the class screen): explain to class · quiz (3–5 Qs,
+  shown + read aloud per question, answers hidden behind a teacher toggle) ·
+  re-explain for a named student · prerequisites · lesson note. **Escape stops
+  Martha's voice** anywhere in the class screen.
+- ✅ **Lesson note generator:** objectives, key points, examples, homework —
+  displayed for review + saved as `.txt` (feeds homework into the session summary).
+- ✅ **Quiz generator:** questions on projector, Martha reads each aloud.
+- ✅ **Session end summary:** topics covered, questions asked (with ✓/✗), homework
+  (from the lesson note), topics to revisit (segments answered wrongly) — saveable as `.txt`.
+- ✅ Retired orphaned `TeachPage` / `PresentationPage` + their exclusive
+  components (`TeachCommandBar`, `ModeSelector`, `QuickCommands`, `RecentLessons`,
+  `presentation/`, `narration/`, `useTeachStore`); `/presentation` route removed.
+  Baked-lesson replay lives in `ClassSessionPage` (`getGeneratedLesson`).
 
 **Done when:** a teacher can configure and run a full lesson (greeting → explain →
 quiz → notes → summary) entirely from the keyboard, projector-readable and offline.
