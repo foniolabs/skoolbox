@@ -58,22 +58,6 @@ pub struct GoldenExplanation {
     pub created_at: String,
 }
 
-/// Student thumbs-up/down feedback on an AI response.
-#[derive(Debug, Serialize, Deserialize, Clone)]
-pub struct AiFeedback {
-    pub id: String,
-    pub student_id: String,
-    pub conversation_id: String,
-    pub message_id: String,
-    pub feedback_type: String,          // thumbs_up|thumbs_down|report
-    pub feedback_detail: Option<String>,
-    pub topic_id: Option<String>,
-    pub subject: Option<String>,
-    pub ai_response_text: String,
-    pub student_question: String,
-    pub quiz_score_after: Option<f64>,
-    pub created_at: String,
-}
 
 /// A single message in a student's chat history.
 #[derive(Debug, Serialize, Deserialize, Clone)]

@@ -11,7 +11,6 @@ import SignupPage from './pages/SignupPage'
 import DashboardPage from './pages/DashboardPage'
 import PreparePage from './pages/PreparePage'
 import ClassSessionPage from './pages/ClassSessionPage'
-import PresentationPage from './pages/PresentationPage'
 import AssessPage from './pages/AssessPage'
 import QuizPlayerPage from './pages/QuizPlayerPage'
 import MonitorPage from './pages/MonitorPage'
@@ -77,11 +76,6 @@ function App() {
           <Route path="/student/progress" element={<StudentProgressPage />} />
           <Route path="/student/subjects/:subjectId/topics/:topicId" element={<TopicLearningPage />} />
         </Route>
-      )}
-
-      {/* Full-screen presentation (teacher only) */}
-      {isLoggedIn && role === 'teacher' && (
-        <Route path="/presentation" element={<PresentationPage />} />
       )}
 
       {/* Catch all */}

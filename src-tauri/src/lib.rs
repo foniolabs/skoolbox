@@ -16,7 +16,7 @@ pub fn run() {
         .plugin(tauri_plugin_fs::init())
         .setup(|app| {
             // Initialize database
-            let conn = connection::open_db(&app.handle())?;
+            let conn = connection::open_db(app.handle())?;
             connection::init_db(&conn).expect("Failed to init database schema");
             db::seed::seed_if_empty(&conn).expect("Failed to seed database");
 
@@ -115,6 +115,9 @@ pub fn run() {
             commands::classroom::classroom_plan_lesson,
             commands::classroom::classroom_teach_segment,
             commands::classroom::classroom_evaluate_answer,
+            commands::classroom::classroom_lesson_note,
+            commands::classroom::classroom_class_quiz,
+            commands::classroom::classroom_explain,
             commands::classroom::bake_lesson,
             commands::classroom::get_generated_lesson,
             commands::classroom::list_generated_lessons,
@@ -131,6 +134,10 @@ pub fn run() {
             commands::tts::speak_text,
             commands::tts::stop_speaking,
             commands::tts::tts_available,
+            commands::stt::stt_available,
+            commands::stt::stt_start,
+            commands::stt::stt_stop,
+            commands::stt::stt_cancel,
             // ── Auth ────────────────────────────────────────────────────────
             commands::auth::login,
             commands::auth::register,

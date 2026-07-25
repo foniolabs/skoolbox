@@ -40,7 +40,7 @@ export default function QuizTab({ topicId, topicName, subjectId }: QuizTabProps)
       });
     }, 1000);
     return () => clearInterval(timer);
-  }, [phase, timeLeft]);
+  }, [phase, timeLeft, finishQuiz]);
 
   const startQuiz = async () => {
     setLoading(true);

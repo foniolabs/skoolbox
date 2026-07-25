@@ -175,12 +175,15 @@ pub struct ImportSummary {
     pub replaced: bool,
 }
 
+/// One `curriculum_documents` row: (id, title, subject, class_level, source_type).
+type DocRow = (String, String, Option<String>, Option<String>, String);
+
 /// Build a `CurriculumPack` from everything currently in the knowledge base.
 fn build_pack(conn: &rusqlite::Connection, name: &str, version: &str) -> Result<CurriculumPack, String> {
     let mut doc_stmt = conn
         .prepare("SELECT id, title, subject, class_level, source_type FROM curriculum_documents ORDER BY created_at")
         .map_err(|e| e.to_string())?;
-    let docs: Vec<(String, String, Option<String>, Option<String>, String)> = doc_stmt
+    let docs: Vec<DocRow> = doc_stmt
         .query_map([], |r| Ok((r.get(0)?, r.get(1)?, r.get(2)?, r.get(3)?, r.get(4)?)))
         .map_err(|e| e.to_string())?
         .filter_map(|r| r.ok())

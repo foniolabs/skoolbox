@@ -91,7 +91,7 @@ export default function EnrollStudentsPage() {
       setSuccessMsg(`Successfully enrolled ${enrolled.length} student(s)!`);
       setNewStudents([{ fullName: '', username: '', classLevel: 'Pry 5' }]);
       await loadUsers();
-    } catch (err) {
+    } catch {
       setErrorMsg('Failed to enroll students. Please try again.');
     } finally {
       setEnrolling(false);

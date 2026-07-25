@@ -59,6 +59,60 @@ fn tts_home() -> Option<std::path::PathBuf> {
     Some(std::path::PathBuf::from(home).join(".local/share/com.foniolabs.skoolbox/tts"))
 }
 
+/// Kokoro — the chosen Phase 4 neural TTS engine (SKILL.md). The `koko` CLI
+/// binary plus its model files live under `tts_home()/kokoro/` (installed by
+/// `scripts/setup_voice.sh`):
+///   kokoro/koko                            — CLI binary (Kokoros project)
+///   kokoro/checkpoints/kokoro-v1.0.onnx    — model (~310 MB)
+///   kokoro/data/voices-v1.0.bin            — voice styles
+///   kokoro/espeak-ng-data/                 — phonemizer data (via ESPEAK_DATA_PATH)
+/// `koko` resolves the model files relative to its working directory, so we
+/// return the kokoro dir to use as cwd. Returns None unless everything exists —
+/// without espeak-ng-data the phonemizer silently produces ~0.4 s stub audio.
+fn kokoro_paths() -> Option<(std::path::PathBuf, std::path::PathBuf)> {
+    let dir = tts_home()?.join("kokoro");
+    let bin = dir.join("koko");
+    let ok = bin.exists()
+        && dir.join("checkpoints/kokoro-v1.0.onnx").exists()
+        && dir.join("data/voices-v1.0.bin").exists()
+        && dir.join("espeak-ng-data/phontab").exists();
+    ok.then_some((bin, dir))
+}
+
+/// Synthesize with Kokoro (natural neural voice) and play the result.
+async fn speak_with_kokoro(
+    text: &str,
+    bin: &std::path::Path,
+    kokoro_dir: &std::path::Path,
+) -> Result<(), String> {
+    let wav = std::env::temp_dir().join(format!("skoolbox_tts_{}.wav", std::process::id()));
+    // Martha's voice per MARTHA_PERSONA §3: warm female at 0.92× speed.
+    // ESPEAK_DATA_PATH points koko's phonemizer at the data we ship beside it
+    // (its build-time default path doesn't exist on school machines).
+    let status = tokio::process::Command::new(bin)
+        .current_dir(kokoro_dir)
+        .env("ESPEAK_DATA_PATH", kokoro_dir)
+        .arg("-s")
+        .arg("af_heart")
+        .arg("-p")
+        .arg("0.92")
+        .arg("text")
+        .arg("--output")
+        .arg(&wav)
+        .arg(text)
+        .stdout(std::process::Stdio::null())
+        .stderr(std::process::Stdio::null())
+        .status()
+        .await
+        .map_err(|e| format!("Kokoro failed to start: {e}"))?;
+    if !status.success() || !wav.exists() {
+        return Err("Kokoro synthesis failed.".to_string());
+    }
+    let result = play_wav(&wav).await;
+    let _ = std::fs::remove_file(&wav);
+    result
+}
+
 /// (piper binary, first .onnx voice model) if a Piper voice is installed.
 fn piper_paths() -> Option<(std::path::PathBuf, std::path::PathBuf)> {
     let dir = tts_home()?;
@@ -137,12 +191,20 @@ async fn speak_with_piper(
 }
 
 /// Speak `text` aloud and resolve when finished.
-/// Prefers Piper's natural voice; falls back to the system engine (`spd-say`).
+/// Engine order: Kokoro (chosen neural voice) → Piper (legacy neural) →
+/// system engine (`spd-say`) as the last resort.
 #[tauri::command]
 pub async fn speak_text(text: String) -> Result<(), String> {
     let cleaned = clean_for_speech(&text);
     if cleaned.trim().is_empty() {
         return Ok(());
+    }
+
+    if let Some((bin, dir)) = kokoro_paths() {
+        if speak_with_kokoro(&cleaned, &bin, &dir).await.is_ok() {
+            return Ok(());
+        }
+        // fall through if Kokoro hiccups
     }
 
     if let Some((bin, model)) = piper_paths() {
@@ -182,7 +244,7 @@ pub async fn stop_speaking() -> Result<(), String> {
 /// Whether any offline speech engine is available (Piper or speech-dispatcher).
 #[tauri::command]
 pub async fn tts_available() -> bool {
-    if piper_paths().is_some() {
+    if kokoro_paths().is_some() || piper_paths().is_some() {
         return true;
     }
     tokio::process::Command::new("spd-say")

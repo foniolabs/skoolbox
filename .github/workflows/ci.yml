@@ -1,10 +1,9 @@
 name: CI
 
-# SKILL.md Phase 0 CI guards. Hard gates (must pass to merge): dataset metadata
-# is current, the Martha Modelfile is in sync with the persona source, Rust tests
-# pass, and the frontend type-checks. Lint passes (clippy / eslint) run as
-# informational signal only for now — the codebase has pre-existing warnings; once
-# those are cleaned up, flip `continue-on-error` off to make them hard gates too.
+# SKILL.md Phase 0 CI guards. All hard gates (must pass to merge): dataset
+# metadata is current, the Martha Modelfile is in sync with the persona source,
+# Rust tests pass, clippy is warning-free, the frontend type-checks, and eslint
+# is clean.
 
 on:
   push:
@@ -49,11 +48,8 @@ jobs:
       - name: cargo test
         working-directory: src-tauri
         run: cargo test --lib
-      # Non-blocking for now (pre-existing warnings). Tighten to a hard gate by
-      # removing continue-on-error once `cargo clippy -- -D warnings` is clean.
       - name: cargo clippy
         working-directory: src-tauri
-        continue-on-error: true
         run: cargo clippy --lib --all-targets -- -D warnings
 
   frontend:
@@ -68,8 +64,5 @@ jobs:
       - run: npm ci
       - name: Type-check
         run: npx tsc --noEmit
-      # Non-blocking for now (pre-existing lint errors). Tighten once `npm run
-      # lint` is clean.
       - name: ESLint
-        continue-on-error: true
-        run: npm run lint
+        run: npm run lint -- --max-warnings 0

@@ -179,6 +179,7 @@ pub async fn plan_lesson(
 
 /// Teach one segment: produce whiteboard steps (written + narrated) and a
 /// checking question. `index`/`total` are 1-based for Martha's awareness.
+#[allow(clippy::too_many_arguments)] // mirrors the JS invoke() args
 pub async fn teach_segment(
     prov: &Provider,
     subject: &str,
@@ -215,6 +216,139 @@ pub async fn teach_segment(
     let raw = provider::generate_json(prov, &system, &user, 700).await?;
     serde_json::from_str::<TeachingSegment>(&raw)
         .map_err(|e| format!("Could not understand the teaching segment: {e}"))
+}
+
+/// A teacher-facing lesson note: the printable artifact a Nigerian teacher
+/// prepares before class (objectives → key points → examples → homework).
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LessonNote {
+    pub title: String,
+    pub objectives: Vec<String>,
+    pub key_points: Vec<String>,
+    pub examples: Vec<String>,
+    pub homework: Vec<String>,
+}
+
+/// Generate a lesson note for the teacher to review, edit and approve.
+pub async fn generate_lesson_note(
+    prov: &Provider,
+    subject: &str,
+    topic: &str,
+    class_level: &str,
+    curriculum_context: &str,
+) -> Result<LessonNote, String> {
+    let system = format!(
+        "{}\n\n## CLASSROOM MODE — LESSON NOTE\nYou are preparing a written lesson note for a \
+        {class_level} teacher, in the standard Nigerian format. Be concrete and curriculum-aligned: \
+        clear objectives (what pupils will be able to do), the key points in teaching order, worked \
+        examples with Nigerian context (Naira, local names), and homework the pupils can do without help.",
+        martha::persona()
+    );
+    let context = if curriculum_context.trim().is_empty() {
+        String::new()
+    } else {
+        format!("\n\nCurriculum to draw from:\n{curriculum_context}")
+    };
+    let user = format!(
+        "Subject: {subject}\nClass: {class_level}\nTopic: {topic}{context}\n\n\
+        Return ONLY JSON:\n{{\n  \"title\": \"<lesson note title>\",\n  \
+        \"objectives\": [\"<objective 1>\", \"...\"],\n  \
+        \"key_points\": [\"<point 1 in teaching order>\", \"...\"],\n  \
+        \"examples\": [\"<worked example 1>\", \"...\"],\n  \
+        \"homework\": [\"<homework question 1>\", \"...\"]\n}}\n\
+        Use 3-4 objectives, 4-6 key points, 2-3 examples and 3-5 homework questions."
+    );
+    let raw = provider::generate_json(prov, &system, &user, 900).await?;
+    serde_json::from_str::<LessonNote>(&raw)
+        .map_err(|e| format!("Could not understand the lesson note Martha generated: {e}"))
+}
+
+/// One quiz question shown on the projector (Martha reads it aloud).
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ClassQuizQuestion {
+    pub question: String,
+    pub answer: String,
+}
+
+/// A short on-demand class quiz (3–5 questions with answers for the teacher).
+#[derive(Debug, Serialize, Deserialize)]
+pub struct ClassQuiz {
+    pub title: String,
+    pub questions: Vec<ClassQuizQuestion>,
+}
+
+/// Generate a 3–5 question quiz on the topic for Martha to run with the class.
+pub async fn generate_class_quiz(
+    prov: &Provider,
+    subject: &str,
+    topic: &str,
+    class_level: &str,
+    curriculum_context: &str,
+) -> Result<ClassQuiz, String> {
+    let system = format!(
+        "{}\n\n## CLASSROOM MODE — CLASS QUIZ\nYou are quizzing a live {class_level} class. \
+        Write clear, level-appropriate questions in WAEC/NECO style for exam classes and simple \
+        direct style for lower classes. Each question must be answerable from the topic taught, \
+        with Nigerian context where natural. Provide the correct answer (with brief working for \
+        maths) so the teacher can mark.",
+        martha::persona()
+    );
+    let context = if curriculum_context.trim().is_empty() {
+        String::new()
+    } else {
+        format!("\n\nCurriculum reference:\n{curriculum_context}")
+    };
+    let user = format!(
+        "Subject: {subject}\nClass: {class_level}\nTopic: {topic}{context}\n\n\
+        Return ONLY JSON:\n{{\n  \"title\": \"<quiz title>\",\n  \
+        \"questions\": [\n    {{ \"question\": \"<question text>\", \"answer\": \"<correct answer, with working for maths>\" }}\n  ]\n}}\n\
+        Use 3 to 5 questions, ordered easiest first."
+    );
+    let raw = provider::generate_json(prov, &system, &user, 800).await?;
+    serde_json::from_str::<ClassQuiz>(&raw)
+        .map_err(|e| format!("Could not understand the quiz Martha generated: {e}"))
+}
+
+/// On-demand teacher commands that return one spoken/displayed explanation.
+/// `mode`: "class" (explain to everyone), "simpler" (re-explain for a named
+/// student who didn't get it), "prerequisites" (what the class must already know).
+pub async fn explain(
+    prov: &Provider,
+    subject: &str,
+    topic: &str,
+    class_level: &str,
+    mode: &str,
+    student_name: Option<&str>,
+    curriculum_context: &str,
+) -> Result<String, String> {
+    let instruction = match mode {
+        "simpler" => {
+            let name = student_name.unwrap_or("one of the students");
+            format!(
+                "{name} did not understand the explanation. Re-explain the idea to {name} from a \
+                completely different angle: simpler words, a very concrete everyday Nigerian example, \
+                shorter sentences. Address {name} warmly by name, then carry the whole class along."
+            )
+        }
+        "prerequisites" => "List and briefly re-teach the things the class must already know before \
+            this topic (the prerequisites), in order, each with a one-line reminder of how it works."
+            .to_string(),
+        _ => "Explain this topic to the whole class clearly and step by step, as if teaching it \
+            fresh: what it is, why it matters in everyday Nigerian life, and one worked example."
+            .to_string(),
+    };
+    let system = format!(
+        "{}\n\n## CLASSROOM MODE — ON-DEMAND EXPLANATION\nYou are speaking live to a {class_level} \
+        class on a projector. {instruction} Keep it under 200 words — it is spoken aloud.",
+        martha::persona()
+    );
+    let context = if curriculum_context.trim().is_empty() {
+        String::new()
+    } else {
+        format!("\n\nCurriculum reference:\n{curriculum_context}")
+    };
+    let user = format!("Subject: {subject}\nClass: {class_level}\nTopic: {topic}{context}");
+    provider::complete(prov, &system, &user, 500).await
 }
 
 /// Evaluate a student's answer to the checking question and remediate if wrong.

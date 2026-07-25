@@ -55,14 +55,14 @@ export default function LessonPlannerPage() {
     getSubjects().then((subs) => {
       const uniqueNames = [...new Set(subs.map((s: Subject) => s.name))].sort()
       setSubjectOptions(uniqueNames.map((n) => ({ label: n, value: n })))
-      if (uniqueNames.length > 0 && !subject) setSubject(uniqueNames[0])
+      if (uniqueNames.length > 0) setSubject((prev) => prev || uniqueNames[0])
     }).catch(() => {
       setSubjectOptions([
         { label: 'Mathematics', value: 'Mathematics' },
         { label: 'English', value: 'English' },
         { label: 'Basic Science', value: 'Basic Science' },
       ])
-      if (!subject) setSubject('Mathematics')
+      setSubject((prev) => prev || 'Mathematics')
     })
   }, [])
 

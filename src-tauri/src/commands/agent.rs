@@ -20,6 +20,7 @@ fn ensure_learning_profile(db: &DbState, student_id: &str) -> Result<(), String>
 }
 
 /// Save a single chat message to chat_history.
+#[allow(clippy::too_many_arguments)] // mirrors the JS invoke() args
 fn save_chat_message(
     db: &DbState,
     student_id: &str,
@@ -232,6 +233,7 @@ pub async fn ai_agent_chat(
 
 /// Save thumbs-up/down feedback on an AI response.
 #[tauri::command]
+#[allow(clippy::too_many_arguments)] // mirrors the JS invoke() args
 pub async fn submit_ai_feedback(
     db: State<'_, DbState>,
     student_id: String,

@@ -166,6 +166,65 @@ pub async fn list_generated_lessons(
     rows.collect::<Result<Vec<_>, _>>().map_err(|e| e.to_string())
 }
 
+/// Generate a lesson note (objectives, key points, examples, homework) for the
+/// teacher to review, edit and approve.
+#[tauri::command]
+pub async fn classroom_lesson_note(
+    db: State<'_, DbState>,
+    subject: String,
+    topic: String,
+    class_level: String,
+) -> Result<classroom::LessonNote, String> {
+    let prov = provider::resolve(&db).await?;
+    let context = {
+        let conn = db.db.lock().map_err(|e| e.to_string())?;
+        rag::search_knowledge_base(&conn, &topic, &subject, &class_level).unwrap_or_default()
+    };
+    let context: String = context.chars().take(1500).collect();
+    classroom::generate_lesson_note(&prov, &subject, &topic, &class_level, &context).await
+}
+
+/// Generate a 3–5 question class quiz (shown on the projector, read aloud).
+#[tauri::command]
+pub async fn classroom_class_quiz(
+    db: State<'_, DbState>,
+    subject: String,
+    topic: String,
+    class_level: String,
+) -> Result<classroom::ClassQuiz, String> {
+    let prov = provider::resolve(&db).await?;
+    let context = {
+        let conn = db.db.lock().map_err(|e| e.to_string())?;
+        rag::search_knowledge_base(&conn, &topic, &subject, &class_level).unwrap_or_default()
+    };
+    let context: String = context.chars().take(1500).collect();
+    classroom::generate_class_quiz(&prov, &subject, &topic, &class_level, &context).await
+}
+
+/// On-demand teacher command: explain to the class / re-explain for a named
+/// student / list prerequisites. Returns one spoken+displayed explanation.
+#[tauri::command]
+pub async fn classroom_explain(
+    db: State<'_, DbState>,
+    subject: String,
+    topic: String,
+    class_level: String,
+    mode: String,
+    student_name: Option<String>,
+) -> Result<String, String> {
+    let prov = provider::resolve(&db).await?;
+    let context = {
+        let conn = db.db.lock().map_err(|e| e.to_string())?;
+        rag::search_knowledge_base(&conn, &topic, &subject, &class_level).unwrap_or_default()
+    };
+    let context: String = context.chars().take(1500).collect();
+    classroom::explain(
+        &prov, &subject, &topic, &class_level, &mode,
+        student_name.as_deref(), &context,
+    )
+    .await
+}
+
 /// Martha evaluates a student's answer to the checking question.
 #[tauri::command]
 pub async fn classroom_evaluate_answer(

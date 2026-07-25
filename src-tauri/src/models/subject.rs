@@ -21,12 +21,3 @@ pub struct Topic {
     pub estimated_minutes: i32,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct Lesson {
-    pub id: String,
-    pub topic_id: String,
-    pub title: String,
-    pub content_markdown: Option<String>,
-    pub content_summary: Option<String>,
-    pub sort_order: i32,
-}

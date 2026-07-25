@@ -226,80 +226,6 @@ pub fn search_curriculum_mode(
     }
 }
 
-#[cfg(test)]
-mod fts_tests {
-    use super::*;
-
-    /// Mirror the production FTS5 schema (connection.rs / ingest.py) and seed a row.
-    fn seed(conn: &Connection) {
-        conn.execute_batch(
-            "CREATE VIRTUAL TABLE curriculum_fts USING fts5(
-                content, title UNINDEXED, curriculum UNINDEXED, subject UNINDEXED,
-                class_level UNINDEXED, topic UNINDEXED, source_type UNINDEXED,
-                is_exam_bank UNINDEXED, document_id UNINDEXED,
-                tokenize='porter unicode61');",
-        )
-        .expect("FTS5 must be enabled in the bundled SQLite build");
-    }
-
-    fn insert(conn: &Connection, content: &str, title: &str, subject: &str,
-              level: &str, exam_bank: &str, id: &str) {
-        conn.execute(
-            "INSERT INTO curriculum_fts
-                (content, title, curriculum, subject, class_level, topic,
-                 source_type, is_exam_bank, document_id)
-             VALUES (?1, ?2, 'nigerian', ?3, ?4, 'topic', 'tutor_qa', ?5, ?6)",
-            rusqlite::params![content, title, subject, level, exam_bank, id],
-        )
-        .unwrap();
-    }
-
-    #[test]
-    fn fts5_ingest_and_retrieve_round_trips() {
-        let conn = Connection::open_in_memory().unwrap();
-        seed(&conn);
-        insert(&conn,
-            "To add fractions with different denominators, first find the lowest common multiple (LCM).",
-            "JSS1 Maths", "mathematics", "jss1", "0", "doc1");
-
-        let result = search_curriculum(&conn, "How do I add fractions?", "mathematics", "jss1")
-            .unwrap();
-        assert!(result.contains("lowest common multiple"), "got: {result}");
-        assert!(result.contains("tutor_qa — jss1 — JSS1 Maths"));
-
-        // Subject filter excludes non-matching subjects.
-        let miss = search_curriculum(&conn, "fractions", "english", "jss1").unwrap();
-        assert!(miss.is_empty());
-    }
-
-    #[test]
-    fn exam_class_uses_tiered_retrieval_with_prerequisites() {
-        let conn = Connection::open_in_memory().unwrap();
-        seed(&conn);
-        // JSS3 (exam) own content + a JSS2 prerequisite passage on the same idea.
-        insert(&conn,
-            "Simultaneous equations are two equations solved together for x and y.",
-            "JSS3 simultaneous", "mathematics", "jss3", "0", "j3");
-        insert(&conn,
-            "A linear equation has the variable to the power one, like 2x plus 3.",
-            "JSS2 linear", "mathematics", "jss2", "0", "j2");
-
-        // Auto mode -> tiered for jss3: own class dominant, prerequisite present.
-        let r = search_curriculum(&conn, "linear simultaneous equations", "mathematics", "jss3")
-            .unwrap();
-        assert!(r.contains("jss3"), "own class should appear: {r}");
-        assert!(r.contains("jss2"), "prerequisite should appear: {r}");
-        let own = r.find("jss3").unwrap();
-        let pre = r.find("jss2").unwrap();
-        assert!(own < pre, "own-class passage should rank above prerequisite: {r}");
-
-        // A non-exam class (jss2) stays standard: never reaches into jss3.
-        let std = search_curriculum(&conn, "linear simultaneous equations", "mathematics", "jss2")
-            .unwrap();
-        assert!(std.contains("jss2") && !std.contains("jss3"), "standard mode leaked: {std}");
-    }
-}
-
 /// Search the local knowledge base for curriculum content relevant to a query.
 /// Returns formatted context string to inject into the AI prompt.
 pub fn search_knowledge_base(
@@ -342,10 +268,8 @@ pub fn search_knowledge_base(
         )
         .map_err(|e| e.to_string())?;
 
-    for row in topic_rows {
-        if let Ok(text) = row {
-            context_parts.push(text);
-        }
+    for text in topic_rows.flatten() {
+        context_parts.push(text);
     }
 
     // Search lessons
@@ -373,10 +297,8 @@ pub fn search_knowledge_base(
         })
         .map_err(|e| e.to_string())?;
 
-    for row in lesson_rows {
-        if let Ok(text) = row {
-            context_parts.push(text);
-        }
+    for text in lesson_rows.flatten() {
+        context_parts.push(text);
     }
 
     // Textbook / curriculum passages from the ingested FTS5 knowledge base.
@@ -406,7 +328,6 @@ pub fn search_knowledge_base_enhanced(
     student_id: Option<&str>,
 ) -> Result<String, String> {
     let search_term = format!("%{}%", query);
-    let subject_filter = format!("%{}%", subject);
     let mut sections: Vec<String> = Vec::new();
 
     // 1. Curriculum topics & lessons (existing search)
@@ -705,5 +626,79 @@ pub fn build_student_context(
         String::new()
     } else {
         parts.join("\n\n")
+    }
+}
+
+#[cfg(test)]
+mod fts_tests {
+    use super::*;
+
+    /// Mirror the production FTS5 schema (connection.rs / ingest.py) and seed a row.
+    fn seed(conn: &Connection) {
+        conn.execute_batch(
+            "CREATE VIRTUAL TABLE curriculum_fts USING fts5(
+                content, title UNINDEXED, curriculum UNINDEXED, subject UNINDEXED,
+                class_level UNINDEXED, topic UNINDEXED, source_type UNINDEXED,
+                is_exam_bank UNINDEXED, document_id UNINDEXED,
+                tokenize='porter unicode61');",
+        )
+        .expect("FTS5 must be enabled in the bundled SQLite build");
+    }
+
+    fn insert(conn: &Connection, content: &str, title: &str, subject: &str,
+              level: &str, exam_bank: &str, id: &str) {
+        conn.execute(
+            "INSERT INTO curriculum_fts
+                (content, title, curriculum, subject, class_level, topic,
+                 source_type, is_exam_bank, document_id)
+             VALUES (?1, ?2, 'nigerian', ?3, ?4, 'topic', 'tutor_qa', ?5, ?6)",
+            rusqlite::params![content, title, subject, level, exam_bank, id],
+        )
+        .unwrap();
+    }
+
+    #[test]
+    fn fts5_ingest_and_retrieve_round_trips() {
+        let conn = Connection::open_in_memory().unwrap();
+        seed(&conn);
+        insert(&conn,
+            "To add fractions with different denominators, first find the lowest common multiple (LCM).",
+            "JSS1 Maths", "mathematics", "jss1", "0", "doc1");
+
+        let result = search_curriculum(&conn, "How do I add fractions?", "mathematics", "jss1")
+            .unwrap();
+        assert!(result.contains("lowest common multiple"), "got: {result}");
+        assert!(result.contains("tutor_qa — jss1 — JSS1 Maths"));
+
+        // Subject filter excludes non-matching subjects.
+        let miss = search_curriculum(&conn, "fractions", "english", "jss1").unwrap();
+        assert!(miss.is_empty());
+    }
+
+    #[test]
+    fn exam_class_uses_tiered_retrieval_with_prerequisites() {
+        let conn = Connection::open_in_memory().unwrap();
+        seed(&conn);
+        // JSS3 (exam) own content + a JSS2 prerequisite passage on the same idea.
+        insert(&conn,
+            "Simultaneous equations are two equations solved together for x and y.",
+            "JSS3 simultaneous", "mathematics", "jss3", "0", "j3");
+        insert(&conn,
+            "A linear equation has the variable to the power one, like 2x plus 3.",
+            "JSS2 linear", "mathematics", "jss2", "0", "j2");
+
+        // Auto mode -> tiered for jss3: own class dominant, prerequisite present.
+        let r = search_curriculum(&conn, "linear simultaneous equations", "mathematics", "jss3")
+            .unwrap();
+        assert!(r.contains("jss3"), "own class should appear: {r}");
+        assert!(r.contains("jss2"), "prerequisite should appear: {r}");
+        let own = r.find("jss3").unwrap();
+        let pre = r.find("jss2").unwrap();
+        assert!(own < pre, "own-class passage should rank above prerequisite: {r}");
+
+        // A non-exam class (jss2) stays standard: never reaches into jss3.
+        let std = search_curriculum(&conn, "linear simultaneous equations", "mathematics", "jss2")
+            .unwrap();
+        assert!(std.contains("jss2") && !std.contains("jss3"), "standard mode leaked: {std}");
     }
 }

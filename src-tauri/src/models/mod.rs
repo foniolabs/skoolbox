@@ -13,5 +13,3 @@ pub use quiz::*;
 pub use ai_lesson::*;
 pub use user::*;
 pub use video::*;
-pub use agent::*;
-pub use curriculum::*;

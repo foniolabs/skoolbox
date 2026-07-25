@@ -46,7 +46,6 @@ export default function TopicNotesModal({
     setNotes(topic.lesson_notes || '');
     setObjectives(parseArr(topic.objectives));
     setActivities(parseArr(topic.activities));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [topic.id, topic.lesson_notes, topic.objectives, topic.activities]);
 
   const handleSave = async () => {

@@ -37,7 +37,7 @@ export default function LoginPage() {
       } else {
         setError(res.message);
       }
-    } catch (err) {
+    } catch {
       setError('Login failed. Please try again.');
     } finally {
       setLoading(false);
