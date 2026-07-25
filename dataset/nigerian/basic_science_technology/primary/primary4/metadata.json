@@ -1,0 +1,28 @@
+{
+  "curriculum": "nigerian",
+  "subject": "basic_science_technology",
+  "class_level": "primary4",
+  "class_display": "Primary 4",
+  "age_range": "9-10",
+  "exam_body": "FSLC, Common Entrance",
+  "is_exam_class": false,
+  "prerequisite_levels": [],
+  "retrieval_mode": "standard",
+  "textbooks": [
+    "NERDC New Revised Basic Education Curriculum — Basic Science & Technology, Primary 4 (Sept 2025)"
+  ],
+  "topics": [
+    "changes in nature",
+    "developmental changes in plants",
+    "growth and developmental changes in animals",
+    "exploring other parts of the environment: water",
+    "human body: the mouth",
+    "human body: the teeth",
+    "non-living things: rocks",
+    "light energy",
+    "basic electricity",
+    "shape construction with paper, wood or metal",
+    "simple machines",
+    "vehicles"
+  ]
+}

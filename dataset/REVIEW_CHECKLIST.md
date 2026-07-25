@@ -54,3 +54,84 @@ still need a human.
 
 > ⚠️ Wrong facts in training data teach the model wrong answers. When unsure
 > about a fact, verify against an official NERDC/WAEC text before approving.
+
+---
+
+# The sign-off workflow
+
+Reviewing 400+ examples by opening raw `.jsonl` files is painful, and a verbal
+"looks good" leaves no record of *what* was approved. So sign-off runs through
+`training/review.py` (stdlib only — no install needed) and is recorded in
+`dataset/reviews.json`.
+
+## 1. Build a review packet
+
+```bash
+python training/review.py packet                      # everything
+python training/review.py packet -s jss1              # just JSS1
+python training/review.py packet --pending-only       # skip already-approved files
+```
+
+This writes `training/review_packet.html` — a clean, readable page grouped by
+file, with every example numbered by its exact `file:line` reference and a row
+of tick-boxes. Open it in a browser, or print to PDF for a reviewer who prefers
+paper (page breaks are handled). No example is ever split across pages.
+
+## 2. Review against the checklist above
+
+Work through the packet. For anything wrong, note its reference — e.g.
+`dataset/nigerian/mathematics/jss/jss2/statistics.jsonl:4` — so the fix is
+unambiguous.
+
+## 3. Record the decision, one file at a time
+
+```bash
+# approved
+python training/review.py sign dataset/nigerian/mathematics/jss/jss1/fractions.jsonl \
+  --reviewer "Mrs Adeyemi" --status approved
+
+# needs work (notes are what the writer acts on)
+python training/review.py sign dataset/nigerian/english/jss/jss1/tenses.jsonl \
+  --reviewer "Mrs Adeyemi" --status changes_requested \
+  --notes "line 3: add more irregular verbs; line 6: 'shall' usage is dated"
+```
+
+Each entry records the reviewer, the date, the example count, any notes, **and a
+SHA-256 of the file's exact content**.
+
+## 4. Check progress at any time
+
+```bash
+python training/review.py status              # full picture
+python training/review.py status -s jss2      # one level
+python training/review.py status --strict     # exit 1 unless everything is approved
+```
+
+Files land in four buckets:
+
+| State | Meaning |
+| --- | --- |
+| **PENDING** | never reviewed |
+| **CHANGES REQUESTED** | reviewer found problems — see the notes |
+| **STALE** | was approved, but the file has been edited since |
+| **APPROVED** | reviewed, and unchanged since |
+
+**Why the hash matters:** if someone edits a file after it was approved — even
+one character — it automatically returns to **STALE** and must be reviewed
+again. Sign-off can never silently drift away from the content it covered.
+
+## 5. The gate before training
+
+`--strict` is the pre-training gate. Run it before any LoRA run and, once the
+dataset stabilises, wire it into CI next to the lint:
+
+```bash
+python training/merge_dataset.py --input dataset/ --output - --strict   # mechanical
+python training/review.py status --strict                               # human
+```
+
+> 📌 **Current reality:** the Primary 4, JSS1 and JSS2 waves were **AI-drafted**
+> to accelerate coverage. They pass lint, but *none* of them has human sign-off
+> yet — `review.py status` will show them all as PENDING. Getting a qualified
+> Nigerian teacher through that backlog is the gate standing between today's
+> dataset and a defensible training run.
