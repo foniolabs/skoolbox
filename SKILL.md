@@ -24,6 +24,30 @@ production decisions.
 > instead. When you finish work, update the relevant tags and this date.
 
 **Already done (verify, don't repeat):**
+- **Self-contained offline install path (2026-07-21):** the app no longer needs a
+  manual Ollama install, `ollama pull`, or internet. New `src-tauri/src/ai/runtime.rs`
+  (`ensure_ollama`): on launch it finds the **bundled** `ollama` (else system),
+  points it at a per-install model store, starts `ollama serve` if down, and — in
+  a background thread — **seeds the bundled Qwen model on first run** from a local
+  GGUF via `resources/runtime/Martha.offline.Modelfile` (`FROM ./skoolbox-qwen.gguf`,
+  no registry pull). Seeded model is named `martha`; `ollama::best_installed_model`
+  prefers it. Wired into `lib.rs` setup + killed on `RunEvent::Exit`. Bundling +
+  Windows build steps: `src-tauri/resources/runtime/README.md`.
+  ⚠️ The ~2 GB GGUF seed was **not** run end-to-end here (dev box out of disk +
+  swapping) — the auto-start/isolated-store path is proven; validate the full seed
+  on the build machine. Verify (light): `cargo check`; `cargo clippy --lib -- -D warnings`.
+- **OpenSSL build blocker fixed (2026-07-21):** reqwest switched to
+  `default-features=false` + `rustls-tls` (was pulling native-tls/OpenSSL because
+  defaults stayed on). `openssl-sys` is gone from the dep graph, so the Linux GUI
+  builds with **no `libssl-dev`** and the shipped binary carries its own TLS
+  (better for offline distribution). Verify: `cargo tree -i openssl-sys` →
+  "did not match any packages"; `cargo build --lib` links (confirmed, 45s).
+- **Inter font self-hosted (2026-07-21):** app no longer fetches fonts from
+  `fonts.googleapis.com` — bundled via `@fontsource/inter` (imported in
+  `src/main.tsx`, CDN `<link>` removed from `index.html`). The app now makes
+  **zero external network calls** (AI is localhost-only; cloud provider compiled
+  out of release builds). Verify: `grep -rniE "https?://(fonts|cdn)" index.html src/`
+  returns nothing.
 - **Online reviewer portal — LIVE (2026-07-20):** academics review the dataset in
   a browser and their verdicts sync back to the sign-off ledger. Stack: Cloudflare
   Pages + D1 (SQLite), in `reviewer/`. Reviewer app `reviewer/public/index.html`
