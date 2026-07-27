@@ -9,4 +9,5 @@ pub mod ollama;
 pub mod provider;
 pub mod prompts;
 pub mod rag;
+pub mod runtime;
 pub mod agent_prompt;

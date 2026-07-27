@@ -318,13 +318,13 @@ export default function ClassSessionPage() {
           </div>
           <div className="flex items-center justify-between gap-3">
             {error ? <p className="text-xs text-red-600">{error}</p> : <span className="text-xs text-text-muted">If this lesson was pre-installed, it plays instantly. Otherwise Martha generates it live.</span>}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 shrink-0">
               <button onClick={handleBake} disabled={baking || !topic.trim()}
                 title="Pre-generate this lesson once so it plays instantly everywhere (for content producers)"
-                className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-[12px] border border-border text-text-secondary hover:border-primary hover:text-primary transition-colors disabled:opacity-50">
+                className="flex items-center justify-center gap-1.5 h-10 px-4 text-sm font-medium whitespace-nowrap rounded-[12px] border border-border text-text-secondary hover:border-primary hover:text-primary transition-colors disabled:opacity-50">
                 {baking ? <Loader2 size={14} className="animate-spin" /> : <Package size={14} />} Pre-generate
               </button>
-              <Button onClick={startClass} className="flex items-center gap-2"><Sparkles size={15} /> Start Class</Button>
+              <Button onClick={startClass} className="flex items-center justify-center gap-1.5 h-10 px-4 !py-0 text-sm whitespace-nowrap"><Sparkles size={15} /> Start Class</Button>
             </div>
           </div>
           {bakeMsg && <p className="text-xs text-text-secondary bg-bg-secondary/60 rounded-[10px] px-3 py-2">{bakeMsg}</p>}

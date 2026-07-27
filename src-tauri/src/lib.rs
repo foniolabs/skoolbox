@@ -43,6 +43,12 @@ pub fn run() {
                 db: Mutex::new(conn),
             });
 
+            // Start the offline model runtime (bundled Ollama) and seed the
+            // bundled Qwen model on first run — so the app works with no manual
+            // Ollama install and no internet. Best-effort; never blocks the UI.
+            let ollama_child = ai::runtime::ensure_ollama(app.handle());
+            app.manage(ai::runtime::OllamaProcess(Mutex::new(ollama_child)));
+
             if cfg!(debug_assertions) {
                 app.handle().plugin(
                     tauri_plugin_log::Builder::default()
@@ -146,6 +152,19 @@ pub fn run() {
             commands::auth::delete_student,
             commands::auth::enroll_students,
         ])
-        .run(tauri::generate_context!())
-        .expect("error while running tauri application");
+        .build(tauri::generate_context!())
+        .expect("error while building tauri application")
+        .run(|app_handle, event| {
+            // On exit, stop the Ollama server we started (if any) so we don't
+            // leave an orphaned process behind.
+            if let tauri::RunEvent::Exit = event {
+                if let Some(proc) = app_handle.try_state::<ai::runtime::OllamaProcess>() {
+                    if let Ok(mut guard) = proc.0.lock() {
+                        if let Some(mut child) = guard.take() {
+                            let _ = child.kill();
+                        }
+                    }
+                }
+            }
+        });
 }
