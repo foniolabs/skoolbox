@@ -8,6 +8,12 @@
   "is_exam_class": false,
   "prerequisite_levels": [],
   "retrieval_mode": "standard",
-  "textbooks": [],
-  "topics": []
+  "textbooks": [
+    "NERDC Basic Education Curriculum — Basic Science, JSS 2"
+  ],
+  "topics": [
+    "the cell",
+    "force and energy",
+    "environmental pollution"
+  ]
 }
