@@ -237,6 +237,7 @@ pub fn add_plan_topic(
 
 /// Update a plan topic's notes, objectives, activities.
 #[tauri::command]
+#[allow(clippy::too_many_arguments)] // mirrors the JS invoke() args
 pub fn update_plan_topic(
     db: State<DbState>,
     topic_id: String,

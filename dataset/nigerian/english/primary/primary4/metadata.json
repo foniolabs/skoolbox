@@ -8,8 +8,23 @@
   "is_exam_class": false,
   "prerequisite_levels": [],
   "retrieval_mode": "standard",
-  "textbooks": [],
+  "textbooks": [
+    "NERDC New Revised Basic Education Curriculum — English Studies, Primary 4 (Sept 2025)"
+  ],
   "topics": [
-    "opposites"
+    "opposites",
+    "conversations and dialogues with modal auxiliaries",
+    "tag questions",
+    "oral composition (descriptive and narrative)",
+    "intonation",
+    "vocabulary and common idioms",
+    "past, present and future tenses",
+    "reading poems, short stories and plays",
+    "sense relations (synonyms, antonyms, homonyms, hyponyms)",
+    "comprehension using contextual clues",
+    "comprehension of main and supporting ideas",
+    "informal letters",
+    "narrative and descriptive composition",
+    "songs and poems"
   ]
 }

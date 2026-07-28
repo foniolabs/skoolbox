@@ -1,13 +1,16 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { GraduationCap, Loader2, Sparkles, Send, CheckCircle, XCircle, RotateCcw, Volume2, Pause, Play, SkipForward, X, Package, Zap } from 'lucide-react'
+import { GraduationCap, Loader2, Sparkles, Send, CheckCircle, XCircle, RotateCcw, Volume2, Pause, Play, SkipForward, X, Package, Zap, Monitor, Download } from 'lucide-react'
 import WhiteboardCanvas from '../components/teach/whiteboard/WhiteboardCanvas'
 import CustomDropdown from '../components/shared/CustomDropdown'
 import Button from '../components/shared/Button'
 import { speak, stopSpeaking } from '../lib/tts/marthaVoice'
+import ClassToolsPanel from '../components/teach/ClassToolsPanel'
+import PushToTalk from '../components/teach/PushToTalk'
+import { downloadText } from '../lib/classroomText'
 import {
   classroomPlanLesson, classroomTeachSegment, classroomEvaluateAnswer,
   getGeneratedLesson, bakeLesson,
-  type LessonPlan, type TeachingSegment, type AnswerEvaluation, type GeneratedLesson,
+  type LessonPlan, type TeachingSegment, type AnswerEvaluation, type GeneratedLesson, type LessonNote,
 } from '../lib/tauri/commands'
 import type { LessonStep } from '../lib/ai/teachingAssistant'
 
@@ -17,7 +20,7 @@ const classLevelOptions = [
   { label: 'SS1', value: 'SS1' }, { label: 'SS2', value: 'SS2' }, { label: 'SS3', value: 'SS3' },
 ]
 
-type Phase = 'setup' | 'loading' | 'teaching' | 'question' | 'done'
+type Phase = 'setup' | 'loading' | 'greeting' | 'teaching' | 'question' | 'done'
 
 const VALID_ACTIONS = ['write', 'equation', 'highlight', 'heading', 'diagram']
 
@@ -51,6 +54,14 @@ export default function ClassSessionPage() {
   const [stepIdx, setStepIdx] = useState(0)
   const [isPlaying, setIsPlaying] = useState(true)
 
+  // Projector-first display (SKILL.md Phase 5): large fonts for the back row.
+  const [projector, setProjector] = useState(false)
+  // Opening greeting (displayed + spoken) and the session log for the summary.
+  const [greeting, setGreeting] = useState('')
+  const greetingDoneRef = useRef(false)
+  const [lastNote, setLastNote] = useState<LessonNote | null>(null)
+  const logRef = useRef<Array<{ question: string; correct: boolean | null } | undefined>>([])
+
   const [answer, setAnswer] = useState('')
   const [evaluating, setEvaluating] = useState(false)
   const [evaluation, setEvaluation] = useState<AnswerEvaluation | null>(null)
@@ -63,6 +74,13 @@ export default function ClassSessionPage() {
   const totalSegments = plan?.segment_titles.length ?? 0
 
   useEffect(() => () => { aliveRef.current = false; void stopSpeaking() }, [])
+
+  // Escape interrupts Martha's voice instantly, every time (MARTHA_PERSONA §3).
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') void stopSpeaking() }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
 
   // Lesson timer (counts toward the ~30-minute period).
   useEffect(() => {
@@ -126,8 +144,33 @@ export default function ClassSessionPage() {
     }
   }, [fetchSegment, prefetchSegment])
 
+  // Opening greeting: displayed AND spoken, names the subject and today's topic,
+  // then hands over to the first segment (skippable).
+  const beginGreeting = (p: LessonPlan) => {
+    const g = `Good day, class! I am Martha. Today in ${subject}, we are learning about ${p.title || topic.trim()}. Sit up, listen well, and let us begin!`
+    setGreeting(g); setPhase('greeting')
+    greetingDoneRef.current = false
+    void speak(g).then(() => {
+      if (!aliveRef.current || greetingDoneRef.current) return
+      greetingDoneRef.current = true
+      void loadSegment(0, p)
+    })
+  }
+
+  const skipGreeting = () => {
+    if (!plan || greetingDoneRef.current) return
+    greetingDoneRef.current = true
+    void stopSpeaking()
+    void loadSegment(0, plan)
+  }
+
   const startClass = async () => {
-    if (!topic.trim()) { setError('Enter a topic for Martha to teach.'); return }
+    if (!topic.trim()) {
+      setError('Martha asks: “What are we learning about today?” — enter a topic to begin.')
+      void speak('What are we learning about today?')
+      return
+    }
+    logRef.current = []; setLastNote(null)
     setPhase('loading'); setError('')
     try {
       // 1. Prefer a pre-generated lesson — instant, no CPU generation.
@@ -137,7 +180,7 @@ export default function ClassSessionPage() {
         bakedRef.current = baked; setIsBaked(true)
         const p: LessonPlan = { title: baked.title, segment_titles: baked.segments.map((s) => s.title) }
         setPlan(p); setSegIndex(0); startRef.current = Date.now()
-        await loadSegment(0, p)
+        beginGreeting(p)
         return
       }
 
@@ -147,7 +190,7 @@ export default function ClassSessionPage() {
       if (!aliveRef.current) return
       setPlan(p); setSegIndex(0)
       startRef.current = Date.now()
-      await loadSegment(0, p)
+      beginGreeting(p)
     } catch (err) {
       if (aliveRef.current) setError(typeof err === 'string' ? err : 'Martha could not plan the lesson.')
       setPhase('setup')
@@ -177,6 +220,7 @@ export default function ClassSessionPage() {
       const result = await classroomEvaluateAnswer(subject, topic.trim(), segment.check_question, answer.trim())
       if (!aliveRef.current) return
       setEvaluation(result)
+      logRef.current[segIndex] = { question: segment.check_question, correct: result.is_correct }
       void speak([result.feedback, result.remediation].filter(Boolean).join('. '))
     } catch (err) {
       if (aliveRef.current) setError(typeof err === 'string' ? err : 'Martha could not evaluate the answer.')
@@ -188,6 +232,9 @@ export default function ClassSessionPage() {
   const continueLesson = async () => {
     void stopSpeaking()
     if (!plan) return
+    if (segment && !logRef.current[segIndex]) {
+      logRef.current[segIndex] = { question: segment.check_question, correct: null }
+    }
     const next = segIndex + 1
     if (next < plan.segment_titles.length) {
       await loadSegment(next, plan)
@@ -201,6 +248,7 @@ export default function ClassSessionPage() {
     void stopSpeaking(); setPhase('setup'); setPlan(null); setSegment(null)
     startRef.current = null; setElapsed(0)
     bakedRef.current = null; setIsBaked(false); prefetchRef.current = null
+    logRef.current = []; setLastNote(null); setGreeting('')
   }
 
   // PRODUCER: pre-generate this lesson once (slow) so it plays instantly forever after.
@@ -220,6 +268,33 @@ export default function ClassSessionPage() {
   }
 
   const mmss = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`
+
+  // Session-end summary (SKILL.md Phase 5): topics covered, questions asked,
+  // homework (from the generated lesson note, if any), topics to revisit.
+  const buildSummary = () => {
+    const covered = plan?.segment_titles.slice(0, Math.min(segIndex + 1, totalSegments)) ?? []
+    const qa = covered.map((title, i) => ({ title, log: logRef.current[i] }))
+    const revisit = qa.filter((e) => e.log?.correct === false).map((e) => e.title)
+    return { covered, qa, revisit }
+  }
+
+  const summaryToText = () => {
+    const { covered, qa, revisit } = buildSummary()
+    const qaLines = qa.filter((e) => e.log).map((e) =>
+      `  - ${e.log!.question} (${e.log!.correct === true ? 'answered correctly' : e.log!.correct === false ? 'needs revision' : 'not answered'})`)
+    return [
+      `SKOOLBOX CLASS SUMMARY`,
+      `${plan?.title ?? topic} — ${subject}, ${classLevel} — ${new Date().toLocaleDateString()}`,
+      ``,
+      `TOPICS COVERED:`, ...covered.map((t) => `  - ${t}`),
+      ``,
+      `QUESTIONS MARTHA ASKED:`, ...(qaLines.length ? qaLines : ['  - (none)']),
+      ``,
+      `HOMEWORK:`, ...(lastNote ? lastNote.homework.map((h) => `  - ${h}`) : ['  - (generate a lesson note to include homework)']),
+      ``,
+      `TOPICS TO REVISIT:`, ...(revisit.length ? revisit.map((t) => `  - ${t}`) : ['  - None — well done, class!']),
+    ].join('\n')
+  }
 
   // ── Setup ──────────────────────────────────────────────────────────────────
   if (phase === 'setup') {
@@ -243,16 +318,31 @@ export default function ClassSessionPage() {
           </div>
           <div className="flex items-center justify-between gap-3">
             {error ? <p className="text-xs text-red-600">{error}</p> : <span className="text-xs text-text-muted">If this lesson was pre-installed, it plays instantly. Otherwise Martha generates it live.</span>}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 shrink-0">
               <button onClick={handleBake} disabled={baking || !topic.trim()}
                 title="Pre-generate this lesson once so it plays instantly everywhere (for content producers)"
-                className="flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-[12px] border border-border text-text-secondary hover:border-primary hover:text-primary transition-colors disabled:opacity-50">
+                className="flex items-center justify-center gap-1.5 h-10 px-4 text-sm font-medium whitespace-nowrap rounded-[12px] border border-border text-text-secondary hover:border-primary hover:text-primary transition-colors disabled:opacity-50">
                 {baking ? <Loader2 size={14} className="animate-spin" /> : <Package size={14} />} Pre-generate
               </button>
-              <Button onClick={startClass} className="flex items-center gap-2"><Sparkles size={15} /> Start Class</Button>
+              <Button onClick={startClass} className="flex items-center justify-center gap-1.5 h-10 px-4 !py-0 text-sm whitespace-nowrap"><Sparkles size={15} /> Start Class</Button>
             </div>
           </div>
           {bakeMsg && <p className="text-xs text-text-secondary bg-bg-secondary/60 rounded-[10px] px-3 py-2">{bakeMsg}</p>}
+        </div>
+      </div>
+    )
+  }
+
+  // ── Opening greeting (displayed + spoken; skippable) ────────────────────────
+  if (phase === 'greeting') {
+    return (
+      <div className="min-h-[70vh] flex items-center justify-center p-6">
+        <div className="text-center max-w-3xl">
+          <GraduationCap className="w-10 h-10 text-primary mx-auto mb-4" />
+          <p className={`font-bold text-text-primary leading-snug ${projector ? 'text-5xl' : 'text-3xl'}`}>{greeting}</p>
+          <Button onClick={skipGreeting} className="mt-8 flex items-center gap-2 mx-auto">
+            Start teaching <SkipForward size={15} />
+          </Button>
         </div>
       </div>
     )
@@ -273,7 +363,7 @@ export default function ClassSessionPage() {
 
   // ── Teaching / Question / Done ──────────────────────────────────────────────
   return (
-    <div className="p-4 flex flex-col gap-4 max-w-[1100px] mx-auto">
+    <div className={`p-4 flex flex-col gap-4 mx-auto ${projector ? 'max-w-none' : 'max-w-[1100px]'}`}>
       {/* Header: progress + timer + controls */}
       <div className="flex items-center justify-between gap-3">
         <div className="min-w-0">
@@ -292,6 +382,10 @@ export default function ClassSessionPage() {
         </div>
         <div className="flex items-center gap-3 shrink-0">
           <span className={`text-sm font-mono ${elapsed >= 1800 ? 'text-green-600' : 'text-text-secondary'}`}>{mmss(elapsed)} / 30:00</span>
+          <button onClick={() => setProjector((p) => !p)} title="Projector mode — large text, readable from the back row"
+            className={`h-9 w-9 flex items-center justify-center rounded-lg ${projector ? 'text-primary bg-bg-secondary' : 'text-text-secondary hover:bg-bg-secondary'}`}>
+            <Monitor size={17} />
+          </button>
           {phase === 'teaching' && (
             <>
               <button onClick={() => { setIsPlaying((p) => !p); void stopSpeaking() }} title={isPlaying ? 'Pause' : 'Play'}
@@ -315,6 +409,10 @@ export default function ClassSessionPage() {
         <div className="h-full bg-primary transition-all" style={{ width: `${totalSegments ? ((segIndex + (phase === 'question' || phase === 'done' ? 1 : 0)) / totalSegments) * 100 : 0}%` }} />
       </div>
 
+      {/* On-demand teacher commands (explain / re-explain / prerequisites / quiz / note) */}
+      <ClassToolsPanel subject={subject} topic={topic.trim()} classLevel={classLevel} projector={projector}
+        onOpen={() => { setIsPlaying(false); void stopSpeaking() }} onNote={setLastNote} />
+
       {/* Whiteboard */}
       <div className="rounded-[16px] overflow-hidden border border-border bg-white min-h-[300px]">
         <WhiteboardCanvas steps={steps} currentStepIndex={phase === 'teaching' ? stepIdx : steps.length - 1} isPlaying={phase === 'teaching' && isPlaying} />
@@ -330,11 +428,15 @@ export default function ClassSessionPage() {
       {(phase === 'question' || phase === 'done') && segment && (
         <div className="bg-white rounded-[16px] shadow-card p-5">
           <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">Martha asks the class</p>
-          <p className="text-text-primary font-medium mb-3">{segment.check_question}</p>
-          <div className="flex gap-2">
+          <p className={`text-text-primary font-medium mb-3 ${projector ? 'text-3xl leading-snug' : ''}`}>{segment.check_question}</p>
+          <div className="flex gap-2 items-center">
+            {/* Push-to-talk (Space): the transcript lands here first, so the
+                teacher previews and confirms before Martha evaluates. */}
+            <PushToTalk projector={projector}
+              onTranscript={(t) => setAnswer((prev) => (prev ? `${prev} ${t}` : t))} />
             <input value={answer} onChange={(e) => setAnswer(e.target.value)}
               onKeyDown={(e) => { if (e.key === 'Enter') handleEvaluate() }}
-              placeholder="Type a student's answer…"
+              placeholder="Type or speak (Space) a student's answer…"
               className="flex-1 px-3 py-2.5 rounded-[12px] border border-border bg-bg-secondary/50 text-sm focus:outline-none focus:border-primary" />
             <Button onClick={handleEvaluate} disabled={evaluating || !answer.trim()} className="flex items-center gap-2">
               {evaluating ? <Loader2 size={15} className="animate-spin" /> : <Send size={15} />} Check
@@ -347,7 +449,7 @@ export default function ClassSessionPage() {
                 {evaluation.is_correct ? <CheckCircle size={16} className="text-green-600" /> : <XCircle size={16} className="text-amber-600" />}
                 <span className={`text-sm font-semibold ${evaluation.is_correct ? 'text-green-700' : 'text-amber-700'}`}>{evaluation.is_correct ? 'Correct' : 'Not quite'}</span>
               </div>
-              <p className="text-text-primary leading-relaxed">{evaluation.feedback}</p>
+              <p className={`text-text-primary leading-relaxed ${projector ? 'text-2xl' : ''}`}>{evaluation.feedback}</p>
               {evaluation.remediation && (
                 <div className="mt-3 flex gap-2 border-t border-amber-200 pt-3">
                   <RotateCcw size={15} className="mt-0.5 shrink-0 text-amber-600" />
@@ -367,13 +469,68 @@ export default function ClassSessionPage() {
         </div>
       )}
 
-      {phase === 'done' && (
-        <div className="bg-green-50 rounded-[16px] p-5 text-center">
-          <p className="text-green-700 font-semibold">Lesson complete 🎉</p>
-          <p className="text-sm text-text-secondary mt-1">Taught {totalSegments} segments in {mmss(elapsed)}.</p>
-          <Button onClick={exitClass} className="mt-3">Teach another topic</Button>
-        </div>
-      )}
+      {phase === 'done' && (() => {
+        const { covered, qa, revisit } = buildSummary()
+        return (
+          <div className="bg-white rounded-[16px] shadow-card p-5 flex flex-col gap-4">
+            <div className="text-center">
+              <p className="text-green-700 font-semibold text-lg">Lesson complete 🎉</p>
+              <p className="text-sm text-text-secondary mt-1">Taught {covered.length} segments in {mmss(elapsed)}.</p>
+            </div>
+
+            <div className={`grid gap-4 ${projector ? 'grid-cols-1' : 'sm:grid-cols-2'}`}>
+              <div>
+                <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">Topics covered</p>
+                <ul className="list-disc pl-5 flex flex-col gap-0.5">
+                  {covered.map((t) => <li key={t} className={`text-text-primary ${projector ? 'text-xl' : 'text-sm'}`}>{t}</li>)}
+                </ul>
+              </div>
+              <div>
+                <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">Questions Martha asked</p>
+                <ul className="flex flex-col gap-1">
+                  {qa.filter((e) => e.log).map((e, i) => (
+                    <li key={i} className={`flex items-start gap-1.5 ${projector ? 'text-xl' : 'text-sm'} text-text-primary`}>
+                      {e.log!.correct === true ? <CheckCircle size={15} className="text-green-600 mt-0.5 shrink-0" />
+                        : e.log!.correct === false ? <XCircle size={15} className="text-amber-600 mt-0.5 shrink-0" />
+                        : <SkipForward size={15} className="text-text-muted mt-0.5 shrink-0" />}
+                      {e.log!.question}
+                    </li>
+                  ))}
+                  {qa.every((e) => !e.log) && <li className="text-sm text-text-muted">No questions were answered.</li>}
+                </ul>
+              </div>
+              <div>
+                <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">Homework</p>
+                {lastNote ? (
+                  <ul className="list-disc pl-5 flex flex-col gap-0.5">
+                    {lastNote.homework.map((h, i) => <li key={i} className={`text-text-primary ${projector ? 'text-xl' : 'text-sm'}`}>{h}</li>)}
+                  </ul>
+                ) : (
+                  <p className="text-sm text-text-muted">Use “Lesson note” above to generate homework for the class.</p>
+                )}
+              </div>
+              <div>
+                <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">Topics to revisit</p>
+                {revisit.length ? (
+                  <ul className="list-disc pl-5 flex flex-col gap-0.5">
+                    {revisit.map((t) => <li key={t} className={`text-amber-700 ${projector ? 'text-xl' : 'text-sm'}`}>{t}</li>)}
+                  </ul>
+                ) : (
+                  <p className={`${projector ? 'text-xl' : 'text-sm'} text-green-700`}>None — well done, class!</p>
+                )}
+              </div>
+            </div>
+
+            <div className="flex items-center justify-center gap-2">
+              <Button onClick={() => downloadText(`class-summary-${topic.trim().replace(/\s+/g, '-').toLowerCase()}.txt`, summaryToText())}
+                className="flex items-center gap-2">
+                <Download size={14} /> Save summary
+              </Button>
+              <Button onClick={exitClass}>Teach another topic</Button>
+            </div>
+          </div>
+        )
+      })()}
     </div>
   )
 }

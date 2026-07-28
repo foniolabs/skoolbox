@@ -1018,6 +1018,67 @@ export async function listGeneratedLessons(): Promise<GeneratedLessonMeta[]> {
   return invoke<GeneratedLessonMeta[]>('list_generated_lessons')
 }
 
+export interface LessonNote {
+  title: string
+  objectives: string[]
+  key_points: string[]
+  examples: string[]
+  homework: string[]
+}
+
+export interface ClassQuizQuestion {
+  question: string
+  answer: string
+}
+
+export interface ClassQuiz {
+  title: string
+  questions: ClassQuizQuestion[]
+}
+
+/** Generate a lesson note (objectives, key points, examples, homework) for teacher review. */
+export async function classroomLessonNote(subject: string, topic: string, classLevel: string): Promise<LessonNote> {
+  return invoke<LessonNote>('classroom_lesson_note', { subject, topic, classLevel })
+}
+
+/** Generate a 3–5 question class quiz with answers (projector + read aloud). */
+export async function classroomClassQuiz(subject: string, topic: string, classLevel: string): Promise<ClassQuiz> {
+  return invoke<ClassQuiz>('classroom_class_quiz', { subject, topic, classLevel })
+}
+
+/** On-demand teacher command: 'class' = explain to everyone, 'simpler' = re-explain
+ *  for a named student, 'prerequisites' = what the class must already know. */
+export async function classroomExplain(
+  subject: string, topic: string, classLevel: string,
+  mode: 'class' | 'simpler' | 'prerequisites', studentName?: string,
+): Promise<string> {
+  return invoke<string>('classroom_explain', { subject, topic, classLevel, mode, studentName: studentName ?? null })
+}
+
+// ── Offline speech-to-text (Phase 4 push-to-talk) ─────
+
+/** Is voice input usable right now? False when the Whisper engine/recorder is
+ *  missing or free RAM is under the 6 GB voice budget (text-only fallback). */
+export async function sttAvailable(): Promise<boolean> {
+  if (!isTauri) return false
+  return invoke<boolean>('stt_available')
+}
+
+/** Start recording the microphone (spacebar pressed). */
+export async function sttStart(): Promise<void> {
+  return invoke('stt_start')
+}
+
+/** Stop recording and transcribe; returns the transcript for teacher preview. */
+export async function sttStop(): Promise<string> {
+  return invoke<string>('stt_stop')
+}
+
+/** Discard the current recording. */
+export async function sttCancel(): Promise<void> {
+  return invoke('stt_cancel')
+}
+
 // ── Utility ───────────────────────────────────────────
 
 export { isTauri }

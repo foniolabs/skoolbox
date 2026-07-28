@@ -1,0 +1,2138 @@
+a FEDERAL MINISTRY OF EDUCATION T NEW REVISED BASIC EDUCATION CURRICULUM
+
+ENGLISH STUDIES
+
+PRIMARY 4
+
+NIGERIAN EDUCATIONAL RESEARCH AND DEVELOPMENT COUNCIL (NERDC) September, 2025
+
+Federal Ministry of Education
+
+NEW REVISED BASIC EDUCATION CURRICULUM ENGLISH STUDIES PRIMARY 4
+
+© September 2025
+
+Nigerian Educational Research and Development Council (NERDC)
+
+Headquarters : Lokoja-Kaduna Road, Sheda, PMB 91, Abuja, Nigeria Phone: (09) 8822202, 8822204, Fax (09) 8821047
+
+FOREWARD
+
+ince Nigeria’s return to democracy over two decades ago, successive administrations have laid emphasis on rejuvenating the education Ssector for functionality, socioeconomic turnaround, and over all national development. This is evident in the various national development plans, policy frameworks and management strategies that have been put in place to address issues pertaining to education. The overriding objective of these plans, programmes and policies, which are well-laid out, is to reform the education system and ensure that the target beneficiaries are wellequipped with the requisite skills and capabilities for positive impact on society. However, critical stakeholders, particularly employers of labour, have expressed concerns about the skill set possessed by many products of the system. There have also been concerns raised about whether individuals who have undergone our educational system are adequately prepared for effective living in the rapidly evolving context of the 21st century. There is also the observed learning poverty in the system characterized by lack of foundational literacy and numeracy skills among a high percentage of learners at the basic education level.
+
+Consequently, at various educational and economic development fora and discourses, there have been consistent calls for a total reform of the education system for optimal performance. Addressing these and other issues, and meet the demands of Nigerians, therefore, informed the definitive education development pathway of the Renewed Hope Agenda of President Bola Ahmed Tinubu, GCFR. The agenda is clear on the need to develop and implement a modern standard curriculum for the Nigeria education sector. The substance of the agenda is further amplified in the Ministerial Deliverables for the Federal Ministry of Education, which mandates, among others, a rapid review of the educational curriculum across all levels of education to align with skills needed in the labour market.
+
+Pursuant to these, we came up with several reform initiatives and welldefined plans for the education sector including the Nigerian Education Sector Renewal Initiative (NESRI). These initiatives clarify our plans and strategic framework for the actualization of Mr. President’s agenda for the education sector. They encapsulate, inter alia, development of learning contents that will lead to the acquisition of functional knowledge, skills, and competencies. Curriculum renewal is a major action point for the realization and achievement of the goals and objectives of these initiatives. Our vision in this regard is to reform the school curriculum, beginning from the foundational level, to adequately prepare our learners for the 21[st] century world. The learner preprartion, in this context, is broad-based covering science, technology, engineering, mathematics, medicine, and value reorientation. This will include building foundational skills in literacy and numeracy, digital skills development, citizenship and global awareness, entrepreneurial competence, and environmental literacy.
+
+We are delighted to state that the New Revised Basic Education Curriculum (BEC) has adequately covered these issues. The curriculum is founded on the key pillar of preservation of our national values and heritage even as we strive to produce youths with global competitive advantages. The outcome and competency-based approach and enhanced delivery framework adopted in the design and development of this new curriculum is to expose our learners to a wide range, but interconnected, skill set and knowledge consistent with the demands of life in the 21[st] century.
+
+We shall therefore pursue, aggressively, its implementation through massive teacher training and orientation, provision of requisite resources and deployment of competent school quality assurance officers. We shall also invigorate and sustain the implementation process through collaborative efforts with the states, communities, civil society groups, and our development partners.
+
+We are aware that the development of the curriculum followed various stages, best practices, and broadened engagement of a range of stakeholders, learners, parents, education administrators, expert and professional bodies, and development partners. We commend the efforts of the Nigerian Educational Research and Development Council (NERDC) for the excellent coordination of the processes and technical inputs in the design of this new curriculum. We also commend all the critical stakeholders, members of the academia, teachers, community leaders,
+
+Dr. Tunji Maruf Alausa
+
+Honourable Minister of Education
+
+policy makers, parents and learners who participated at various stages of the development process.
+
+It is our hope that the States, relevant agencies, and all stakeholders across the country will ensure effective implementation based on set out strategic plan to accelerate the achievement of our desired result.
+
+Professor Suwaiba Said Ahmed Honourable Minister of State for Education
+
+PREFACE
+
+Education, no doubt, plays important role as the foremost effective channel and instrument for providing solid bases, building blocks, and appropriate mechanisms for economic, political, social, cultural, and overall nation’s development. The current reforms process in the education sector, anchored on the Renewed Hope Agenda of the current administration, is strategic in the effort to place Nigeria on the right track for economic emancipation, human capital development, and social transformation.
+
+To attain all the lofty values of socioeconomic development and reconstruction enshrined in the reform initiatives as well as those contained in global agenda, including the education 2030 agenda encapsulated in the Sustainable Development Goals (SDGs), there was the need to prioritize curriculum reform across all the levels of education. Thus, one of the Presidential mandates for the Federal Ministry of Education as exemplified in the Ministerial Deliverables is to achieve a rapid review of the educational curriculum across all levels of education to ensure alignment with skills needed in the labour market. Furthermore, since the introduction of the revised 9-Year Basic Education Curriculum (BEC) in 2014, the world has witnessed tremendous transformation shaped by the revolutionary and evolutionary force of Information Communication Technology (ICT). There have also been emerging and prevailing issues in health, energy, sports, values, and all other aspects of human existence.
+
+The issues highlighted above provided basis for the review of the 9-Year Basic Education Curriculum. This is further strengthened by an overriding vision to produce learners with functional, transferable, technological, vocational and entrepreneurial skills. These skills are needed for the country’s economic development and individual fulfilment in a competitive globalized environment. Thus, the philosophy of the new 9-Year BEC is premised on social change, sustainable broad-based economic and national
+
+development through the acquisition of necessary skills, competencies and values.
+
+The review, which was anchored on the outcome and competency-based curriculum framework, commenced with series of stakeholders’ engagements including the learners. The stakeholders’ engagements culminated in hosting of the National Stakeholders’ Dialogue and High-Level Policy Committee (HLPC) meeting under the leadership of the Honourable Ministers of Education. The HLPC considered and approved a new curriculum structure with the benchmarks and standards that emerged from the stakeholders’ engagements and the nationwide needs assessment conducted by NERDC. The new structure which is driven by the Renewed Hope Agenda of Mr. President and the Ministerial Strategic Plan the Nigerian Education Sector Renewal Initiative (NESRI) also drew from the globally agreed goals.
+
+One outstanding feature of the new curriculum structure is that it brought about the realignment of the subject listing leading to a reduction in number of subjects learners are offered across the class levels. This enabled the removal of redundant concepts, effective integration of related concepts and skills thereby eliminating the old approach to composite subjects. The new structure also created opportunity for the full introduction vocational and entrepreneurship studies at the junior secondary school level.
+
+The broad goal of the new curriculum, as derived from the new structure, is to inculcate in learners’ critical and foundational skills and competencies for citizenship, social orientation, national productivity and life-long learning. Specifically, the curriculum is targeted at developing in learners:
+
+- generic social skills as well as specialized cognitive, vocational and entrepreneurial skills;
+
+- the consciousness of our national values;
+
+- life-long learning; and
+
+- talent and skills for self-discovery and societal development.
+
+Within the framework of these specific targets, generic level-specific outcomes were formulated across the class levels. At the primary education level, the curriculum has been designed to help learners exhibit foundational knowledge, skills and competencies for:
+
+- reading, writing and language development;
+
+- the acquisition of subject matter knowledge and digital competencies;
+
+- technological, vocational and entrepreneurial trades practices;
+
+- problem-solving and creativity capabilities for continuing and lifelong learning; as well as
+
+- emotional intelligence, social values, interpersonal, leadership and soft skills for character development and citizenship.
+
+At the Junior Secondary Schools level, the curriculum is geared towards:
+
+- the acquisition of subject matter knowledge and competencies for further education at the senior secondary level;
+
+- technological, vocational and entrepreneurship practices and training;
+
+- the inculcation of social values, soft skills for active and effective citizenship; as well as
+
+- talent discovery and development.
+
+These generic outcomes provided the basis upon which the themes and specific learning outcomes were developed. The curriculum contents are therefore organized around the specific learning outcomes spread across the thematic areas. The outcomes place clear expectations on the teaching and learning process with emphasis on what the learners can do after undergoing an instructional period. They also inform the teachers, parents, examination bodies and policy makers what knowledge, skills and competencies the learners are expected to demonstrate at every given time in the instructional process. There are also competencies that the learners are expected to acquire and exhibit after being exposed to a series of learning experiences under a given topic. These competencies are not subject specific but transversal and therefore can be acquired and applied
+
+across all topics in the teaching and learning process. These competencies prepare the learners for meaningful living in all circumstances and across geographical divides.
+
+These generic outcomes provided the basis upon which the themes and specific learning outcomes were developed. The curriculum contents are therefore organized around the specific learning outcomes spread across each thematic area. The outcomes place clear expectations on the teaching and learning process The stated outcomes emphasize what the learners can do after undergoing an instructional period. They also inform the teachers, parents, examination bodies and policy makers what knowledge, skills and competencies the learners are expected to demonstrate at every given time in the educational process.
+
+There are also competencies that the learners are expected to acquire and exhibit after being exposed to a series of learning experiences pertaining to various contents. These competencies are not subject specific but transversal and therefore can be acquired and applied across all topics in the teaching and learning process. These competencies prepare the learners for meaningful living in all circumstances and across geographical divides.
+
+The New Revised Basic Education Curriculum (BEC) is learner-centric and has integrated critical national and global issues as means of developing abilities and nurturing creative skills and other valuable skills in the learners. Furthermore, the teaching and learning of emerging issues like; Climate change, Artificial Intelligence (AI), biosafety, security, robotic, peace education, blue and green curriculum have been fully embedded into the curriculum. The introduction of these emerging issues and other core elements of learning was based on the BEC fundamental principles of interdisciplinary learning, ethical and social responsibility, resilience and inclusivity. It also embodied aspects of the 21[st] Century Skills including critical thinking, problem solving, information literacy and digital skills, communication and collaboration, global citizenship and cultural awareness, creativity and innovation. Moreover, it captured issues of entrepreneurship,
+
+environmental and sustainability education and financial literacy. These issues and aspects were covered in the curriculum based on systematic curriculum design process and standards that prevented content overload.
+
+The curriculum review process followed the established process of NERDC’s
+
+curriculum and material development, namely:
+
+- i. Pre-design processes (including needs assessment, stakeholder dialogue, and setting standards )
+
+- ii. Planning which involves concepts/strategy formulation,
+
+- iii. Writing/review/design which involves the design and drafting of the curriculum,
+
+- iv. Critique workshop as well as
+
+- v. Editorial and finalization of the curriculum documents.
+
+- vi. Approval protocol
+
+A wide spectrum of stakeholders including experts, subjects matter specialists, teachers, teacher educators, policy makers, employers of labour,
+
+parents, and learners participated at each of these stages. We acknowledge the invaluable contributions of these stakeholders.
+
+I acknowledge the efforts of the NERDC Staff who worked relentlessly to ensure the successful completion of the development of the curriculum within the scheduled period. I would like to posthumously acknowledge and appreciate my predecessor, the late Professor Ismail Junaidu, who commenced the process for developing the new curriculum prior to his demise on the 24th of July, 2024 while still in active service. I extend my profound gratitude to the Executive Secretary of the Universal Basic Education Commission (UBEC) and the management team for financially supporting the entire review process.
+
+I extend my sincere gratitude to the Honourable Minister of Education and Honourable Minister of State for Education for their invaluable support and visionary leadership in our endeavour to make education accessible to all Nigerian children, regardless of their circumstances.
+
+Professor Salisu Shehu Executive Secretary, NERDC
+
+Introduction
+
+he review of the Basic Education Curriculum was necessitated by factors and contexts related to curriculum cycle, expansion of T knowledge, technological advancement, new policy initiatives, and emerging development issues and best practices. These have broad and specific effects on the nature, features and elements of each subject curriculum. This is especially pertaining to the approach, and philosophy adopted during the curriculum development process. Moreover, the factors and contents are significant for the identification and selection of curricula objectives, outcomes, themes, contents, delivery strategies, resources, and evaluation guides.
+
+The New Revised English Studies Curriculum is a competency and outcomebased one which aims at developing in learners essential skills for mastery and application. The competency framework provides clear expectations, dictates fundamental skills and promotes all-inclusive growth for learners. The curriculum is profoundly skill based, practical and result oriented.
+
+Furthermore, the design and delivery process of this curriculum remains thematic, spiral, cyclical and concentric whereby learning contents are graduated, sequenced, and replicated across the class levels to align with learners’ maturation and cognition. The curriculum approach focused on knowledge, skills and competencies. The overriding learning experiences, and achievement of the curriculum are geared towards what learners can do skillfully, thereby making it learner-centred, performative, and resultoriented.
+
+The English Studies Curriculum is based on a multi-disciplinary approach and is diverse to cover critical basic foundational knowledge, concepts, and skills on English language.
+
+Learners will engage with national and global issues through context-based lessons that promote critical thinking and social responsibility. Concepts and contents that are fundamental to the learners’ overall development, growth and effective contribution in human development are integrated into the curriculum, ensuring they gain a broader understanding of their role as global citizens.
+
+The curriculum incorporates major structural components like themes, learning outcomes, and focal competencies, including topics, performance objectives, content, learning activities, resources, and evaluation guides. its distinct features of interdisciplinarity, compliance with ICT, and activitydriven learning significantly add to its international applicability and competitiveness. It also adopts a student-centred teaching style as suggested by the curriculum overall goals and progressively shits responsibility to the learners. Through this, learners not only acquire conceptual knowledge but also and importantly acquire the necessary skills for functional living in society. Thus, expectations on the learners go beyond classroom experiences to their everyday lives.
+
+General Objectives of the English Studies Curriculum
+
+Specifically, the curriculum aims to:
+
+1. develop in learners reading readiness skills;
+
+2. enhance learners’ proficiency in listening, speaking, reading, and
+
+- writing;
+
+3. foster an appreciation for literature and its role in broadening
+
+- learners' perspectives;
+
+4. encourage learners to think critically and engage with global and
+
+- national issues through language;
+
+5. equip learners with the ability to apply language skills in real-life
+
+- situations; and
+
+6. promote inclusivity by catering to diverse learning needs and abilities.
+
+Overview of the content coverage
+
+The table below provides an overview of the content coverage for the New Revised English Studies Curriculum
+
+Theme Learning Outcome Topic
+Listening
+and
+Speaking Communicate ideas orally with
+appropriate pronunciation Conversations/dialogues
+using appropriate modal
+auxiliaries
+Communicate ideas orally with
+appropriate pronunciation Dialogue using tag
+questions
+Effectively Carry out oral
+narrations and descriptions Oral Composition:
+Descriptive and Narrative
+Composition
+Pronounce words appropriately Aural Discrimination in
+Vowels and Consonants
+Pronounce words appropriately Introduction to Stress
+Use intonation appropriately Introduction to Intonation
+Grammati
+cal
+Accuracy Use a wide range of
+vocabulary in daily
+conversations Vocabulary (Idiom)
+Use a wide range of
+vocabulary in daily
+conversations Homophones and
+homograph
+Use appropriate grammatical
+structures in sentences Using past, present and
+future tenses
+Use appropriate grammatical
+structures in sentences Nouns and pronouns
+Use appropriate grammatical
+structures in sentences Adjectives and Adverbs
+Reading Read and comprehend
+different types of short stories,
+plays and poems Reading poems, short
+stories and plays
+Grammati
+cal
+Accuracy Acquire adequate vocabulary
+in English synonyms antonyms
+homonyms and
+hyponyms
+
+Theme Learning Outcome Topic
+Recognize the registers
+relating to different fields or
+context and use the associated
+registers appropriately. Vocabulary associated
+with various fields or
+contexts.
+Reading Use contextual clues to detect
+meanings. Reading passages and
+using contextual clues
+Answer comprehension
+questions Reading to identify main
+and supporting ideas.
+Writing Write good informal letters Informal Letters
+Write narrative composition
+Describe a given scene Narrative and Descriptive
+Composition
+Listening
+and
+Speaking Recite poems and sing songs Songs and Poems
+
+Delivery/learning activities and resources
+
+The effective implementation of this curriculum will require that:
+
+1. Teachers adopt instructional strategies that promotes effective learner engagement and active participation.
+
+2. Teachers use varieties of instructional resources to promote deep
+
+- and meaningful learning.
+
+3. Teachers adopt a new lesson plan that incorporates all the critical elements of the curriculum. A sample has been developed and included in the teachers’ guide.
+
+4. Copies of the curriculum be made available to every school teacher and much emphasis placed on its use in order to achieved stated objectives.
+
+5. Regular workshops are organised for teachers, supervisors and quality assurance officers on how to interpret and use the curriculum.
+
+6. Teachers adopt assessment practices that are aligned to the competency and outcome-based approach. NERDC has developed a simple to use assessment framework to support the implementation of curriculum. Schools and teachers should leverage on the framework to ensure effective assessment.
+
+Proper implementation of this curriculum will have far-reaching benefits for Nigeria's educational system and society as a whole. By equipping learners with essential knowledge, skills and competencies prescribed in this curriculum, the country will produce more articulate, confident, and globally competitive citizens. The learners will also be better prepared to excel in higher education and contribute meaningfully to Nigeria's economic and social development.
+
+In sum, this curriculum offers an exciting, enriching, and transformative journey that transcends classroom learning; it is a key to unlocking the limitless potential of every learner in Nigeria's classrooms.
+
+Dr Garba Dahiru Gandu
+
+Director Curriculum Development Centre
+
+TABLE OF CONTENTS
+
+Page Number
+Foreword iv
+Preface vi
+Introduction ix
+Class level Theme Topic
+Primary 4 Listening and Speaking Simple Conversations/dialogues usingappropriate modal auxiliaries 1
+Dialogue usingtag questions 2
+Oral Composition: Descriptive and Narrative Composition on various topics 3
+Aural Discrimination in Vowels and Consonants 4
+Introduction to Stress 5
+Introduction to Intonation 6
+Grammatical Accuracy Vocabulary (Common Idioms) 7
+Homophones and homograph 7
+Using past, present and future tenses 8
+Nouns and pronouns 8
+Adjectives and Adverbs 8
+Reading Reading poems, short stories and plays 10
+Grammatical Accuracy Sense Relations: synonyms antonyms homonyms and
+hyponyms 11
+Vocabulary associated with various fields or contexts such as family, school,
+sports, health, weather, social media, etc. 12
+Reading Comprehension: Reading passages and using contextual clues to get
+meanings of words. 13
+Comprehension; Readingto identifymain and supportingideas. 14
+Writing Informal Letters 15
+Narrative and Descriptive Composition 16
+Listening and Speaking Songs and Poems 17
+
+English Studies Curriculum
+
+Theme:Listening and Speaking Theme:Listening and Speaking Theme:Listening and Speaking Theme:Listening and Speaking Primary 4
+Learning outcome:Communicate ideas orally with appropriate pronunciation
+Focal Competency:Speakingeffectivelyand usingmodal auxiliaryverbs
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY
+COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Conversations/
+dialogues using
+appropriate modal
+auxiliaries Pupils should be able
+to:
+1. identify modal
+auxiliary verbs
+(can, could, shall,
+should, will,
+would, etc);
+2. use modal
+auxiliary verbs in
+sentences;
+3. discuss emerging
+issues using
+modal auxiliary
+verbs Knowledge
+1. Meaning and uses
+of Modal auxiliaries
+(can/could,
+shall/should,
+will/would,
+may/might, must,
+ought to, need to,
+used to, dare, etc).
+2. Observing
+conversation
+etiquette.
+3. Engaging in
+conversations with
+modal auxiliary
+verbs on various
+subjects such as
+national values,
+insecurity, financial
+system, corruption
+etc. Communicationas
+pupils communicate
+and convey
+confidently and
+effectively
+information and ideas
+through speaking
+during group
+discussions.
+Leadershipas
+pupils learn to take
+responsibility for
+actions in
+accomplishing a task.
+Toleranceas pupils
+listen and respect the
+views of others. Pupils are guided to:
+1. Discuss the
+meaning and uses
+of modal auxiliary
+verbs.
+2. Use modal
+auxiliary verbs in
+sentences.
+3. engage in a peer-
+moderated group
+discussion on
+given issues using
+modal auxiliary
+verbs. 
+Newspaper
+articles
+
+Flash cards
+
+Video material
+
+Course books
+
+Other relevant
+resources Pupils to:
+1. identify modal
+auxiliary verbs;
+2. use modal auxiliary
+verbs in sentences;
+3. use modal auxiliary
+verbs in
+conversations.
+
+Theme:Listeningand Speaking Theme:Listeningand Speaking Theme:Listeningand Speaking Theme:Listeningand Speaking Primary 4
+Learning outcome:Communicate ideas orallywith appropriatepronunciation
+Focal Competency: Effectivelyengaging in dialogues usingtag questi ons
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY
+COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION GUIDE
+Dialogue using tag
+questions Pupils should be
+able to:
+1. state the
+meaning and
+basic rules of
+question tags;
+2. ask and respond
+to question
+tags;
+3. engage in
+dialogues using
+tag questions. Knowledge
+1. Meaning of question
+tag.
+2. Basic rules of question
+tags e.g. a positive
+statement goes with a
+negative question
+while negative
+statement goes with a
+positive question.
+Positive
+Tomorrow is Monday,
+isn’t it?
+You are a boy/girl,
+Aren’t you?
+She is quite attractive,
+isn’t she?
+We shall see each
+other again, shan’t
+we?
+Negative:
+You didn’t come to
+school, did you?
+This book isn’t yours,
+is it?
+Skills
+Asking and answering
+questions Communicationas
+pupils
+use correct language
+structure and
+relevant vocabulary
+effectively conversing
+on issues using
+question tag.
+Collaborationas
+pupils be open and
+responsive to new
+and diverse
+perspectives;
+incorporate group
+input and feedback
+into the work while
+working in pairs. Pupils are guided to:
+1. Work in pairs.
+One gives a
+statement, the
+other responds
+with a tag.
+2. Engage in
+conversations
+using tag
+questions. 
+Flash cards t
+
+Course books
+
+Flannel board
+
+Online resources Pupils to:
+1. State the meaning
+and basic rules of
+question tags;
+2. ask and respond to
+question tags;
+3. engage in
+dialogues using tag
+questions.
+
+Theme:Listening and Speaking Theme:Listening and Speaking Theme:Listening and Speaking Theme:Listening and Speaking Primary 4
+Learning outcome:Effectively Carry out oral narrations and descriptions
+Focal Competency:Effectivelyengagingin oral composition
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY
+COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION GUIDE
+Oral Composition:
+Descriptive and
+Narrative
+Composition on
+various topics Pupils should be able
+to:
+1. narrate the
+highlights of ‘A
+Visit to My
+Village’ or ‘A Visit
+to the Market’;
+2. Speak on the
+topics: “How to
+get to where I
+live” & ‘My
+Father’s House’;
+3. Identify major
+features in any
+event with
+emphasis on
+time, place,
+occasion and
+significance. 1. Narration on various
+topics such as: ‘A
+visit to my village’,
+‘My First Day at
+School’, ‘A Visit to
+the Market’
+2. Description of places,
+people, events, etc. Communicationas
+pupils use correct
+language structure
+and relevant
+vocabulary effectively
+while
+narrating events and
+describing places
+orally.
+Information
+Literacyas pupils
+use information and
+communication
+technologies to
+enhance learning
+while reading
+materials on the
+internet. Pupils are guided to:
+1. Narrate some
+events they
+witnessed.
+2. Read
+descriptions on
+the internet.
+3. Get some real
+objects and
+describe them. 
+Text books
+showing various
+events.
+
+Video clips of
+events, like
+people buying
+and selling in a
+market.
+
+Real objects to
+describe how to
+do certain tasks.
+
+The
+Marketplace. Pupils to:
+1. describe some
+events accurately;
+and
+2. narrate interesting
+events they have
+witnessed.
+3. identify major
+features of an
+event with
+emphasis on time,
+place, occasion and
+significance.
+
+Theme:Listening and Speaking Theme:Listening and Speaking Theme:Listening and Speaking Theme:Listening and Speaking Primary 4
+Learning outcome:Pronounce words appropriately
+Focal Competency:Identifying phonemic consonants and vowels
+TOPIC PERFORMANC
+E OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES AND
+VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Aural
+Discrimination
+in Vowels and
+Consonants Pupils should be
+able to:
+1. Discriminate
+between
+vowel
+sounds in
+words e.g.
+/˄/ and /3:/
+2. Discriminate
+between
+consonant
+sounds in
+words e.g.
+/ʧ / and /ʃ/
+3. Distinguish
+between
+voiced and
+voiceless
+consonant
+sounds. Knowledge
+1. Discriminate between
+the sounds /˄/ and
+/3:/ in words e.g.
+cup curb
+luck lurk
+gull girl
+bust burst
+2. discriminate between
+pairs of consonants
+e.g. /ʧ / and /ʃ/
+chinshin
+chopshop, catch
+cash
+/v/ and /f/
+Vest first.
+Very ferry, have
+half
+3. Distinguish between
+voiced and voiceless
+consonant sounds. Communicationas pupils
+communicate and convey
+confidently and effectively
+While learning appropriate
+pronunciation of words.
+Digital Literacyas students
+use information and
+communication technologies to
+enhance learning while using
+apps or games to learn sounds Pupils are guided to:
+1. Sort vowels and
+consonants written
+on flashcards.
+2. Engage in minimal
+pairs practice where
+the teacher gives
+pairs of words that
+differ by one sound
+(e.g. ship/sheep,
+cat/cut, pen/pan)
+and pupils identify
+the difference in
+sound.
+3. Practice appropriate
+pronunciation of
+vowel and consonant
+sounds in isolation
+and in words.
+4. Use phonics apps
+and games on
+vowels and
+consonants. 
+Flashcards
+
+Audio recordings
+
+Videos or
+animations
+demonstrating
+how vowel and
+consonant
+sounds are
+produced
+
+Phonics apps or
+games that
+focus on sound
+recognition
+
+Course books Pupils to:
+1. Discriminate
+between vowel
+sounds
+2. Discriminate
+between
+consonant
+sounds
+3. Distinguish
+between voiced
+and voiceless
+consonant
+sounds
+
+Theme:Listening and Speaking Theme:Listening and Speaking Theme:Listening and Speaking Primary 4
+Learning outcome:Pronounce words appropriately
+Focal Competency:Pronouncing words appropriately
+TOPIC PERFORMANC
+E OBJECTIVES CONTENT- KNOWLEDGE AND
+SKILLS KEY
+COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Introduction to
+Stress Pupils should be
+able to:
+1. state the
+meaning of
+stress;
+2. discuss the
+types of
+stress
+3. apply simple
+stress
+placement
+rules for
+common
+word types Knowledge
+1. Meaning of stress
+2. Types of Stress:
+
+Word Stress:Emphasis on
+specific syllables within a word
+(e.g., Table, WRIting, BEAutiful)
+
+Sentence Stress:Emphasis on
+certain words within a sentence
+for meaning (e.g., "I DIDN’T
+say he stole it", "I didn't say HE
+stole it").
+3. Simple stress placement rules
+for common words
+
+Two-syllable
+nouns/adjectives: Stress the
+first syllable (e.g., 'TAble,'
+'HAPpy').
+
+Two-syllable
+verbs/prepositions: Stress
+the second syllable (e.g.,
+'aRRIVE,' 'beGIN').
+
+Compound Words:
+For nouns: Stress the first part
+(e.g., 'BLACKboard').
+For verbs: Stress the second
+part (e.g., 'overCOME').
+SkillStress placement skill Collaborationas
+pupils
+assume shared
+responsibility for
+collaborative work,
+and value the
+individual
+contributions made
+by each team
+member while
+identifying stressed
+syllables in simple
+words. Pupils are guided to:
+1. Work in groups to
+identify stressed
+syllables in simple
+words.
+2. Sort words by their
+stress patterns
+(e.g., first syllable,
+second syllable).
+3. Play audio clips of
+words or
+sentences, and
+identify the
+stressed syllables
+or words. 
+Course books
+
+Video clips
+
+Flashcards
+
+Workbooks Pupils to:
+1. state the
+meaning of
+stress;
+2. discuss the types
+of stress
+3. apply simple
+stress placement
+rules for common
+words.
+
+Theme: Listening and Speaking Primary 4
+
+Theme:Listening and SpeakingPrimary 4 Theme:Listening and SpeakingPrimary 4 Theme:Listening and SpeakingPrimary 4 Theme:Listening and SpeakingPrimary 4 Theme:Listening and SpeakingPrimary 4 Theme:Listening and SpeakingPrimary 4 Theme:Listening and SpeakingPrimary 4
+Learning outcome:Use intonation appropriately
+Focal Competency:Using intonation appropriately
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION GUIDE
+Introduction to
+Intonation Pupils should be able
+to:
+1. state the
+meaning of
+intonation;
+2. discuss the
+types of
+intonation;
+3. state when to
+use the falling
+and rising
+intonations.
+4. explain how
+intonation
+changes
+meaning. Knowledge
+1. Meaning of intonation
+2. Importance of
+intonation
+ Helps express
+attitudes and
+emotions.
+ Differentiates
+questions from
+statements.
+ Clarifies meaning in
+sentences.
+3. Types of Intonation
+o Rising intonation
+o Falling intonation
+4. Intonation and
+Meaning
+ Show how
+intonation changes
+meaning: Example:
+"You’re coming."
+(statement) vs.
+"You’re coming?"
+(question). Collaborationas
+pupils assume shared
+responsibility for
+collaborative work, and
+value the individual
+contributions made by
+each team member
+while discussing the
+use of falling and rising
+intonations. Pupils are guided to:
+1. Work in groups
+and discuss how
+to use the falling
+and rising
+intonations.
+2. Role Play (act out
+dialogues using
+appropriate
+intonation for
+questions,
+statements, and
+commands).  Recordings of
+sentences with
+different
+intonation
+ Flashcard
+ Workbook
+ Course books
+ Video clips Pupils to:
+1. explain the meaning
+of intonation;
+2. discuss the types of
+intonation;
+3. state when to use
+the falling and rising
+intonations;
+4. explain how
+intonation changes
+meaning.
+
+Theme:Grammatical Accuracy Theme:Grammatical Accuracy Theme:Grammatical Accuracy Theme:Grammatical Accuracy Primary 4
+Learning Outcome:Use a wide range of vocabulary in daily conversations
+Focal Competency:Using a wide range of vocabulary in daily communication
+Topic Performance
+Objective Content Knowledge and
+Skills Key Competencies
+and Values Learning
+Activities Teaching and
+Learning
+Resources Evaluation Guide
+Vocabulary
+(Common
+Idioms) Pupils should be able
+to:
+1. explain the
+meaning of
+idioms.
+2. use common
+idioms in
+sentences. Knowledge
+1. Common Idioms and
+meanings
+2. Use of idioms in sentences. Communicationas
+pupils communicate
+clearly and
+confidently using a
+range of linguistic,
+symbolic,
+representational and
+physical expressions
+while making
+presentations on
+idiomatic expressions Pupils are guided to
+make presentations
+on idiomatic
+expressions 
+Course books
+
+Dictionaries Pupils to:
+1. Explain the
+meaning of
+common idioms.
+2. Use common
+idioms in
+sentences.
+Homophones
+and homograph Pupils should be able
+to:
+1.Explain the
+meaning of common
+homophones and
+homographs;
+2.give examples of
+homophones and
+homographs;
+3. Write sentences
+demonstrating
+different meanings of
+homophones and
+homographs. 1. Homophones: Words that
+sound the same but have
+different meanings e.g.
+
+to/too/two
+
+their/there/they're
+
+bare/bear
+
+fair/fare
+
+knight/night
+2. Homographs: Words with
+same spelling but different
+meanings e.g.
+
+bank (financial
+institution) / bank
+(riverbank)
+
+bat (animal) / bat
+(sports equipment)
+
+spring (season) / spring
+(coiled metal object) Critical thinkingas
+pupils think
+reflectively, broadly
+and logically about
+challenges
+encountered in all
+situations while
+playing the
+educational games. Pupils are guided to
+play
+homophone/homog
+raph Bingo, word
+sorting games,
+sentence
+completion
+exercises and "Find
+the Mistake"
+(identifying
+incorrect usage) 
+Course books
+
+Dictionaries
+
+Online
+resources Pupils to:
+1. Explain the
+meaning of
+common
+homophones and
+homographs;
+2. Give examples of
+homophones and
+homographs;
+3. Write sentences
+demonstrating
+different
+meanings of
+homophones and
+homographs.
+
+Theme:Grammatical Accuracy Theme:Grammatical Accuracy Theme:Grammatical Accuracy Theme:Grammatical Accuracy Primary 4
+Learning Outcome:Use appropriate grammatical structures in sentences
+Focal Competency:Appropriately using verbs (in various tenses), nouns and adjectives
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT
+KNOWLEDGE AND
+SKILLS KEY
+COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION GUIDE
+Using past,
+present and
+future tenses Pupils should be able
+to correctly use:
+1. past tense
+2. present tense
+3. Future tense. 1. Past tense e.g. I ate
+yesterday
+2. Present tense e.g. I
+eat rice everyday
+3. Future tense e.g. I will
+eat salad tomorrow. Communicationas
+pupils use correct
+language structure
+and relevant
+vocabulary effectively
+while making
+sentences with past,
+present and future
+tenses. Pupils are guided to:
+1. Identify past,
+present and future
+tenses.
+2. Use past, present
+and future tenses in
+making statements/
+sentences. 
+Course books
+
+Sentence
+strips
+
+Online
+resources/digi
+tal games Pupils to:
+1. identify past,
+present and future
+tenses; and
+2. make correct use
+of past, present
+and future tenses.
+Nouns and
+pronouns Pupils should be able
+to:
+1. identify nouns and
+pronouns; and
+2. use nouns and
+pronouns in
+making sentences.
+Identification of nouns
+and pronouns
+Use of nouns and
+pronouns. Collaborationas
+pupils are open and
+responsive to new
+and diverse
+perspectives while
+working in groups to
+identify nouns and
+pronouns in texts. Pupils are guided to:
+1. Use nouns and
+pronouns in making
+sentences.
+2. Work in groups to
+identify nouns and
+pronouns in texts. 
+Course books
+
+Sentence
+strips
+
+Online
+resources/digi
+tal games Pupils to:
+1.identify nouns and
+pronouns in
+statements/sentenc
+es; and
+2. construct sentences
+using nouns and
+pronouns.
+Adjectives and
+Adverbs Pupils should be able
+to:
+1. explain the
+meanings of
+adjectives and
+adverbs;
+2. identify the
+various types of
+adjectives and
+adverbs;
+3. use adjective in
+various degree; Knowledge
+1. Meanings of
+adjectives and
+adverbs.
+2. Types of adjectives:
+ Quantitative
+Adjectives
+(describe quantity)
+ Qualitative
+Adjectives
+(describe quality) Collaboration
+as pupils are open
+and responsive to
+new and diverse
+perspectives while
+working in groups
+and making class
+presentations on
+adverbs and
+adjectives.
+Leadership as
+pupils play leading Pupils are guided to:
+1. Explain the
+meanings of
+adjectives and
+adverbs.
+2. Identify the various
+types of adjectives
+and adverbs.
+3. Work in pairs to
+arrange adjectives
+provided by the  Course books
+ Real objects
+ Pictures
+ Adjective and
+adverb bags for
+pupils to arrange
+ Digital games on
+adverbs and
+adjectives
+ Flash cards
+ Online resources
+ Other relevant
+resources. Pupils to:
+1. explain the
+meanings of
+adjectives and
+adverbs;
+2. identify the various
+types of adjectives
+and adverbs;
+3. use adjectives in
+various degree;
+4. make good
+sentences with
+
+4. use adjectives
+and adverbs in
+making sentences.  Demonstrative
+Adjectives (point
+out specific nouns)
+ Interrogative
+Adjectives (ask
+questions)
+ Possessive
+Adjectives (show
+ownership)
+ Comparative
+Adjectives
+(compare qualities)
+3. Comparative forms of
+adjectives e.g. Janelle
+is taller than her
+friend; Bimpe is more
+intelligent than Ola.
+4. Order of adjectives
+5. Types of adverbs
+6. Comparative forms of
+adverbs e.g. Ahmed
+walks more slowly
+than Eze.
+7. Use of adjectives and
+adverbs in sentences. roles in their various
+groups. teacher in
+appropriate order.
+4. Read passages in
+groups to identify
+adjectives and
+classify them
+according to types.
+5. Work in groups and
+make class
+presentations on
+adverbs and
+adjectives.
+6. Play digital games
+on adverbs and
+adjectives. adjectives and
+adverbs.
+5. Identify adjectives
+and adverbs in
+texts.
+
+Theme:Reading Theme:Reading Theme:Reading Theme:Reading Primary 4 Primary 4
+Learning Outcome:Read and comprehend different types of short stories, plays and poems
+Focal Competency:Reading and comprehending short poems, stories and plays
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION GUIDE
+Reading poems,
+short stories and
+plays Pupils should be to:
+1. Read short
+poems with
+reasonable
+comprehension;
+2. Read short
+poems and
+identify figures of
+speech;
+3. Read short
+stories and plays
+and discuss
+characters, plots,
+settings, theme,
+etc. Knowledge
+1. Reading short
+poems, stories and
+plays.
+2. Characters, setting,
+plots and themes
+in short stories and
+plays.
+3. Figures of speech
+Skills
+Reading skill Collaborationas pupils
+are open and responsive
+to new and diverse
+perspectives;
+incorporate group input
+and feedback into the
+work while
+working in groups.
+Communicationas
+pupils
+communicate and
+convey confidently and
+effectively information
+and ideas through
+speaking while making
+presentations on
+characters, plots,
+settings and themes in
+short plays and stories
+Leadershipas pupils
+play leadership roles in
+various groups. Pupils are guided to:
+1. Read short poems,
+stories and plays in
+groups and identify
+themes, and figures
+of speech.
+2. Work in groups and
+make class
+presentations on
+characters, plots,
+settings and themes
+in short plays and
+stories. 
+Selected
+class-
+appropriate
+poems, plays
+and novels
+
+Course books
+
+Online
+resources
+
+Other
+relevant
+resources. Pupils to:
+1. Read short poems,
+stories and plays
+and answer
+questions relating
+to:
+
+Theme
+
+Figures of
+speech
+
+Characters
+
+Plots
+
+Settings
+
+Theme:Grammatical Accuracy Theme:Grammatical Accuracy Theme:Grammatical Accuracy Theme:Grammatical Accuracy Theme:Grammatical Accuracy Primary 4
+Learning Outcome:Acquire adequate vocabulary in English
+Focal Competency:Using synonyms, antonyms, homonyms, and hyponyms in speaking and writing.
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION GUIDE
+Sense Relations:
+synonyms
+antonyms
+homonyms and
+hyponyms Pupils should be
+able to:
+1. explain the
+meanings of
+synonyms
+antonyms
+homonyms and
+hyponyms
+2. give examples of
+synonyms
+antonyms
+homonyms and
+hyponyms;
+3. use synonyms,
+antonyms,
+homonyms, and
+hyponyms in
+written and
+spoken
+communication
+effectively. Knowledge
+1. Meanings of
+synonyms
+antonyms
+homonyms and
+hyponyms.
+2. Examples of
+synonyms
+antonyms
+homonyms and
+hyponyms.
+3. Uses of synonyms
+antonyms
+homonyms and
+hyponyms. Critical Thinkingas
+Pupils think reflectively,
+broadly and logically
+while participating in
+word matching,
+sentence completion,
+and word classification
+games/exercises.
+Collaborationas pupils
+are open and responsive
+to new and diverse
+perspectives;
+incorporate group input
+and feedback into the
+work while working in
+groups to search
+synonyms and antonyms
+of words in the
+dictionary. Pupils are guided to:
+1. Play a matching
+game on synonyms
+and antonyms
+online.
+2. Do synonyms and
+antonyms swap
+where the teacher
+writes sentences on
+the board, underline
+some words and
+invite pupils to
+replace the
+underlined words.
+3. Stay in groups and
+search synonyms
+and antonyms of
+words in the
+dictionary. 
+Flashcard
+
+Charts
+
+Posters
+
+Course books
+
+Online tools
+and
+educational
+apps
+
+Worksheets Pupils to:
+1. 1.explain the
+meanings of
+synonyms
+antonyms
+homonyms and
+hyponyms
+2. give examples of
+synonyms
+antonyms
+homonyms and
+hyponyms.
+3. use synonyms,
+antonyms,
+homonyms, and
+hyponyms in
+speaking and
+writing.
+
+Theme:Grammatical Accuracy Theme:Grammatical Accuracy Primary 4 Primary 4 Primary 4 Primary 4
+Learning Outcome:Recognise the registers relating to different fields or context and use the associated registers appropriately.
+Focal Competency:Using registers in various fields
+TOPIC PERFORMANC
+E OBJECTIVE CONTENT KNOWLEDGE AND
+SKILLS KEY
+COMPETENCIES
+AND VALUES LEARNING ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Vocabulary
+associated with
+various fields or
+contexts such as
+family, school,
+sports, health,
+weather, social
+media, etc. Pupils should be
+to:
+1. Identify
+vocabulary
+associated
+with given
+fields or
+contexts
+2. Construct
+sentences
+using
+vocabulary
+associated
+with given
+fields or
+contexts. Words associated with
+1. Family:Nuclear family,
+extended family, father,
+mother, sister, brothers,
+nieces, nephews, cousins,
+grandfather, grandmother,
+mother-in-law, step-mother,
+etc.
+2. Schools:uniform, library,
+lessons, exams, school bag,
+playground, assembly,
+sports, writing, etc.
+3. Sports: team, coach,
+player, goal, score, win,
+brace, lose, draw, game,
+referee, kick, etc.
+4. Health:medicine, checkup,
+illness, recovery, injury,
+vaccination, sanitation,
+hydration, mental health,
+prevention, treatment
+5. Weather:temperature,
+clouds, wind, storm, snow,
+thunder, lightning, humidity,
+fog, breeze, hail, drizzle,
+forecast, etc.
+6. Social Media: post, like,
+follow, share, comment,
+hashtag, profile, feed,
+timeline, tag, etc. Communication:
+Communicate and
+convey confidently
+and effectively
+information and
+ideas using correct
+language structures
+and relevant
+vocabulary in a
+range of social and
+cultural contexts
+while role-playing
+different
+professionals.
+Environmental
+Literacyas pupils
+demonstrate
+knowledge and
+understanding of
+the environment
+through field trips. Pupils are guided to:
+1. Role-play different
+professionals (e.g., a
+doctor, teacher,
+shopkeeper). Each
+student uses the
+vocabulary related to
+that register during
+their role-play. This
+encourages active
+learning through
+simulation
+2. Go on a field trip (or
+virtual tour) to places
+like hospitals, sports
+centers, or farms. While
+there, they are
+introduced to the
+specialized vocabulary
+used in each
+environment.
+3. Use educational apps
+that focus on
+vocabulary building,
+such as Kahoot!,
+Quizlet, orSpelling City,
+where they can engage
+in word-matching and
+sorting activities based
+on different registers  Pictures and
+visual aids
+ Flashcards
+ Vocabulary
+games from the
+internet
+ Real life objects
+ Interactive apps
+and games Pupils to:
+1. list vocabulary
+associated with
+given fields or
+contexts
+2. Construct
+sentences using
+vocabulary
+associated with
+given fields or
+contexts.
+
+Theme: Reading Theme: Reading Theme: Reading Theme: Reading Primary 4 Primary 4
+Learning Outcome:Use contextual clues to detect meanings.
+Focal Competency:Using contextual clues to get the meanings of unfamiliar words
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Comprehension:
+Reading
+passages and
+using contextual
+clues to get
+meanings of
+words. Pupils should be to:
+1. read passages on
+various issues
+such as taxation,
+achieving
+academic
+excellence, skill
+acquisition,
+building good
+character/manne
+rs, etc;
+2. answer literal,
+inferential and
+critical questions;
+3. use contextual
+clues to get the
+meanings of
+unfamiliar words;
+4. use the
+unfamiliar words
+appropriately in
+sentences.
+Knowledge
+1. Reading passages
+on various issues
+such as taxation,
+achieving academic
+excellence, skill
+acquisition, building
+good
+character/manners,
+etc;
+2. Literal, inferential
+and critical
+questions on
+passages
+3. Use of contextual
+clues to get the
+meanings of
+unfamiliar words
+4. Use of unfamiliar
+words in sentences. Communicationas
+pupils communicate and
+convey confidently and
+effectively information
+and ideas through
+speaking while
+reading passages in
+group and discussing
+answers.
+Leadershipas
+pupils learn to take
+responsibility for actions
+in accomplishing a task
+while working in pairs. Pupils are guided to:
+1.Work in pairs or
+groups to read
+passages and
+answer questions.
+2.Use contextual clues
+to get the meanings
+of unfamiliar words.
+3.Use the unfamiliar
+words appropriately
+sentences.  Dictionary
+ Newspaper articles
+ Pupils’ textbooks
+ Online resources
+ Other relevant
+resources Pupils to:
+1. read passages on
+various issues
+and answer
+literal, inferential
+and critical
+questions;
+2. Use contextual
+clues to get the
+meanings of
+unfamiliar words
+3. Use a dictionary
+to also find the
+meanings of
+unfamiliar words
+4. Use unfamiliar
+words in
+sentences.
+
+Theme: Reading Theme: Reading Theme: Reading Theme: Reading Primary 4
+Learning Outcome:Answer comprehension questions
+Focal Competency:Identifying main and supporting ideas in passages
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Comprehension;
+Reading to
+identify main
+and supporting
+ideas. Pupils should be
+able to:
+1. read class-
+appropriate
+informational
+texts on some
+topical issues,
+e.g. owning
+shares, health
+and hygiene,
+environmental
+safety,
+consumer
+rights, human
+trafficking,
+charitable
+donations,etc.;
+2. identify the
+main ideas in
+the texts; and
+3. identify the
+supporting facts
+in the texts. Reading class appropriate
+informational texts e.g.
+texts on:
+1. diet and nutrition,
+benefits of eating for
+healthy living;
+2. pollution: types,
+causes and
+purification;
+3. charitable donations:
+importance of giving
+money to those in
+need, etc.
+4. identifying main and
+supporting ideas in
+passages. ICT and Digital
+Competencesas
+pupils use information
+and communication
+technologies to enhance
+learning while retrieving
+relevant information
+online.
+Collaborationas
+pupils assume shared
+responsibility for
+collaborative work, and
+value the contributions
+made by each team
+member while
+working in pairs or
+groups. Pupils are guided to:
+1. Work in pairs or
+groups to read
+informational texts
+and identify the
+main and
+supporting ideas in
+texts.
+2. Retrieve relevant
+online information
+on owning shares,
+health and hygiene,
+environmental
+safety, consumer
+rights, human
+trafficking,
+charitable
+donations,etc 
+Newspapers
+and magazines
+
+Course books
+
+Supplementary
+readers
+
+Pictures
+
+Internet
+facilities Pupils to:
+1. read
+informational
+texts;
+2. discuss the main
+ideas in the
+texts; and
+3. differentiate
+between main
+and supporting
+ideas.
+
+Theme:Writing Theme:Writing Theme:Writing Primary 4
+Learning Outcome:Write good informal letters
+Focal Competency:Writing informal letters
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Informal
+Letters Pupils should be to:
+1. explain the
+meaning of an
+informal letter;
+2. list the features
+of an informal
+letter;
+3. write informal
+letters Knowledge
+1. Meaning of an
+informal letter.
+2. Features of informal
+letter:
+
+Sender's address
+
+Date
+
+Salutation
+(greeting)
+
+Introduction
+
+Body of the letter
+(developed with
+informal and
+chatty language)
+
+Closing
+
+Sender's name
+and Signature
+3. Writing an informal
+letter. Communicationas
+pupils communicate and
+convey confidently and
+effectively information
+and ideas through
+speaking and writing
+and other forms of
+communication while
+participating in class
+discussions.
+ICT and Digital
+Competencesas
+pupils use computer
+keyboard and mouse to
+write and store
+information while using
+the computer to word-
+process their letters. Pupils are guided to:
+1. Discuss, in pairs,
+the meaning and
+features of informal
+letters.
+2. Write informal
+letters to relatives
+and friends.
+3. Word-process their
+letters. 
+Sample letters
+
+Whiteboard
+and markers
+
+Flashcards
+
+Letter writing
+templates
+
+Posters
+
+Audio-visual
+materials
+
+Letter writing
+kits
+
+Digital tools Pupils to:
+1. explain the
+meaning and
+features of an
+informal letter
+2. write informal
+letters.
+
+Theme:Writing Theme:Writing Theme:Writing Primary 4 Primary 4
+Learning Outcome:Write narrative and descriptive compositions
+Focal Competency:Writing narrative and descriptive compositions
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT KNOWLEDGE
+AND SKILLS KEY
+COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Narrative and
+Descriptive
+Composition Pupils should be
+able to:
+1. differentiate
+between
+narrative and
+descriptive
+compositions;
+2. write a
+narrative
+composition;
+3. write a
+descriptive
+composition. Knowledge
+1. Meaning and features of
+narrative and descriptive
+compositions.
+2. Writing narrative
+composition on topics such
+as:
+
+The Day I Won a Prize
+
+The First Time I Rode
+a Bicycle
+
+How I Spent My Last
+Holiday
+
+My First Day at School
+
+A Day I Will Never
+Forget
+
+A Visit to My Village
+
+‘A Visit to the Market
+3. Writing descriptive
+composition on people,
+places and things e.g.:
+
+My Best Friend
+
+My Favorite Animal
+
+The Village Where I
+Live
+
+How to use money
+wisely.
+
+My School
+
+My Family Communicationas
+pupils communicate
+and convey
+confidently and
+effectively
+information and
+ideas through
+speaking and writing
+and other forms of
+communication while
+discussing the
+differences between
+narrative and
+descriptive
+compositions.
+ICT and Digital
+Competencesas
+pupils use
+information and
+communication
+technologies to
+enhance learning
+while reading
+samples of narrative
+and descriptive
+essays on the
+internet. Pupils are guided to:
+1. Read good samples
+of narrative and
+descriptive essays
+on the internet.
+2. Discuss the
+differences
+between narrative
+and descriptive
+compositions.
+3. Write compositions
+(narrative and
+descriptive) on
+given topics.
+4. Stay in groups and
+write narrative and
+descriptive
+compositions on
+given topics which
+each group will
+present to the
+class. 
+Picture charts
+of exciting
+events
+
+Model narrative
+and descriptive
+passages
+
+Course books
+
+Composition
+prepared by
+the teacher
+
+Supplementary
+reader
+
+Online
+resources. Pupils to:
+1. differentiate
+between
+narrative and
+descriptive
+compositions;
+2. write a narrative
+composition;
+3. write a
+descriptive
+composition.
+
+Theme:Listening and Speaking Theme:Listening and Speaking Theme:Listening and Speaking Primary 4
+Learning Outcome:Recite poems and sing songs
+Focal Competency:Reciting poems and singing songs
+TOPIC PERFORMANCE
+OBJECTIVE CONTENT KNOWLEDGE
+AND SKILLS KEY
+COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Songs and
+Poems Pupils should be able
+to:
+1. recite poems and
+sing songs as
+instruments of
+speech training;
+2. memorize and
+recite poems;
+3. sing and enjoy
+songs;
+4. discuss meaning
+and effect of poem;
+and
+5. identify the themes
+of poems. Knowledge
+1. Recitation of poems and
+singing of songs as useful
+instruments of speech
+training.
+2. Poems and songs.
+3. Discussion of the subject
+matter, themes and
+features of given poems. Communicationas
+pupils communicate
+and convey
+confidently and
+effectively
+information and
+ideas through
+speaking and writing
+and other forms of
+communication while
+reciting poems and
+singing songs.
+Collaborationas
+pupils work in groups
+to share ideas on
+themes and features
+of a poem Pupils are guided to:
+1. Listen to the
+teacher read poems
+and sing songs.
+2. Take turns in
+reading poems and
+singing songs.
+3. Memorize poems
+and songs.
+4. Read poems in
+groups chorally and
+individually.
+5. Read poems and
+sing songs to get
+details of the
+meaning.
+6. Discuss the subject
+matter, themes and
+features of selected
+poems. 
+A short poem
+on a cardboard
+
+Flash cards
+showing key
+words in the
+poem and
+songs
+
+Simple poetry
+books
+
+Charts
+
+Course books
+
+Other relevant
+materials Pupils to:
+1. recite poems
+and sing songs
+as instruments
+of speech
+training;
+2. memorize and
+recite poems;
+3. sing and enjoy
+songs;
+4. discuss meaning
+and effect of
+poem; and
+5. discuss the
+subject matter,
+themes and
+features of given
+poems

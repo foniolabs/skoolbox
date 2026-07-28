@@ -228,7 +228,10 @@ pub async fn best_installed_model() -> Option<String> {
 
     let pick = |pred: &dyn Fn(&str) -> bool| names.iter().find(|n| pred(&n.to_lowercase())).cloned();
 
-    pick(&|n| n.contains("7b") && n.contains("instruct"))
+    // The bundled/seeded model (see ai::runtime::BUNDLED_MODEL) wins — it's the
+    // curriculum-tuned build shipped in the installer.
+    pick(&|n| n.contains(crate::ai::runtime::BUNDLED_MODEL))
+        .or_else(|| pick(&|n| n.contains("7b") && n.contains("instruct")))
         .or_else(|| pick(&|n| n.contains("7b")))
         .or_else(|| pick(&|n| n.contains("qwen")))
         .or_else(|| names.first().cloned())

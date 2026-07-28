@@ -386,6 +386,7 @@ pub fn get_class_overview(
 // ── Quiz Attempts ─────────────────────────────────────────
 
 #[tauri::command]
+#[allow(clippy::too_many_arguments)] // mirrors the JS invoke() args
 pub fn save_quiz_attempt(
     db: State<DbState>,
     student_id: String,

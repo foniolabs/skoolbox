@@ -121,12 +121,9 @@ export default function AITutorPage() {
     [setContext]
   );
 
-  const handleLevelChange = useCallback(
-    (_level: string) => {
-      // Level is stored for context but not used for mock responses
-    },
-    []
-  );
+  const handleLevelChange = useCallback(() => {
+    // Level is stored for context but not used for mock responses
+  }, []);
 
   return (
     <div className="flex flex-col h-[calc(100vh-8rem)]">

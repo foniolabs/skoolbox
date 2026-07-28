@@ -4,17 +4,25 @@
 //! from the `model_provider` setting (default `ollama` — fully offline), then
 //! dispatches to either `ollama.rs` or `claude_api.rs`.
 //!
+//! The cloud `claude` backend exists in **dev builds only** — release builds
+//! compile it out entirely (`debug_assertions` gate) so the shipped app makes
+//! zero non-localhost network calls; a `model_provider = "claude"` setting is
+//! then ignored and the offline Ollama path is used.
+//!
 //! IMPORTANT: `resolve()` returns an owned `Provider` (owned Strings) so the
 //! SQLite mutex guard is dropped *before* any `.await` — never hold the DB lock
 //! across an async boundary.
 
-use crate::ai::{claude_api, json, ollama};
+#[cfg(debug_assertions)]
+use crate::ai::claude_api;
+use crate::ai::{json, ollama};
 use crate::db::DbState;
 
 pub enum Provider {
     /// Local Ollama server. `model` is e.g. "qwen2.5:7b-instruct".
     Ollama { model: String },
-    /// Cloud Anthropic API (fallback / online mode).
+    /// Cloud Anthropic API (dev builds only).
+    #[cfg(debug_assertions)]
     Claude { api_key: String },
 }
 
@@ -33,6 +41,7 @@ fn get_setting(db: &DbState, key: &str) -> Option<String> {
 }
 
 /// Resolve the Anthropic key: DB setting → API_KEY env → ANTHROPIC_API_KEY env.
+#[cfg(debug_assertions)]
 fn resolve_claude_key(db: &DbState) -> Result<String, String> {
     if let Some(key) = get_setting(db, "claude_api_key") {
         return Ok(key);
@@ -63,11 +72,15 @@ const DEFAULT_OLLAMA_MODEL: &str = "qwen2.5:7b-instruct";
 /// before any `.await` (see `get_setting`).
 pub async fn resolve(db: &DbState) -> Result<Provider, String> {
     let kind = get_setting(db, "model_provider").unwrap_or_else(|| "ollama".to_string());
+    #[cfg(debug_assertions)]
     if kind == "claude" {
         return Ok(Provider::Claude {
             api_key: resolve_claude_key(db)?,
         });
     }
+    // Release builds ignore a leftover "claude" setting and stay offline.
+    #[cfg(not(debug_assertions))]
+    let _ = kind;
 
     let model = match get_setting(db, "ollama_model") {
         Some(m) => m,
@@ -91,6 +104,7 @@ pub async fn complete(
         Provider::Ollama { model } => {
             ollama::call_ollama(model, system_prompt, user_message, max_tokens).await
         }
+        #[cfg(debug_assertions)]
         Provider::Claude { api_key } => {
             claude_api::call_claude(api_key, system_prompt, user_message, max_tokens).await
         }
@@ -108,6 +122,7 @@ pub async fn chat(
         Provider::Ollama { model } => {
             ollama::call_ollama_chat(model, system_prompt, messages, max_tokens).await
         }
+        #[cfg(debug_assertions)]
         Provider::Claude { api_key } => {
             claude_api::call_claude_chat(api_key, system_prompt, messages, max_tokens).await
         }
@@ -127,6 +142,7 @@ pub async fn agent(
             ollama::call_ollama_agent(model, master_prompt, context_block, messages, max_tokens)
                 .await
         }
+        #[cfg(debug_assertions)]
         Provider::Claude { api_key } => {
             claude_api::call_claude_agent(api_key, master_prompt, context_block, messages, max_tokens)
                 .await
@@ -155,6 +171,7 @@ pub async fn generate_json(
             }
             // Claude follows "return only JSON" instructions reliably, so it
             // uses the normal path (no constrained-decoding flag exists).
+            #[cfg(debug_assertions)]
             Provider::Claude { api_key } => {
                 claude_api::call_claude(api_key, system_prompt, user_message, max_tokens).await
             }
@@ -182,6 +199,7 @@ pub async fn generate_json(
 pub async fn summarize(provider: &Provider, conversation_text: &str) -> Result<String, String> {
     match provider {
         Provider::Ollama { model } => ollama::generate_summary(model, conversation_text).await,
+        #[cfg(debug_assertions)]
         Provider::Claude { api_key } => {
             claude_api::generate_summary(api_key, conversation_text).await
         }

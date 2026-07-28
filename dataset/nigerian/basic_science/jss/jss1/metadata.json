@@ -8,6 +8,13 @@
   "is_exam_class": false,
   "prerequisite_levels": [],
   "retrieval_mode": "standard",
-  "textbooks": [],
-  "topics": []
+  "textbooks": [
+    "NERDC Basic Education Curriculum — Basic Science, JSS 1"
+  ],
+  "topics": [
+    "water cycle",
+    "living and non-living things",
+    "matter",
+    "energy"
+  ]
 }

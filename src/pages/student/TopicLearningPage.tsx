@@ -36,7 +36,9 @@ export default function TopicLearningPage() {
           try {
             const s = await getStudent(user.student_id);
             setClassLevel(s.class_level);
-          } catch {}
+          } catch {
+            // class level is optional context; ignore lookup failures
+          }
         }
 
         // Get subject

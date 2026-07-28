@@ -16,7 +16,7 @@ pub fn run() {
         .plugin(tauri_plugin_fs::init())
         .setup(|app| {
             // Initialize database
-            let conn = connection::open_db(&app.handle())?;
+            let conn = connection::open_db(app.handle())?;
             connection::init_db(&conn).expect("Failed to init database schema");
             db::seed::seed_if_empty(&conn).expect("Failed to seed database");
 
@@ -42,6 +42,12 @@ pub fn run() {
             app.manage(DbState {
                 db: Mutex::new(conn),
             });
+
+            // Start the offline model runtime (bundled Ollama) and seed the
+            // bundled Qwen model on first run — so the app works with no manual
+            // Ollama install and no internet. Best-effort; never blocks the UI.
+            let ollama_child = ai::runtime::ensure_ollama(app.handle());
+            app.manage(ai::runtime::OllamaProcess(Mutex::new(ollama_child)));
 
             if cfg!(debug_assertions) {
                 app.handle().plugin(
@@ -115,6 +121,9 @@ pub fn run() {
             commands::classroom::classroom_plan_lesson,
             commands::classroom::classroom_teach_segment,
             commands::classroom::classroom_evaluate_answer,
+            commands::classroom::classroom_lesson_note,
+            commands::classroom::classroom_class_quiz,
+            commands::classroom::classroom_explain,
             commands::classroom::bake_lesson,
             commands::classroom::get_generated_lesson,
             commands::classroom::list_generated_lessons,
@@ -131,6 +140,10 @@ pub fn run() {
             commands::tts::speak_text,
             commands::tts::stop_speaking,
             commands::tts::tts_available,
+            commands::stt::stt_available,
+            commands::stt::stt_start,
+            commands::stt::stt_stop,
+            commands::stt::stt_cancel,
             // ── Auth ────────────────────────────────────────────────────────
             commands::auth::login,
             commands::auth::register,
@@ -139,6 +152,19 @@ pub fn run() {
             commands::auth::delete_student,
             commands::auth::enroll_students,
         ])
-        .run(tauri::generate_context!())
-        .expect("error while running tauri application");
+        .build(tauri::generate_context!())
+        .expect("error while building tauri application")
+        .run(|app_handle, event| {
+            // On exit, stop the Ollama server we started (if any) so we don't
+            // leave an orphaned process behind.
+            if let tauri::RunEvent::Exit = event {
+                if let Some(proc) = app_handle.try_state::<ai::runtime::OllamaProcess>() {
+                    if let Ok(mut guard) = proc.0.lock() {
+                        if let Some(mut child) = guard.take() {
+                            let _ = child.kill();
+                        }
+                    }
+                }
+            }
+        });
 }

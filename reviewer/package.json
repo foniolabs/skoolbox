@@ -1,0 +1,19 @@
+{
+  "name": "skoolbox-reviewer-portal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Online curriculum review portal for the SkoolBox dataset (Cloudflare Pages + D1).",
+  "scripts": {
+    "export": "python3 ../training/review.py export",
+    "db:create": "npx wrangler d1 create skoolbox-reviews",
+    "db:init": "npm run check && npx wrangler d1 execute skoolbox-reviews --file=schema.sql --remote",
+    "db:init:local": "npx wrangler d1 execute skoolbox-reviews --file=schema.sql --local",
+    "dev": "npx wrangler pages dev public",
+    "deploy": "npx wrangler pages deploy public --project-name=skoolbox-review",
+    "check": "node -e \"const t=require('fs').readFileSync('wrangler.toml','utf8'); if(t.includes('PASTE_DATABASE_ID_HERE')){console.error('\\n[X] wrangler.toml still has the placeholder database_id.\\n    Run: npx wrangler d1 create skoolbox-reviews\\n    then paste the printed database_id into wrangler.toml.\\n');process.exit(1)} console.log('[ok] wrangler.toml has a database_id')\"",
+    "predeploy": "npm run check"
+  },
+  "devDependencies": {
+    "wrangler": "^4.112.0"
+  }
+}

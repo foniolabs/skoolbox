@@ -1,0 +1,3009 @@
+FEDERAL MINISTRY OF EDUCATION
+
+NEW REVISED BASIC EDUCATION CURRICULUM SOCIAL AND CITIZENSHIP STUDIES PRIMARY 4
+
+OlCATIONAC NIGERIAN EDUCATIONAL RESEARCH AND Sl UX fr S g 3 =x DEVELOPMENT COUNCIL s (NERDC) <i c Y OPMENT Ay September, 2025
+
+FEDERAL MINISTRY OF EDUCATION
+
+NEW REVISED BASIC EDUCATION CURRICULUM SOCIAL AND CITIZENSHIP STUDIES PRIMARY 4
+
+NIGERIAN EDUCATIONAL RESEARCH AND DEVELOPMENT COUNCIL (NERDC) September, 2025
+
+Federal Ministry of Education
+
+NEW REVISED BASIC EDUCATION CURRICULUM SOCIAL AND CITIZENSHIP STUDIES PRIMARY 4
+
+© September 2025
+
+Nigerian Educational Research and Development Council (NERDC)
+
+Headquarters : Lokoja-Kaduna Road, Sheda, PMB 91, Abuja, Nigeria Phone: (09) 8822202, 8822204, Fax (09) 8821047
+
+FOREWARD
+
+ince Nigeria’s return to democracy over two decades ago, successive administrations have laid emphasis on rejuvenating the education Ssector for functionality, socioeconomic turnaround, and over all national development. This is evident in the various national development plans, policy frameworks and management strategies that have been put in place to address issues pertaining to education. The overriding objective of these plans, programmes and policies, which are well-laid out, is to reform the education system and ensure that the target beneficiaries are wellequipped with the requisite skills and capabilities for positive impact on society. However, critical stakeholders, particularly employers of labour, have expressed concerns about the skill set possessed by many products of the system. There have also been concerns raised about whether individuals who have undergone our educational system are adequately prepared for effective living in the rapidly evolving context of the 21st century. There is also the observed learning poverty in the system characterized by lack of foundational literacy and numeracy skills among a high percentage of learners at the basic education level.
+
+Consequently, at various educational and economic development fora and discourses, there have been consistent calls for a total reform of the education system for optimal performance. Addressing these and other issues, and meet the demands of Nigerians, therefore, informed the definitive education development pathway of the Renewed Hope Agenda of President Bola Ahmed Tinubu, GCFR. The agenda is clear on the need to develop and implement a modern standard curriculum for the Nigeria education sector. The substance of the agenda is further amplified in the Ministerial Deliverables for the Federal Ministry of Education, which mandates, among others, a rapid review of the educational curriculum across all levels of education to align with skills needed in the labour market.
+
+Pursuant to these, we came up with several reform initiatives and welldefined plans for the education sector including the Nigerian Education Sector Renewal Initiative (NESRI). These initiatives clarify our plans and strategic framework for the actualization of Mr. President’s agenda for the education sector. They encapsulate, inter alia, development of learning contents that will lead to the acquisition of functional knowledge, skills, and competencies. Curriculum renewal is a major action point for the realization and achievement of the goals and objectives of these initiatives. Our vision in this regard is to reform the school curriculum, beginning from the foundational level, to adequately prepare our learners for the 21[st] century world. The learner preprartion, in this context, is broad-based covering science, technology, engineering, mathematics, medicine, and value reorientation. This will include building foundational skills in literacy and numeracy, digital skills development, citizenship and global awareness, entrepreneurial competence, and environmental literacy.
+
+We are delighted to state that the New Revised Basic Education Curriculum (BEC) has adequately covered these issues. The curriculum is founded on the key pillar of preservation of our national values and heritage even as we strive to produce youths with global competitive advantages. The outcome and competency-based approach and enhanced delivery framework adopted in the design and development of this new curriculum is to expose our learners to a wide range, but interconnected, skill set and knowledge consistent with the demands of life in the 21[st] century.
+
+We shall therefore pursue, aggressively, its implementation through massive teacher training and orientation, provision of requisite resources and deployment of competent school quality assurance officers. We shall also invigorate and sustain the implementation process through collaborative efforts with the states, communities, civil society groups, and our development partners.
+
+We are aware that the development of the curriculum followed various stages, best practices, and broadened engagement of a range of stakeholders, learners, parents, education administrators, expert and professional bodies, and development partners. We commend the efforts of the Nigerian Educational Research and Development Council (NERDC) for the excellent coordination of the processes and technical inputs in the design of this new curriculum. We also commend all the critical stakeholders, members of the academia, teachers, community leaders, policy makers, parents and learners who participated at various stages of the development process.
+
+Dr. Tunji Maruf Alausa Professor Suwaiba Said Ahmed
+
+It is our hope that the States, relevant agencies, and all stakeholders across the country will ensure effective implementation based on set out strategic plan to accelerate the achievement of our desired result.
+
+Honourable Minister of Education Honourable Minister of State for Education
+
+PREFACE
+
+ducation, no doubt, plays important role as the foremost effective channel and instrument for providing solid bases, building blocks, and E appropriate mechanisms for economic, political, social, cultural, and overall nation’s development. The current reforms process in the education sector, anchored on the Renewed Hope Agenda of the current administration, is strategic in the effort to place Nigeria on the right track for economic emancipation, human capital development, and social transformation.
+
+To attain all the lofty values of socioeconomic development and reconstruction enshrined in the reform initiatives as well as those contained in global agenda, including the education 2030 agenda encapsulated in the Sustainable Development Goals (SDGs), there was the need to prioritize curriculum reform across all the levels of education. Thus, one of the Presidential mandates for the Federal Ministry of Education as exemplified in the Ministerial Deliverables is to achieve a rapid review of the educational curriculum across all levels of education to ensure alignment with skills needed in the labour market. Furthermore, since the introduction of the revised 9-Year Basic Education Curriculum (BEC) in 2014, the world has witnessed tremendous transformation shaped by the revolution ary and evolutionary force of Information Communication Technology (ICT). There have also been emerging and prevailing issues in health, energy, sports, values, and all other aspects of human existence.
+
+The issues highlighted above provided basis for the review of the 9-Year Basic Education Curriculum . This is further strengthened by an overriding vision to produc e learners with functional, transferable, technological, vocational and entrepreneurial skills. These skills are needed for the country’s economic development and individual fulfilment in a competitive globalized environment. Thus, the philosophy of the new 9-Year BEC is premised on social change, sustainable broad-based economic and
+
+national development through the acquisition of necessary skills, competencies and values.
+
+The review, which was anchored on the outcome and competency-based curriculum framework, commenced with series of stakeholders’ engagements including the learners. The stakeholders’ engagements culminated in hosting of the National Stakeholders’ Dialogue and High-Level Policy Committee (HLPC) meeting under the leadership of the Honourable Ministers of Education. The HLPC considered and approved a new curriculum structure with the benchmarks and standards that emerged from the stakeholders’ engagements and the nationwide needs assessment conducted by NERDC. The new structure which is driven by the Renewed Hope Agenda of Mr. President and the Ministerial Strategic Plan the Nigerian Education Sector Renewal Initiative (NESRI) also drew from the globally agreed goals.
+
+One outstanding feature of the new curriculum structure is that it brought about the realignment of the subject listing leading to a reduction in number of subjects learners are offered across the class levels. This enabled the removal of redundant concepts, effective integration of related concepts and skills thereby eliminating the old approach to composite subjects. The new structure also created opportunity for the full introduction vocational and entrepreneurship studies at the junior secondary school level.
+
+The broad goal of the new curriculum, as derived from the new structure, is to inculcate in learners’ critical and foundational skills and competencies for citizenship, social orientation, national productivity and life-long learning. Specifically, the curriculum is targeted at developing in learners:
+
+- generic social skills as well as specialized cognitive, vocational and entrepreneurial skills;
+
+- the consciousness of our national values;
+
+- life-long learning; and
+
+- talent and skills for self-discovery and societal development.
+
+Within the framework of these specific targets, generic level-specific outcomes were formulated across the class levels. At the primary education level, the curriculum has been designed to help learners exhibit foundational knowledge, skills and competencies for:
+
+- reading, writing and language development;
+
+- the acquisition of subject matter knowledge and digital competencies;
+
+- technological, vocational and entrepreneurial trades practices;
+
+- problem-solving and creativity capabilities for continuing and lifelong learning; as well as
+
+- emotional intelligence, social values, interpersonal, leadership and soft skills for character development and citizenship.
+
+At the Junior Secondary Schools level, the curriculum is geared towards:
+
+- the acquisition of subject matter knowledge and competencies for further education at the senior secondary level;
+
+- technological, vocational and entrepreneurship practices and training;
+
+- the inculcation of social values, soft skills for active and effective citizenship; as well as
+
+- talent discovery and development.
+
+These generic outcomes provided the basis upon which the themes and specific learning outcomes were developed. The curriculum contents are therefore organized around the specific learning outcomes spread across the thematic areas. The outcomes place clear expectations on the teaching and learning process with emphasis on what the learners can do after undergoing an instructional period. They also inform the teachers, parents, examination bodies and policy makers what knowledge, skills and competencies the learners are expected to demonstrate at every given time in the instructional process. There are also competencies that the learners are expected to acquire and exhibit after being exposed to a series of learning experiences under a given topic. These competencies are not subject specific but transversal and therefore can be acquired and applied
+
+across all topics in the teaching and learning process. These competencies prepare the learners for meaningful living in all circumstances and across geographical divides.
+
+These generic outcomes provided the basis upon which the themes and specific learning outcomes were developed. The curriculum contents are therefore organized around the specific learning outcomes spread across each thematic area. The outcomes place clear expectations on the teaching and learning process The stated outcomes emphasize what the learners can do after undergoing an instructional period. They also inform the teachers, parents, examination bodies and policy makers what knowledge, skills and competencies the learners are expected to demonstrate at every given time in the educational process.
+
+There are also competencies that the learners are expected to acquire and exhibit after being exposed to a series of learning experiences pertaining to various contents. These competencies are not subject specific but transversal and therefore can be acquired and applied across all topics in the teaching and learning process. These competencies prepare the learners for meaningful living in all circumstances and across geographical divides.
+
+The New Revised Basic Education Curriculum (BEC) is learner-centric and has integrated critical national and global issues as means of developing abilities and nurturing creative skills and other valuable skills in the learners. Furthermore, the teaching and learning of emerging issues like; Climate change, Artificial Intelligence (AI), biosafety, security, robotic, peace education, blue and green curriculum have been fully embedded into the curriculum. The introduction of these emerging issues and other core elements of learning was based on the BEC fundamental principles of interdisciplinary learning, ethical and social responsibility, resilience and inclusivity. It also embodied aspects of the 21[st] Century Skills including critical thinking, problem solving, information literacy and digital skills, communication and collaboration, global citizenship and cultural awareness, creativity and innovation. Moreover, it captured issues of entrepreneurship,
+
+environmental and sustainability education and financial literacy. These issues and aspects were covered in the curriculum based on systematic curriculum design process and standards that prevented content overload.
+
+The curriculum review process followed the established process of NERDC’s curriculum and material development, namely:
+
+- i. Pre-design processes (including needs assessment, stakeholder dialogue, and setting standards )
+
+- ii. Planning which involves concepts/strategy formulation,
+
+- iii. Writing/review/design which involves the design and drafting of the curriculum,
+
+- iv. Critique workshop as well as
+
+- v. Editorial and finalization of the curriculum documents.
+
+- vi. Approval protocol
+
+Professor Salisu Shehu Executive Secretary, NERDC
+
+A wide spectrum of stakeholders including experts, subjects matter specialists, teachers, teacher educators, policy makers, employers of labour, parents, and learners participated at each of these stages. We acknowledge the invaluable contributions of these stakeholders.
+
+I acknowledge the efforts of the NERDC Staff who worked relentlessly to ensure the successful completion of the development of the curriculum within the scheduled period. I would like to posthumously acknowledge and appreciate my predecessor, the late Professor Ismail Junaidu, who commenced the process for developing the new curriculum prior to his demise on the 24th of July, 2024 while still in active service. I extend my profound gratitude to the Executive Secretary of the Universal Basic Education Commission (UBEC) and the management team for financially supporting the entire review process.
+
+I extend my sincere gratitude to the Honourable Minister of Education and Honourable Minister of State for Education for their invaluable support and visionary leadership in our endeavour to make education accessible to all Nigerian children, regardless of their circumstances.
+
+Introduction
+
+he review of the Basic Education Curriculum was necessitated by factors and contexts related to curriculum cycle, expansion of T knowledge, technological advancement, new policy initiatives, and emerging development issues and best practices. These have broad and specific effects on the nature, features and elements of each subject curriculum. This is especially pertaining to the approach, and philosophy adopted during the curriculum development process. Moreover, the factors and contents are significant for the identification and selection of curricula objectives, outcomes, themes, contents, delivery strategies, resources, and evaluation guides.
+
+The new revised Social and Citizenship Studies (SCS) is a competency and outcome-based one which aims at developing in learners essential skills for mastery and application. The competency framework provides clear expectations, dictates fundamental skills, and promotes. The curriculum is profoundly skill based, practical and result oriented.
+
+Furthermore, the design and delivery process of this curriculum remains thematic, spiral, cyclical and concentric whereby learning contents are graduated, sequenced, and replicated across the class levels to align with learners’ maturation and cognition. The curriculum approach focused on knowledge, skills and competencies. The overriding learning experiences, and achievement of the curriculum are geared towards what learners can do skillfully, thereby making it learner-centred, performative, and result oriented.
+
+The SCS curriculum is based on a multi-disciplinary approach and is diverse to cover critical basic foundational knowledge, concepts, and skills on emotional intelligence, social values, interpersonal, leadership and soft skills for character development and citizenship. These are as well significant aspects of Civic education and curriculum design. Learners will engage with national and global issues through context-based lessons that promote critical thinking and social responsibility. Concepts and contents that are fundamental
+
+to the learners’ overall development, growth and effective contribution in human development are integrated into the curriculum, ensuring they gain a broader understanding of their role as global citizens.
+
+The curriculum incorporates major structural components like themes, learning outcomes, and focal competencies, including topics, performance objectives, content, learning activities, resources, and evaluation guides. its distinct features of interdisciplinarity, compliance with ICT, and activity-driven learning significantly add to its international applicability and competitiveness. It also adopts a student-centred teaching style as suggested by the curriculum overall goals and progressively shits responsibility to the learners. Through this, learners not only acquire conceptual knowledge but also and importantly acquire the necessary skills for functional living in society. Thus, expectations on the learners go beyond classroom experiences to their everyday lives.
+
+General Objectives of the SCS curriculum
+
+The general objectives of the curriculum are to:
+
+- a. Equip learners with the knowledge and skills necessary to be active participants in democratic processes.
+
+- b. Create awareness to engage in civic responsibilities, such as respect for public property, cleanliness, obedience to rules and regulations in learners.
+
+- c. Develop positive values and attitudes such as tolerance, empathy, love, togetherness and respect for others' opinions and beliefs.
+
+- d. Promote cultural awareness and appreciation by introducing learners to Nigeria's diverse cultures, traditions, and customs to enhance intercultural understanding.
+
+- e. Create awareness in learners of the importance of a secure environment and their roles in promoting a safer and more secure environment.
+
+Overview of the content coverage
+
+The table below provides an overview of the content coverage of the primary four SCS Curriculum.
+
+Primary 4
+
+Primary 4 Primary 4 Primary 4
+Theme Learning Outcome Topic
+Responsibilities
+and Social
+Justice Develop and exhibit
+positive values and
+attitudes required for
+nation-building Leadership
+Followership
+National Values
+Civic Activities
+Civic Activity (Volunteerism)
+Community Mobilization
+Nation
+Culture and
+Identity Maintain good family
+relationships and
+show respect for the
+culture and beliefs of
+other people in school
+and the community. Healthy Family Relationships
+Effects of Family/personal values and norms on
+relationships
+People’s Beliefs and Tradition
+Governance Appreciate good
+governance, electoral
+process and
+democracy Meaning and importance of Good Governance
+Types of Government
+Electoral Process
+Components of the Electoral Process
+Party Systems
+Political Parties and Pressure Groups
+Life Skills for
+Social and
+Healthy Living Exhibit positive
+behaviour, attitude
+and values that
+promote healthy
+living, security and
+peace in the
+community Peer behaviours that influence decision Making
+Responding to Different Forms of Accident
+Finding Help: Protection and Right to Protection
+Important Phone Numbers and Their Uses
+Characteristics of Drug Abusers, their Treatment
+andRehabilitation
+Prevention of Drug Abuse- Life Coping Skills
+Neighbourhood security
+Digital
+Economy and
+Financial
+Literacy Use different
+denominations of
+money correctly and
+appreciate the
+financial system The Value of Denominations of Money
+Introduction to Financial System
+Globalization
+and
+International
+Relations Recognize the causes,
+strategies used and
+participate in
+advocacy against
+human trafficking Historical Background of Trafficking in Persons
+Causes and Purpose of Trafficking in Persons.
+Elements of Trafficking in Persons
+Consequences of Trafficking in Persons
+
+Delivery/learning activities and resources
+
+The effective implementation of this curriculum will require that:
+
+1. Teachers adopt instructional strategies that promote effective learner engagement and active participation.
+
+2. Teachers use varieties of instructional resources to promote deep and meaningful learning.
+
+3. Teachers adopt a new lesson plan that incorporates all the critical elements of the curriculum. A sample has been developed and included in the teachers’ guide.
+
+4. Copies of the curriculum be made available to every school teacher and much emphasis placed on its use in order to achieved stated objectives.
+
+5. Regular workshops are organised for teachers, supervisors and quality assurance officers on how to interpret and use the curriculum.
+
+6. Teachers adopt assessment practices that are aligned to the competency and outcome-based approach. NERDC has developed a simple to use assessment framework to support the implementation of curriculum. Schools and teachers should leverage on the framework to ensure effective assessment.
+
+Proper implementation of this curriculum will have far-reaching benefits for Nigeria's educational system and society as a whole. By equipping learners with essential knowledge, skills and competencies prescribed in this curriculum, the country will produce more articulate, confident, and globally competitive citizens. The learners will also be better prepared to excel in higher education and contribute meaningfully to Nigeria's economic and social development. In sum, this curriculum offers an exciting, enriching, and transformative journey that transcends classroom learning; it is a key to unlocking the limitless potential of every learner in Nigeria's classrooms.
+
+Dr Garba Dahiru Gandu Director Curriculum Development Centre
+
+TABLE OF CONTENTS
+
+Page Number
+Foreword iv
+Preface vi
+Introduction ix
+Class level Theme Topic
+PRIMARY FOUR Civic Responsibilities and
+Social Justice Leadership 1
+Followership 2
+National Values 3
+Civic Activities 4
+Civic Activity (Volunteerism) 5
+Community Mobilization 6
+Nation 7
+Culture and Identity Healthy Family Relationships 8
+Effects of Family/personal values and norms on relationships 9
+People’s Beliefs and Traditions 10
+Governance Meaning and importance of Good Governance 11
+Types of Government 12
+Electoral Process 13
+Components of the Electoral Process 14
+Party Systems 15
+Political Parties and Pressure Groups 16
+
+TABLE OF CONTENTS
+
+TABLE OF CONTENTS
+Class level Theme Topic Page Number
+Life Skills for Social and
+Healthy Living Peer behaviours that influence decision Making 17
+Responding to Different Forms of Accident 18
+Finding Help: Protection and Right to Protection 19
+Important Phone Numbers and Their Uses 20
+Characteristics of Drug Abusers, their Treatment and Rehabilitation 21
+Prevention of Drug Abuse- Life Coping Skills 22
+Neighbourhood security 23
+Digital Economy and Financial The Value of Denominations of Money 24
+Introduction to Financial System 25
+Globalization and International
+Relations Historical Background of Trafficking in Persons 26
+Causes and Purpose of Trafficking in Persons. 27
+Elements of Trafficking in Persons 28
+Consequences of Trafficking in Persons 29
+
+Social and Citizenship Studies Primary 4
+
+Theme: Civic Responsibilities and Social Justice Primary 4
+
+Learning Outcomes : Develop and exhibit positive values and attitudes for nation-building
+
+Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4
+Learning Outcomes: Developand exhibitpositive values and attitudes for nation-building
+Focal Competence:Applyingleadership skills,such as decision-making, problem-solving,and teamwork.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION GUIDE
+Leadership Pupils should be able
+to:
+1.enumerate the
+characteristics of
+good and bad
+leadership;
+2.outline the benefits
+of good leadership;
+3.demonstrate the
+qualities of good
+leadership in group
+activities;
+4.explain the
+consequences of
+bad leadership. Knowledge
+1.Characteristics of
+good and bad
+leadership.
+2.Benefits of good
+leadership.
+3.Consequences of
+bad leadership.
+Skills
+Demonstrating the
+qualities of good
+leadership. Collaborationas pupils
+demonstrate ability to
+work effectively and
+respectfully with diverse
+teams to state the
+characteristics, benefits of
+good leadership and the
+consequences of bad
+leadership.
+Creativity and
+Innovationas pupils
+generate original ideas
+and apply them in
+learning situations to
+demonstrate the qualities
+of good leadership. Pupils are guided to:
+1. Watch video clips,
+showing the
+characteristics of
+good and bad
+leadership.
+2. Enumerate the
+characteristics of
+good and bad
+leaderships.
+3. Dramatize the
+benefits of good
+leadership and
+consequences of bad
+leadership.  Pictures
+ Charts
+ Video clips
+ Costumes
+ Drama script Pupils to:
+1. outline the qualities
+of good leadership;
+2. enumerate benefits
+of good leadership;
+3. list consequences of
+bad leadership.
+
+Theme: Civic Responsibilities and Social Justice Primary 4
+
+Learning Outcomes : Develop and exhibit positive values and attitudes for nation-building
+
+Focal Competence: Supporting leaders, contributing to team efforts and respecting authority.
+
+Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4
+Learning Outcomes: Develop and exhibit positive values and attitudes for nation-building
+Focal Competence:Supporting leaders, contributing to team efforts and respecting authority.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION GUIDE
+Followership Pupils should be able
+to:
+1.discuss the
+qualities of good
+followership;
+2.explain the benefits
+of good
+followership;
+3.outline the
+characteristics of
+bad followership;
+4.state the
+consequences of
+bad followership. Knowledge
+1.Qualities of good
+followership.
+2.Characteristics of
+bad followership
+3.Benefits of good
+followership.
+4.Consequences of
+bad followership
+Skills
+Roleplaying
+benefits of good
+followership and
+consequences of
+bad followership. Communicationsas
+pupils communicate and
+convey confidently and
+effectively information
+and ideas through
+speaking on the qualities
+and characteristics of
+good followership and
+consequences of bad
+followership.
+Creativity and
+Innovationas pupils use
+imagination beyond
+knowledge provided to
+generate new ideas to
+enrich learning to
+dramatize the benefits of
+good followership and
+consequences of bad
+followership. Pupils are guided to:
+1. Use pictures, video
+clips, group activities
+and scenarios to:
+ discuss the qualities
+of good followership,
+ characteristics of bad
+followership,
+ enumerate the
+benefits of good
+followership.
+2. Role-play the benefits
+of good followership
+and consequences of
+bad followership.  Pictures
+ Charts
+ Video clips
+ drama scripts
+ Costumes Pupils to:
+1. list the qualities of
+good followership;
+2. state characteristics of
+bad followership;
+3. explain the benefits of
+good followership;
+4. outline consequences
+of bad followership.
+
+Learning Outcomes : Develop and exhibit positive values and attitudes for nation-building
+
+Focal Competence: Respecting elders, caring for the environment and being honest in interactions with peers and others.
+
+Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4
+Learning Outcomes: Develop and exhibit positive values and attitudes for nation-building
+Focal Competence:Respecting elders, caring for the environment and being honest in interactions with peers and others.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+National Values Pupils should be able
+to:
+1. explain the
+meaning of
+national values;
+2. explain Nigeria’s
+national values;
+3. discuss the roles
+of citizens in
+upholding the
+national values;
+4. discuss the
+benefits of
+upholding
+national values. Knowledge
+1. Meaning of national
+values.
+2. Examples of national
+values:
+
+Patriotism
+
+National Pride
+
+Respect for Diversity
+
+Tolerance and
+Cooperation
+
+Social Responsibility
+
+Human Rights and
+Dignity
+
+Democratic Values
+
+Self-Discipline and
+Self-Reliance.
+3. The role of citizens
+in upholding the
+national values.
+4. Benefits of
+upholding the
+national values. Collaborationas pupils
+assume shared
+responsibility for
+collaborative work, and
+value the individual
+contributions made by
+each team member to
+discuss the meaning and
+examples of national
+values as well as the roles
+and benefits of upholding
+national values.
+Leadershipas pupils set
+goals, assign and execute
+tasks successfully to make
+individual presentations in
+class on assigned national
+value
+Confidenceas pupils
+make presentations in
+class. Pupils are guided to:
+1. Brainstorm in
+groups on national
+values.
+2. Discuss the
+importance of
+national values.
+3. Develop, in
+groups,
+communication
+messages on the
+examples of
+national values.
+4. Discuss how to
+uphold national
+values.
+5. Make individual
+presentation in the
+class on assigned
+national value. 
+Textbooks
+
+Posters
+
+Video clips Pupils to:
+1. explain the
+meaning of
+national values;
+2. list Nigeria’s
+national values;
+3. discuss the roles
+of citizens in
+upholding the
+national values;
+4. discuss the
+benefits of
+upholding the
+national values.
+
+Theme: Civic Responsibilities and Social Justice
+
+Learning Outcome: Develop and exhibit positive values and attitudes for nation-building.
+
+Focal Competence: Participating in school or community initiatives, like cleanliness.
+
+Theme: Civic Responsibilities and Social Justice
+Primary 4 Theme: Civic Responsibilities and Social Justice
+Primary 4 Theme: Civic Responsibilities and Social Justice
+Primary 4 Theme: Civic Responsibilities and Social Justice
+Primary 4 Theme: Civic Responsibilities and Social Justice
+Primary 4 Theme: Civic Responsibilities and Social Justice
+Primary 4 Theme: Civic Responsibilities and Social Justice
+Primary 4
+Learning Outcome:Develop and exhibit positive values and attitudes for nation-building.
+Focal Competence:Participating in school or community initiatives, like cleanliness.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION GUIDE
+Civic Activities Pupils should be
+able to:
+1. explain the
+meaning of civic
+activity;
+2. explain some
+civic activities.
+3. Engage in civic
+activities. Knowledge
+1. Meaning of civic
+activity.
+2. Examples of Civic
+activities:
+●
+Voting
+●
+Volunteering
+●
+Protecting and
+maintaining public
+properties
+●
+Philanthropies
+●
+Paying Taxes etc.
+Skill
+Engagement in civic
+activities. Collaborationas pupils
+demonstrate ability to
+work effectively and
+respectfully with diverse
+teams
+to discuss the meaning
+and examples of civic
+activities.
+Research and
+Problem-Solvingas
+pupils identify problems
+in the society and
+provide solutions.
+Leadershipas pupils
+take responsibility for
+actions in accomplishing
+a task of exercising
+some civic activities. Pupils are guided to:
+1. Brainstorm on why
+civic activities is
+necessary.
+2. Search the internet
+for information on
+examples of civic
+activity.
+3. Engage in civic
+activities by carrying
+out voluntary
+services such as
+community
+sanitation, planting
+of trees, and visit to
+orphanages with
+gifts. 
+Posters of
+people
+undertaking
+civic activity
+
+Guest speaker
+
+Video clips Pupils to:
+1. explain the
+meaning of civic
+activity;
+2. give some
+examples of civic
+activity;
+3. engage in civic
+activities.
+
+Theme: Civic Responsibilities and Social Justice Primary 4
+
+Learning Outcomes : Develop and exhibit positive values and attitudes for nation-building
+
+Focal Competence: Helping others in need and contributing to school community service projects.
+
+Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4
+Learning Outcomes: Develop and exhibit positive values and attitudes for nation-building
+Focal Competence:Helping others in need and contributing to school community service projects.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION GUIDE
+Civic Activity
+(Volunteerism) Pupils should be able
+to state the
+importance of
+volunteerism to the
+volunteer and the
+community. Knowledge
+Importance of
+volunteerism to:
+1. The volunteer e.g.
+ Gain confidence
+ Make a difference
+ Meet interesting
+people
+ Be part of a
+community
+ Learn new skills,
+etc.,
+2. The community e.g.:
+ Bring development and
+progress to the
+community
+ Fosters peace and
+unity in the community
+ Boosts community
+image. Collaborationas
+pupils assume shared
+responsibility for
+collaborative work, and
+value the individual
+contributions made by
+each team member on
+the importance of
+volunteerism and the
+community.
+Environmental
+Literacyas pupils
+investigate and analyze
+environmental issues,
+and make accurate
+conclusions about
+effective solutions to
+bring development and
+progress, foster peace
+and unity and boost
+community image. Pupils are guided to:
+1. Participate in a class
+discussion using a
+chart to explain the
+importance of
+volunteerism to the
+volunteer and the
+community.
+2. Highlight the benefits
+of volunteerism to the
+volunteer and
+community.  Charts
+ Internet
+ Textbooks
+ Newspaper
+cuttings
+ Magazines
+ Cardboard
+ Markers Pupils to:
+1. state the importance
+each of volunteerism
+to the:
+ volunteer;
+ community.
+
+Theme: Civic Responsibilities and Social Justice Primary 4
+
+Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4 Theme: Civic Responsibilities and Social Justice Primary 4
+Learning Outcomes: Develop and exhibit positive values and attitudes for nation-building
+Focal Competence:Mobilizing peers and others to work together towards a common goal.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION GUIDE
+Community
+Mobilization Pupils should be able
+to:
+1. describe a
+community
+mobiliser;
+2. list the roles of a
+community
+mobiliser;
+3. discuss the qualities
+of a community
+mobiliser. Knowledge
+1. Meaning of
+community mobiliser.
+2. Roles of a community
+mobiliser.
+3. Qualities of a
+community mobiliser. Communicationas
+pupils develop,
+implement, and
+communicate new ideas
+to others effectively on
+the meaning, roles and
+qualities of a community
+mobiliser.
+ICT and Digital
+Competencesas pupils
+use digital technologies
+(computers, PDAs,
+media players, GPS,
+etc.),
+communication/networki
+ng tools and social
+networks appropriately
+to access information on
+the meaning, roles and
+qualities of a community
+mobiliser. Pupils are guided to:
+1. Engage in class
+discussion on the
+meaning of a
+community mobiliser.
+2. Participate in group
+discussion on the roles
+of a community
+mobiliser.
+3. List the roles and
+qualities of community
+mobilisers.  Flyers
+ Posters
+ Banners
+ Handbills
+ Video clips
+ Internet
+ Newspaper
+cuttings Pupils to:
+1. describe a
+community mobiliser;
+2. list roles of a
+community mobiliser;
+3. discuss the qualities
+of a community
+mobiliser.
+
+Theme: Civic Responsibilities and Social Justice Theme: Civic Responsibilities and Social Justice Theme: Civic Responsibilities and Social Justice Theme: Civic Responsibilities and Social Justice Primary 4
+Learning Outcome:Develop and exhibit positive values and attitudes for nation-building
+Focal Competence:Respecting national symbols.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION GUIDE
+Nation Pupils should be able
+to:
+1. explain the meaning
+of nation;
+2. identify and explain
+the characteristics
+of a nation. Knowledge
+1. Meaning:
+ A body of people.
+ Sharing a spirit of unity.
+ Want to live together
+under the same
+government.
+2.Characteristics:
+ Common territory
+ Common customs
+and traditions.
+ Common economy
+3. Common language
+(understanding each
+other) Collaborationas pupils
+assume shared
+responsibility for
+collaborative work, and
+value the individual
+contributions made by
+each team member to
+state the meaning,
+identify and explain the
+characteristics of a
+nation. Pupils are guided to:
+1. Explain the meaning of
+a nation using relevant
+resources.
+2.Identify and explain the
+characteristics of a nation
+using relevant learning
+resources.  Maps
+ Pictures
+ Video clips
+ Charts
+ Class
+ textbooks
+ Newspapers/
+ Magazines Pupils to:
+1. state the meaning of
+a nation;
+2.list and explain
+characteristics of a
+nation.
+
+Theme: Culture and Identity
+
+Learning Outcome: Maintain good family relationship and show respect for the culture and belief of other people at home, school and community.
+
+Focal Competence: Listening and expressing feelings freely among family members.
+
+Theme: Culture and Identity
+Primary 4 Theme: Culture and Identity
+Primary 4 Theme: Culture and Identity
+Primary 4 Theme: Culture and Identity
+Primary 4 Theme: Culture and Identity
+Primary 4 Theme: Culture and Identity
+Primary 4 Theme: Culture and Identity
+Primary 4
+Learning Outcome:Maintain good family relationship and show respect for the culture and belief of other people at home, school and community.
+Focal Competence: Listening and expressing feelings freely among family members.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION GUIDE
+Healthy Family
+Relationships Pupils should be able
+to:
+1. identify the
+conditions for
+healthy family
+relationships;
+2. state the meaning
+of tolerance,
+inclusion and
+respect;
+3. describe ways to
+show tolerance,
+inclusion and
+respect for others;
+4. demonstrate ways
+of showing
+tolerance, inclusion
+and respect for
+others. Knowledge
+1. Conditions for healthy
+family relationships:
+ Tolerance
+ Inclusion
+ Respect.
+2. Ways of showing
+tolerance, inclusion
+and respect for
+others.
+Skills
+1. Identification of the
+conditions for healthy
+family relationship.
+2. Demonstrating ways
+of showing tolerance,
+inclusion and respect
+for others. Communicationas
+pupils communicate
+clearly and confidently
+using a range of
+linguistic, symbolic,
+representational and
+physical expression to
+state the meaning of
+tolerance, inclusion and
+respect.
+Creativity and
+Innovationas pupils
+generate original ideas
+and apply them in
+learning situations to
+identify the conditions
+for healthy family
+relationship and
+demonstrate ways of
+showing tolerance,
+inclusion and respect for
+others. Pupils are guided to:
+1.Engage in class
+discussion in groups
+to explain the terms
+tolerance, inclusion
+and respect.
+2.In groups take turns
+to identify conditions
+for healthy family
+relationships.
+3.Demonstrate ways of
+showing tolerance,
+inclusion and respect
+for others with the aid
+of posters, video clips.  Posters
+ Internet
+ Newspaper
+ Video/film
+ Textbooks
+ Charts Pupils to:
+1. state the things
+responsible for
+healthy family
+relationships;
+2. explain the meaning
+of tolerance,
+inclusion and respect;
+3. mention ways of
+showing tolerance,
+inclusion and respect
+for others;
+4. demonstrate ways of
+showing tolerance,
+inclusion and respect.
+
+Theme: Culture and Identity Primary 4
+
+Learning Outcome: Maintain good family relationship and show respect for the culture and belief of other people at home, school and community. Focal Competence: Displaying thoughtful and considerate behaviour in relationships.
+
+Theme: Culture and Identity Primary 4 Theme: Culture and Identity Primary 4 Theme: Culture and Identity Primary 4 Theme: Culture and Identity Primary 4 Theme: Culture and Identity Primary 4 Theme: Culture and Identity Primary 4 Theme: Culture and Identity Primary 4
+Learning Outcome:Maintain good family relationship and show respect for the culture and belief of other people at home, school and community.
+Focal Competence:Displaying thoughtful and considerate behaviour in relationships.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION GUIDE
+Effects of
+Family/ personal
+values and
+norms on
+relationships Pupils should be able
+to:
+1. identify family and
+personal
+values/norms that
+affect
+relationships;
+2. describe the effects
+of family and
+personal norms on
+relationships;
+3. identify religious
+and cultural
+values/norms that
+affect
+relationships;
+4. describe the effects
+of religious and
+cultural
+values/norms on
+relationships. Knowledge
+1. Family and personal
+values/norms that
+affect relationships.
+2. Effects of family and
+personal values/norms
+on relationships.
+3. Religious and cultural
+values/norms that
+affect relationships.
+4. Effects of religious and
+cultural values/norms
+on relationships. Collaborationas pupils
+become open and
+responsive to new and
+diverse perspectives;
+incorporate group input
+and feedback into the
+work to describe effects,
+of family and personal
+norms and religious and
+cultural value/norms on
+relationship.
+ICT and Digital
+Competencesas pupils
+use technology as a tool
+to research, organize,
+evaluate, and
+communicate
+information on family
+and personal/religious
+and cultural
+values/norms that affect
+relationships. Pupils are guided to:
+1. Identify personal and
+family values/norms
+that affect
+relationships.
+2. Engage in class
+discussion on the
+influence of family
+and personal
+norms/values on
+relationships.
+3. Take notes.
+4. Identify religious and
+cultural values/norms
+that affect
+relationships.
+5. Participates in
+discussing the
+influence of these
+norms and values on
+relationship.  Textbooks
+ Pictures.
+ Internet
+ Video clips
+ Posters Pupils to:
+1. Mention the family
+and personal
+values/norms that
+affect relationships;
+2. explain how the
+family and personal
+norms on affects
+relationships;
+3. mention religious
+and cultural
+values/norms that
+affect relationships;
+4. explain the effects
+of religious and
+cultural
+values/norms on
+relationship.
+
+Theme: Culture and Identity Primary 4
+
+Learning Outcome: Maintain good family relationship and show respect for the culture and belief of other people at home, school and community. Focal Competence: Respecting and tolerating the beliefs and practices that differ from their own.
+
+Theme: Culture and Identity Primary 4 Theme: Culture and Identity Primary 4 Theme: Culture and Identity Primary 4 Theme: Culture and Identity Primary 4 Theme: Culture and Identity Primary 4 Theme: Culture and Identity Primary 4 Theme: Culture and Identity Primary 4
+Learning Outcome:Maintain good family relationship and show respect for the culture and belief of other people at home, school and community.
+Focal Competence:Respecting and tolerating the beliefs and practices that differ from their own.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION GUIDE
+People’s Beliefs
+and Traditions Pupils should be able
+to:
+1. explain ways in
+which other
+people’s beliefs
+and traditions
+differ from ours;
+2. mention some
+values that can be
+promoted with a
+better
+understanding of
+the differences
+among our culture. Knowledge
+1. Ways our beliefs and
+tradition differ from
+and similar to others:
+ The names they call
+God
+ The methods of
+worship
+ The style of dressing,
+etc.
+2. Some of the values
+that can be promoted
+with better
+understanding of
+cultural differences
+include respect of
+other people’s views,
+beliefs and traditions;
+fairness; unity; good
+neighbourliness etc. Collaborationas pupils
+demonstrate ability to
+work effectively and
+respectfully with diverse
+teams to explain ways
+our beliefs and tradition
+differ from and similar
+to others and list values
+that can be promoted
+with better
+understanding of
+cultural differences. Pupils are guided to:
+1. Engage in class
+discussion in groups
+on the differences in
+our beliefs and
+traditions.
+2. Participate in role-
+playing on how to
+respect and tolerate
+other people’s views,
+beliefs and traditions.  Real copies of
+Bible, Qur’an,
+Candle, dresses
+associated with
+different religious
+groups, etc.
+ Pictures of
+people with
+different cultural
+backgrounds and
+beliefs in an
+interaction. Pupils to:
+1. give reasons why our
+beliefs and traditions
+differ.
+2. mention some values
+that can be
+promoted with a
+better understanding
+of our cultural
+differences.
+
+Learning Outcome: Appreciate good governance, Electoral Process and Democracy.
+
+Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4
+Learning Outcome:Appreciate good governance, Electoral Process and Democracy.
+Focal Competence:Showing appreciation for fairness, transparency and accountability in leadership and decision-making.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION GUIDE
+Meaning and
+importance of
+Good
+Governance Pupils should be able
+to:
+1. explain good
+governance;
+2. identify government
+for different levels;
+3. state features of
+good governance. Knowledge
+1. Art of governing people
+2. Local Government state
+Government Federal
+Government.
+Skill
+Describing closeness of
+each level of people. Collaborationas pupils
+assume shared
+responsibility for
+collaborative work,
+stating the meaning and
+features of good
+governance, valuing
+individual contributions
+made by each team
+member.
+Information Literacy
+as pupils use technology
+as a tool to research,
+organize, evaluate, and
+communicate
+information on the
+features of good
+governance. Pupils are guided to:
+1. Engage in discussion on
+the meaning of
+Governance.
+2. Search from the internet
+and retrieve information
+on the features of good
+governance.
+3. Identify levels of
+governance. ● Charts on Social
+Services provided
+by government.
+● Video chips on
+government
+activities.
+● Textbooks. Pupils to:
+1. state the meaning of
+governance;
+2. list the features of
+good governance;
+3. outline measures on
+how bad governance
+could be resolved.
+
+Theme: Governance Primary 4
+
+Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4
+Learning Outcome:Appreciate good governance, Electoral Process and Democracy.
+Focal Competence: Showing ability to compare different governance systems, highlighting their strengths and weaknesses.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT- KNOWLEDGE
+AND SKILLS KEY
+COMPETENCIES
+AND VALUES LEARNING ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION GUIDE
+Types of
+Government Pupils should be
+able to:
+1. explain types of
+government;
+2. differentiate
+between the
+various types of
+government e.g.
+traditional and
+constitutional. Knowledge
+1. Types of Government:
+ Monarchy-King e.g.
+Jordan, Morocco.
+ Traditional e.g. Oba, Emir,
+Obi
+ Oligarchy- usually by the
+powerful or privileged
+people.
+ Constitutional e.g.
+Parliamentary or
+Presidential.
+Skills
+2. Identifying the differences
+between the Types of
+Government:
+ Monarchy- King or Queen,
+hereditary or succession.
+No end to tenure.
+ Oligarchy- few people who
+are privileged or powerful. Communicationas
+pupils Communicate
+and convey confidently
+and effectively
+information and ideas
+through speaking on
+the meaning of
+government, stating
+the difference between
+the types of
+government.
+Collaborationas
+pupils demonstrate
+ability to work
+effectively and
+respectfully with
+diverse teams
+identifying differences
+between the types of
+Government. Pupils are guided to:
+1. Identify the leaders in
+their communities and
+what they do.
+2. Take a look at pictures
+and identify leaders in
+government and what
+they do.
+3. To participate in
+discussing the difference
+between the types of
+Government.  Photographs
+ Charts
+ Resource
+persons
+ Government
+institutions
+ Video clips
+ Nigerian
+Constitution Pupils to:
+1. explain the meaning of
+traditional form of
+government;
+2. state the meaning of
+constitutional form of
+government;
+3. outline how the
+traditional form of
+government differs
+from the constitutional
+forms of government.
+
+Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4
+Learning Outcome:Appreciate good governance, Electoral Process and Democracy.
+Focal Competence:Demonstrating an understanding of the voting process and its importance in democracy.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT- KNOWLEDGE
+AND SKILLS KEY
+COMPETENCIES
+AND VALUES LEARNING ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Electoral
+Process Pupils should be able
+to:
+1. explain the
+meaning of
+electoral process;
+2. identify the
+different stages
+of Nigeria’s
+electoral process;
+3. identify threats
+to Nigeria’s
+electoral process.
+Knowledge
+1. Meaning of electoral
+process.
+2. Different stages in
+Nigeria’s electoral process:
+ Political parties Registration
+ Manifestos of political
+parties
+ Registration of voters
+ Conducting primary election
+by political parties:
+Electoral campaigns
+Elections and results
+declaration.
+3. Threats to Nigeria’s
+electoral process:
+ Hate speech
+ Drug abuse
+ Disinformation
+ Fake news etc.
+4. Consequences of the
+threats. ICT and Digital
+Competencesas
+pupils retrieve
+information on
+different stages of
+Nigeria’s electoral.
+Critical thinking
+as pupils explores
+and evaluate
+alternative
+explanations to
+those presented by
+others on the
+meaning of
+electoral process,
+stages, threats and
+consequences of
+the threats to
+Nigeria’s electoral
+process. Pupils are guided to:
+1. Brainstorm the
+meaning of the
+electoral process.
+2. Search the internet for
+information on different
+stages of Nigeria’s
+electoral process.
+3. Watch video clips on
+electoral activities. 
+Posters of
+people
+voting
+
+Guest
+speakers
+
+Video clips Pupils to:
+1. explain the
+meaning of the
+electoral process;
+2. identify the
+different stages of
+Nigeria’s electoral
+process;
+3. identify threats to
+Nigeria’s political
+process.
+
+Theme: Governance Primary 4
+
+Learning Outcome: Appreciate good governance, Electoral Process and Democracy.
+
+Focal Competence: Demonstrating basic understanding of why voting is important and how it affects their community or country.
+
+Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4
+Learning Outcome:Appreciate good governance, Electoral Process and Democracy.
+Focal Competence:Demonstrating basic understanding of why voting is important and how it affects their community or country.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT- KNOWLEDGE AND
+SKILLS KEY
+COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Components of
+the Electoral
+Process Pupils should be
+able to:
+1.list the key
+components of
+the electoral
+process;
+2.identify the legal
+framework for
+the electoral
+process in
+Nigeria;
+3.state the
+importance of the
+legal framework
+in electoral
+process. Knowledge
+1. Key Components of the Electoral
+Process:
+ Legal framework
+ Election Management Bodies
+(EMBs)
+ Delineation of Constituencies
+ Voter Registration
+ Notice of elections
+ Political party conferences and
+conventions for primaries
+ Conduct of the election.
+2. The Legal Framework:
+ The Constitution
+ The Electoral Act
+ State Electoral Laws
+ INEC Regulations and guidelines
+ Judicial Pronouncements.
+Skills
+Identification of legal framework for
+the electoral process in Nigeria. Information
+Literacyas pupils
+use information
+accurately and
+creatively to discuss
+and list the key
+components and
+legal framework for
+the electoral
+process in Nigeria.
+Collaborationas
+pupils become open
+and responsive to
+new and diverse
+perspectives;
+incorporate group
+input and feedback
+stating the
+importance of the
+legal framework in
+electoral process. Pupils are guided to:
+1. Use copies of the
+Constitution, the
+electoral Act and
+INEC regulations
+and guidelines in
+the class to:
+ explain the legal
+framework for the
+electoral process in
+Nigeria; and
+ identify other
+components of the
+electoral process.
+2. Discuss and list the
+importance of the
+legal framework in
+electoral process. ● Constitution of the
+Federal Republic of
+Nigeria
+● The Electoral Act.
+● Copies of some
+State Electoral
+Laws
+● INEC Regulations
+and Guidelines
+● Other relevant
+INEC Publications. Pupils to:
+1. state the
+components of the
+electoral process;
+2. enumerate the
+major laws that
+guide the electoral
+process in Nigeria;
+3. explain why legal
+framework in
+electoral process is
+important.
+
+Theme: Governance Primary 4
+
+Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4
+Learning Outcome:Appreciate good governance, Electoral Process and Democracy.
+Focal Competence:Demonstrating an understanding of party systems and differentiating their types.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES AND
+VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Party System Pupils should be able to:
+1. explain the
+meaning of party
+system;
+2. discuss types of
+party system. Knowledge
+1. Meaning of party
+system.
+2. Types of party
+system:
+
+One party system
+
+Two party system
+
+Multi-Party System. Collaborationas pupils
+become open and responsive to
+new and diverse perspectives;
+incorporate group input and
+feedback, brainstorm on the
+meaning and types of party
+system.
+Information Literacyas
+pupils use information
+accurately on the types of party
+system practiced in Nigeria.
+ICT and Digital
+Competencesas pupils use
+digital technologies (computers,
+PDAs, media players, GPS, etc.),
+communication/networking tools
+and social networks
+appropriately to access and
+retrieve information on party
+system. Pupils are guided to:
+1. Work in groups
+and brainstorm
+the meaning of
+party system and
+the types.
+2. Search the
+internet for
+information on
+party system. ● Posters
+● Video clips
+● Online resources
+● Other relevant
+resources. Pupils to:
+1. state the
+meaning of
+party system;
+2. explain why
+party systems
+are different
+in each
+country;
+
+Theme: Governance Primary 4
+
+Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4 Theme: Governance Primary 4
+Learning Outcome:Appreciategoodgovernance,Electoral Process and Democracy.
+Focal Competence:Demonstratingan understandingof the roles and functions ofpoliticalparties andpressuregroups.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES AND
+VALUES LEARNING
+ACTIVITIES TEACHING
+AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Political Parties
+and Pressure
+Groups Pupils should be able
+to:
+1. differentiate
+between political
+parties and
+pressure groups;
+2. explain the
+functions of political
+parties and
+pressure groups;
+3. identify the names
+and symbols of
+political parties in
+Nigeria;
+4. identify some
+pressure groups in
+Nigeria. Knowledge
+1. Political parties:
+
+Meaning
+
+Functions.
+2. Pressure groups:
+
+Meaning
+
+Functions.
+3. Names of political
+parties in Nigeria.
+4. Examples of
+pressure groups.
+Skill
+Drawing and colouring
+of political parties’
+symbols. Collaborationas pupils
+assume shared responsibility for
+collaborative work, and value
+the individual contributions
+made by each team member on
+the meaning and functions of
+political party and pressure
+groups.
+ICT and Digital Competence
+as pupils retrieve information
+about political parties and
+pressure groups in Nigeria.
+Creativity and Innovationas
+pupils use imagination beyond
+knowledge provided to generate
+new ideas to enrich learning to
+draw and colour the symbols of
+some political parties. Pupils are guided to:
+1. Discuss in group
+the differences
+between political
+parties and
+pressure groups.
+2. Watch video clips
+of activities of
+political parties in
+Nigeria.
+3. Search the internet
+for information
+about political
+parties and
+pressure groups in
+Nigeria.
+4. Draw and colour
+the symbols of
+some political
+parties. 
+Posters
+
+Video clips
+
+Party
+symbols
+
+Internet
+
+Drawing and
+coloring
+tools Pupils to:
+1. differentiate
+between political
+parties and
+pressure groups;
+2. explain the
+functions of
+political parties
+and pressure
+groups;
+3. identify the
+names and
+symbols of
+political parties in
+Nigeria;
+4. identify some
+pressure groups
+in Nigeria;
+5. draw and colour
+the symbols of
+some political
+parties.
+
+Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4
+Learning Outcome:Exhibitpositive behaviours,attitude and values thatpromote healthyliving,securityandpeace in the community.
+Focal Competence:Makingdecisions that align with their own values andgoals,even in the face ofpressure frompeers.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES AND
+VALUES LEARNING
+ACTIVITIES TEACHING
+AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Peer
+behaviours that
+influence
+decision Making Pupils should be able
+to:
+1. state the meaning of
+peer pressure.
+2. demonstrate
+positive and
+negative peer
+pressure;
+3. differentiate
+between positive
+and negative peer
+influence;
+4. identify ways to
+counter peer
+pressure. Knowledge
+1. Meaning of peer
+pressure.
+2. Positive and negative
+peer pressures.
+3. Differences between
+positive and negative
+peer pressure.
+4. Ways of countering
+peer pressure.
+Skills
+Role-play how to put
+pressure on peers and
+ways of countering peer
+pressure. Collaborationas pupils
+assume shared responsibility for
+collaborative work, and value
+the individual contributions
+made by each team member to
+state the meaning of peer
+pressure, differentiate between
+positive and negative peer
+influence and identify ways to
+counter peer pressure.
+Creativity and Innovationas
+pupils use imagination beyond
+knowledge provided to generate
+new ideas to enrich learning to
+act a play on peer pressure
+effects and ways to counter
+peer pressure. Pupils are guided to:
+1. Explain the
+meaning of peer
+pressure in their
+own words.
+2. Learn the song on
+peer pressure.
+3. Observe charts
+showing examples
+of peer pressure.
+4. Role-play how to
+put pressure on
+their peers.
+5. Differentiate
+between positive
+and negative peer
+pressure.
+6. Sing song on peer
+pressure and
+identify the
+examples.
+7. Act a play-let on
+ways of countering
+peer pressure.  Charts
+ Posters
+ Relevant
+pictures
+ Short video
+clips
+ Script for the
+short play. Pupils to:
+1. explain the
+meaning of peer
+pressure;
+2. list examples of
+positive peer
+pressure;
+3. outline examples
+of negative peer
+pressure;
+4. mention
+differences
+between positive
+and negative peer
+pressure;
+5. state ways to
+counter peer
+pressure.
+
+Theme: Life Skills for Social and Healthy Living Primary 4 Theme: Life Skills for Social and Healthy Living Primary 4 Theme: Life Skills for Social and Healthy Living Primary 4 Theme: Life Skills for Social and Healthy Living Primary 4 Theme: Life Skills for Social and Healthy Living Primary 4 Theme: Life Skills for Social and Healthy Living Primary 4
+Learning Outcome:Exhibitpositive behaviours,attitude and values thatpromote healthyliving,securityandpeace in the community.
+Focal Competence: Respondingto emergencies andprovidingbasic care until helparrives.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION GUIDE
+Responding to
+Different Forms
+of Accident Pupils should be able
+to:
+1. list other forms of
+accident and their
+causes;
+2. explain types of first
+aid treatment to be
+given to victims of
+burns, scalds, bruises
+and road accidents;
+3. describe some of the
+different kinds of
+positive attitude to
+accident victims. Knowledge
+1. Meaning and types of
+accidents
+ Road,
+ Air, water, rail, fire, hot
+water etc. which can
+cause physical injuries,
+burns, scalds, bruises and
+sometimes death.
+2. The first aid treatment:
+ Burns and Scalds - do not
+torch the affected area;
+cover the affected part
+with clean cloth; take
+him/her to hospital;
+ Bruises: put ice block in a
+towel and place it on the
+surface of the bruise. Environmental Literacy
+as pupils demonstrate
+knowledge and
+understanding of the
+environment and the
+circumstances and
+conditions affecting it,
+particularly as relates to
+different forms of accident.
+Collaborationas pupils
+demonstrate ability to work
+effectively and respectfully
+with diverse teams to
+practice first aid treatment
+on volunteers. Pupils are guided to:
+1. Participate in the
+discussion on the
+meaning, forms and
+causes of accidents.
+2. Express how they
+feel when they come in
+contact with hot metals.  First aid
+materials/box;
+ Pictures of
+different types of
+accidents. Pupils to:
+1. explain the following:
+burns, scalds; bruises
+and list what causes
+each;
+2. explain the types of first
+aid to be given to victims
+of burns, scalds bruises
+and road accidents;
+3. demonstrate accident
+scene and practice first
+aid delivery.
+
+Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4
+Learning Outcome:Exhibitpositive behaviours,attitude and values thatpromote healthyliving,securityandpeace in the community.
+Focal Competence:Identifyingsituations where helpis needed and seekingassistance from appropriate sources.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY
+COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Finding Help:
+Protection and
+Right to
+Protection Pupils should be able
+to:
+1. acknowledge that all
+people have the right
+to be protected;
+2. describe the various
+ways people’s rights
+can be protected;
+3. explain the
+importance of
+protecting people’s
+rights. Knowledge
+1. People’s rights to
+protection.
+2. Ways of protecting
+people and their
+rights.
+3. Importance of
+protecting people’s
+rights. Communicationas
+pupils use correct
+language structure and
+relevant vocabulary
+effectively in a range
+of social and cultural
+contexts to describe
+the various ways, and
+explain the importance
+of people’s rights and
+protection. Pupils are guided to:
+1. Listen attentively to the
+guest speaker as he/she
+discusses on the topic
+with the pupils.
+2. Take down notes and
+ask questions as the
+guest speaker speaks to
+the children on their
+rights to protection and
+support
+ Ways of protecting their
+rights
+ Importance of
+protecting people’s
+rights.
+3. Identify the key points
+addressed by the guest
+speaker.  Charts
+ Markers
+ Cardboard
+ Relevant document.
+ Role-play
+guide(documentary).
+ Child Rights Act. Pupils to:
+1. outline points
+that that
+people have
+rights to be
+protected;
+2. describe the
+ways of
+protecting
+peoples’ rights;
+3. state the
+importance of
+protecting
+people’s rights.
+
+Theme: Life Skill for Social and Healthy Living Primary
+
+Learning Outcome: Exhibit positive behaviours, attitude and values that promote healthy living, security and peace in the community.
+
+Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4
+Learning Outcome:Exhibitpositive behaviours,attitude and values thatpromote healthyliving,securityandpeace in the community.
+Focal Competence:Recallingimportantphone numbers and when and how to use the numbers in different situations.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Important
+Phone Numbers
+and Their Uses. Pupils should be able to
+mention and be familiar
+with emergency phone
+numbers. Knowledge
+1. Different emergency
+phone numbers and
+their uses:
+ Police
+ Fire service
+ FRSC
+ NEMA, Hospitals
+ NAFDAC Collaborationas pupils
+demonstrate ability to
+work effectively and
+respectfully with diverse
+teams to mention
+different emergency
+phone numbers and their
+uses.
+Environmental Literacy
+as pupils take individual
+and collective action
+towards addressing
+environmental challenges
+(e.g., participating in
+global actions, designing
+solutions that inspire
+action on environmental
+issues like making availing
+different emergency
+phone numbers and their
+uses to the community). Pupils are guided to:
+1. Identify and list the
+different emergency
+phone numbers within
+their environment.
+2. Demonstrate the use
+of emergency phone
+numbers.  Telephone sets.
+ List of emergency
+numbers. Pupils tolist the
+emergency security
+phone numbers.
+
+Theme: Life Skill for Social and Healthy Living Primary
+
+Learning Outcome: Exhibit positive behaviours, attitude and values that promote healthy living, security and peace in the community.
+
+Focal Competence: Showing understanding of recovery process.
+
+Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4
+Learning Outcome:Exhibitpositive behaviours,attitude and values thatpromote healthyliving,securityandpeace in the community.
+Focal Competence:Showingunderstandingof recovery process.
+TOPIC PERFORMAN
+CE
+OBJECTIVES CONTENT- KNOWLEDGE
+AND SKILLS KEY
+COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Characteristics
+of Drug
+Abusers, their
+Treatment and
+Rehabilitation Pupils should
+be able to:
+1. list
+commonly
+abused
+drugs and
+identify
+them by
+their street
+names;
+2. mention
+some
+characteristi
+cs of
+abusers of
+alcohol,
+tobacco and
+cannabis. Knowledge
+1. Street Names of Commonly Abused
+Drugs: Cannabis- hemp, stone, ganja,
+Igbo etc.
+2. Characteristics of Abusers of:
+
+Alcohol
+Aggressiveness
+convulsion
+Slowed speech
+Hallucination
+Shaking of the hands
+inability to maintain balance
+disobedience
+
+Tobacco:
+Smells, discoloration of lips,
+burnt/dark fingers, colored teeth,
+incessant coughing from lung
+congestion, lack of appetite, etc.
+ Cannabis:
+- Undue excitement.
+- False source of confidence and pleasure
+etc.
+Skills
+Commonly abused drugs and identifying
+them bytheir street names Environmental
+Literacyas pupils
+demonstrate
+knowledge and
+understanding of the
+environment and the
+circumstances and
+conditions affecting it,
+particularly as relates
+to characteristics of
+drug abusers, their
+health and
+rehabilitation.
+Communicationas
+pupils use correct
+language structure and
+relevant vocabulary
+effectively in a range
+of social and cultural
+contexts to list
+commonly abused
+drugs and identify
+them by their street
+names. Pupils are guided to:
+1. To use relevant
+posters to highlight
+engage in class
+group discussion
+on street names
+for commonly
+abused drugs.
+2. In groups
+participate in class
+discussion on
+characteristics of
+alcoholics, tobacco
+addicts and
+addicted users of
+cannabis.
+3. Listen to resource
+person to give talk
+on the subject
+matter and ask
+questions for more
+clarifications.  Posters on street
+names of
+commonly abused
+drugs
+ Cases/stories on
+the characteristics
+of different kinds
+of abusers.
+ Resource persons. Pupils to:
+1. enumerate the
+street names
+of commonly
+abused drugs;
+2. outline the
+characteristics
+of abusers of
+alcohol,
+tobacco and
+cannabis.
+
+Theme: Life Skill for Social and Healthy Living Primary 4
+
+Learning Outcome: Exhibit positive behaviours, attitude and values that promote healthy living, security and peace in the community.
+
+Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4 Theme: Life Skill for Social and Healthy Living Primary 4
+Learning Outcome:Exhibitpositive behaviours,attitude and values thatpromote healthyliving,securityandpeace in the community.
+Focal Competence: Demonstratingan understandingof the risks and consequences of drugabuse.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY
+COMPETENCIES
+AND VALUES LEARNING ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Prevention of
+Drug Abuse- Life
+Coping Skills Pupils should be able to:
+1. list behaviours that
+promote physical,
+mental and social
+well-being;
+2. mention some life
+skills that are needed
+for maintaining
+positive healthy
+behaviours;
+3. carry out a campaign
+on against drug abuse
+to promote physical
+and mental health. Knowledge
+1. Health promoting
+behaviours:
+ Stress reduction:
+- regular exercises.
+constructive plays
+ Positive and good
+relationship with peers
+etc.
+2. Life Coping Skills:
+ Choosing good
+friends, avoiding bad
+company,
+establishing
+acceptable measures
+of discipline. Environmental
+Literacyas pupils
+take individual and
+collective action
+towards addressing
+environmental
+challenges (e.g.,
+participating in global
+actions, designing
+solutions that inspire
+action on campaign
+against drug abuse to
+promote physical and
+mental health issues).
+Pupils are guided to:
+1. Participate in class
+discussion in groups on
+behaviours that can
+help in the promotion
+of physical and mental
+health.
+2. Discuss on life club
+activities and how they
+can help in preventing
+drugs abuse.
+3. Organizeda
+school/immediate
+environmental
+campaign against drugs
+abuse to promote
+physical and mental
+health.  Posters
+illustrating
+appropriate
+positive health
+behaviours.
+ Eminent or
+respected
+persons in the
+community as
+resource
+persons. Pupils to:
+1. outline behaviours
+that promote
+physical, mental
+and social well-
+being among
+youths;
+2. list examples of
+skills that are
+needed for
+maintaining
+positive healthy
+behaviours.
+
+Theme: Environment and Sustainability Primary 4
+
+Theme: Environment and Sustainability Primary 4 Theme: Environment and Sustainability Primary 4 Theme: Environment and Sustainability Primary 4 Theme: Environment and Sustainability Primary 4 Theme: Environment and Sustainability Primary 4 Theme: Environment and Sustainability Primary 4 Theme: Environment and Sustainability Primary 4
+Learning Outcome:Exhibitpositive behaviours,attitude and values thatpromote healthyliving,securityandpeace in the community.
+Focal Competence:Reportingsuspicious activities and implementingsimple measure to secure their homes.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT- KNOWLEDGE
+AND SKILLS KEY
+COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Neighborhood
+security Pupils should be able
+to:
+1. explain the
+meaning of
+neighborhood
+security;
+2. observe suspicious
+movements in their
+neighborhoods and
+make reports;
+3. explain the
+consequences of
+failure to observe
+suspicious
+movements in the
+neighbourhood. Knowledge
+1.
+Meaning of neighbourhood
+watch.
+2.
+Ways of reporting suspicious
+movements in their
+neighbourhood
+3.
+Consequences of failure to
+observe suspicious movements
+and people in the
+neighbourhood;
+4.
+Dangerous people such as
+thieves, robbers, kidnappers,
+rapists and other undesirable
+elements may infiltrate the
+neighbourhood. As a result,
+violence may occur.
+5. Choosing good habits and
+values of discipline, honesty
+hard work, contentment,
+courage respect for others,
+etc.
+Skills
+Map out strategies involved in
+organizing a school/immediate
+environmental campaign against
+drugs abuse to promote physical
+and mental health. Collaborationas
+pupils demonstrate
+ability to work
+effectively and
+respectfully with
+diverse teams to
+state the meaning of
+neighbourhood
+watch, list ways of
+reporting suspicious
+movements in their
+neighbourhood etc.
+Collaborationas
+pupils demonstrates
+ability to work
+effectively and
+respectfully with
+diverse teams to
+write out strategies
+that are involved in
+carrying out
+campaign against
+drugs abuse to
+promote physical and
+mental health. Pupils are guided to:
+1. Participate in class
+discussion on
+neighbourhood
+security.
+2. Participate in practical
+activities to help the
+feel the consequences
+of failure to observe
+suspicious people in
+the neighbourhood.  Textbooks,
+Charts,
+ Pictures,
+ Video clips,
+Handbills. etc.
+ Posters
+ newspapers
+ magazines Pupils to:
+1. explain the meaning
+of neighbourhood
+security.
+2. mention some tips on
+neighbourhood
+security.
+3. mention the
+consequences of
+having suspicious
+people in the
+neighbourhood.
+
+Theme: Digital Economy and Financial Literacy Primary 4
+
+Learning Outcome: Use different denominations of money correctly and appreciate the financial system.
+
+Theme: Digital Economy and Financial Literacy Primary 4 Theme: Digital Economy and Financial Literacy Primary 4 Theme: Digital Economy and Financial Literacy Primary 4 Theme: Digital Economy and Financial Literacy Primary 4 Theme: Digital Economy and Financial Literacy Primary 4 Theme: Digital Economy and Financial Literacy Primary 4 Theme: Digital Economy and Financial Literacy Primary 4
+Learning Outcome:Use different denominations of moneycorrectlyand appreciate the financial system.
+Focal Competence:Calculatingchanges and comparing prices.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT- KNOWLEDGE
+AND SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+The Value of
+Denominations
+of Money Pupils should be able
+to:
+1. mention the
+different
+denominations of
+money in Nigeria.
+2. identify the
+different
+denominations of
+money in Nigeria;
+3. define Financial
+System;
+4. give examples of
+operations in
+Financial System. Knowledge
+1. The different
+denominations of
+Nigerian money.
+2. Meaning of Financial
+System.
+3. Examples of operations in
+Financial System
+(banking, and capital
+market etc.).
+Skills
+Identification of different
+denominations of money in
+Nigeria. Collaborationas pupils
+demonstrate ability to
+work effectively and
+respectfully with diverse
+teams stating different
+denominations of Nigerian
+money, meaning of
+financial system and
+examples of operations in
+financial system.
+Critical Thinkingas
+pupils explore and
+evaluate alternative
+explanations to those
+presented by others on
+identification of different
+denominations of money
+in Nigeria. Pupils are guided to:
+1. Engage in class
+discussion on the
+different
+denominations of
+money in Nigeria.
+2. Participate in
+identifying the
+different
+denominations of
+Nigerian money in
+groups.
+3. Explain the meaning
+of Financial System.
+4. Give examples of
+operations in
+Financial System.  Different
+denominations
+of money e.g.
+coins, notes etc.
+ Pictures of
+money.
+ Specimen of
+money.
+ Museum trip
+ Textbooks
+ Internet
+ Relevant
+magazines,
+pictures, video
+clips etc. Pupils to:
+1. mention the
+different
+denominations of
+money in Nigeria;
+2. identify different
+denominations of
+Nigerian money;
+3. explain the
+meaning of
+financial system;
+4. give examples of
+the operations in
+Financial System.
+
+Theme: Digital Economy and Financial Literacy Primary
+
+Learning Outcome: Use different denominations of money correctly and appreciate the financial system.
+
+Focal Competence: Showing awareness of basic financial services like saving and borrowing..
+
+Theme: Digital Economy and Financial Literacy Primary 4 Theme: Digital Economy and Financial Literacy Primary 4 Theme: Digital Economy and Financial Literacy Primary 4 Theme: Digital Economy and Financial Literacy Primary 4 Theme: Digital Economy and Financial Literacy Primary 4 Theme: Digital Economy and Financial Literacy Primary 4 Theme: Digital Economy and Financial Literacy Primary 4
+Learning Outcome:Use different denominations of moneycorrectlyand appreciate the financial system.
+Focal Competence:Showingawareness of basic financial services like savingand borrowing..
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Introduction to
+Financial System Pupils should be able
+to:
+1. explain the
+meaning of
+financial system;
+2. give a brief history
+of financial system;
+3. list examples of
+operations in the
+financial system. Knowledge
+1. Meaning of financial
+system.
+2. History of financial
+system.
+3. Examples of
+Operations in the
+financial system.
+Skills
+Creating infographics. Collaborationas pupils
+work in groups and
+brainstorm on the
+meaning, history of
+financial system as well as
+examples of financial
+system operations.
+Creativity and
+Innovationas pupils use
+a wide range of idea-
+creation techniques (such
+as brainstorming) to
+create infographics on the
+examples of operations in
+the financial system.
+ICT and Digital
+Competenciesas pupils
+enhance their learning
+using digital technological
+tools to watch video
+documentary on the
+history of financial
+system. Pupils are guided to:
+1. Work in groups and
+brainstorm the
+meaning of financial
+system.
+2. Watch video
+documentaries on the
+history of financial
+system (Age
+specific).
+3. Create an infographic
+on the examples of
+operations in the
+financial system. 
+Textbooks
+
+Magazines
+
+Internet
+
+Pictures
+
+Video clips
+
+Other relevant
+resources Pupils to:
+1. state the
+meaning of a
+financial system;
+2. explain brief
+history of the
+financial system;
+3. state the
+examples of
+operations in the
+financial system.
+
+Theme: Globalization and International Relations Primary 4 Theme: Globalization and International Relations Primary 4 Theme: Globalization and International Relations Primary 4 Theme: Globalization and International Relations Primary 4 Theme: Globalization and International Relations Primary 4
+Learning Outcome:Recognize the causes,strategies used andparticipate in advocacyagainsthuman trafficking.
+Focal Competence:Displayingawareness of ways toprevent traffickingandprotectingvulnerablepersons.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION
+GUIDE
+Historical
+Background of
+Trafficking in
+Persons Pupils should be able
+to:
+1. explain the
+meaning of
+Trafficking in
+Persons.
+2. explain the
+historical
+Background Trends
+and Patterns of
+Trafficking in
+Persons. Knowledge
+1. Meaning of
+Trafficking in Persons.
+2. History of Trafficking
+in Persons:
+ Slavery and slave
+trade.
+ Modern slavery in
+the form of
+Trafficking in
+Persons.
+ International
+dimension of
+Trafficking in
+Persons. Communicationas
+pupils communicate and
+convey confidently and
+effectively through
+speaking stating the
+meaning and the
+historical background
+trends, patterns of
+trafficking in persons. Pupils are guided to:
+1. Participate in class
+discussion on the
+meaning of
+Trafficking in
+Persons.
+2. Explain the historical
+Background, Trends
+and Patterns of
+Trafficking in
+Persons. ● Handbook on
+Trafficking in
+Persons.
+● Video clips.
+● Pictures.
+● Posters. Pupils to:
+1. state the meaning
+of Trafficking in
+Persons.
+2. explain the
+historical
+Background,
+Trends and
+Patterns of
+Trafficking in
+Persons.
+
+Theme: Globalization and International Relations Primary 4
+
+Learning Outcome: Recognize the causes, strategies used and participate in advocacy against human t rafficking.
+
+Focal Competence: Demonstrating an understanding of the causes and purposes of trafficking.
+
+Theme: Globalization and International Relations Primary 4 Theme: Globalization and International Relations Primary 4 Theme: Globalization and International Relations Primary 4 Theme: Globalization and International Relations Primary 4 Theme: Globalization and International Relations Primary 4 Theme: Globalization and International Relations Primary 4 Theme: Globalization and International Relations Primary 4
+Learning Outcome:Recognize the causes,strategies used andparticipate in advocacyagainsthuman trafficking.
+Focal Competence:Demonstratingan understandingof the causes andpurposes of trafficking.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY COMPETENCIES
+AND VALUES LEARNING
+ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION GUIDE
+Causes and
+Purpose of
+Trafficking in
+Persons. Pupils should be
+able to:
+1. state the causes of
+trafficking in
+Persons;
+2. mention the
+purpose of
+trafficking in
+Persons;
+3. plan and execute
+campaign against
+trafficking in
+persons in and
+around their
+school
+environment. Knowledge
+1. Causes of Trafficking in
+Persons:
+ Poverty.
+ Illiteracy.
+ Ignorance.
+ Demand for cheap
+labour.
+ Collapse of family
+values.
+ Greed and desire to live
+in foreign countries.
+2. Purpose of Trafficking in
+Persons:
+ Exploitation (Slavery like
+practices, Use of
+trafficked persons as
+crime agents, Organ
+removal, Use of children
+as Child Soldiers).
+Skills
+Organized campaign
+against trafficking in
+persons. Environmental
+Literacyas pupils
+investigate and analyze
+environmental issues,
+and make accurate
+conclusions about
+effective solutions to
+state causes and
+purpose of trafficking in
+persons.
+Leadershipas pupils
+take initiatives for a
+project or tasks with
+less support to carryout
+campaign against
+trafficking in persons
+within their
+environment. Pupils are guided to:
+1. In groups state and
+explain the causes of
+Trafficking in Persons.
+2. Engage in class
+discussion to mention
+the purpose of
+Trafficking in Persons
+in their groups.
+3. Participate in school
+campaign against
+trafficking in persons
+in and around their
+school environment. 
+Video clips.
+
+Pictures.
+
+Newspapers.
+
+Journals.
+
+Handbook. Pupils to:
+1. state causes of
+trafficking in Persons;
+2. mention the purpose
+of trafficking in
+Persons with
+examples.
+
+Theme: Globalization and International Relations Primary 4 Learning Outcome: Recognize the causes, strategies used and participate in advocacy against Trafficking in Persons. Focal Competence: Recognizing potential signs of trafficking.
+
+Theme: Globalization and International Relations Primary 4 Theme: Globalization and International Relations Primary 4 Theme: Globalization and International Relations Primary 4 Theme: Globalization and International Relations Primary 4 Theme: Globalization and International Relations Primary 4 Theme: Globalization and International Relations Primary 4 Theme: Globalization and International Relations Primary 4
+Learning Outcome:Recognize the causes, strategies used and participate in advocacy against Trafficking in Persons.
+Focal Competence: Recognizing potential signs of trafficking.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY
+COMPETENCIES
+AND VALUES LEARNING ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION GUIDE
+Elements of
+Trafficking in
+Persons Pupils should be able
+to identify the
+elements of
+Trafficking in
+Persons. Knowledge
+1. Elements of Trafficking
+in Persons:
+ The Act.
+ The Means.
+ The Purpose.
+2. Examples of the
+elements:
+ Act; recruitment,
+transportation,
+harbouring.
+ Means; use of force,
+and deception.
+ Purpose: exploitation
+(slavery, labour, organs
+removal).
+Skills
+Identification of the
+elements of trafficking in
+persons. Collaborationas
+pupils assume shared
+responsibility for
+collaborative work,
+and value the
+individual contributions
+made by each team
+member to identify,
+state the elements and
+list examples of
+trafficking in persons.
+ICT and Digital
+Competencesas
+pupils use digital
+technologies
+(computers, PDAs,
+media players, GPS,
+etc.),
+communication/networ
+king tools and social
+networks appropriately
+to access information
+on trafficking in
+persons. Pupils are guided to:
+1. Engage in a class
+discussion to mention
+and explains the
+elements of Trafficking
+in Persons.
+2. Writes examples of the
+elements on pieces of
+paper and to place it
+them appropriately. ● Video clip
+● Maps
+● Pictures
+● Posters
+● Flashcard Pupils to:
+1. identify the elements
+of Trafficking in
+Persons with their
+examples.
+2. list examples of the
+elements of trafficking
+in persons.
+
+Theme: Globalization and International Relations Primary Learning Outcome: Recognize the causes, strategies used and participate in advocacy against human t rafficking.
+
+Theme: Globalization and International Relations Primary 4 Theme: Globalization and International Relations Primary 4 Theme: Globalization and International Relations Primary 4 Theme: Globalization and International Relations Primary 4 Theme: Globalization and International Relations Primary 4 Theme: Globalization and International Relations Primary 4 Theme: Globalization and International Relations Primary 4
+Learning Outcome:Recognize the causes,strategies used andparticipate in advocacyagainsthuman trafficking.
+Focal Competence:Displayingempathyand concern for victims of traffickingand their families.
+TOPIC PERFORMANCE
+OBJECTIVES CONTENT-
+KNOWLEDGE AND
+SKILLS KEY
+COMPETENCIES
+AND VALUES LEARNING ACTIVITIES TEACHING AND
+LEARNING
+RESOURCES EVALUATION GUIDE
+Consequences
+of Trafficking
+in Persons Pupils should be able
+to:
+1. explain the
+consequences of
+trafficking in
+Persons;
+2. identify the
+consequences of
+trafficking in
+persons. Knowledge
+1. Personal/Human Rights
+consequences:
+ Violation of Human
+Rights of victims
+ Loss of property rights.
+ Death of victims.
+2. Societal/strategic
+consequences: HIV and
+other diseases. Pupils are guided to:
+1. Engage in class
+discussion to explain
+the consequences of
+trafficking in persons.
+2. In groups participate in
+identification of the
+consequences of
+trafficking in Persons.
+3. Take notes on the
+consequences of
+trafficking in persons. 
+Charts
+
+Table of the
+consequences
+of Trafficking
+in Persons
+
+Handbook
+
+Pictures
+
+Journals
+
+Video clips Pupils to:
+1. outline personal
+consequences of
+trafficking in persons;
+2. enumerate societal
+consequences of
+trafficking in persons.

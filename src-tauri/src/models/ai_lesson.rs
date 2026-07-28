@@ -11,19 +11,3 @@ pub struct AILesson {
     pub duration_seconds: Option<i32>,
     pub created_at: String,
 }
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct SyncQueueItem {
-    pub id: String,
-    pub action: String,
-    pub data: String,
-    pub is_synced: bool,
-    pub retry_count: i32,
-    pub created_at: String,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct AppSetting {
-    pub key: String,
-    pub value: String,
-}

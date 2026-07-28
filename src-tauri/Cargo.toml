@@ -23,7 +23,10 @@ tauri-plugin-log = "2"
 tauri-plugin-sql = { version = "2", features = ["sqlite"] }
 tauri-plugin-fs = "2"
 rusqlite = { version = "0.31", features = ["bundled"] }
-reqwest = { version = "0.12", features = ["json", "rustls-tls"] }
+# rustls (pure-Rust TLS) only — default-features off drops reqwest's default
+# native-tls/OpenSSL backend, so the build needs no system libssl/libcrypto and
+# the shipped binary carries its own TLS (better for offline distribution).
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls", "charset", "http2"] }
 uuid = { version = "1", features = ["v4"] }
 chrono = { version = "0.4", features = ["serde"] }
 tokio = { version = "1", features = ["full"] }

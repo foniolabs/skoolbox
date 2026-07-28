@@ -8,8 +8,13 @@
   "is_exam_class": false,
   "prerequisite_levels": [],
   "retrieval_mode": "standard",
-  "textbooks": [],
+  "textbooks": [
+    "NERDC Basic Education Curriculum — Mathematics, JSS 1"
+  ],
   "topics": [
-    "whole numbers"
+    "whole numbers",
+    "fractions",
+    "algebraic processes",
+    "geometry"
   ]
 }

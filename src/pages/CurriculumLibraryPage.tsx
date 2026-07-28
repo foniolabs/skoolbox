@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Library, Upload, Trash2, Loader2, Check, AlertCircle, FileText, Database, Package, Download } from 'lucide-react';
 import mammoth from 'mammoth';
 import {
@@ -94,11 +94,7 @@ export default function CurriculumLibraryPage() {
     }
   };
 
-  useEffect(() => {
-    void loadAll();
-  }, []);
-
-  const loadAll = async () => {
+  const loadAll = useCallback(async () => {
     try {
       const [docList, statData, subjects] = await Promise.all([
         listCurriculumDocuments(),
@@ -111,13 +107,17 @@ export default function CurriculumLibraryPage() {
       const names = Array.from(new Set(subjects.map((s) => s.name))).sort();
       const opts = names.map((n) => ({ label: n, value: n }));
       setSubjectOptions(opts);
-      if (opts.length > 0 && !subject) setSubject(opts[0].value);
+      if (opts.length > 0) setSubject((prev) => prev || opts[0].value);
     } catch (err) {
       console.error('Failed to load curriculum library:', err);
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    void loadAll();
+  }, [loadAll]);
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
