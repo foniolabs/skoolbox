@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="src/assets/logo.svg" alt="SkoolBox logo" width="140">
+
 # SkoolBox
 
 **Offline-first AI tutor for Nigerian schools.**
@@ -20,8 +22,6 @@ The app serves two roles in one binary:
 
 - **Teachers** — plan lessons, present in class, build quizzes, monitor student progress.
 - **Students** — explore subjects, learn with an embedded AI tutor, take quizzes, track progress.
-
-Full product context lives in [PRD.md](PRD.md).
 
 ---
 
@@ -180,15 +180,10 @@ npm run tauri:dev   # rebuilds the native shell automatically
 
 SkoolBox is a **monorepo**: the Tauri app lives at the repo root, and the AI
 fine-tuning pipeline lives alongside it in `dataset/`, `training/`, and `rag/`.
-See [MONOREPO.md](MONOREPO.md) for the full layout and
-[COLLABORATION.md](COLLABORATION.md) for what's shared via git vs regenerated.
 
 ```
 skoolbox/
-├── PRD.md                  # Product requirements
 ├── README.md               # You are here
-├── MONOREPO.md             # Monorepo layout + who-works-where
-├── COLLABORATION.md        # Tracked vs ignored, team workflow
 ├── index.html              # Vite entry
 ├── package.json
 ├── vite.config.ts
