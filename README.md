@@ -2,7 +2,7 @@
 
 # SkoolBox
 
-**Offline-first AI tutor for Nigerian secondary schools.**
+**Offline-first AI tutor for Nigerian schools.**
 
 Built with Tauri · React · TypeScript · SQLite · Claude · Azure TTS
 
