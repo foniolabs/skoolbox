@@ -58,3 +58,7 @@ training/review_packet*.html
 # NOTE: reviewer/public/dataset.json IS tracked (regenerate: review.py export).
 reviewer/.wrangler/
 reviewer/node_modules/
+
+# Documentation other than the top-level README stays out of this repository.
+*.md
+!/README.md
