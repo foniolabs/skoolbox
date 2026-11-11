@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Volume2, Sparkles, BookOpen, ChevronRight } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from '../../lib/router';
 import Button from '../shared/Button';
 import CustomDropdown from '../shared/CustomDropdown';
 

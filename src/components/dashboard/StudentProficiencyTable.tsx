@@ -1,5 +1,5 @@
 import { ArrowUpDown, Trash2, Pencil, Ban, RotateCcw } from 'lucide-react'
-import type { StudentWithProgress } from '../../pages/DashboardPage'
+import type { StudentWithProgress } from '../../screens/DashboardPage'
 
 const avatarColors = ['bg-pink-400', 'bg-blue-400', 'bg-purple-400', 'bg-teal-400', 'bg-amber-400', 'bg-green-400', 'bg-indigo-400', 'bg-rose-400']
 

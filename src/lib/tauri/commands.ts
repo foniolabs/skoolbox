@@ -15,7 +15,8 @@ const isTauri = typeof window !== 'undefined' && '__TAURI_INTERNALS__' in window
 
 async function invoke<T>(cmd: string, args?: Record<string, unknown>): Promise<T> {
   if (!isTauri) {
-    throw new Error(`Tauri not available: ${cmd}`)
+    // A plain string, like Tauri's own rejections, so screens display it as is.
+    throw 'This feature needs the SkoolBox desktop app. The web version is a demo for now.'
   }
   const { invoke: tauriInvoke } = await import('@tauri-apps/api/core')
   return tauriInvoke<T>(cmd, args)

@@ -1,0 +1,11 @@
+{
+  // Web demo of the app UI at app.skoolbox.xyz (static assets only, no backend).
+  // Deploy: npm run build && npx wrangler deploy
+  "name": "skoolbox-app",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  },
+  "routes": [{ "pattern": "app.skoolbox.xyz", "custom_domain": true }]
+}

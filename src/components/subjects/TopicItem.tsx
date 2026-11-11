@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from '../../lib/router';
 import { CheckCircle2, Circle, CircleDot, Lock } from 'lucide-react';
 import Badge from '../shared/Badge';
 import Button from '../shared/Button';

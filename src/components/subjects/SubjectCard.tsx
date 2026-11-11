@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from '../../lib/router';
 import { Calculator, BookOpen, FlaskConical, Wrench, GraduationCap, Atom, Globe, Landmark, Cpu, Leaf, Scale } from 'lucide-react';
 import Card from '../shared/Card';
 import ProgressBar from '../shared/ProgressBar';

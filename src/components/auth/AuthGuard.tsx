@@ -1,25 +1,46 @@
-import { Navigate } from 'react-router-dom';
-import { useAuthStore } from '../../stores/useAuthStore';
+'use client'
 
-interface AuthGuardProps {
-  children: React.ReactNode;
-  requiredRole?: 'teacher' | 'student';
+import { useEffect, useState, type ReactNode } from 'react'
+import { useRouter } from 'next/navigation'
+import { useAuthStore } from '../../stores/useAuthStore'
+import PageLoading from '../layout/PageLoading'
+
+export function homeFor(role?: string) {
+  return role === 'student' ? '/student' : '/dashboard'
 }
 
-export default function AuthGuard({ children, requiredRole }: AuthGuardProps) {
-  const { isLoggedIn, user } = useAuthStore();
+/**
+ * Sign-in only exists in the browser, so the static HTML always shows the
+ * loading state and the real screen appears once this has checked the session.
+ */
+export default function AuthGuard({ role, children }: { role: 'teacher' | 'student'; children: ReactNode }) {
+  const router = useRouter()
+  const { isLoggedIn, user } = useAuthStore()
+  const [ready, setReady] = useState(false)
+  const allowed = isLoggedIn && user?.role === role
 
-  if (!isLoggedIn) {
-    return <Navigate to="/login" replace />;
-  }
+  useEffect(() => setReady(true), [])
 
-  if (requiredRole && user?.role !== requiredRole) {
-    // Redirect to correct dashboard
-    if (user?.role === 'student') {
-      return <Navigate to="/student" replace />;
-    }
-    return <Navigate to="/" replace />;
-  }
+  useEffect(() => {
+    if (!ready || allowed) return
+    router.replace(isLoggedIn ? homeFor(user?.role) : '/login')
+  }, [ready, allowed, isLoggedIn, user?.role, router])
 
-  return <>{children}</>;
+  return ready && allowed ? <>{children}</> : <PageLoading />
+}
+
+/** For the sign-in pages and `/`: anyone already signed in goes to their home. */
+export function RedirectHome({ children }: { children?: ReactNode }) {
+  const router = useRouter()
+  const { isLoggedIn, user } = useAuthStore()
+  const [ready, setReady] = useState(false)
+
+  useEffect(() => setReady(true), [])
+
+  useEffect(() => {
+    if (ready && isLoggedIn) router.replace(homeFor(user?.role))
+    else if (ready && !children) router.replace('/login')
+  }, [ready, isLoggedIn, user?.role, router, children])
+
+  return ready && !isLoggedIn && children ? <>{children}</> : <PageLoading />
 }
