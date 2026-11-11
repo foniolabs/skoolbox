@@ -76,3 +76,8 @@ reviewer/node_modules/
 out/
 next-env.d.ts
 *.tsbuildinfo
+
+# API worker secrets and local state
+api/.dev.vars
+api/.wrangler/
+api/node_modules/
