@@ -102,13 +102,13 @@ export default function QuizPlayer({
   return (
     <div className="flex flex-col gap-6 max-w-3xl mx-auto">
       {/* Top bar */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
         <div className="flex items-center gap-3">
           <h2 className="text-lg font-semibold text-text-primary">
             {subject} &middot; {topic}
           </h2>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 whitespace-nowrap">
           <span className="text-sm font-medium text-text-secondary">
             Q {currentIndex + 1}/{totalQuestions}
           </span>
@@ -130,7 +130,7 @@ export default function QuizPlayer({
       <ProgressBar value={progress} size="sm" />
 
       {/* Question */}
-      <div className="bg-white rounded-xl shadow-sm p-8">
+      <div className="bg-white rounded-xl shadow-sm p-5 sm:p-8">
         <QuestionView
           question={question}
           selectedAnswer={answers[currentIndex]}
@@ -146,16 +146,16 @@ export default function QuizPlayer({
       )}
 
       {/* Bottom controls */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="sm" onClick={handleReadQuestion}>
-            <span className="flex items-center gap-1">
+            <span className="flex items-center gap-1 whitespace-nowrap">
               {isReading ? <VolumeX size={16} /> : <Volume2 size={16} />}
               {isReading ? 'Stop' : 'Read Question'}
             </span>
           </Button>
           <Button variant="ghost" size="sm" onClick={() => setShowHint(!showHint)}>
-            <span className="flex items-center gap-1">
+            <span className="flex items-center gap-1 whitespace-nowrap">
               <Lightbulb size={16} />
               Hint
             </span>
@@ -169,7 +169,7 @@ export default function QuizPlayer({
             onClick={handlePrevious}
             disabled={currentIndex === 0}
           >
-            <span className="flex items-center gap-1">
+            <span className="flex items-center gap-1 whitespace-nowrap">
               <ArrowLeft size={16} />
               Previous
             </span>
@@ -181,7 +181,7 @@ export default function QuizPlayer({
             </Button>
           ) : (
             <Button variant="outline" size="sm" onClick={handleNext}>
-              <span className="flex items-center gap-1">
+              <span className="flex items-center gap-1 whitespace-nowrap">
                 Next
                 <ArrowRight size={16} />
               </span>

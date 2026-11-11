@@ -7,38 +7,40 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Brand: the SkoolBox logo's green and orange.
         primary: {
-          DEFAULT: '#2E7D32',
-          light: '#66BB6A',
-          dark: '#1B5E20',
+          DEFAULT: '#25632D',
+          light: '#4C9A5E',
+          dark: '#184A21',
         },
         accent: {
-          DEFAULT: '#FF8F00',
-          light: '#FFB74D',
+          DEFAULT: '#B9520A', // AA on white; use for text and filled buttons
+          light: '#F9943B', // logo orange; decoration or with dark text
         },
-        success: '#2E7D32',
-        error: '#C62828',
-        warning: '#F9A825',
-        'bg-app': '#F0F7F4',
+        success: '#25632D',
+        error: '#B42318',
+        warning: '#B54708',
+        'bg-app': '#F7F6F1',
         'bg-card': '#FFFFFF',
         'bg-primary': '#FFFFFF',
-        'bg-secondary': '#F0F7F4',
-        'bg-dark': '#1A1A2E',
-        'card-green': '#8BC34A',
-        'card-orange': '#FF9800',
-        'card-coral': '#FF6B6B',
-        'card-blue': '#42A5F5',
-        'progress-green': '#66BB6A',
-        'progress-yellow': '#FFCA28',
-        'progress-orange': '#FFA726',
-        'progress-red': '#EF5350',
-        'text-primary': '#1A1A2E',
-        'text-secondary': '#64748B',
-        'text-muted': '#94A3B8',
-        border: '#E2E8F0',
+        'bg-secondary': '#EEF3EC',
+        'bg-dark': '#17231C',
+        // Stat cards carry white text, so all clear 4.5:1.
+        'card-green': '#2E7D46',
+        'card-orange': '#B9520A',
+        'card-coral': '#C4342B',
+        'card-blue': '#2563A8',
+        'progress-green': '#3E9A55',
+        'progress-yellow': '#E3A008',
+        'progress-orange': '#E8710A',
+        'progress-red': '#D9372C',
+        'text-primary': '#17231C',
+        'text-secondary': '#46564C',
+        'text-muted': '#5F6E64',
+        border: '#E2E5DD',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Plus Jakarta Sans Variable', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         'sm': '6px',
@@ -50,7 +52,7 @@ export default {
       },
       boxShadow: {
         'sm': '0 1px 2px rgba(0,0,0,0.05)',
-        'card': '0 2px 12px rgba(0,0,0,0.06)',
+        'card': '0 0 0 1px rgba(23,35,28,0.06), 0 1px 3px rgba(23,35,28,0.06)',
         'md': '0 4px 6px -1px rgba(0,0,0,0.1)',
         'lg': '0 10px 15px -3px rgba(0,0,0,0.1)',
         'xl': '0 20px 25px -5px rgba(0,0,0,0.1)',

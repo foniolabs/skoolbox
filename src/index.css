@@ -4,10 +4,11 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', system-ui, sans-serif;
-  background-color: #F0F7F4;
-  color: #1A1A2E;
+  font-family: 'Plus Jakarta Sans Variable', system-ui, sans-serif;
+  background-color: #F7F6F1;
+  color: #17231C;
   line-height: 1.6;
+  word-spacing: 0.05em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -25,12 +26,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #C9CFC6;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
+  background: #5F6E64;
 }
 
 /* Typing animation for whiteboard */
@@ -46,3 +47,30 @@ body {
 .animate-dot-1 { animation: bounce-dot 1.4s ease-in-out infinite; }
 .animate-dot-2 { animation: bounce-dot 1.4s ease-in-out 0.2s infinite; }
 .animate-dot-3 { animation: bounce-dot 1.4s ease-in-out 0.4s infinite; }
+
+h1, h2, h3 {
+  letter-spacing: -0.015em;
+}
+
+button:not(:disabled), a, [role='button'] {
+  cursor: pointer;
+}
+
+/* Keyboard users always get a visible focus ring. */
+:focus-visible {
+  outline: 2px solid #25632D;
+  outline-offset: 2px;
+}
+
+aside :focus-visible {
+  outline-color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

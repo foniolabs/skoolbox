@@ -5,7 +5,7 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
-  { ignores: ['dist', 'src-tauri/target'] },
+  { ignores: ['dist', 'out', '.next', 'next-env.d.ts', 'src-tauri/target'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],
@@ -24,5 +24,12 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
     },
+  },
+  {
+    // Next.js route files export `metadata` / `viewport`, and these modules export
+    // hooks and helpers beside components. Next's Fast Refresh copes; the
+    // Vite-era rule only produced noise here.
+    files: ['src/app/**/*.{ts,tsx}', 'src/lib/router.tsx', 'src/components/auth/AuthGuard.tsx'],
+    rules: { 'react-refresh/only-export-components': 'off' },
   },
 )

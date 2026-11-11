@@ -27,6 +27,40 @@ export default function QuizTab({ topicId, topicName, subjectId }: QuizTabProps)
   const [aiExplanations, setAiExplanations] = useState<Record<string, string>>({});
   const [loadingExplanation, setLoadingExplanation] = useState<string | null>(null);
 
+  // Declared before the timer effect below, which lists it as a dependency.
+  const finishQuiz = useCallback(async () => {
+    setPhase('results');
+    const correct = questions.reduce((count, q, i) => (
+      answers[i] === q.correct_answer ? count + 1 : count
+    ), 0);
+
+    const score = questions.length > 0 ? (correct / questions.length) * 100 : 0;
+    const timeTaken = Math.round((Date.now() - startTime) / 1000);
+
+    if (user?.student_id) {
+      try {
+        await saveQuizAttempt({
+          studentId: user.student_id,
+          subjectId,
+          topicId,
+          quizType: 'topic_quiz',
+          totalQuestions: questions.length,
+          correctAnswers: correct,
+          score,
+          timeTakenSeconds: timeTaken,
+        });
+        await updateStudentProgress(
+          user.student_id,
+          topicId,
+          score,
+          score >= 50 ? 'completed' : 'in_progress'
+        );
+      } catch (err) {
+        console.error('Failed to save quiz:', err);
+      }
+    }
+  }, [questions, answers, startTime, user, subjectId, topicId]);
+
   // Timer
   useEffect(() => {
     if (phase !== 'active' || timeLeft <= 0) return;
@@ -67,39 +101,6 @@ export default function QuizTab({ topicId, topicName, subjectId }: QuizTabProps)
       return updated;
     });
   };
-
-  const finishQuiz = useCallback(async () => {
-    setPhase('results');
-    const correct = questions.reduce((count, q, i) => (
-      answers[i] === q.correct_answer ? count + 1 : count
-    ), 0);
-
-    const score = questions.length > 0 ? (correct / questions.length) * 100 : 0;
-    const timeTaken = Math.round((Date.now() - startTime) / 1000);
-
-    if (user?.student_id) {
-      try {
-        await saveQuizAttempt({
-          studentId: user.student_id,
-          subjectId,
-          topicId,
-          quizType: 'topic_quiz',
-          totalQuestions: questions.length,
-          correctAnswers: correct,
-          score,
-          timeTakenSeconds: timeTaken,
-        });
-        await updateStudentProgress(
-          user.student_id,
-          topicId,
-          score,
-          score >= 50 ? 'completed' : 'in_progress'
-        );
-      } catch (err) {
-        console.error('Failed to save quiz:', err);
-      }
-    }
-  }, [questions, answers, startTime, user, subjectId, topicId]);
 
   const correctCount = questions.reduce((c, q, i) => (answers[i] === q.correct_answer ? c + 1 : c), 0);
   const scorePct = questions.length > 0 ? Math.round((correctCount / questions.length) * 100) : 0;

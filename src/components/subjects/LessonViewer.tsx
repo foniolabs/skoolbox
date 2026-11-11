@@ -1,4 +1,4 @@
-import { useNavigate, useParams, Link } from 'react-router-dom';
+import { useNavigate, useParams, Link } from '../../lib/router';
 import { ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react';
 import Button from '../shared/Button';
 import { subjects } from '../../data/subjects/subjects';

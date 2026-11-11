@@ -5,7 +5,7 @@ use uuid::Uuid;
 
 // ── Students ──────────────────────────────────────────────
 
-#[tauri::command]
+#[tauri::command(async)]
 pub fn get_all_students(db: State<DbState>) -> Result<Vec<Student>, String> {
     let conn = db.db.lock().map_err(|e| e.to_string())?;
     let mut stmt = conn
@@ -34,7 +34,7 @@ pub fn get_all_students(db: State<DbState>) -> Result<Vec<Student>, String> {
     Ok(students)
 }
 
-#[tauri::command]
+#[tauri::command(async)]
 pub fn get_student(db: State<DbState>, student_id: String) -> Result<Student, String> {
     let conn = db.db.lock().map_err(|e| e.to_string())?;
     conn.query_row(
@@ -56,7 +56,7 @@ pub fn get_student(db: State<DbState>, student_id: String) -> Result<Student, St
     .map_err(|e| format!("Student not found: {}", e))
 }
 
-#[tauri::command]
+#[tauri::command(async)]
 pub fn create_student(
     db: State<DbState>,
     full_name: String,
@@ -84,7 +84,7 @@ pub fn create_student(
 
 /// Update a student's details — used when a student is corrected or **upgraded
 /// to a new class**. Only the provided fields change.
-#[tauri::command]
+#[tauri::command(async)]
 pub fn update_student(
     db: State<DbState>,
     student_id: String,
@@ -116,7 +116,7 @@ pub fn update_student(
 
 /// Suspend or reactivate a student — used when a student **leaves** (suspend)
 /// or returns. Suspended students cannot log in. `status` is 'active' | 'suspended'.
-#[tauri::command]
+#[tauri::command(async)]
 pub fn set_student_status(
     db: State<DbState>,
     student_id: String,
@@ -136,7 +136,7 @@ pub fn set_student_status(
 
 // ── Subjects & Topics ─────────────────────────────────────
 
-#[tauri::command]
+#[tauri::command(async)]
 pub fn get_subjects(db: State<DbState>, class_level: Option<String>) -> Result<Vec<Subject>, String> {
     let conn = db.db.lock().map_err(|e| e.to_string())?;
 
@@ -171,7 +171,7 @@ pub fn get_subjects(db: State<DbState>, class_level: Option<String>) -> Result<V
     Ok(subjects)
 }
 
-#[tauri::command]
+#[tauri::command(async)]
 pub fn get_topics(db: State<DbState>, subject_id: String) -> Result<Vec<Topic>, String> {
     let conn = db.db.lock().map_err(|e| e.to_string())?;
     let mut stmt = conn
@@ -200,7 +200,7 @@ pub fn get_topics(db: State<DbState>, subject_id: String) -> Result<Vec<Topic>, 
     Ok(topics)
 }
 
-#[tauri::command]
+#[tauri::command(async)]
 pub fn get_questions(
     db: State<DbState>,
     topic_id: String,
@@ -248,7 +248,7 @@ pub fn get_questions(
 
 // ── Student Progress ──────────────────────────────────────
 
-#[tauri::command]
+#[tauri::command(async)]
 pub fn get_student_progress(
     db: State<DbState>,
     student_id: String,
@@ -280,7 +280,7 @@ pub fn get_student_progress(
     Ok(progress)
 }
 
-#[tauri::command]
+#[tauri::command(async)]
 pub fn update_student_progress(
     db: State<DbState>,
     student_id: String,
@@ -310,7 +310,7 @@ pub fn update_student_progress(
     Ok(())
 }
 
-#[tauri::command]
+#[tauri::command(async)]
 pub fn get_class_overview(
     db: State<DbState>,
     class_level: String,
@@ -334,35 +334,26 @@ pub fn get_class_overview(
         )
         .unwrap_or(0.0);
 
-    let mastered: i32 = conn
-        .query_row(
-            "SELECT COUNT(DISTINCT sp.student_id) FROM student_progress sp
-             JOIN students s ON s.id = sp.student_id
-             WHERE s.class_level = ?1 AND sp.mastery_level = 'mastered'",
-            [&class_level],
+    // Each student counts once, by their average score, using the same cut-offs
+    // as `update_student_progress` (80+ mastered, 50+ working towards, else needs
+    // attention). Counting any student with a topic at a level made the three
+    // groups overlap and add up to more than the whole class.
+    let band_count = |low: f64, high: f64| -> i32 {
+        conn.query_row(
+            "SELECT COUNT(*) FROM (
+                 SELECT AVG(sp.score) AS avg_score FROM student_progress sp
+                 JOIN students s ON s.id = sp.student_id
+                 WHERE s.class_level = ?1
+                 GROUP BY sp.student_id
+             ) WHERE avg_score >= ?2 AND avg_score < ?3",
+            rusqlite::params![&class_level, low, high],
             |row| row.get(0),
         )
-        .unwrap_or(0);
-
-    let working: i32 = conn
-        .query_row(
-            "SELECT COUNT(DISTINCT sp.student_id) FROM student_progress sp
-             JOIN students s ON s.id = sp.student_id
-             WHERE s.class_level = ?1 AND sp.mastery_level = 'working_towards'",
-            [&class_level],
-            |row| row.get(0),
-        )
-        .unwrap_or(0);
-
-    let needs_att: i32 = conn
-        .query_row(
-            "SELECT COUNT(DISTINCT sp.student_id) FROM student_progress sp
-             JOIN students s ON s.id = sp.student_id
-             WHERE s.class_level = ?1 AND sp.mastery_level = 'needs_attention'",
-            [&class_level],
-            |row| row.get(0),
-        )
-        .unwrap_or(0);
+        .unwrap_or(0)
+    };
+    let mastered = band_count(80.0, f64::MAX);
+    let working = band_count(50.0, 80.0);
+    let needs_att = band_count(f64::MIN, 50.0);
 
     let total_work: i32 = conn
         .query_row(
@@ -424,7 +415,7 @@ pub fn save_quiz_attempt(
     })
 }
 
-#[tauri::command]
+#[tauri::command(async)]
 pub fn get_quiz_attempts(
     db: State<DbState>,
     student_id: String,
@@ -462,7 +453,7 @@ pub fn get_quiz_attempts(
 
 // ── AI Lesson History ─────────────────────────────────────
 
-#[tauri::command]
+#[tauri::command(async)]
 pub fn save_ai_lesson(
     db: State<DbState>,
     teacher_command: String,
@@ -493,7 +484,7 @@ pub fn save_ai_lesson(
     })
 }
 
-#[tauri::command]
+#[tauri::command(async)]
 pub fn get_ai_lesson_history(db: State<DbState>) -> Result<Vec<AILesson>, String> {
     let conn = db.db.lock().map_err(|e| e.to_string())?;
     let mut stmt = conn
@@ -524,7 +515,7 @@ pub fn get_ai_lesson_history(db: State<DbState>) -> Result<Vec<AILesson>, String
 
 // ── Settings ──────────────────────────────────────────────
 
-#[tauri::command]
+#[tauri::command(async)]
 pub fn get_setting(db: State<DbState>, key: String) -> Result<Option<String>, String> {
     let conn = db.db.lock().map_err(|e| e.to_string())?;
     let result = conn.query_row(
@@ -539,7 +530,7 @@ pub fn get_setting(db: State<DbState>, key: String) -> Result<Option<String>, St
     }
 }
 
-#[tauri::command]
+#[tauri::command(async)]
 pub fn set_setting(db: State<DbState>, key: String, value: String) -> Result<(), String> {
     let conn = db.db.lock().map_err(|e| e.to_string())?;
     conn.execute(
@@ -552,7 +543,7 @@ pub fn set_setting(db: State<DbState>, key: String, value: String) -> Result<(),
 
 // ── Topic Management ─────────────────────────────────
 
-#[tauri::command]
+#[tauri::command(async)]
 pub fn mark_topic_taught(
     db: State<DbState>,
     topic_id: String,
@@ -572,7 +563,7 @@ pub fn mark_topic_taught(
 
 // ── Videos ───────────────────────────────────────────
 
-#[tauri::command]
+#[tauri::command(async)]
 pub fn get_topic_videos(
     db: State<DbState>,
     subject: String,
@@ -607,7 +598,7 @@ pub fn get_topic_videos(
     Ok(videos)
 }
 
-#[tauri::command]
+#[tauri::command(async)]
 pub fn add_topic_video(
     db: State<DbState>,
     title: String,

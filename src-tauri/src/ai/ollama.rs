@@ -20,6 +20,8 @@ struct OllamaOptions {
     num_ctx: u32,
     /// Max tokens to generate (Ollama's name for max_tokens).
     num_predict: u32,
+    /// CPU threads for generation. See `generation_threads`.
+    num_thread: usize,
 }
 
 #[derive(Debug, Serialize)]
@@ -43,6 +45,23 @@ struct OllamaChatResponse {
     message: OllamaMessage,
 }
 
+/// Threads for generation. Ollama defaults to every physical core, which on a
+/// typical school laptop starves the UI until the answer is done. Leave one
+/// physical core free (assuming 2 logical per physical), but never go below 2.
+fn generation_threads() -> usize {
+    let logical = std::thread::available_parallelism().map_or(4, |n| n.get());
+    (logical / 2).saturating_sub(1).max(2)
+}
+
+/// How long to wait for one answer: 5 minutes unless SKOOLBOX_AI_TIMEOUT_SECS is set.
+fn request_timeout_secs() -> u64 {
+    std::env::var("SKOOLBOX_AI_TIMEOUT_SECS")
+        .ok()
+        .and_then(|v| v.parse().ok())
+        .filter(|&secs| secs >= 30)
+        .unwrap_or(300)
+}
+
 /// Base URL of the Ollama server. Override with `OLLAMA_HOST`.
 fn host() -> String {
     std::env::var("OLLAMA_HOST").unwrap_or_else(|_| "http://localhost:11434".to_string())
@@ -59,7 +78,8 @@ async fn post_chat(
     let client = reqwest::Client::builder()
         // CPU generation of a full lesson can be slow — allow up to 5 min so a
         // slow-but-valid response isn't cut off and forced to a generic fallback.
-        .timeout(std::time::Duration::from_secs(300))
+        // Very slow machines can raise it with SKOOLBOX_AI_TIMEOUT_SECS.
+        .timeout(std::time::Duration::from_secs(request_timeout_secs()))
         .build()
         .map_err(|e| e.to_string())?;
 
@@ -71,6 +91,7 @@ async fn post_chat(
             temperature: 0.4,
             num_ctx: 4096,
             num_predict: max_tokens,
+            num_thread: generation_threads(),
         },
         format: if json_mode {
             Some("json".to_string())

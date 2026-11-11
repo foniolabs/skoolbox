@@ -62,10 +62,10 @@ export default function ScoreTrend() {
             <Line
               type="monotone"
               dataKey="score"
-              stroke="#1565C0"
+              stroke="#25632D"
               strokeWidth={2.5}
-              dot={{ fill: '#1565C0', r: 4 }}
-              activeDot={{ r: 6, fill: '#1565C0' }}
+              dot={{ fill: '#25632D', r: 4 }}
+              activeDot={{ r: 6, fill: '#25632D' }}
             />
           </LineChart>
         </ResponsiveContainer>

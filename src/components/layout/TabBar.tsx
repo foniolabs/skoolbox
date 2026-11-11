@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink } from '../../lib/router'
 import { Home, BookOpen, Bot, FileQuestion, BarChart3, Settings } from 'lucide-react'
 
 const tabs = [
