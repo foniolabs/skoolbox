@@ -1,0 +1,16 @@
+{
+  // SkoolBox web API: accounts, sign-in and school data (Postgres on Neon).
+  // Local:  npm run dev          (reads api/.dev.vars)
+  // Deploy: npx wrangler secret put DATABASE_URL   (once)
+  //         npm run deploy
+  "name": "skoolbox-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "vars": {
+    // Browser origins allowed to call the API with cookies.
+    "ALLOWED_ORIGINS": "https://app.skoolbox.xyz",
+    // Shared by app.skoolbox.xyz and api.skoolbox.xyz so the session cookie is sent to both.
+    "COOKIE_DOMAIN": "skoolbox.xyz"
+  },
+  "routes": [{ "pattern": "api.skoolbox.xyz", "custom_domain": true }]
+}
