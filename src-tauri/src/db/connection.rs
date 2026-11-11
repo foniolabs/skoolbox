@@ -17,7 +17,16 @@ pub fn get_db_path(app: &AppHandle) -> PathBuf {
 /// Open a new connection to the SQLite database.
 pub fn open_db(app: &AppHandle) -> Result<Connection, String> {
     let path = get_db_path(app);
-    Connection::open(&path).map_err(|e| format!("Failed to open database: {}", e))
+    let conn = Connection::open(&path).map_err(|e| format!("Failed to open database: {}", e))?;
+    // WAL + NORMAL: writes stop forcing a full disk flush each time, which is
+    // very noticeable on the spinning disks common in school laptops.
+    conn.execute_batch(
+        "PRAGMA journal_mode = WAL;
+         PRAGMA synchronous = NORMAL;
+         PRAGMA busy_timeout = 5000;",
+    )
+    .map_err(|e| format!("Failed to configure database: {}", e))?;
+    Ok(conn)
 }
 
 /// Initialize the database schema. Called once at app startup.
@@ -372,6 +381,19 @@ pub fn init_db(conn: &Connection) -> Result<(), String> {
         "ALTER TABLE students ADD COLUMN status TEXT NOT NULL DEFAULT 'active'",
         [],
     );
+
+    // Indexes for the lookups the dashboard and lesson screens run constantly.
+    conn.execute_batch(
+        "
+        CREATE INDEX IF NOT EXISTS idx_students_class_level ON students(class_level);
+        CREATE INDEX IF NOT EXISTS idx_topics_subject ON topics(subject_id);
+        CREATE INDEX IF NOT EXISTS idx_questions_topic ON questions(topic_id);
+        CREATE INDEX IF NOT EXISTS idx_quiz_attempts_student ON quiz_attempts(student_id);
+        CREATE INDEX IF NOT EXISTS idx_chat_history_student ON chat_history(student_id, conversation_id);
+        CREATE INDEX IF NOT EXISTS idx_student_mistakes_student ON student_mistakes(student_id);
+        ",
+    )
+    .map_err(|e| format!("Failed to create indexes: {}", e))?;
 
     Ok(())
 }

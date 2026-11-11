@@ -256,7 +256,7 @@ pub async fn tts_available() -> bool {
 }
 
 /// Get the current TTS settings from the database.
-#[tauri::command]
+#[tauri::command(async)]
 pub fn get_tts_settings(db: State<DbState>) -> Result<TtsSettings, String> {
     let conn = db.db.lock().map_err(|e| e.to_string())?;
 
@@ -275,7 +275,7 @@ pub fn get_tts_settings(db: State<DbState>) -> Result<TtsSettings, String> {
 }
 
 /// Save TTS settings to the database.
-#[tauri::command]
+#[tauri::command(async)]
 pub fn save_tts_settings(
     db: State<DbState>,
     voice: String,

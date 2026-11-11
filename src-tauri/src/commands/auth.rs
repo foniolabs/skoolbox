@@ -3,7 +3,7 @@ use crate::models::*;
 use tauri::State;
 use uuid::Uuid;
 
-#[tauri::command]
+#[tauri::command(async)]
 pub fn login(
     db: State<DbState>,
     username: String,
@@ -101,7 +101,7 @@ pub fn login(
     }
 }
 
-#[tauri::command]
+#[tauri::command(async)]
 pub fn register(
     db: State<DbState>,
     username: String,
@@ -175,7 +175,7 @@ pub fn register(
     })
 }
 
-#[tauri::command]
+#[tauri::command(async)]
 pub fn get_all_users(db: State<DbState>) -> Result<Vec<User>, String> {
     let conn = db.db.lock().map_err(|e| e.to_string())?;
     let mut stmt = conn
@@ -222,7 +222,7 @@ fn cascade_delete_student(conn: &rusqlite::Connection, student_id: &str) -> Resu
     Ok(())
 }
 
-#[tauri::command]
+#[tauri::command(async)]
 pub fn delete_user(db: State<DbState>, user_id: String) -> Result<(), String> {
     let conn = db.db.lock().map_err(|e| e.to_string())?;
 
@@ -248,13 +248,13 @@ pub fn delete_user(db: State<DbState>, user_id: String) -> Result<(), String> {
 
 /// Delete a student directly (e.g. an orphaned record with no login account)
 /// along with all of their associated data.
-#[tauri::command]
+#[tauri::command(async)]
 pub fn delete_student(db: State<DbState>, student_id: String) -> Result<(), String> {
     let conn = db.db.lock().map_err(|e| e.to_string())?;
     cascade_delete_student(&conn, &student_id)
 }
 
-#[tauri::command]
+#[tauri::command(async)]
 pub fn enroll_students(
     db: State<DbState>,
     students: Vec<(String, String, String)>, // (full_name, username, class_level)

@@ -7,7 +7,7 @@ interface ClassScoreCardProps {
 }
 
 export default function ClassScoreCard({ overview, loading }: ClassScoreCardProps) {
-  const score = overview?.average_score ?? 0
+  const score = Math.round(overview?.average_score ?? 0)
   const workAssigned = overview?.total_work_assigned ?? 0
 
   return (

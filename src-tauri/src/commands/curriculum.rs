@@ -7,7 +7,7 @@ use uuid::Uuid;
 // ── Term Plan CRUD ────────────────────────────────────────────────────────────
 
 /// Create a new term plan for a subject + class + term.
-#[tauri::command]
+#[tauri::command(async)]
 pub fn create_term_plan(
     db: State<DbState>,
     subject_id: String,
@@ -53,7 +53,7 @@ pub fn create_term_plan(
 }
 
 /// Get all term plans, optionally filtered by subject and/or class level.
-#[tauri::command]
+#[tauri::command(async)]
 pub fn get_term_plans(
     db: State<DbState>,
     subject_id: Option<String>,
@@ -100,7 +100,7 @@ pub fn get_term_plans(
 }
 
 /// Get the currently active term plan for a subject + class + term.
-#[tauri::command]
+#[tauri::command(async)]
 pub fn get_active_term_plan(
     db: State<DbState>,
     subject_id: String,
@@ -142,7 +142,7 @@ pub fn get_active_term_plan(
 }
 
 /// Delete a term plan and all its topics.
-#[tauri::command]
+#[tauri::command(async)]
 pub fn delete_term_plan(db: State<DbState>, plan_id: String) -> Result<bool, String> {
     let conn = db.db.lock().map_err(|e| e.to_string())?;
     conn.execute("DELETE FROM term_plan_topics WHERE plan_id = ?1", rusqlite::params![plan_id])
@@ -155,7 +155,7 @@ pub fn delete_term_plan(db: State<DbState>, plan_id: String) -> Result<bool, Str
 // ── Term Plan Topics CRUD ─────────────────────────────────────────────────────
 
 /// Get all topics in a plan, ordered by week.
-#[tauri::command]
+#[tauri::command(async)]
 pub fn get_plan_topics(
     db: State<DbState>,
     plan_id: String,
@@ -198,7 +198,7 @@ pub fn get_plan_topics(
 }
 
 /// Add a topic (week) to a plan.
-#[tauri::command]
+#[tauri::command(async)]
 pub fn add_plan_topic(
     db: State<DbState>,
     plan_id: String,
@@ -290,7 +290,7 @@ pub fn update_plan_topic(
 }
 
 /// Delete a topic from a plan.
-#[tauri::command]
+#[tauri::command(async)]
 pub fn delete_plan_topic(db: State<DbState>, topic_id: String) -> Result<bool, String> {
     let conn = db.db.lock().map_err(|e| e.to_string())?;
     conn.execute(
@@ -302,7 +302,7 @@ pub fn delete_plan_topic(db: State<DbState>, topic_id: String) -> Result<bool, S
 }
 
 /// Mark a plan topic as taught (or untaught).
-#[tauri::command]
+#[tauri::command(async)]
 pub fn mark_plan_topic_taught(
     db: State<DbState>,
     topic_id: String,
